@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-
-import Link from "next/link";
+import NavLink from "@common/components/NavLink";
 
 interface HeaderProps {
   title?: string;
@@ -22,11 +21,11 @@ const Header = ({
       <div className={styles["left-container"]}>Logo</div>
       <div className={styles["right-container"]}>
         <div className={styles["menu"]}>
-          <Link href="">Download Guide</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="">About Us</Link>
-          <Link href="/">Log In</Link>
-          <Link href="">Sign up</Link>
+          <NavLink href="/download-guide">Download Guide</NavLink>
+          <NavLink href="/faq">FAQ</NavLink>
+          <NavLink href="/about-us">About Us</NavLink>
+          <NavLink href="/">Log In</NavLink>
+          <NavLink href="/sign-up">Sign up</NavLink>
         </div>
         <div className={styles["divider"]} />
         <div className={styles["language-select"]}>

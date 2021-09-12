@@ -1,0 +1,7 @@
+.nav-link {
+  color: $shuttle-gray;
+
+  &.active {
+    color: $jade;
+  }
+}
