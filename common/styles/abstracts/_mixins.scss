@@ -1,0 +1,51 @@
+/*
+Media Query Manager
+[0px - 599px] is where our normal styles apply
+600px - 899px:      Tablet portrait
+900px - 1199px:     Tablet landscape
+1200px - 1799px:    Desktop
+1800px and above:   Big desktop
+$breakpoint argument choices:
+- tab-port
+- tab-land
+- desktop
+- big-desktop
+1em = 16px (default browser font size)
+*/
+
+@mixin view-size($breakpoint) {
+  @if $breakpoint == phone-only {
+    //0px
+    @media only screen and (max-width: 599px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    //600px
+    @media only screen and (min-width: 599px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    //900px
+    @media only screen and (min-width: 900px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    //1200px
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    //1800px
+    @media only screen and (min-width: 1800px) {
+      @content;
+    }
+  }
+}
