@@ -25,7 +25,9 @@ const Header = ({
           <NavLink href="/faq">FAQ</NavLink>
           <NavLink href="/about-us">About Us</NavLink>
           <NavLink href="/">Log In</NavLink>
-          <NavLink href="/sign-up">Sign up</NavLink>
+          <NavLink href="/sign-up">
+            <button>Sign up</button>
+          </NavLink>
         </div>
         <div className={styles["divider"]} />
         <div className={styles["language-select"]}>
