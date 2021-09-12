@@ -1,4 +1,4 @@
-import "@common/styles/global.scss";
+// import "@common/styles/main.scss";
 import type { AppProps } from "next/app";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
