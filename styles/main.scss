@@ -1,5 +1,13 @@
-/* BASE */
-@import "./base/base";
+/* ABSTRACTS */
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+@import "./abstracts/utilities";
 
 /* ANT DESIGN */
 @import "~antd/dist/antd.css";
+
+/* VENDORS */
+@import "./vendors/antd";
+
+/* BASE */
+@import "./base/base";

@@ -1,7 +1,9 @@
 .nav-link {
   color: $shuttle-gray;
 
-  &.active {
-    color: $jade;
+  &.active,
+  &:hover,
+  &:focus {
+    color: $silver !important;
   }
 }
