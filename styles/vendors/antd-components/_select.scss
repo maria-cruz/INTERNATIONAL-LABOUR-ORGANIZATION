@@ -1,0 +1,20 @@
+.ant-select.ant-select-lg {
+  font-size: 1.6rem;
+  width: 10rem;
+}
+
+.ant-select-dropdown {
+  padding: 0;
+  width: 21rem !important;
+
+  .ant-select-item-option-active,
+  .ant-select-item-option-selected {
+    background: $athens-gray;
+  }
+
+  .ant-select-item-option-content {
+    font-size: 1.6rem !important;
+    font-weight: 600 !important;
+    padding: 1rem 1rem !important;
+  }
+}

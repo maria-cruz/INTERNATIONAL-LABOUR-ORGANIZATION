@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./styles.module.scss";
 import NavLink from "@common/components/NavLink";
 import Button from "antd/lib/button";
+import Select from "antd/lib/select";
+import Image from "next/image";
+
+const { Option } = Select;
 
 interface HeaderProps {
   title?: string;
@@ -16,7 +20,9 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
       style={{ marginBottom: gap }}
     >
       <div className={styles["left-container"]}>
-        <NavLink href="/">Logo</NavLink>
+        <NavLink href="/">
+          <Image src="/images/logo.png" width={215} height={83.41} />
+        </NavLink>
       </div>
       <div className={styles["right-container"]}>
         <div className={styles["menu"]}>
@@ -34,7 +40,15 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
         </div>
         <div className={styles["divider"]} />
         <div className={styles["language-select"]}>
-          <span>English</span>
+          <Select
+            size="large"
+            defaultValue="english"
+            bordered={false}
+            dropdownAlign={{ offset: [-100, 4] }}
+          >
+            <Option value="english">English</Option>
+            <Option value="arabic">العربية</Option>
+          </Select>
         </div>
       </div>
     </header>
