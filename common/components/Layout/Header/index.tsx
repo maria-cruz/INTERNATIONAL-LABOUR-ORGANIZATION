@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./styles.module.scss";
 
 interface HeaderProps {
   title?: string;
@@ -12,8 +13,11 @@ const Header = ({
   className = "",
 }: HeaderProps) => {
   return (
-    <header className={`header ${className}`} style={{ marginBottom: gap }}>
-      <span className="header-title">{title}</span>
+    <header
+      className={`${styles["header"]} ${className}`}
+      style={{ marginBottom: gap }}
+    >
+      <span className={styles["header-title"]}>{title}</span>
     </header>
   );
 };

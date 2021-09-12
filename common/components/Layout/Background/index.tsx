@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./Background.module.scss";
+import styles from "./styles.module.scss";
 
 export interface BackgroundProps {
   src?: string;
@@ -12,7 +12,7 @@ const Background = ({ src }: BackgroundProps) => {
   return (
     <>
       <Image
-        className={styles.background}
+        className={styles["background"]}
         src={src}
         layout="fill"
         objectFit="cover"

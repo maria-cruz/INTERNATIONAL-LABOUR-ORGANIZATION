@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./styles.module.scss";
 
 export interface FooterProps {
   isVisible?: boolean;
@@ -6,7 +7,9 @@ export interface FooterProps {
 
 const Footer = ({ isVisible = true }: FooterProps) => {
   return (
-    <footer className={`footer ${isVisible ? "" : "_undisplayed"}`}></footer>
+    <footer
+      className={`${styles["footer"]} ${isVisible ? "" : "_undisplayed"}`}
+    ></footer>
   );
 };
 
