@@ -6,9 +6,9 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
     prependData: `
-      @use "~@styles/abstracts/variables.scss";
-      @use "~@styles/abstracts/mixins.scss";
-      @use "~@styles/abstracts/utilities.scss";
+      @import "~@styles/abstracts/variables.scss";
+      @import "~@styles/abstracts/mixins.scss";
+      @import "~@styles/abstracts/utilities.scss";
     `,
   },
 };

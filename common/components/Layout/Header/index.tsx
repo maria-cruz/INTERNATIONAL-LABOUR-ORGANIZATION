@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
+import Link from "next/link";
+
 interface HeaderProps {
   title?: string;
   gap?: string;
@@ -17,7 +19,20 @@ const Header = ({
       className={`${styles["header"]} ${className}`}
       style={{ marginBottom: gap }}
     >
-      <span className={styles["header-title"]}>{title}</span>
+      <div className={styles["left-container"]}>Logo</div>
+      <div className={styles["right-container"]}>
+        <div className={styles["menu"]}>
+          <Link href="">Download Guide</Link>
+          <Link href="/faq">FAQ</Link>
+          <Link href="">About Us</Link>
+          <Link href="/">Log In</Link>
+          <Link href="">Sign up</Link>
+        </div>
+        <div className={styles["divider"]} />
+        <div className={styles["language-select"]}>
+          <span> English</span>
+        </div>
+      </div>
     </header>
   );
 };

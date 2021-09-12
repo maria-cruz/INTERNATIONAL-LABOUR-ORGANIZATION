@@ -1,33 +1,66 @@
 .header {
   width: 100%;
-  height: 7.5rem;
-  background: $persian-blue;
+  height: 14rem;
+  background-color: $white;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
+  padding: 2.8rem 10rem;
 
-  @include view-size(desktop) {
-    display: none;
+  .left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .header-title {
-    font-size: 1.7rem;
-    margin: 0.9rem;
+  .right-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .ant-btn {
-    background: transparent;
-    border: none;
-    margin: 0;
+  .right-container .menu {
+    display: flex;
+    gap: 5rem;
   }
 
-  .ant-btn:hover,
-  .ant-btn:focus {
-    color: black;
-    border-color: transparent;
-    background: transparent;
+  .right-container .menu a {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: $shuttle-gray;
   }
 
-  --antd-wave-shadow-color: transparent;
+  .right-container .divider {
+    border-left: 0.1rem solid $silver-chalice;
+    margin: 0 2rem;
+    height: 6rem;
+  }
+
+  .right-container .language-select {
+    font-size: 1.6rem;
+  }
+  // @include view-size(desktop) {
+  //   display: none;
+  // }
+
+  // .header-title {
+  //   font-size: 1.7rem;
+  //   margin: 0.9rem;
+  // }
+
+  // .ant-btn {
+  //   background: transparent;
+  //   border: none;
+  //   margin: 0;
+  // }
+
+  // .ant-btn:hover,
+  // .ant-btn:focus {
+  //   color: black;
+  //   border-color: transparent;
+  //   background: transparent;
+  // }
+
+  // --antd-wave-shadow-color: transparent;
 }
