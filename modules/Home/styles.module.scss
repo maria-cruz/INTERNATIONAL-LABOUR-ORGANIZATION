@@ -1,0 +1,6 @@
+.background {
+  position: fixed !important; // Override for nextjs/Image position. Can't change without !important
+  z-index: -1;
+  width: 192rem;
+  height: 108rem;
+}
