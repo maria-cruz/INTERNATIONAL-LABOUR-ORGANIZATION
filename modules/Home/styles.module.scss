@@ -4,3 +4,37 @@
   width: 192rem;
   height: 108rem;
 }
+
+.banner-section {
+  width: 192rem;
+  height: 108rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .banner-title {
+    font-size: 8rem;
+    margin-bottom: 5rem;
+    b {
+      font-weight: 600;
+    }
+  }
+
+  .banner-description {
+    font-size: 1.8rem;
+    width: 105.8rem;
+    height: 10.3rem;
+    line-height: 4rem;
+    color: $black;
+    margin-bottom: 3.7rem;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+}

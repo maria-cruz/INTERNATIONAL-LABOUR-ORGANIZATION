@@ -1,4 +1,21 @@
 .ant-btn {
+  min-width: 10.8rem;
+  height: 5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+
+  --antd-wave-shadow-color: $jade;
+  border-color: $jade;
+  color: $jade;
+
+  &.ant-btn:hover,
+  &.ant-btn:focus,
+  &:active {
+    border-color: $jade;
+    color: $jade;
+  }
+
   &.ant-btn-primary {
     color: $white;
     border-color: transparent;
@@ -6,14 +23,18 @@
     text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
     -webkit-box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
     box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+
+    &.ant-btn:hover,
+    &.ant-btn:focus,
+    &:active {
+      border-color: transparent;
+      color: $white;
+    }
   }
   &.ant-btn-lg {
     min-width: 14.6rem;
     height: 6rem;
-
     padding: 6.4px 15px;
     font-size: 2.4rem;
-    font-weight: 600;
-    border-radius: 0.4rem;
   }
 }
