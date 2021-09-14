@@ -37,6 +37,11 @@ const Home = () => {
             Sign up
           </Button>
         </div>
+
+        <div className={styles["watch-link-container"]}>
+          <Image src="/images/play-circle-filled.svg" width={33} height={33} />
+          <a className={styles["watch-link-text"]}>watch how it works</a>
+        </div>
       </section>
     </Layout>
   );
