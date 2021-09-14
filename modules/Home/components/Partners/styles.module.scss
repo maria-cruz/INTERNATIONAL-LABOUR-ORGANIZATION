@@ -1,0 +1,25 @@
+.partners-section {
+  width: 100%;
+  height: 51.2rem;
+  background: $white;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  box-shadow: 0rem -0.3rem 1.5rem $black-29;
+  padding: 10rem;
+
+  .partners-section-title {
+    color: $apple;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 8rem;
+  }
+
+  .partners-section-logos {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
