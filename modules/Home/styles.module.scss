@@ -4,3 +4,49 @@
   width: 192rem;
   height: 108rem;
 }
+
+.steps-section {
+  width: 100%;
+  height: 49.8rem;
+  background: $whisper;
+  padding: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14.8rem;
+
+  .step-container {
+    display: flex;
+    gap: 3.5rem;
+  }
+
+  .step-container .logo {
+    border: 0.4rem solid $manatee;
+    border-radius: 50%;
+    height: 100%;
+
+    img {
+      padding: 1.4rem !important;
+    }
+  }
+
+  .step-container .text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .text-group .title {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: $apple;
+  }
+
+  .text-group .description {
+    font-size: 1.8rem;
+    line-height: 4rem;
+    color: $shuttle-gray;
+    max-width: 36rem;
+  }
+}
