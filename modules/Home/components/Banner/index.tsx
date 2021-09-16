@@ -19,10 +19,10 @@ const Home = () => {
       </span>
 
       <div className={styles["button-container"]}>
-        <Button type="primary" size="middle">
+        <Button href="/log-in" type="primary" size="middle">
           Log in
         </Button>
-        <Button type="default" size="middle">
+        <Button href="/sign-up" type="default" size="middle">
           Sign up
         </Button>
       </div>
