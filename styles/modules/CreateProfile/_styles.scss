@@ -1,4 +1,6 @@
 .create-profile-container {
+  @import "./components/CreateProfilePreview/styles";
+
   display: flex;
 
   .form-create-profile-container {
@@ -88,9 +90,9 @@
     color: $white;
     border: none;
   }
-}
 
-.form-select-organization-type,
-.form-select-country {
-  height: 5rem;
+  .form-select-organization-type,
+  .form-select-country {
+    height: 5rem;
+  }
 }
