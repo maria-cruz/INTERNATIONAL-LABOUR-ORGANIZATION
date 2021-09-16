@@ -65,6 +65,37 @@ const Home = () => {
         </div>
       </section>
 
+      <section className={styles["visitors-section"]}>
+        <div>
+          <div className={styles["main-count-container"]}>
+            <span className={styles["title"]}>Visitors today</span>
+            <span className={styles["count"]}>002897</span>
+          </div>
+        </div>
+        <div className={styles["sub-count-group"]}>
+          <div className={styles["sub-count-container"]}>
+            <span className={styles["title"]}>This week</span>
+            <span className={styles["count"]}>5324</span>
+          </div>
+          <div className={styles["sub-count-container"]}>
+            <span className={styles["title"]}>Last week</span>
+            <span className={styles["count"]}>4271</span>
+          </div>
+          <div className={styles["sub-count-container"]}>
+            <span className={styles["title"]}>This month</span>
+            <span className={styles["count"]}>551,324</span>
+          </div>
+          <div className={styles["sub-count-container"]}>
+            <span className={styles["title"]}>Last month</span>
+            <span className={styles["count"]}>524,653</span>
+          </div>
+          <div className={styles["sub-count-container"]}>
+            <span className={styles["title"]}>Total</span>
+            <span className={styles["count"]}>1,551,532</span>
+          </div>
+        </div>
+      </section>
+
       <section className={styles["gadgets-section"]}>
         <Image src="/images/ilo-gadgets.jpg" width={1920} height={1080} />
       </section>

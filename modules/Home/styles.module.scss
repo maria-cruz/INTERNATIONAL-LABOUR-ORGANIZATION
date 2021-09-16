@@ -50,3 +50,55 @@
     max-width: 36rem;
   }
 }
+
+.visitors-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  background: $apple;
+  color: $white;
+
+  height: 49.3rem;
+  padding: 10rem;
+
+  .main-count-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .count {
+      font-size: 10rem;
+      font-weight: 600;
+    }
+  }
+
+  .sub-count-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .sub-count-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .count {
+      font-size: 4.2rem;
+      font-weight: 600;
+    }
+  }
+}
