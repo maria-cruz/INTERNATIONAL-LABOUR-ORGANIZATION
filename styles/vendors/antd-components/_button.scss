@@ -38,3 +38,10 @@
     font-size: 2.4rem;
   }
 }
+
+a.ant-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem !important; // Needs !important to override the !important inside Antd CSS
+}
