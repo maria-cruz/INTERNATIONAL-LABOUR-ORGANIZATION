@@ -49,3 +49,35 @@ $breakpoint argument choices:
     }
   }
 }
+
+@mixin view-padding($breakpoint) {
+  @if $breakpoint == phone-only {
+    //0px
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @if $breakpoint == tab-port {
+    //600px
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @if $breakpoint == tab-land {
+    //900px
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  @if $breakpoint == desktop {
+    //1200px
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  @if $breakpoint == big-desktop {
+    //1800px
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
