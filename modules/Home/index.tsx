@@ -64,6 +64,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section className={styles["gadgets-section"]}>
+        <Image src="/images/ilo-gadgets.jpg" width={1920} height={1080} />
+      </section>
     </Layout>
   );
 };
