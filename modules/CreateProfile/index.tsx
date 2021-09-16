@@ -1,115 +1,151 @@
 import React from "react";
-import styles from "./styles.module.scss";
 import LeftSideMenu from "./components/LeftSideMenu";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
+import { DatePicker } from "antd";
 
 const CreateProfile = () => {
   const [createProfile] = Form.useForm();
 
+  const SAMPLE_DATA_ORGANIZATION_TYPE = [
+    {
+      label: "Training/academic institution – Staff",
+      value: 1,
+    },
+    {
+      label: "Training/academic institution – Student/Trainee",
+      value: 2,
+    },
+    {
+      label: "Private Enterprise - Employer",
+      value: 3,
+    },
+    {
+      label: "Private Enterprise - Worker",
+      value: 4,
+    },
+    {
+      label: "Trade union organization",
+      value: 5,
+    },
+    {
+      label: "Employer organization",
+      value: 6,
+    },
+    {
+      label: "Non-governmental Organization",
+      value: 8,
+    },
+  ];
+
   return (
-    <div className={styles["create-profile-container"]}>
+    <div className="create-profile-container">
       <LeftSideMenu />
-      <div className={styles["form-create-profile-container"]}>
-        <div className={styles["form-container"]}>
-          <div className={styles["form-title-container"]}>
-            <div className={styles["title-container"]}>Create profile</div>
-            <div className={styles["description-container"]}>
+      <div className="form-create-profile-container">
+        <div className="form-container">
+          <div className="form-title-container">
+            <div className="title-container">Create profile</div>
+            <div className="description-container">
               Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet
             </div>
           </div>
           <Form form={createProfile} layout="vertical">
-            <div className={styles["form-column-container"]}>
+            <div className="form-column-container">
               <Form.Item
                 label="First name"
                 name="firstName"
-                className={styles["form-width"]}
+                className="form-width"
               >
-                <Input className={styles["form-input"]} />
+                <Input className="form-input" />
               </Form.Item>
               <Form.Item
                 label="Last name"
                 name="lastName"
-                className={styles["form-width"]}
+                className="form-width"
               >
-                <Input className={styles["form-input"]} />
+                <Input className="form-input" />
               </Form.Item>
             </div>
-            <div className={styles["form-column-container"]}>
+            <div className="form-column-container">
               <Form.Item
                 label="Organization type"
                 name="organizationType"
-                className={styles["form-width"]}
+                className="form-width"
               >
-                <Select className={styles["form-select-organization-type"]} />
+                <Select className="form-select-organization-type">
+                  {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
+                    <Select.Option value={item.value}>
+                      {item.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
 
               <Form.Item
                 label="Organization name"
                 name="organizationName"
-                className={styles["form-width"]}
+                className="form-width"
               >
-                <Input className={styles["form-input"]} />
+                <Input className="form-input" />
               </Form.Item>
             </div>
             <Form.Item label="Email address" name="emailAddress">
-              <Input className={styles["form-input"]} />
+              <Input className="form-input" />
             </Form.Item>
-            <div className={styles["form-column-container"]}>
-              <div className={styles["column-container"]}>
+            <div className="form-column-container">
+              <div className="column-container">
                 <Form.Item
                   label="Country"
                   name="country"
-                  className={styles["form-width-country"]}
+                  className="form-width-country"
                 >
-                  <Select className={styles["form-select-country"]} />
+                  <Select className="form-select-country" />
                 </Form.Item>
 
                 <Form.Item
                   label="Your phone number"
                   name="phoneNumber"
-                  className={styles["form-width-phone-number"]}
+                  className="form-width-phone-number"
                 >
-                  <Input className={styles["form-input"]} />
+                  <Input className="form-input" />
                 </Form.Item>
               </div>
-              <div className={styles["column-container"]}>
+              <div className="column-container">
                 <Form.Item
                   label="Date of birthday"
                   name="month"
-                  className={styles["form-width-month"]}
+                  className="form-width-month"
                 >
-                  <Select
-                    className={styles["form-select-country"]}
+                  {/* <Select className="form-select-country" placeholder="Month" /> */}
+                  <DatePicker
+                    className="form-select-country"
+                    picker="month"
                     placeholder="Month"
                   />
                 </Form.Item>
-                <Form.Item name="day" className={styles["form-width-day"]}>
-                  <Select
-                    className={styles["form-select-country"]}
+                <Form.Item name="day" className="form-width-day">
+                  {/* <Select className="form-select-country" placeholder="Day" /> */}
+                  <DatePicker
+                    className="form-select-country"
                     placeholder="Day"
                   />
                 </Form.Item>
-                <Form.Item name="year" className={styles["form-width-year"]}>
-                  <Select
-                    className={styles["form-select-country"]}
+                <Form.Item name="year" className="form-width-year">
+                  {/* <Select className="form-select-country" placeholder="Year" /> */}
+                  <DatePicker
+                    className="form-select-country"
+                    picker="year"
                     placeholder="Year"
                   />
                 </Form.Item>
               </div>
             </div>
-            <div
-              className={`${styles["form-column-container"]} ${styles["margin-bottom"]}`}
-            >
-              <Form.Item
-                label="Gender"
-                name="gender"
-                className={styles["form-width"]}
-              >
+            <div className="form-column-container margin-bottom">
+              <Form.Item label="Gender" name="gender" className="form-width">
                 <Select
-                  className={styles["form-select-organization-type"]}
+                  className="form-select-organization-type"
                   placeholder="Please Select"
                 />
               </Form.Item>
@@ -117,16 +153,16 @@ const CreateProfile = () => {
               <Form.Item
                 label="Nationality"
                 name="organizationName"
-                className={styles["form-width"]}
+                className="form-width"
               >
                 <Select
-                  className={styles["form-select-organization-type"]}
+                  className="form-select-organization-type"
                   placeholder="Please Select"
                 />
               </Form.Item>
             </div>
-            <div className={styles["form-button-container"]}>
-              <Button className={styles["btn-continue"]}>Continue</Button>
+            <div className="form-button-container">
+              <Button className="btn-continue">Continue</Button>
             </div>
           </Form>
         </div>
