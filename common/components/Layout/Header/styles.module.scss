@@ -10,13 +10,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.8rem 10rem;
   overflow: hidden;
+  padding: 2.8rem min(5.208vw, 10rem);
 
   .left-container {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .left-container .logo-container {
+    min-width: 18rem;
   }
 
   .right-container {
@@ -26,14 +30,27 @@
   }
 
   .right-container .menu {
-    display: flex;
-    align-items: center;
-    gap: 5rem;
+    display: none;
+
+    @include view-size(tab-land) {
+      display: none;
+    }
+
+    @include view-size(desktop) {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    @include view-size(big-desktop) {
+      gap: 5rem;
+    }
   }
 
   .right-container .menu a {
     font-size: 2.4rem;
     font-weight: 600;
+    white-space: nowrap;
   }
 
   .right-container .menu a.log-in-link {
@@ -45,12 +62,31 @@
   }
 
   .right-container .divider {
-    border-left: 0.1rem solid $silver-chalice;
-    margin: 0 2rem;
-    height: 6rem;
+    display: none;
+
+    @include view-size(desktop) {
+      display: block;
+      border-left: 0.1rem solid $silver-chalice;
+      margin: 0 2rem;
+      height: 6rem;
+    }
   }
 
   .right-container .language-select {
+    display: none;
+
+    @include view-size(desktop) {
+      display: block;
+      font-size: 1.6rem;
+    }
+  }
+
+  .right-container-mobile {
+    display: block;
     font-size: 1.6rem;
+
+    @include view-size(desktop) {
+      display: none;
+    }
   }
 }
