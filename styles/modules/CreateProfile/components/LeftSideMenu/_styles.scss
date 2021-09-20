@@ -1,11 +1,20 @@
 .menu-step-container {
-  min-height: 100vh;
-  min-width: 69.4rem;
   background: #69bd44;
-  padding: 6.9rem 10rem;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 36.15vw;
+  max-width: 69.4rem;
+  min-height: 100vh;
+  padding: 5rem;
+
+  .menu-step {
+    height: 100%;
+    max-height: 96.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   .step-one-container,
   .step-two-container {
