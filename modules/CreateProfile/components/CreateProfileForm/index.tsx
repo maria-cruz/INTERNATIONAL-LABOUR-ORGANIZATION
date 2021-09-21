@@ -4,6 +4,7 @@ import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import DatePicker from "antd/lib/date-picker";
+import Image from "next/image";
 
 const SAMPLE_DATA_ORGANIZATION_TYPE = [
   {
@@ -36,7 +37,7 @@ const SAMPLE_DATA_ORGANIZATION_TYPE = [
   },
 ];
 
-const CreateProfileForm = () => {
+const CreateProfileForm = ({ data }: any) => {
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">
@@ -55,7 +56,9 @@ const CreateProfileForm = () => {
         >
           <Select className="form-select-organization-type">
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
-              <Select.Option value={item.value}>{item.label}</Select.Option>
+              <Select.Option value={item.value} key={item.value}>
+                {item.label}
+              </Select.Option>
             ))}
           </Select>
         </Form.Item>
@@ -78,7 +81,17 @@ const CreateProfileForm = () => {
             name="country"
             className="form-width-country"
           >
-            <Select className="form-select-country" />
+            <Select
+              className="form-select-country"
+              open={true}
+              dropdownClassName="select-countries-dropdown"
+            >
+              {data.map((item: any) => (
+                <Select.Option value={item.code} key={item.code}>
+                  <Image src={item.flag} height={25} width={35.85} />
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
 
           <Form.Item
