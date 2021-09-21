@@ -1,7 +1,14 @@
 import React from "react";
 import Button from "antd/lib/button";
+import useRouter from "next/router";
+import router from "next/router";
 
 const CreateProfilePreview = () => {
+  const { router } = useRouter;
+
+  const handleSubmitClick = () => {
+    router?.push("/how-it-works");
+  };
   return (
     <div className="create-profile-preview-container">
       <div className="create-profile-preview">
@@ -54,7 +61,11 @@ const CreateProfilePreview = () => {
           <Button className="btn-back" type="link">
             Back
           </Button>
-          <Button className="btn-submit" type="primary">
+          <Button
+            className="btn-submit"
+            type="primary"
+            onClick={handleSubmitClick}
+          >
             Submit
           </Button>
         </div>

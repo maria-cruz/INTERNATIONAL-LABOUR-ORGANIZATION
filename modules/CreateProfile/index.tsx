@@ -4,11 +4,32 @@ import LeftSideMenu from "./components/LeftSideMenu";
 import Form from "antd/lib/form";
 import CreateProfileForm from "./components/CreateProfileForm";
 import CreateProfilePreview from "./components/CreateProfilePreview";
+import axios from "axios";
+import useSWR from "swr";
 
+const COUNTRIES_LINK = "https://restcountries.eu/rest/v2/all";
+
+interface CountriesInterface {
+  flag: string;
+  alpha3Code: string;
+}
 const CreateProfile = () => {
   const router = useRouter();
   const [createProfile] = Form.useForm();
+  const fetcher = (url: string) =>
+    axios.get(url).then((res) => {
+      const countriesData = res.data.map((item: CountriesInterface) => {
+        return {
+          flag: item.flag,
+          code: item.alpha3Code,
+        };
+      });
 
+      return countriesData;
+    });
+  const { data, error } = useSWR(COUNTRIES_LINK, fetcher);
+
+  if (!data) return <div>loading</div>;
   return (
     <div className="create-profile-container">
       <LeftSideMenu />
@@ -22,7 +43,7 @@ const CreateProfile = () => {
               </div>
             </div>
             <Form form={createProfile} layout="vertical">
-              <CreateProfileForm />
+              <CreateProfileForm data={data} />
             </Form>
           </div>
         </div>

@@ -61,4 +61,9 @@
   .form-select-country {
     height: 5rem;
   }
+
+  .form-select-country .ant-select-selection-item {
+    display: flex;
+    justify-content: center;
+  }
 }

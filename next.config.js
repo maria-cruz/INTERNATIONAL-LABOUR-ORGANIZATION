@@ -11,4 +11,7 @@ module.exports = {
       @import "~@styles/abstracts/utilities.scss";
     `,
   },
+  images: {
+    domains: ["restcountries.eu"],
+  },
 };
