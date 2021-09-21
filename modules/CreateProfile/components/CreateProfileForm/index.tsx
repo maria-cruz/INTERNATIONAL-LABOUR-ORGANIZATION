@@ -83,10 +83,9 @@ const CreateProfileForm = ({ data }: any) => {
           >
             <Select
               className="form-select-country"
-              open={true}
               dropdownClassName="select-countries-dropdown"
             >
-              {data.map((item: any) => (
+              {data.map((item: { code: string; flag: string }) => (
                 <Select.Option value={item.code} key={item.code}>
                   <Image src={item.flag} height={25} width={35.85} />
                 </Select.Option>

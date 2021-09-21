@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "@common/types/IconProps";
 
-const Flag = ({ width = "20", height = "20", fill = "#oooooo" }: IconProps) => {
+const Flag = ({ width = "20", height = "20", fill = "#000000" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

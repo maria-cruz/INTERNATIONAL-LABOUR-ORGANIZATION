@@ -9,7 +9,7 @@ interface OpenBookProps {
 const OpenBook = ({
   width = "20",
   height = "20",
-  fill = "#oooooo",
+  fill = "#000000",
 }: IconProps) => {
   return (
     <svg
