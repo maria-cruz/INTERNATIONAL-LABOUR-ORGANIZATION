@@ -25,3 +25,8 @@
   display: flex;
   align-items: center;
 }
+
+.ant-select-selection-item {
+  pointer-events: none;
+  display: flex;
+}

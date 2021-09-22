@@ -4,9 +4,9 @@ import NavLink from "@common/components/NavLink";
 import Button from "antd/lib/button";
 import Select from "antd/lib/select";
 import Image from "next/image";
-
+import Link from "next/link";
 const { Option } = Select;
-
+import useRouter from "next/router";
 interface HeaderProps {
   title?: string;
   gap?: string;
@@ -14,6 +14,16 @@ interface HeaderProps {
 }
 
 const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
+  const router = useRouter;
+
+  const handleEnglishClick = () => {
+    router.push("/", "/", { locale: "en" });
+  };
+
+  const handleArabicClick = () => {
+    router.push("/", "/", { locale: "ar" });
+  };
+
   return (
     <header
       className={`${styles["header"]} ${className}`}
@@ -46,8 +56,13 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
             bordered={false}
             dropdownAlign={{ offset: [-100, 4] }}
           >
-            <Option value="english">English</Option>
-            <Option value="arabic">العربية</Option>
+            <Option value="english">
+              <div onClick={handleEnglishClick}>English</div>
+            </Option>
+
+            <Option value="arabic">
+              <div onClick={handleArabicClick}> العربية</div>
+            </Option>
           </Select>
         </div>
       </div>
