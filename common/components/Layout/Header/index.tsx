@@ -4,9 +4,8 @@ import NavLink from "@common/components/NavLink";
 import Button from "antd/lib/button";
 import Select from "antd/lib/select";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 const { Option } = Select;
-import useRouter from "next/router";
 interface HeaderProps {
   title?: string;
   gap?: string;
@@ -14,14 +13,15 @@ interface HeaderProps {
 }
 
 const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
-  const router = useRouter;
+  const router = useRouter();
 
+  const { pathname } = router;
   const handleEnglishClick = () => {
-    router.push("/", "/", { locale: "en" });
+    router.push(`${pathname}`, "", { locale: "en" });
   };
 
   const handleArabicClick = () => {
-    router.push("/", "/", { locale: "ar" });
+    router.push(`${pathname}`, "", { locale: "ar" });
   };
 
   return (
