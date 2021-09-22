@@ -5,8 +5,10 @@ import Image from "next/image";
 import Layout, { Header } from "@common/components/Layout";
 import Banner from "@modules/Home/components/Banner";
 import Partners from "@modules/Home/components/Partners";
-
+import useTranslation from "next-translate/useTranslation";
 const Home = () => {
+  const { t } = useTranslation("home");
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className={styles["background"]}>
@@ -27,12 +29,8 @@ const Home = () => {
             <Image src="/images/flag.svg" width={33} height={35} />
           </div>
           <div className={styles["text-group"]}>
-            <div className={styles["title"]}>Start unit</div>
-            <div className={styles["description"]}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua.
-            </div>
+            <div className={styles["title"]}>{t("title")}</div>
+            <div className={styles["description"]}>{t("example")}</div>
           </div>
         </div>
 
