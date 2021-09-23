@@ -24,6 +24,7 @@ const SignUp = () => {
             layout="fill"
             objectFit="cover"
             objectPosition="center"
+            alt="sign-up.jpg"
           />
         </div>
         <div className="banner-container">

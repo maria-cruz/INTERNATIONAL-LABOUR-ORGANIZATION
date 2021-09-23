@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./styles.module.scss";
-
 import Image from "next/image";
 import Layout, { Header } from "@common/components/Layout";
 import Banner from "@modules/Home/components/Banner";

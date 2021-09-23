@@ -1,0 +1,36 @@
+.gallery-section {
+  display: flex;
+  justify-content: center;
+  background-color: $whisper;
+  .gallery-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    row-gap: 10rem;
+    max-width: 192rem;
+  }
+  .content-item {
+    display: flex;
+    justify-content: center;
+  }
+  .content-item-info {
+    padding: 10rem;
+  }
+
+  .info-wrapper .description-container {
+    font-size: 1.8rem;
+    color: $black;
+    max-height: 30rem;
+    line-height: 2;
+    max-width: 75.6rem;
+  }
+
+  .item-label {
+    font-size: 2.8rem;
+    color: $apple;
+    margin-bottom: 2rem;
+  }
+
+  ._lower {
+    text-align: end;
+  }
+}
