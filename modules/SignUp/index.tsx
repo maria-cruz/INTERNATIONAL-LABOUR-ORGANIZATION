@@ -1,11 +1,12 @@
 import React from "react";
-import Layout, { Header } from "@common/components/Layout";
 import Image from "next/image";
 import Form, { FormInstance } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Checkbox from "antd/lib/checkbox";
 import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
+import Layout, { Header } from "@common/components/Layout";
+import SignUpBg from "@public/images/sign-up-bg.jpg";
 
 const SignUp = () => {
   const [signUpForm] = Form.useForm();
@@ -20,10 +21,11 @@ const SignUp = () => {
       <section className="sign-up-section">
         <div className="background">
           <Image
-            src="/images/sign-up-bg.jpg"
+            src={SignUpBg}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
+            placeholder="blur"
           />
         </div>
         <div className="banner-container">
