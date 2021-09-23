@@ -4,8 +4,10 @@ import Image from "next/image";
 import Banner from "@public/images/about-us-banner.jpg";
 import BackgroundScope from "@public/images/background-scope.jpg";
 import TrainingReferencesImage from "@public/images/training-references.jpg";
+import useTranslation from "next-translate/useTranslation";
 
 const AboutUs = () => {
+  const { t } = useTranslation("about-us");
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="about-us-section">
@@ -21,15 +23,8 @@ const AboutUs = () => {
 
         <div className="about-us-info">
           <div className="info-wrapper">
-            <h1 className="about-us-label">About us</h1>
-            <div className="about-us-description">
-              This project aims to build capacity, knowledge and awareness for
-              various stakeholders in relation to their rights and obligations
-              at the workplace. The training program is intended to empower the
-              trainees with the basic knowledge on the foundations, rights and
-              fundamental mutual obligation upon signing an employment
-              contracts.
-            </div>
+            <h1 className="about-us-label">{t("aboutUs")}</h1>
+            <div className="about-us-description">{t("description")}</div>
           </div>
         </div>
 
@@ -49,32 +44,18 @@ const AboutUs = () => {
 
             <div className="content-item-info">
               <div className="info-wrapper">
-                <div className="item-label">Background and scope</div>
+                <div className="item-label">{t("scopeLabel")}</div>
                 <div className="description-container">
-                  The project is funded by the ILO and is in collaboration with
-                  MoL; a joint effort to empower all stakeholders by providing a
-                  solution that promotes awareness on Lebanese Labor Law. The
-                  sessions are designed to be accessed in a synchronous mode
-                  (live with the trainers) and in an asynchronous mode via a
-                  portal where all the sessions are retained along with the
-                  activities and assessments in order to ensure a wider target
-                  audience and a sustainable, timely access to Labor law
-                  training material that is especially designed to effectively
-                  impact the stakeholders with reference to the variety of their
-                  cultural, educational, and professional background.
+                  {t("scopeDescription")}
                 </div>
               </div>
             </div>
 
             <div className="content-item-info">
               <div className="info-wrapper _lower">
-                <div className="item-label">Training references</div>
+                <div className="item-label">{t("referencesLabel")}</div>
                 <div className="description-container">
-                  The training uses the Lebanese Labor Law, its amendments,
-                  related decrees and ministerial decisions as sole references
-                  for curriculum content. However, training activities and
-                  assessments are conducted based on research, academic
-                  resources and trainer’s experiences.
+                  {t("referencesDescription")}
                 </div>
               </div>
             </div>
