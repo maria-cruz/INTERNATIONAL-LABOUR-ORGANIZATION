@@ -5,9 +5,11 @@ import Banner from "@public/images/about-us-banner.jpg";
 import BackgroundScope from "@public/images/background-scope.jpg";
 import TrainingReferencesImage from "@public/images/training-references.jpg";
 import useTranslation from "next-translate/useTranslation";
+import Partners from "@common/components/Partners";
 
 const AboutUs = () => {
   const { t } = useTranslation("about-us");
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="about-us-section">
@@ -73,6 +75,8 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
+
+        <Partners />
       </div>
     </Layout>
   );
