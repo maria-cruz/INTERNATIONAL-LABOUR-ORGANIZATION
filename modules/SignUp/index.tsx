@@ -16,6 +16,7 @@ const SignUp = () => {
   const handleSignUpFinish = (value: FormInstance) => {
     console.log("a", value);
   };
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="sign-up-section">
