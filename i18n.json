@@ -4,6 +4,7 @@
   "pages": {
     "/": ["home"],
     "/sign-up": ["sign-up"],
-    "/about-us": ["about-us"]
+    "/about-us": ["about-us"],
+    "/log-in": ["log-in"]
   }
 }
