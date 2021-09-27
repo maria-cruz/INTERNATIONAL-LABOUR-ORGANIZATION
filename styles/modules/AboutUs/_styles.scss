@@ -7,12 +7,16 @@
   .about-us-info {
     padding: 10rem;
     background-color: $whisper;
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-wrapper {
+    max-width: 192rem;
   }
 
   .info-wrapper .about-us-label {
     color: $apple;
-    font-size: 6.3rem;
-    font-weight: 500;
     margin-bottom: 2.2rem;
   }
 
@@ -30,4 +34,5 @@
   }
 
   @import "./gallerySection";
+  @import "./inquiry";
 }
