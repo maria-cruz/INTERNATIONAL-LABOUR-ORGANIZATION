@@ -25,40 +25,44 @@ const Home = () => {
       <Partners />
 
       <section className={styles["steps-section"]}>
-        <div className={styles["step-container"]}>
-          <div className={styles["logo"]}>
-            <Image src="/images/flag.svg" width={33} height={35} />
-          </div>
-          <div className={styles["text-group"]}>
-            <div className={styles["title"]}>{t("title")}</div>
-            <div className={styles["description"]}>{t("example")}</div>
-          </div>
-        </div>
-
-        <div className={styles["step-container"]}>
-          <div className={styles["logo"]}>
-            <Image src="/images/open-book.svg" width={33} height={35} />
-          </div>
-          <div className={styles["text-group"]}>
-            <div className={styles["title"]}>Learn and fill up assessments</div>
-            <div className={styles["description"]}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua.
+        <div className={styles["steps-container"]}>
+          <div className={styles["step-container"]}>
+            <div className={styles["logo"]}>
+              <Image src="/images/flag.svg" width={33} height={35} />
+            </div>
+            <div className={styles["text-group"]}>
+              <div className={styles["title"]}>{t("title")}</div>
+              <div className={styles["description"]}>{t("example")}</div>
             </div>
           </div>
-        </div>
 
-        <div className={styles["step-container"]}>
-          <div className={styles["logo"]}>
-            <Image src="/images/trophy.svg" width={33} height={35} />
+          <div className={styles["step-container"]}>
+            <div className={styles["logo"]}>
+              <Image src="/images/open-book.svg" width={33} height={35} />
+            </div>
+            <div className={styles["text-group"]}>
+              <div className={styles["title"]}>
+                Learn and fill up assessments
+              </div>
+              <div className={styles["description"]}>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </div>
+            </div>
           </div>
-          <div className={styles["text-group"]}>
-            <div className={styles["title"]}>Get certified!</div>
-            <div className={styles["description"]}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua.
+
+          <div className={styles["step-container"]}>
+            <div className={styles["logo"]}>
+              <Image src="/images/trophy.svg" width={33} height={35} />
+            </div>
+            <div className={styles["text-group"]}>
+              <div className={styles["title"]}>Get certified!</div>
+              <div className={styles["description"]}>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
+              </div>
             </div>
           </div>
         </div>
