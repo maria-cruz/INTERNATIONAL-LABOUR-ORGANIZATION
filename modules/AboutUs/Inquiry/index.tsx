@@ -2,7 +2,9 @@ import React from "react";
 import Location from "@common/components/Icons/Location";
 import Email from "@common/components/Icons/Email";
 import Telephone from "@common/components/Icons/Telephone";
-import { Form, Input, Button } from "antd";
+import Form from "antd/lib/form";
+import Input from "antd/lib/input";
+import Button from "antd/lib/button";
 
 const validateMessages = {
   required: "${label} is required!",
