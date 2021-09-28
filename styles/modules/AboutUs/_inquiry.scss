@@ -1,0 +1,77 @@
+.inquiry-container {
+  display: flex;
+  padding: 10rem;
+  background-color: $whisper;
+
+  .inquiry-wrapper {
+    display: flex;
+  }
+
+  .inquiry-form {
+    width: 72.4rem;
+    padding: 0 5rem;
+  }
+
+  .inquiry-form-wrapper {
+    max-width: 62.4rem;
+    padding: 5rem;
+    background: $white;
+    box-shadow: 0 0.3rem 1.6rem $black-29;
+    border-radius: 0.4rem;
+  }
+
+  .first-name-container,
+  .last-name-container,
+  .email-container,
+  .message-container {
+    label {
+      color: $manatee;
+    }
+  }
+
+  .ant-form-item-label {
+    padding: 0 0 1.2rem;
+  }
+
+  .inquiry-input {
+    height: 5rem;
+    border-radius: 0.4rem;
+  }
+
+  .message-input {
+    height: 10rem;
+    border-radius: 0.4rem;
+  }
+  .inquire-btn {
+    width: 100%;
+  }
+
+  .info-container {
+    height: 50rem;
+    max-width: 100%;
+    padding: 5.7rem 10rem;
+  }
+
+  .label {
+    margin-bottom: 2rem;
+  }
+
+  .secondary-label {
+    margin-bottom: 5.1rem;
+  }
+
+  .details-wrappper .details-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .details-label {
+    padding-left: 1rem;
+    font-size: 1.8rem;
+  }
+
+  ._email-label {
+    color: $cardinal;
+  }
+}
