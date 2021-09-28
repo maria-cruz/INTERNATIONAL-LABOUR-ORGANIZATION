@@ -45,3 +45,8 @@ a.ant-btn {
   justify-content: center;
   padding-top: 0.5rem !important; // Needs !important to override the !important inside Antd CSS
 }
+
+.ant-btn.ant-btn-link {
+  border-color: transparent;
+  background: none;
+}

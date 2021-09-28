@@ -1,0 +1,69 @@
+.create-profile-form-container {
+  .form-column-container {
+    display: flex;
+    gap: 3rem;
+    // flex-wrap: wrap;
+  }
+
+  .form-width {
+    width: 100%;
+    max-width: 39.8rem;
+  }
+
+  .form-input {
+    height: 5rem;
+  }
+
+  .column-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.6rem;
+    width: 39.8rem;
+  }
+
+  .form-width-country {
+    width: 12.2rem;
+  }
+
+  .form-width-phone-number {
+    width: 26rem;
+  }
+
+  .form-width-month {
+    width: 15rem;
+  }
+
+  .form-width-day {
+    width: 10.5rem;
+  }
+
+  .form-width-year {
+    width: 12.3rem;
+  }
+
+  .margin-bottom {
+    margin-bottom: 5.8rem;
+  }
+
+  .form-button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-continue {
+    width: 13rem;
+    background: $manatee;
+    color: $white;
+    border: none;
+  }
+
+  .form-select-organization-type,
+  .form-select-country {
+    height: 5rem;
+  }
+
+  .form-select-country .ant-select-selection-item {
+    display: flex;
+    justify-content: center;
+  }
+}

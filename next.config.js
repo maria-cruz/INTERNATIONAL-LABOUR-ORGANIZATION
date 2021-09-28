@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
+const nextTranslate = require("next-translate");
 const path = require("path");
 
-module.exports = {
+module.exports = nextTranslate({
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
@@ -11,4 +12,7 @@ module.exports = {
       @import "~@styles/abstracts/utilities.scss";
     `,
   },
-};
+  images: {
+    domains: ["restcountries.eu"],
+  },
+});

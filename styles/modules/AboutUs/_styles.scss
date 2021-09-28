@@ -1,0 +1,33 @@
+.about-us-section {
+  .about-us-banner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-us-info {
+    padding: 10rem;
+    background-color: $whisper;
+  }
+
+  .info-wrapper .about-us-label {
+    color: $apple;
+    font-size: 6.3rem;
+    font-weight: 500;
+    margin-bottom: 2.2rem;
+  }
+
+  .about-us-description {
+    max-height: 18.2rem;
+    font-size: 2.4rem;
+    color: $shuttle-gray;
+    max-width: 172rem;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+
+  .partners-section {
+    box-shadow: none;
+  }
+
+  @import "./gallerySection";
+}

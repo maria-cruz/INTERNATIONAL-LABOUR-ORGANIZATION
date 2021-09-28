@@ -1,0 +1,67 @@
+.how-it-works-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 10rem;
+
+  .how-it-works-title-container {
+    font-size: 4.2rem;
+    font-weight: bold;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .icon-wrapper {
+    width: 19.7rem;
+    height: 19.7rem;
+    border: 0.4rem solid $silver;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5.4rem;
+  }
+
+  .how-it-works-icon-and-description-container {
+    width: 100%;
+    max-width: 102rem;
+    display: flex;
+    margin-bottom: 0.9rem;
+  }
+
+  .divider-container {
+    display: flex;
+    align-items: center;
+    height: 69rem;
+    margin-left: 11.265rem;
+    margin-right: 10.85rem;
+  }
+
+  .divider-vertical {
+    border-left: 0.8rem solid $athens-gray;
+    height: 57.6rem;
+  }
+
+  .how-it-works-description-container {
+    padding-top: 3rem;
+  }
+
+  .description-title-container {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: $apple;
+    margin-bottom: 1rem;
+  }
+
+  .description-container {
+    font-size: 1.8rem;
+    color: $shuttle-gray;
+    margin-left: 0.5rem;
+    line-height: 4rem;
+    margin-bottom: 9rem;
+  }
+
+  .done-button-container {
+    display: flex;
+    justify-content: center;
+  }
+}

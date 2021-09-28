@@ -11,6 +11,7 @@ interface LayoutProps {
   children?: ReactNode;
   mainProps?: MainProps;
   backgroundProps?: BackgroundProps;
+  className?: string;
 }
 
 const Layout = ({
