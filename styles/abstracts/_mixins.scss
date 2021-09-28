@@ -14,38 +14,48 @@ $breakpoint argument choices:
 */
 
 @mixin view-size($breakpoint) {
-  @if $breakpoint == phone-only {
-    //0px
-    @media only screen and (max-width: 599px) {
-      @content;
+  @if type-of($breakpoint) == string {
+    @if $breakpoint == phone-only {
+      //0px
+      @media only screen and (max-width: 599px) {
+        @content;
+      }
+    }
+
+    @if $breakpoint == tab-port {
+      //600px
+      @media only screen and (min-width: 599px) {
+        @content;
+      }
+    }
+
+    @if $breakpoint == tab-land {
+      //900px
+      @media only screen and (min-width: 900px) {
+        @content;
+      }
+    }
+
+    @if $breakpoint == desktop {
+      //1200px
+      @media only screen and (min-width: 1200px) {
+        @content;
+      }
+    }
+
+    @if $breakpoint == big-desktop {
+      //1800px
+      @media only screen and (min-width: 1800px) {
+        @content;
+      }
     }
   }
 
-  @if $breakpoint == tab-port {
-    //600px
-    @media only screen and (min-width: 599px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint == tab-land {
-    //900px
-    @media only screen and (min-width: 900px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint == desktop {
-    //1200px
-    @media only screen and (min-width: 1200px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint == big-desktop {
-    //1800px
-    @media only screen and (min-width: 1800px) {
-      @content;
+  @if type-of($breakpoint) == number {
+    @if unit($breakpoint) == "px" {
+      @media only screen and (min-width: $breakpoint) {
+        @content;
+      }
     }
   }
 }
