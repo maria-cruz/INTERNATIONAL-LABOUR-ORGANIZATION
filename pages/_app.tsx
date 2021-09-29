@@ -17,12 +17,11 @@ const redirectUser = (ctx: any, location: string) => {
 };
 
 MyApp.getInitialProps = async ({ ctx }: AppContext) => {
-  const privateRoutes = ["/courses-main", "/how-it-works"];
+  const publicPaths = ["/", "/log-in", "/sign-up", "/about-us"];
   const jwt = parseCookies(ctx).jwt;
   const hasNoJWT = !jwt;
 
-  console.log(ctx.pathname, "Hello");
-  if (hasNoJWT && privateRoutes.includes(ctx.pathname)) {
+  if (hasNoJWT && !publicPaths.includes(ctx.pathname)) {
     redirectUser(ctx, "/log-in");
     return;
   }
