@@ -1,7 +1,7 @@
 import React from "react";
 import Layout, { Header } from "@common/components/Layout";
 import Image from "next/image";
-import Form, { FormInstance } from "antd/lib/form";
+import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import { setCookie } from "nookies";
 import Router from "next/router";
@@ -18,13 +18,13 @@ const LogIn = () => {
 
   const { t } = useTranslation("log-in");
 
-  const handleLoginFinish = async (value: HandleLoginFinishProps) => {
+  const handleLoginFinish = (value: HandleLoginFinishProps) => {
     const loginInfo = {
       identifier: value.email,
       password: value.password,
     };
 
-    await fetch(`${process.env.API_URL}/auth/local`, {
+    fetch(`${process.env.API_URL}/auth/local`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -80,11 +80,15 @@ const LogIn = () => {
               className="log-in-form-container"
               layout="vertical"
               onFinish={handleLoginFinish}
+              requiredMark={false}
             >
               <Form.Item
                 label={t("emailAddress")}
                 className="email-container"
                 name="email"
+                rules={[
+                  { required: true, message: "Please input your email." },
+                ]}
               >
                 <Input className="log-in-input" />
               </Form.Item>
@@ -92,6 +96,9 @@ const LogIn = () => {
                 label={t("password")}
                 className="password-container"
                 name="password"
+                rules={[
+                  { required: true, message: "Please input your password." },
+                ]}
               >
                 <Input className="log-in-input" type="password" />
               </Form.Item>

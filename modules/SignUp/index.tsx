@@ -8,13 +8,53 @@ import useTranslation from "next-translate/useTranslation";
 import Layout, { Header } from "@common/components/Layout";
 import SignUpBg from "@public/images/sign-up-bg.jpg";
 
+import { setCookie } from "nookies";
+import Router from "next/router";
+
+interface HandleSignUpFinishProps {
+  email: string;
+  password: string;
+}
+
 const SignUp = () => {
   const [signUpForm] = Form.useForm();
 
   const { t } = useTranslation("sign-up");
 
-  const handleSignUpFinish = (value: FormInstance) => {
-    console.log("a", value);
+  const handleSignUpFinish = (value: HandleSignUpFinishProps) => {
+    const registerInfo = {
+      username: "",
+      email: value.email,
+      password: value.password,
+    };
+
+    fetch(`${process.env.API_URL}/auth/local/register`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(registerInfo),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        if (data?.statusCode === 400) return;
+
+        Router.push("/log-in");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const checkCheckBox = (rule: any, value: any, callback: any) => {
+    console.log(value);
+    if (!value) {
+      callback("Please agree the terms and conditions!");
+    } else {
+      callback();
+    }
   };
 
   return (
@@ -47,11 +87,19 @@ const SignUp = () => {
               className="sign-up-form-container"
               layout="vertical"
               onFinish={handleSignUpFinish}
+              requiredMark={false}
             >
               <Form.Item
                 label={t("emailAddress")}
                 className="email-container"
                 name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your email.",
+                  },
+                  { type: "email", message: "The input is not valid E-mail!" },
+                ]}
               >
                 <Input className="sign-up-input" />
               </Form.Item>
@@ -59,6 +107,13 @@ const SignUp = () => {
                 label={t("password")}
                 className="password-container"
                 name="password"
+                rules={[
+                  { required: true, message: "Please input your password." },
+                  {
+                    min: 8,
+                    message: "Should be a minimum of 8 characters",
+                  },
+                ]}
               >
                 <Input className="sign-up-input" type="password" />
               </Form.Item>
@@ -66,6 +121,7 @@ const SignUp = () => {
                 name="termsAndCondition"
                 valuePropName="checked"
                 className="terms-and-condition-container"
+                rules={[{ validator: checkCheckBox }]}
               >
                 <Checkbox className="sign-up-checkbox">
                   {t("accept")}{" "}
