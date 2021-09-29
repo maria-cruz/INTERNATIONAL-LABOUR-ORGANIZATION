@@ -39,7 +39,15 @@ const SignUp = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        if (data?.statusCode === 400) return;
+        if (data?.statusCode === 400) {
+          signUpForm.setFields([
+            {
+              name: "email",
+              errors: [`${data?.message[0]?.messages[0]?.message}`],
+            },
+          ]);
+          return;
+        }
 
         Router.push("/log-in");
       })
@@ -49,7 +57,6 @@ const SignUp = () => {
   };
 
   const checkCheckBox = (rule: any, value: any, callback: any) => {
-    console.log(value);
     if (!value) {
       callback("Please agree the terms and conditions!");
     } else {
