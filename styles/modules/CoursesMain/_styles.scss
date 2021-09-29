@@ -1,0 +1,8 @@
+.courses-main-section {
+  @import "./components/CoursesCard/styles";
+
+  .courses-main-card-container {
+    display: flex;
+    gap: 5rem;
+  }
+}

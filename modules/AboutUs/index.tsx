@@ -6,13 +6,14 @@ import BackgroundScope from "@public/images/background-scope.jpg";
 import TrainingReferencesImage from "@public/images/training-references.jpg";
 import useTranslation from "next-translate/useTranslation";
 import Partners from "@common/components/Partners";
+import Inquiry from "./Inquiry";
 
 const AboutUs = () => {
   const { t } = useTranslation("about-us");
 
   return (
     <Layout header={<Header title={"Header"} />}>
-      <div className="about-us-section">
+      <section className="about-us-section">
         <div className="about-us-banner">
           <Image
             src={Banner}
@@ -25,7 +26,7 @@ const AboutUs = () => {
 
         <div className="about-us-info">
           <div className="info-wrapper">
-            <h1 className="about-us-label">{t("aboutUs")}</h1>
+            <h1 className="about-us-label _section-label">{t("aboutUs")}</h1>
             <div className="about-us-description">{t("description")}</div>
           </div>
         </div>
@@ -45,8 +46,10 @@ const AboutUs = () => {
             </div>
 
             <div className="content-item-info">
-              <div className="info-wrapper">
-                <div className="item-label">{t("scopeLabel")}</div>
+              <div className="content-item-wrapper">
+                <div className="item-label _subheading-label">
+                  {t("scopeLabel")}
+                </div>
                 <div className="description-container">
                   {t("scopeDescription")}
                 </div>
@@ -54,8 +57,10 @@ const AboutUs = () => {
             </div>
 
             <div className="content-item-info">
-              <div className="info-wrapper _lower">
-                <div className="item-label">{t("referencesLabel")}</div>
+              <div className="content-item-wrapper _lower">
+                <div className="item-label _subheading-label">
+                  {t("referencesLabel")}
+                </div>
                 <div className="description-container">
                   {t("referencesDescription")}
                 </div>
@@ -77,7 +82,8 @@ const AboutUs = () => {
         </div>
 
         <Partners />
-      </div>
+        <Inquiry />
+      </section>
     </Layout>
   );
 };
