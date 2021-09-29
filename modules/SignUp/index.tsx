@@ -23,7 +23,7 @@ const SignUp = () => {
 
   const handleSignUpFinish = (value: HandleSignUpFinishProps) => {
     const registerInfo = {
-      username: "",
+      username: value.email,
       email: value.email,
       password: value.password,
     };
