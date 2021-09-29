@@ -35,7 +35,19 @@ const LogIn = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        if (data?.statusCode === 400) return;
+        if (data?.statusCode === 400) {
+          loginForm.setFields([
+            {
+              name: "email",
+              errors: [`Email might be invalid`],
+            },
+            {
+              name: "password",
+              errors: [`Password might be invalid`],
+            },
+          ]);
+          return;
+        }
 
         setCookie(null, "jwt", data.jwt, {
           maxAge: 30 * 24 * 60 * 60,
