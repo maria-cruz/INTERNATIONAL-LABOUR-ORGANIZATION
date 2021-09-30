@@ -9,7 +9,7 @@
   .card-dark-filter {
     position: absolute;
     top: 0.1rem;
-    background: #61677179;
+    background: $shuttle-gray-79;
     height: 30.3rem;
     width: 100%;
   }
@@ -85,14 +85,12 @@
   .card-title {
     font-size: 2.4rem;
     font-weight: bold;
-    // margin-bottom: 2.8rem;
     height: 8rem;
   }
 
   .card-description {
     font-size: 1.6rem;
     line-height: 3rem;
-    // margin-bottom: 4.2rem;
   }
 
   /* <AntD Progress Bar Override> */

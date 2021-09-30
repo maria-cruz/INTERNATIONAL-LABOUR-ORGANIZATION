@@ -2,7 +2,6 @@ import React from "react";
 import CoursesCard, { CoursesCardProps } from "./components/CoursesCard";
 import Layout, { Header } from "@common/components/Layout";
 import HandWritingImage from "@public/images/hand-writing.jpg";
-import CardSampleImage2 from "@public/images/card-sample-2.jpg";
 import CardSampleImage from "@public/images/card-sample-3.jpg";
 import CoursesFilter from "./components/CoursesFilter";
 import { useRouter } from "next/router";
@@ -23,7 +22,7 @@ const CARD_DETAILS_SAMPLE = [
     title: "Termination of Employment Contracts.",
     description:
       "By the end of this unit, the trainee will be able to distinguish between justified and unjustified termination cases of employment contracts and the conditions and legal consequences of their termination.",
-    logo: CardSampleImage2,
+    logo: CardSampleImage,
     percentage: 14,
     status: "in-progress",
   },
@@ -44,7 +43,7 @@ const CoursesMain = () => {
     return item.status === router.query.category;
   });
 
-  const getDataByCategory = (category?: any) => {
+  const getDataByCategory = (category?: string | string[]) => {
     switch (category) {
       case "all": {
         return CARD_DETAILS_SAMPLE;
