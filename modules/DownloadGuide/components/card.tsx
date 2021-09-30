@@ -21,17 +21,17 @@ const CoursesCard = ({ unit, title, description, logo }: GuideCardProps) => {
         />
       </div>
       <div className="card-details-container">
-        <div className="card-details-wrapper">
-          <div className="card-unit">{unit}</div>
-          <div className="card-title">{title}</div>
-          <div className="card-hover-details">
-            <div className="card-description">{description}</div>
-            <div className="card-view-button">
-              <Button>
-                <Download width="20" height="20" fill="#FFFFFF" />
-                <p className="dl-label">Download</p>
-              </Button>
-            </div>
+        <div className="card-unit">{unit}</div>
+        <div className="card-title">{title}</div>
+        <div className="spacer" />
+        <div className="card-hover-details">
+          <div className="card-description">{description}</div>
+          <div className="spacer" />
+          <div className="card-view-button">
+            <Button type="primary" className="download-btn">
+              <Download fill="#ffffff" width="1.4rem" height="1.7rem" />
+              Download
+            </Button>
           </div>
         </div>
       </div>
