@@ -32,7 +32,7 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
       <div className={styles["left-container"]}>
         <NavLink href="/">
           <div className={styles["logo-container"]}>
-            <Image src="/images/logo.png" width={215} height={83.41} />
+            <Image src="/images/logo.svg" width={110} height={110} />
           </div>
         </NavLink>
       </div>

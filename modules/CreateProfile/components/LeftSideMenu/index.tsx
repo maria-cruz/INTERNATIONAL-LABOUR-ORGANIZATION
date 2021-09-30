@@ -6,7 +6,7 @@ const LeftSideMenu = () => {
     <div className="menu-step-container">
       <div className="menu-step">
         <div className="logo-container">
-          <Image src="/images/logo.png" width={215} height={83.41} />
+          <Image src="/images/logo.svg" width={110} height={110} />
         </div>
         <div className="steps-container">
           <Link href="/create-profile/1/id">
