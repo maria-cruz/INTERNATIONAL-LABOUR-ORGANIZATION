@@ -3,7 +3,7 @@ import Image from "next/image";
 import AgencyLogo from "@public/images/italian-agency-logo.png";
 import IloLogo from "@public/images/ilo-logo.png";
 import UnicefLogo from "@public/images/unicef-logo.png";
-import Logo from "@public/images/logo.png";
+import Logo from "@public/images/logo.svg";
 
 const Partners = () => {
   return (
@@ -14,7 +14,7 @@ const Partners = () => {
       </span>
       <div className="partners-section-logos">
         <div>
-          <Image src={Logo} width={303} height={117} placeholder="blur" />
+          <Image src={Logo} width={189} height={189} />
         </div>
         <div>
           <Image src={UnicefLogo} width={289} height={178} placeholder="blur" />

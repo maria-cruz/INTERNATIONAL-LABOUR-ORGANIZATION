@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className={styles["footer"]}>
       <div>
-        <Image src="/images/logo.png" width={215} height={83.41} />
+        <Image src="/images/logo.svg" width={110} height={110} />
       </div>
       <div className={styles["description-container"]}>
         <span className={styles["description"]}>
