@@ -1,7 +1,7 @@
 .course-card {
   position: relative; // Essential for position absolute in card-details to work
   background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  box-shadow: 0 0.3rem 0.6rem #00000029;
   width: 100%;
   max-width: 55.3rem;
   height: 56.3rem;
@@ -51,7 +51,6 @@
     font-family: Arial;
   }
   .card-details {
-    // transition: 1s;
     opacity: 100%;
   }
 

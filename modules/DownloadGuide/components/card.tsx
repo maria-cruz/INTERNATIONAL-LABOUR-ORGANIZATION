@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import Download from "@common/components/Icons/Download";
 
 export interface GuideCardProps {
@@ -9,7 +9,7 @@ export interface GuideCardProps {
   description?: string;
   logo: StaticImageData | string;
 }
-const CoursesCard = ({ unit, title, description, logo }: CoursesCardProps) => {
+const CoursesCard = ({ unit, title, description, logo }: GuideCardProps) => {
   return (
     <div className="course-card">
       <div className="card-image-container">
