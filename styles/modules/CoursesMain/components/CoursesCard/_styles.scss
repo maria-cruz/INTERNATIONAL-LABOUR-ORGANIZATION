@@ -6,11 +6,21 @@
   max-width: 55.3rem;
   height: 54.5rem;
 
-  // .card-image-container {
-  //   width: 55.3rem;
-  //   height: 30.3rem !important;
-  //   display: relative;
-  // }
+  .card-dark-filter {
+    position: absolute;
+    top: 0.1rem;
+    background: #61677179;
+    height: 30.3rem;
+    width: 100%;
+  }
+
+  .locked-icon-container {
+    position: absolute;
+    top: 4.15rem;
+    right: 4.7rem;
+    fill: $white;
+    transition: 0.5s;
+  }
 
   .card-details-container {
     display: flex;
@@ -21,7 +31,7 @@
     left: -0.1rem;
     bottom: 0.1rem;
     padding: 4rem;
-    background: white;
+    background: $white;
     width: 101%;
     max-width: 55.4rem;
 
@@ -49,6 +59,11 @@
         flex-direction: column;
         justify-content: flex-end;
       }
+    }
+
+    &:hover + .locked-icon-container {
+      transition: 0.5s;
+      fill: $black;
     }
   }
 
