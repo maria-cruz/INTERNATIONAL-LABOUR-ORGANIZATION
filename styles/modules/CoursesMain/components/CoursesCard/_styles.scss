@@ -96,7 +96,7 @@
   /* <AntD Progress Bar Override> */
 
   .ant-progress-inner {
-    background: #d3f8c2;
+    background: $frosted-mint;
     height: 1.1rem;
   }
 
@@ -106,6 +106,7 @@
 
   .ant-progress-bg {
     height: 1.1rem !important;
+    background: $tropical-rain-forest !important;
   }
   .ant-progress-text {
     margin-left: 0;
