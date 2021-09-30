@@ -15,4 +15,7 @@ module.exports = nextTranslate({
   images: {
     domains: ["restcountries.eu"],
   },
+  env: {
+    API_URL: process.env.API_URL,
+  },
 });

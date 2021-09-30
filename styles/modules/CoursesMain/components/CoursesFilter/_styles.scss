@@ -1,0 +1,19 @@
+.courses-filter-container {
+  display: flex;
+  gap: 5rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+
+  .-active-filter {
+    border-bottom: 0.5rem solid $apple;
+    padding-bottom: 2.1rem;
+    cursor: pointer;
+  }
+
+  .default-filter {
+    padding-bottom: 2.1rem;
+    cursor: pointer;
+    color: #616771;
+  }
+}

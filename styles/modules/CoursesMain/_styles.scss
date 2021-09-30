@@ -1,8 +1,23 @@
 .courses-main-section {
   @import "./components/CoursesCard/styles";
+  @import "./components/CoursesFilter/styles";
+  @import "./components/CoursesCertificate/styles";
 
+  padding: 8rem 10rem 13.7rem 10rem;
+  background: $whisper;
   .courses-main-card-container {
     display: flex;
     gap: 5rem;
+  }
+
+  .courses-description {
+    font-size: 1.8rem;
+    color: #616771;
+    margin-bottom: 5rem;
+  }
+
+  .certificate-container,
+  .courses-card {
+    display: none;
   }
 }
