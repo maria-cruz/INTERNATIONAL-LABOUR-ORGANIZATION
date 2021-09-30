@@ -83,18 +83,18 @@ const Inquiry = () => {
 
             <div className="details-wrappper">
               <div className="details-item">
-                <Location width="20" height="20" fill="#69BD44" />
+                <Location width="20" height="20" fill="#007A50" />
                 <p className="details-label">
                   Location Lorem ipsum dolor sit amet, consetetur sadipscing
                   elitr,
                 </p>
               </div>
               <div className="details-item">
-                <Telephone width="20" height="20" fill="#69BD44" />
+                <Telephone width="20" height="20" fill="#007A50" />
                 <p className="details-label">675 308 0000</p>
               </div>
               <div className="details-item">
-                <Email width="20" height="20" fill="#69BD44" />
+                <Email width="20" height="20" fill="#007A50" />
                 <p className="details-label _email-label">
                   admin@houkouki-fi-al-3amal.com
                 </p>

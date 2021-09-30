@@ -31,7 +31,7 @@
   }
 
   .banner-description-text {
-    color: $apple;
+    color: $tropical-rain-forest;
 
     font-size: 10rem;
     @include view-size(desktop) {
@@ -40,7 +40,7 @@
   }
 
   .journey-text {
-    color: $apple;
+    color: $tropical-rain-forest;
 
     font-size: 12rem;
     @include view-size(desktop) {
@@ -65,7 +65,7 @@
   .sign-up-title {
     font-size: 2.8rem;
     font-weight: bold;
-    color: $apple;
+    color: $tropical-rain-forest;
     margin-bottom: 1.7rem;
   }
 
@@ -81,7 +81,7 @@
 
   .login-text {
     font-size: 1.4rem;
-    color: $apple;
+    color: $tropical-rain-forest;
     margin-left: 0.9rem;
     font-weight: bold;
   }
