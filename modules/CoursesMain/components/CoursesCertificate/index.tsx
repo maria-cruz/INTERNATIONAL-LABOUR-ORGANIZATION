@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import HandWritingImage from "@public/images/hand-writing.jpg";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import Download from "@common/components/Icons/Download";
 
 const CoursesCertificate = () => {
