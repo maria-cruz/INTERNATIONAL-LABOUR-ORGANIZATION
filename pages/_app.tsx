@@ -17,7 +17,13 @@ const redirectUser = (ctx: any, location: string) => {
 };
 
 MyApp.getInitialProps = async ({ ctx }: AppContext) => {
-  const publicPaths = ["/", "/log-in", "/sign-up", "/about-us"];
+  const publicPaths = [
+    "/",
+    "/log-in",
+    "/sign-up",
+    "/about-us",
+    "/download-guide",
+  ];
   const jwt = parseCookies(ctx).jwt;
   const hasNoJWT = !jwt;
 
