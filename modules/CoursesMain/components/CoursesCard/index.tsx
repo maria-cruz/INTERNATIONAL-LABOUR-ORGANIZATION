@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Progress from "antd/lib/progress";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import Locked from "@common/components/Icons/Locked";
 
 export interface CoursesCardProps {
