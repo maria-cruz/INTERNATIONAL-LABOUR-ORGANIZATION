@@ -1,0 +1,47 @@
+.download-guide-section {
+  .background-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bg-description-container {
+    position: absolute;
+    left: 0;
+    padding: 10rem;
+    font-family: Arial;
+  }
+
+  .subheading-upper {
+    font-weight: 400;
+  }
+
+  .download-cards-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $whisper;
+  }
+  .description-label-container {
+    padding: 5rem 10rem;
+    padding: 5rem 10rem;
+    font-size: 1.8rem;
+    color: $shuttle-gray;
+    line-height: 2;
+    max-width: 191.9rem;
+  }
+
+  .image-container {
+    padding: 0 10rem 12rem;
+  }
+  .guide-container {
+    padding: 0 10rem 12rem;
+  }
+
+  .download-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 3rem;
+  }
+  @import "./component/card";
+}

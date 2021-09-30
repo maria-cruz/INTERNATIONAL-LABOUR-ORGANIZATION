@@ -1,0 +1,90 @@
+.course-card {
+  position: relative; // Essential for position absolute in card-details to work
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 100%;
+  max-width: 55.3rem;
+  height: 56.3rem;
+
+  img {
+    width: 55.2rem;
+    height: 30.3rem !important;
+  }
+
+  .card-details-container {
+    position: absolute;
+    left: -0.1rem;
+    bottom: 0.1rem;
+    padding: 4rem 4rem 4.9rem;
+    background: white;
+    width: 101%;
+    max-width: 55.4rem;
+    height: 26rem;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .card-hover-details {
+      opacity: 0%;
+      height: 0rem;
+      margin-bottom: 0rem;
+      pointer-events: none;
+    }
+
+    &:hover {
+      height: 100%;
+      transition: 0.25s;
+
+      .card-hover-details {
+        transition: 0.5s;
+        opacity: 100%;
+        height: 100%;
+        max-height: 27.4rem;
+        margin-bottom: 3.5rem;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  .card-details-wrapper {
+    font-family: Arial;
+  }
+  .card-details {
+    // transition: 1s;
+    opacity: 100%;
+  }
+
+  .card-unit {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: $apple;
+    margin-bottom: 2rem;
+  }
+
+  .card-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .card-description {
+    font-size: 1.8rem;
+    line-height: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .card-view-button .ant-btn {
+    color: $white;
+    background: $grass;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17.1rem;
+  }
+
+  .dl-label {
+    margin-left: 1rem;
+  }
+}
