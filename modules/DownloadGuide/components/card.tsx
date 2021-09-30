@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "antd";
 import Download from "@common/components/Icons/Download";
 
-export interface CoursesCardProps {
+export interface GuideCardProps {
   unit?: string;
   title?: string;
   description?: string;
