@@ -1,26 +1,10 @@
-.course-card {
+.courses-certificate-container {
   position: relative; // Essential for position absolute in card-details to work
   background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #00000029;
+  box-shadow: 0 0.3rem 0.6rem #00000029;
   width: 100%;
   max-width: 55.3rem;
   height: 54.5rem;
-
-  .card-dark-filter {
-    position: absolute;
-    top: 0.1rem;
-    background: $shuttle-gray-79;
-    height: 30.3rem;
-    width: 100%;
-  }
-
-  .locked-icon-container {
-    position: absolute;
-    top: 4.15rem;
-    right: 4.7rem;
-    fill: $white;
-    transition: 0.5s;
-  }
 
   .card-details-container {
     display: flex;
@@ -31,7 +15,7 @@
     left: -0.1rem;
     bottom: 0.1rem;
     padding: 4rem;
-    background: $white;
+    background: white;
     width: 101%;
     max-width: 55.4rem;
 
@@ -43,6 +27,7 @@
       height: 0rem;
       margin-bottom: 0rem;
       pointer-events: none;
+      overflow: hidden;
     }
 
     &:hover {
@@ -53,17 +38,11 @@
         transition: 0.3s;
         opacity: 100%;
         height: 100%;
-        max-height: 27.4rem;
         pointer-events: auto;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-between;
       }
-    }
-
-    &:hover + .locked-icon-container {
-      transition: 0.5s;
-      fill: $black;
     }
   }
 
@@ -71,11 +50,7 @@
     flex-grow: 1;
   }
 
-  .card-details {
-    opacity: 100%;
-  }
-
-  .card-unit {
+  .card-certificate {
     font-size: 2.8rem;
     font-weight: bold;
     color: $apple;
@@ -85,7 +60,6 @@
   .card-title {
     font-size: 2.4rem;
     font-weight: bold;
-    height: 8rem;
   }
 
   .card-description {
@@ -93,32 +67,11 @@
     line-height: 3rem;
   }
 
-  /* <AntD Progress Bar Override> */
-
-  .ant-progress-inner {
-    background: #d3f8c2;
-    height: 1.1rem;
-  }
-
-  .ant-progress-outer {
-    width: 45rem;
-  }
-
-  .ant-progress-bg {
-    height: 1.1rem !important;
-  }
-  .ant-progress-text {
-    margin-left: 0;
-    color: $black;
-  }
-
-  .progress-bar-container {
+  .download-btn {
+    width: 17.7rem;
     display: flex;
-    flex-direction: row-reverse;
-    font-size: 1.8rem;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
   }
-
-  /* </AntD Progress Bar Override> */
 }
