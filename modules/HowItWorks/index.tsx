@@ -3,6 +3,7 @@ import Flag from "@common/components/Icons/Flag";
 import OpenBook from "@common/components/Icons/OpenBook";
 import Trophy from "@common/components/Icons/Trophy";
 import Button from "antd/lib/button";
+import Link from "next/link";
 const HowItWorks = () => {
   return (
     <div className="how-it-works-container">
@@ -47,9 +48,11 @@ const HowItWorks = () => {
           </div>
         </div>
         <div className="done-button-container">
-          <Button className="done-btn" type="primary">
-            Done
-          </Button>
+          <Link href="/courses-main/all">
+            <Button className="done-btn" type="primary">
+              Done
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
