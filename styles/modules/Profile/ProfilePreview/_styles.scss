@@ -1,0 +1,91 @@
+.profile-preview-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .profile-preview {
+    width: 100%;
+    max-width: 92.6rem;
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 0 0.3rem 1.6rem $black-29;
+    border-radius: 0.4rem;
+    opacity: 1;
+    padding: 5rem;
+  }
+
+  .profile-title {
+    margin-bottom: 6rem;
+  }
+  .name-text {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .organization-type-text {
+    background: $frosted-mint;
+    font-size: 1.6rem;
+    max-width: 36.5rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .profile-preview-column {
+    display: flex;
+    margin-bottom: 3rem;
+    row-gap: 5rem;
+    flex-wrap: wrap;
+  }
+
+  .email-container,
+  .phone-number-container,
+  .gender-container,
+  .organization-name-container,
+  .birthday-container,
+  .nationality-container {
+    width: 50%;
+    min-width: 30rem;
+  }
+
+  .email-space-bottom {
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .preview-space-bottom {
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+  }
+
+  .space-bottom {
+    margin-bottom: 7.8rem;
+  }
+
+  .text {
+    font-size: 1.4rem;
+    color: $manatee;
+    margin-bottom: 1rem;
+  }
+
+  .verify-email-text {
+    font-size: 1.4rem;
+  }
+
+  .sub-text {
+    font-size: 1.8rem;
+  }
+
+  .preview-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .btn-submit {
+    width: 14.2rem;
+  }
+}
