@@ -32,7 +32,7 @@
   .form-input,
   .ant-select-selector {
     height: 5rem;
-    border: solid 0.1rem #8f949d;
+    border: solid 0.1rem $manatee;
   }
   .dropdown-menu,
   .email-container {
@@ -41,7 +41,7 @@
 
   .question-input {
     height: 18rem;
-    border: solid 0.1rem #8f949d;
+    border: solid 0.1rem $manatee;
   }
   .question-container {
     margin-bottom: 4rem;
