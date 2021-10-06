@@ -1,0 +1,18 @@
+.FAQ-section {
+  background: $whisper;
+  .unit-container {
+    display: flex;
+    justify-content: center;
+    padding: 9rem 0 6rem;
+    align-items: center;
+    flex-direction: column;
+    @import "./components/UnitHeader/styles";
+  }
+
+  .unit-wrapper {
+    max-width: 108.8rem;
+    width: 108.8rem;
+  }
+  @import "./components/QuestionForm/styles.scss";
+  @import "./components//SearchQuestion/styles";
+}

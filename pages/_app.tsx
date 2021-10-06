@@ -23,6 +23,7 @@ MyApp.getInitialProps = async ({ ctx }: AppContext) => {
     "/sign-up",
     "/about-us",
     "/download-guide",
+    "/faq",
   ];
   const jwt = parseCookies(ctx).jwt;
   const hasNoJWT = !jwt;

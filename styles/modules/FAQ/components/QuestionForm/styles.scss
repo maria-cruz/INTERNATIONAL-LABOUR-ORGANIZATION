@@ -1,0 +1,64 @@
+.form-section-container {
+  padding: 6rem 0 12rem;
+  display: flex;
+  justify-content: center;
+
+  .form-wrapper {
+    max-width: 108.8rem;
+    width: 108.8rem;
+  }
+
+  .text-container {
+    text-align: center;
+  }
+
+  ._subheading-label {
+    margin-bottom: 2rem;
+  }
+  .inquiry-form-wrapper {
+    text-align: center;
+  }
+  .form-description {
+    font-size: 1.8rem;
+    color: $shuttle-gray;
+    margin-bottom: 2rem;
+  }
+
+  .upper-input-container {
+    display: grid;
+    grid-template-columns: repeat(2, 53.6rem);
+    column-gap: 1.6rem;
+  }
+  .form-input,
+  .ant-select-selector {
+    height: 5rem;
+    border: solid 0.1rem #8f949d;
+  }
+  .dropdown-menu,
+  .email-container {
+    margin-bottom: 2.8rem;
+  }
+
+  .question-input {
+    height: 18rem;
+    border: solid 0.1rem #8f949d;
+  }
+  .question-container {
+    margin-bottom: 4rem;
+  }
+  .form-btn {
+    width: 18.4rem;
+  }
+
+  .email-container,
+  .dropdown-menu,
+  .question-container {
+    label {
+      color: $manatee;
+    }
+  }
+
+  .ant-select-arrow svg {
+    fill: $black03;
+  }
+}

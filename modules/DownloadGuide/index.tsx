@@ -13,7 +13,7 @@ const CARD_DETAILS_SAMPLE = [
     title:
       "The Employment Contract. (Conclusion, Execution and Termination) Guide",
     description:
-      "By the end of this unit, the trainee will be able to understand the nature of work contracts, their contents and types, and the rights and duties of each of the parties to the contract stipulated in the relevant laws.",
+      "By the end of this unit, the trainee will be able to understand the nature of work contracts, their contents and types, and the rights and duties of each of the parties to the contract stipulated in the relevant laws and regulations and will also be able to distinguish between those subject to and excluded from the provisions of these laws.",
     logo: Unit1Pic,
   },
   {
