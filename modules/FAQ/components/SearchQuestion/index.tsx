@@ -105,7 +105,7 @@ const SearchQuestion = () => {
     return item.route === router.query.unit;
   });
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value: any) => console.log(value);
 
   return (
     <section className="unit-body-container">
