@@ -5,15 +5,15 @@ const UnitHeader = () => {
   const router = useRouter();
 
   const handleUnit1Click = () => {
-    router.push("/faq/unit1");
+    router.push("/faq/unit1", undefined, { scroll: false });
   };
 
   const handleUnit2Click = () => {
-    router.push("/faq/unit2");
+    router.push("/faq/unit2", undefined, { scroll: false });
   };
 
   const handleUnit3Click = () => {
-    router.push("/faq/unit3");
+    router.push("/faq/unit3", undefined, { scroll: false });
   };
   const isActiveUnit1 = router.query.unit === "unit1";
   const isActiveUnit2 = router.query.unit === "unit2";
