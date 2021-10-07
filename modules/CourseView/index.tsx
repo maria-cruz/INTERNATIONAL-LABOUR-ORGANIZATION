@@ -2,10 +2,12 @@ import React from "react";
 
 import Menu from "@common/components/Icons/Menu";
 import Close from "@common/components/Icons/Close";
+import Content from "@modules/CourseView/components/Content";
 
 const CourseView = () => {
   return (
     <div className="courses-view">
+      <Content />
       <div className="right-column">
         <header className="session-header">
           <div className="session-menu-left-container">

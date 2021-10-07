@@ -35,7 +35,9 @@ const Content = () => {
 
       <section className="unit-info">
         <div className="tabs">
-          <ParamLink query={{ tab: UNIT_DETAILS_TAB }}>Unit Details</ParamLink>
+          <ParamLink query={{ tab: UNIT_DETAILS_TAB }} isDefault={true}>
+            Unit Details
+          </ParamLink>
           <ParamLink query={{ tab: QNA_TAB }}>{"Q & A"}</ParamLink>
           <ParamLink query={{ tab: SELF_PRACTICE_TAB }}>
             Self Practice

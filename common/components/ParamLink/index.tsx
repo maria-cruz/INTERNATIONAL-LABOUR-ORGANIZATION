@@ -8,19 +8,24 @@ interface Query {
 }
 
 interface ParamLinkProps {
+  isDefault?: boolean;
   query: Query;
-  exact?: boolean;
   children?: ReactNode;
   className?: string;
   props?: any;
 }
 
-const ParamLink = ({ query, children, className = "" }: ParamLinkProps) => {
+const ParamLink = ({
+  query,
+  children,
+  className = "",
+  isDefault = false,
+}: ParamLinkProps) => {
   const { pathname, query: currentQuery } = useRouter();
-  console.log("query: ", query);
-  console.log("currentQuery: ", currentQuery);
-  const isActive = isEqual(query, currentQuery);
-  //const isActive = exact ? pathname === href : pathname.startsWith(href);
+
+  const isActiveDefault =
+    isEqual({}, currentQuery) || isEqual(query, currentQuery);
+  const isActive = isDefault ? isActiveDefault : isEqual(query, currentQuery);
 
   return (
     <Link href={{ pathname: pathname, query: query }} scroll={false}>
