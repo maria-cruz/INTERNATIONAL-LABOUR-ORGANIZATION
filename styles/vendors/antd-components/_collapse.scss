@@ -1,33 +1,19 @@
 .ant-collapse-header {
-  background: $white;
-  min-height: 8.2rem;
-
+  font-size: 2.4rem;
+  color: $black03;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
+  height: 8rem;
+}
+
+.ant-collapse-content-box {
   font-size: 1.8rem;
-  font-weight: 600;
-  padding: 2.5rem !important;
-
-  &::before,
-  &::after {
-    display: none !important;
-  }
+  color: $shuttle-gray;
+  line-height: 2;
+  width: 75.6rem;
+  margin-left: 7.5rem;
 }
-
-.ant-collapse-header > .anticon {
-  margin-right: 0 !important;
-}
-
-.ant-collapse-header > .anticon > svg {
-  width: 2rem;
-  height: 2rem;
-}
-
-.ant-collapse-header > span.title {
-  width: 90%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.ant-collapse-arrow svg {
+  fill: $shuttle-gray;
 }

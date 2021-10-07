@@ -2,16 +2,16 @@ import React from "react";
 import Button from "antd/lib/button";
 import useRouter from "next/router";
 
-const CreateProfilePreview = () => {
+const ProfilePreview = () => {
   const { router } = useRouter;
 
-  const handleSubmitClick = () => {
-    router?.push("/how-it-works");
+  const handleEditProfileClick = () => {
+    router?.push("/profile/edit");
   };
   return (
-    <div className="create-profile-preview-container">
-      <div className="create-profile-preview">
-        <div className="create-profile-title">
+    <div className="profile-preview-container">
+      <div className="profile-preview">
+        <div className="profile-title">
           <div className="title-container">Profile preview</div>
           <div className="description-container">
             Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet
@@ -21,7 +21,7 @@ const CreateProfilePreview = () => {
         <div className="organization-type-text">
           Training/academic institution – Student/Trainee
         </div>
-        <div className="create-profile-preview-column">
+        <div className="profile-preview-column">
           <div className="email-container">
             <div className="text">Email</div>
             <div className="sub-text email-space-bottom">
@@ -36,7 +36,7 @@ const CreateProfilePreview = () => {
             <div className="sub-text">Tafawaq Academic Institution</div>
           </div>
         </div>
-        <div className="create-profile-preview-column preview-space-bottom">
+        <div className="profile-preview-column preview-space-bottom">
           <div className="phone-number-container">
             <div className="text">Your phone number</div>
             <div className="sub-text">032345678</div>
@@ -46,7 +46,7 @@ const CreateProfilePreview = () => {
             <div className="sub-text">Feb 14, 1986</div>
           </div>
         </div>
-        <div className="create-profile-preview-column space-bottom">
+        <div className="profile-preview-column space-bottom">
           <div className="gender-container">
             <div className="text">Sex</div>
             <div className="sub-text">Female</div>
@@ -57,15 +57,12 @@ const CreateProfilePreview = () => {
           </div>
         </div>
         <div className="preview-button-container">
-          <Button className="btn-back" type="link">
-            Back
-          </Button>
           <Button
             className="btn-submit"
             type="primary"
-            onClick={handleSubmitClick}
+            onClick={handleEditProfileClick}
           >
-            Submit
+            Edit profile
           </Button>
         </div>
       </div>
@@ -73,4 +70,4 @@ const CreateProfilePreview = () => {
   );
 };
 
-export default CreateProfilePreview;
+export default ProfilePreview;

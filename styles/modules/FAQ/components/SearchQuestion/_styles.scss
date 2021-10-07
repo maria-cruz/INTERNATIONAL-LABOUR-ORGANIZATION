@@ -1,0 +1,42 @@
+.unit-body-container {
+  .input-search .ant-btn {
+    display: none;
+  }
+
+  .ant-input-affix-wrapper,
+  .ant-select-selector {
+    height: 5rem;
+    border: 0.1rem solid $silver;
+    border-right: 0.2rem solid $silver;
+    width: 108.8rem;
+  }
+  .ant-input-prefix {
+    margin-left: 1.9rem;
+  }
+  ._subheading-label,
+  .dropdown-container {
+    margin-bottom: 5rem;
+  }
+  .search-label,
+  .select-label {
+    font-size: 1.4rem;
+    color: $manatee;
+    font-family: Arial;
+    margin-bottom: 1.2rem;
+  }
+
+  .search-question-container {
+    margin-bottom: 3rem;
+  }
+
+  .collapse-container {
+    background: $white;
+    border: 0.1rem solid $manatee;
+    border-radius: 0.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .ant-collapse-header .ant-collapse-arrow {
+    margin-right: 5rem;
+  }
+}
