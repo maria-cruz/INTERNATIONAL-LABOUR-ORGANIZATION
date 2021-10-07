@@ -1,5 +1,6 @@
 import React from "react";
 import Collapse from "antd/lib/collapse";
+import ExpandMore from "@common/components/Icons/ExpandMore";
 
 const { Panel } = Collapse;
 
@@ -16,14 +17,42 @@ const SessionCollapse = () => {
 
   return (
     <div className="session-collapse">
-      <Collapse defaultActiveKey={["1"]} onChange={callback}>
-        <Panel header="This is panel header 1" key="1">
+      <Collapse
+        defaultActiveKey={["1"]}
+        onChange={callback}
+        expandIconPosition="right"
+        expandIcon={({ isActive }) => (
+          <ExpandMore rotate={isActive ? 180 : 0} />
+        )}
+      >
+        <Panel
+          header={
+            <span className="title">
+              Session 1: Work contract and regulating text
+            </span>
+          }
+          key="1"
+        >
           <p>{text}</p>
         </Panel>
-        <Panel header="This is panel header 2" key="2">
+        <Panel
+          header={
+            <span className="title">
+              Session 2: Execution of the work contract
+            </span>
+          }
+          key="2"
+        >
           <p>{text}</p>
         </Panel>
-        <Panel header="This is panel header 3" key="3">
+        <Panel
+          header={
+            <span className="title">
+              Session 3: Terms of employment contract
+            </span>
+          }
+          key="3"
+        >
           <p>{text}</p>
         </Panel>
       </Collapse>
