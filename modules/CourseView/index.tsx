@@ -5,6 +5,7 @@ import Close from "@common/components/Icons/Close";
 import Content from "@modules/CourseView/components/Content";
 
 import ProgressTracker from "./components/ProgressTracker";
+import SessionCollapse from "./components/SessionCollapse";
 
 const CourseView = () => {
   return (
@@ -26,6 +27,7 @@ const CourseView = () => {
         </header>
 
         <ProgressTracker percentage={26} />
+        <SessionCollapse />
       </div>
     </div>
   );
