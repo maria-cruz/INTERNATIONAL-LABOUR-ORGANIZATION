@@ -25,7 +25,7 @@ const CourseView = () => {
           </div>
         </header>
 
-        <ProgressTracker percentage={5} />
+        <ProgressTracker percentage={26} />
       </div>
     </div>
   );
