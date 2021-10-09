@@ -23,9 +23,9 @@
       display: none !important;
     }
 
-    border-left: 0.1rem solid $silver;
-    border-right: 0.1rem solid $silver;
-    border-bottom: 0.1rem solid $silver;
+    border-left: 0.2rem solid $silver-60;
+    border-right: 0.2rem solid $silver-60;
+    border-bottom: 0.2rem solid $silver-60;
   }
 
   .ant-collapse-header > .anticon {
@@ -67,9 +67,9 @@
     width: 100%;
 
     border-top: none;
-    border-left: 0.1rem solid $silver;
-    border-right: 0.1rem solid $silver;
-    border-bottom: 0.1rem solid $silver;
+    border-left: 0.2rem solid $silver-60;
+    border-right: 0.2rem solid $silver-60;
+    border-bottom: 0.2rem solid $silver-60;
     background: $whisper;
 
     &:hover {
