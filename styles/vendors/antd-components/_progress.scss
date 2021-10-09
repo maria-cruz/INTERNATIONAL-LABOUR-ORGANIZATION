@@ -1,4 +1,33 @@
+/* <AntD Progress Bar Override> */
+
 .ant-progress-inner {
   background: $frosted-mint;
   height: 1.1rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.2rem;
 }
+
+.ant-progress-outer {
+  width: 45rem;
+}
+
+.ant-progress-bg {
+  height: 1.1rem !important;
+  background: $tropical-rain-forest !important;
+  border-radius: 0.2rem;
+}
+.ant-progress-text {
+  margin-left: 0;
+  color: $black;
+}
+
+.ant-progress {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.8rem;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2.8rem;
+}
+
+/* </AntD Progress Bar Override> */

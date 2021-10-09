@@ -1,3 +1,3 @@
-import Dowload from "@modules/DownloadGuide";
+import Download from "@modules/DownloadGuide";
 
-export default Dowload;
+export default Download;

@@ -1,0 +1,9 @@
+.param-link {
+  color: $shuttle-gray;
+
+  &.active,
+  &:hover,
+  &:focus {
+    color: $silver !important;
+  }
+}
