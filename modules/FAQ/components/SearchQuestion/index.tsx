@@ -4,8 +4,6 @@ import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import Select from "antd/lib/select";
 import CollapseSection from "../CollapseSection";
 import { useRouter } from "next/router";
-import Title, { TitleProps } from "../Title";
-import { route } from "next/dist/server/router";
 
 const SAMPLE_QUESTIONS = [
   {
@@ -101,7 +99,7 @@ const TITlE = [
 ];
 const SearchQuestion = () => {
   const router = useRouter();
-  const data = TITlE.filter((item: TitleProps) => {
+  const data = TITlE.filter((item) => {
     return item.route === router.query.unit;
   });
 
@@ -109,8 +107,10 @@ const SearchQuestion = () => {
 
   return (
     <section className="unit-body-container">
-      {data.map((item: TitleProps, value) => (
-        <Title title={item.title} key={value} />
+      {data.map((item, index) => (
+        <div className="_subheading-label" key={index}>
+          {item.title}
+        </div>
       ))}
 
       <div className="search-question-container">
