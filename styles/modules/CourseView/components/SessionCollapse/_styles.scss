@@ -1,4 +1,11 @@
 .session-collapse {
+  border: none;
+
+  .ant-collapse,
+  .ant-collapse-item {
+    border: none;
+  }
+
   .ant-collapse-header {
     background: $white;
     min-height: 8.2rem;
@@ -15,6 +22,10 @@
     &::after {
       display: none !important;
     }
+
+    border-left: 0.1rem solid $silver;
+    border-right: 0.1rem solid $silver;
+    border-bottom: 0.1rem solid $silver;
   }
 
   .ant-collapse-header > .anticon {
@@ -26,10 +37,66 @@
     height: 2rem;
   }
 
-  .ant-collapse-header > span.title {
+  .ant-collapse-header > .session-panel-header {
     width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .ant-collapse-content {
+    border: none;
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 0;
+    width: 100%;
+  }
+
+  .session-panel-item {
+    display: flex;
+    align-items: center;
+
+    height: 8rem;
+    padding-left: 2.7rem;
+    padding-right: 2.7rem;
+
+    color: $shuttle-gray;
+    font-size: 1.8rem;
+    gap: 2.7rem;
+    width: 100%;
+
+    border-top: none;
+    border-left: 0.1rem solid $silver;
+    border-right: 0.1rem solid $silver;
+    border-bottom: 0.1rem solid $silver;
+    background: $whisper;
+
+    &:hover {
+      background: $athens-gray;
+    }
+
+    &:focus,
+    &:active,
+    &:visited,
+    &:target {
+      background: $frosted-mint;
+    }
+  }
+
+  .session-panel-item > .text {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .session-panel-item > .icon {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      fill: $manatee;
+    }
   }
 }
