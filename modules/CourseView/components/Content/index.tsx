@@ -44,11 +44,7 @@ const Content = () => {
           </ParamLink>
         </div>
 
-        <div
-          className={`unit-details-tab ${
-            isUnitDetailsActive ? "" : "_undisplay"
-          } `}
-        >
+        <div className={`unit-details-tab`}>
           <div className="row-container">
             <div className="profile">
               <div className="avatar"></div>
