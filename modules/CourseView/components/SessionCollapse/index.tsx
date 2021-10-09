@@ -1,6 +1,7 @@
 import React from "react";
 import Collapse from "antd/lib/collapse";
 import ExpandMore from "@common/components/Icons/ExpandMore";
+import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
 
 const { Panel } = Collapse;
 
@@ -8,12 +9,6 @@ const SessionCollapse = () => {
   function callback(key: any) {
     console.log(key);
   }
-
-  const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
 
   return (
     <div className="session-collapse">
@@ -27,33 +22,71 @@ const SessionCollapse = () => {
       >
         <Panel
           header={
-            <span className="title">
+            <span className="session-panel-header">
               Session 1: Work contract and regulating text
             </span>
           }
           key="1"
         >
-          <p>{text}</p>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Pre assessment"}</div>
+          </div>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">
+              {"General terms of the employment contract."}
+            </div>
+          </div>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Elements of an employment contract."}</div>
+          </div>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Post assessment"}</div>
+          </div>
         </Panel>
         <Panel
           header={
-            <span className="title">
+            <span className="session-panel-header">
               Session 2: Execution of the work contract
             </span>
           }
           key="2"
         >
-          <p>{text}</p>
-        </Panel>
-        <Panel
-          header={
-            <span className="title">
-              Session 3: Terms of employment contract
-            </span>
-          }
-          key="3"
-        >
-          <p>{text}</p>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Pre assessment"}</div>
+          </div>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Place and forms of execution"}</div>
+          </div>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Contract types"}</div>
+          </div>
+          <div className="session-panel-item">
+            <div className="icon">
+              <CheckCircleOutline />
+            </div>
+            <div className="text">{"Post assessment"}</div>
+          </div>
         </Panel>
       </Collapse>
     </div>

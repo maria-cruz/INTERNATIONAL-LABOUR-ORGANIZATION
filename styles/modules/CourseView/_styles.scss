@@ -12,7 +12,6 @@
 
   .right-column {
     width: 28.44%;
-    border-left: 0.05rem solid $silver;
   }
 
   /* <Header /> */
@@ -184,6 +183,9 @@
     font-weight: 600;
     padding-left: 2rem;
     padding-right: 4rem;
+    border-left: 0.1rem solid $silver-60;
+    border-right: 0.1rem solid $silver-60;
+    border-bottom: 0.1rem solid $silver-60;
 
     display: flex;
     justify-content: space-between;
