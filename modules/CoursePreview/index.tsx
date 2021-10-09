@@ -1,17 +1,19 @@
 import Layout, { Header } from "@common/components/Layout";
-import PreviewHeader from "./components/PreviewHeader";
 import Unit1 from "./Unit1";
+import Unit2 from "./Unit2";
+import Unit3 from "./Unit3";
 import React from "react";
 
-const Preview = () => {
+const CoursePreview = () => {
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="course-preview-section">
-        <PreviewHeader />
-        <Unit1 />
+        <div className="course-details-container">
+          <Unit1 />
+        </div>
       </section>
     </Layout>
   );
 };
 
-export default Preview;
+export default CoursePreview;

@@ -1,18 +1,16 @@
-.unit1-container {
-  max-width: 192rem;
-  padding: 5rem 8rem 10rem 8.4rem;
-  display: flex;
-  justify-content: flex-start;
-}
-.details-container .upper-details-wrapper {
-  display: grid;
-  grid-template-columns: 8rem 29.2rem 24.3rem 58.5rem;
-  align-items: center;
-  margin-bottom: 1.9rem;
-  font-size: 2.4rem;
+.details-container {
+  .upper-details-wrapper {
+    display: grid;
+    grid-template-columns: 8rem 29.2rem 24.3rem 58.5rem;
+    align-items: center;
+    margin-bottom: 1.9rem;
+    font-size: 2.4rem;
+  }
 }
 .progress-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .img-container img {
@@ -43,6 +41,10 @@
   line-height: 2;
   color: $shuttle-gray;
   margin-bottom: 9rem;
+}
+.ant-progress-text {
+  margin-right: 0;
+  margin-left: 1rem;
 }
 
 .checklist svg {

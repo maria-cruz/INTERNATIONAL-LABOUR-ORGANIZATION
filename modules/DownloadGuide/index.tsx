@@ -46,6 +46,7 @@ const DownloadGuide = () => {
             height={513}
             placeholder="blur"
           />
+          <div className="dl-guide-filter"></div>
           <div className="bg-description-container ">
             <div className="subheading-upper _section-label">Download</div>
             <div className="subheading-lower _section-label">

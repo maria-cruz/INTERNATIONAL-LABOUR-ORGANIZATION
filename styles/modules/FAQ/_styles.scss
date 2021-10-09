@@ -1,17 +1,30 @@
 .FAQ-section {
   background: $whisper;
+  .faq-bg-filter {
+    position: absolute;
+    top: 14rem;
+    height: 51.3rem;
+    width: 100%;
+    opacity: 0.75;
+    background: transparent linear-gradient(111deg, #ffffff 0%, #ffffff00 100%)
+      0% 0% no-repeat padding-box;
+    mix-blend-mode: lighten;
+  }
   .unit-container {
     display: flex;
     justify-content: center;
     padding: 9rem 0 6rem;
     align-items: center;
     flex-direction: column;
-    @import "./components/UnitHeader/styles";
   }
 
   .unit-wrapper {
     max-width: 108.8rem;
     width: 108.8rem;
+  }
+
+  ._subheading-label {
+    margin-bottom: 5rem;
   }
   @import "./components/QuestionForm/styles.scss";
   @import "./components//SearchQuestion/styles";
