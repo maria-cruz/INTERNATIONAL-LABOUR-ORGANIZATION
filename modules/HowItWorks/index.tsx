@@ -48,7 +48,7 @@ const HowItWorks = () => {
           </div>
         </div>
         <div className="done-button-container">
-          <Link href="/courses-main/all">
+          <Link href="/courses/all">
             <Button className="done-btn" type="primary">
               Done
             </Button>
