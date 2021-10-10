@@ -1,0 +1,77 @@
+.QandA-section {
+  max-width: 123.3rem;
+  .comment-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .text-input-container {
+    width: 123.3rem;
+    height: 8.5rem;
+    position: relative;
+  }
+  .submit-btn {
+    position: absolute;
+    right: 2rem;
+    top: 1.7rem;
+    width: 16rem;
+  }
+  .comment-container {
+    margin-bottom: 4.3rem;
+  }
+  .ant-form-item-label > label {
+    font-family: Arial;
+    color: $manatee;
+  }
+
+  .conversation-container {
+    background: $white;
+    border-top: 0.1rem solid $shuttle-gray;
+    padding: 4rem;
+    margin-bottom: 4rem;
+  }
+  .name-container {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+  .description-container,
+  .question-display-container,
+  .label-container {
+    font-size: 1.8rem;
+    color: $shuttle-gray;
+  }
+  .description-container {
+    margin-bottom: 3.6rem;
+  }
+  .question-display-container {
+    line-height: 2;
+    margin-bottom: 1.6rem;
+  }
+  .label-container {
+    margin-bottom: 1.6rem;
+  }
+
+  .item-wrapper {
+    margin-bottom: 5.3rem;
+  }
+
+  .reply-input-container {
+    height: 5rem;
+    line-height: 2.5rem;
+    position: relative;
+    padding: 1rem;
+  }
+
+  .reply-btn {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    border-color: $white;
+    height: 4rem;
+    min-width: auto;
+  }
+  .reply-container {
+    margin-bottom: 0;
+  }
+}

@@ -3,9 +3,6 @@ import Input from "antd/lib/input";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import Select from "antd/lib/select";
 import CollapseSection from "../CollapseSection";
-import { useRouter } from "next/router";
-import Title, { TitleProps } from "../Title";
-import { route } from "next/dist/server/router";
 
 const SAMPLE_QUESTIONS = [
   {
@@ -85,34 +82,11 @@ const SAMPLE_FAQ = [
   },
 ];
 
-const TITlE = [
-  {
-    title: "The Employment Contract. (Conclusion, Execution and Termination)",
-    route: "unit1",
-  },
-  {
-    title: "Termination of Employment Contracts",
-    route: "unit2",
-  },
-  {
-    title: "Social Security and Work Emergencies",
-    route: "unit3",
-  },
-];
 const SearchQuestion = () => {
-  const router = useRouter();
-  const data = TITlE.filter((item: TitleProps) => {
-    return item.route === router.query.unit;
-  });
-
   const onSearch = (value: any) => console.log(value);
 
   return (
     <section className="unit-body-container">
-      {data.map((item: TitleProps, value) => (
-        <Title title={item.title} key={value} />
-      ))}
-
       <div className="search-question-container">
         <div className="search-label">Search questions</div>
         <Input.Search
