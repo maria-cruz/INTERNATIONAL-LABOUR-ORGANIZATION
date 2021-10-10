@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 const { TabPane } = Tabs;
 
-const callback = (key: any) => {
+const handleTabsChange = (key: any) => {
   console.log(key);
 };
 const Unit2 = () => {
@@ -55,7 +55,11 @@ const Unit2 = () => {
           Start Lesson
         </Button>
       </div>
-      <Tabs className="tab-container" defaultActiveKey="1" onChange={callback}>
+      <Tabs
+        className="tab-container"
+        defaultActiveKey="1"
+        onChange={handleTabsChange}
+      >
         <TabPane className="tab-item" tab="Unit Details" key="1">
           <UnitDetails />
         </TabPane>
