@@ -1,0 +1,19 @@
+.progress-tracker {
+  height: 12rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem;
+  border-left: 0.1rem solid $silver-60;
+  border-right: 0.1rem solid $silver-60;
+  border-bottom: 0.1rem solid $silver-60;
+
+  .label {
+    color: $black;
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+}

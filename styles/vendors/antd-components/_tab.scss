@@ -1,0 +1,25 @@
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $black;
+  text-shadow: none;
+}
+.ant-tabs-tab-btn:focus,
+.ant-tabs-tab-remove:focus,
+.ant-tabs-tab-btn:active,
+.ant-tabs-tab-remove:active {
+  color: $shuttle-gray;
+}
+.ant-tabs-tab-btn {
+  font-size: 2.4rem;
+  color: $shuttle-gray;
+  font-weight: 600;
+}
+.ant-tabs-ink-bar {
+  background: $grass;
+  height: 0.5rem !important;
+}
+.ant-tabs-nav {
+  margin-bottom: 5rem !important;
+}
+.ant-tabs-nav::before {
+  border-bottom: none !important;
+}

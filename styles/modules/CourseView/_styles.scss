@@ -1,0 +1,221 @@
+.courses-view {
+  @import "./components/ProgressTracker/styles";
+  @import "./components/SessionCollapse/styles";
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+
+  .content-container {
+    width: 71.56%;
+    padding-bottom: 24rem;
+  }
+
+  .right-column {
+    width: 28.44%;
+  }
+
+  /* <Header /> */
+
+  .unit-header {
+    width: 100%;
+    height: 14rem;
+    background: $tropical-rain-forest;
+    color: $white;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    margin-bottom: 6rem;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .unit-header .back-button {
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .unit-header .title {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+  }
+
+  .back-button svg {
+    fill: $white;
+  }
+
+  /* <Content />  */
+
+  .unit-content {
+    padding-left: 8rem;
+
+    color: $black;
+    width: 100%;
+    margin-bottom: 5rem;
+
+    .title {
+      font-size: 3.2rem;
+      font-weight: 600;
+      margin-bottom: 5rem;
+    }
+
+    .score {
+      border: 0.1rem solid $manatee;
+      border-radius: 0.8rem;
+      height: 69.193rem;
+      width: 95.025%;
+      max-width: 122.964rem;
+    }
+  }
+
+  /* <Info />  */
+
+  .unit-info {
+    padding-left: 8rem;
+    color: $black;
+    width: 100%;
+
+    .tabs {
+      display: flex;
+      gap: 5rem;
+      margin-bottom: 5rem;
+    }
+
+    .tabs .param-link {
+      color: $black !important;
+      font-size: 2.4rem;
+      font-weight: 600;
+      padding-bottom: 1.5rem;
+
+      &.active,
+      &:hover,
+      &:focus {
+        color: $black !important;
+        border-bottom: 0.5rem solid $grass;
+      }
+    }
+
+    .row-container {
+      display: flex;
+      gap: 10rem;
+      margin-bottom: 2rem;
+    }
+
+    .row-container .profile {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .row-container .profile .avatar {
+      width: 6rem;
+      height: 6rem;
+      border: 0.1rem solid $manatee;
+      border-radius: 50%;
+    }
+
+    .row-container .profile .name {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+
+    .row-container .unit-topics {
+      display: flex;
+      align-items: center;
+      font-size: 2.4rem;
+      gap: 0.5rem;
+    }
+
+    .row-container .unit-topics .count {
+      font-weight: 600;
+    }
+
+    .description {
+      width: 95.025%;
+      color: $shuttle-gray;
+      font-size: 1.8rem;
+      letter-spacing: 0.01rem;
+      line-height: 4rem;
+      margin-bottom: 10rem;
+    }
+
+    .learning-objectives {
+    }
+
+    .learning-objectives .title {
+      color: $tropical-rain-forest;
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+    }
+
+    .learning-objectives .list .objective {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.3rem;
+    }
+
+    .learning-objectives .list .objective-icon {
+    }
+    .learning-objectives .objective-description {
+      color: $black;
+      font-size: 1.8rem;
+    }
+  }
+
+  /*======================= RIGHT PANEL =======================*/
+
+  .session-header {
+    width: 100%;
+    height: 14rem;
+    background: $tropical-rain-forest;
+    color: $white;
+    font-size: 2.4rem;
+    font-weight: 600;
+    padding-left: 2rem;
+    padding-right: 4rem;
+    border-left: 0.1rem solid $silver-60;
+    border-right: 0.1rem solid $silver-60;
+    border-bottom: 0.1rem solid $silver-60;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .session-header .session-menu-left-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .session-header .session-menu-right-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .session-header .session-menu-icon {
+    display: flex;
+    align-items: center;
+    svg {
+      fill: $white;
+    }
+  }
+
+  .session-header .session-menu-close {
+    display: flex;
+    align-items: center;
+    svg {
+      fill: $white;
+    }
+  }
+}

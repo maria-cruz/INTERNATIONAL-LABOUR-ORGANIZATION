@@ -15,6 +15,7 @@ const CARD_DETAILS_SAMPLE = [
     description:
       "By the end of this unit, the trainee will be able to understand the nature of work contracts, their contents and types, and the rights and duties of each of the parties to the contract stipulated in the relevant laws and regulations and will also be able to distinguish between those subject to and excluded from the provisions of these laws.",
     logo: Unit1Pic,
+    value: 1,
   },
   {
     unit: "Unit 2",
@@ -22,6 +23,7 @@ const CARD_DETAILS_SAMPLE = [
     description:
       "By the end of this unit, the trainee will be able to distinguish between justified and unjustified termination cases of employment contracts and the conditions and legal consequences of their termination.",
     logo: Unit2Pic,
+    value: 2,
   },
   {
     unit: "Unit 3",
@@ -29,6 +31,7 @@ const CARD_DETAILS_SAMPLE = [
     description:
       "By the end of this unit, the trainee will become familiar with the social guarantees secured by the National Social Security Fund and will be able to understand how to adhere to and benefit from these guarantees.",
     logo: Unit3Pic,
+    value: 3,
   },
 ];
 const DownloadGuide = () => {
@@ -43,6 +46,7 @@ const DownloadGuide = () => {
             height={513}
             placeholder="blur"
           />
+          <div className="dl-guide-filter"></div>
           <div className="bg-description-container ">
             <div className="subheading-upper _section-label">Download</div>
             <div className="subheading-lower _section-label">
@@ -62,12 +66,13 @@ const DownloadGuide = () => {
 
           <div className="guide-container">
             <div className="download-wrapper">
-              {CARD_DETAILS_SAMPLE.map((item: GuideCardProps) => (
+              {CARD_DETAILS_SAMPLE.map((item: GuideCardProps, index) => (
                 <GuideCard
                   unit={item.unit}
                   title={item.title}
                   description={item.description}
                   logo={item.logo}
+                  key={index}
                 />
               ))}
             </div>

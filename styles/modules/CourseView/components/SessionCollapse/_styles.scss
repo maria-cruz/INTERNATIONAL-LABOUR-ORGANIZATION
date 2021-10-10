@@ -1,0 +1,102 @@
+.session-collapse {
+  border: none;
+
+  .ant-collapse,
+  .ant-collapse-item {
+    border: none;
+  }
+
+  .ant-collapse-header {
+    background: $white;
+    min-height: 8.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 2.5rem !important;
+
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    border-left: 0.1rem solid $silver-60;
+    border-right: 0.1rem solid $silver-60;
+    border-bottom: 0.1rem solid $silver-60;
+  }
+
+  .ant-collapse-header > .anticon {
+    margin-right: 0 !important;
+  }
+
+  .ant-collapse-header > .anticon > svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .ant-collapse-header > .session-panel-header {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ant-collapse-content {
+    border: none;
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 0;
+    width: 100%;
+  }
+
+  .session-panel-item {
+    display: flex;
+    align-items: center;
+
+    height: 8rem;
+    padding-left: 2.7rem;
+    padding-right: 2.7rem;
+
+    color: $shuttle-gray;
+    font-size: 1.8rem;
+    gap: 2.7rem;
+    width: 100%;
+
+    border-top: none;
+    border-left: 0.1rem solid $silver-60;
+    border-right: 0.1rem solid $silver-60;
+    border-bottom: 0.1rem solid $silver-60;
+    background: $whisper;
+
+    &:hover {
+      background: $athens-gray;
+    }
+
+    &:focus,
+    &:active,
+    &:visited,
+    &:target {
+      background: $frosted-mint;
+    }
+  }
+
+  .session-panel-item > .text {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .session-panel-item > .icon {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      fill: $manatee;
+    }
+  }
+}

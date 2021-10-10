@@ -43,5 +43,17 @@
     grid-template-columns: repeat(3, auto);
     column-gap: 3rem;
   }
+
+  .dl-guide-filter {
+    position: absolute;
+    top: 14rem;
+    height: 51.3rem;
+    width: 100%;
+    opacity: 0.75;
+    background: transparent
+      linear-gradient(111deg, $white 0%, $transparent 100%) 0% 0% no-repeat
+      padding-box;
+    mix-blend-mode: lighten;
+  }
   @import "./component/card";
 }
