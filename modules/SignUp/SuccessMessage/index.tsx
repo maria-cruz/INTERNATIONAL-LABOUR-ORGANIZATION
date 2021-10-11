@@ -18,8 +18,9 @@ const SuccessMessage = () => {
         <div className="description-container ">
           Learn from a comprehensive training that let you learn about your
           rights and responsibilities at work to make you job ready. The
-          training includes 3 units and 20 sessions, pass the training
-          assessment with 70% score rate to successfully get a certificate.
+          training includes <span>3 units</span> and <span> 20 sessions</span> ,
+          pass the training assessment with 70% score rate to successfully get a
+          certificate.
         </div>
         <Button
           onClick={handleLogInClick}
