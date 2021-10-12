@@ -130,7 +130,8 @@ const CreateProfile = () => {
             <div className="form-title-container">
               <div className="title-container">Create profile</div>
               <div className="description-container">
-                Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet
+                Fill in your personal info and create your account to begin the
+                course.
               </div>
             </div>
             <Form

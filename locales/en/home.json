@@ -1,4 +1,16 @@
 {
+  "bannerDescription": "Huqouqi fil 3amal is a learning application developed through an ILO project in partnership with government and NGO stakeholders across Lebanon. The objective of the app is to raise the awareness of training graduates and new entrants to the labour market on their rights and responsibilities as workers and to enhance the capacity and knowledge of NGOs providing vocational training",
+  "watch": "watch how it works",
   "title": "Start unit",
-  "example": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo"
+  "logIn": "Log in",
+  "signUp": "Sign up",
+  "example": "The huqouqi fil 3amal course is organized into 3 units. As you complete a unit, the next unit will unlock. Each unit includes learning objectives, topics, Q&A and self practice resources.",
+  "visitorsToday": "Visitors today",
+  "thisWeek": "This week",
+  "thisMonth": "This month",
+  "total": "Total",
+  "assessmentsTitle": "Learn and fill up assessments",
+  "assessmentsDescription": "Complete each topic in unit to progress. Each topic includes a pre-assessment, video instruction, exercises, and a final assessment of your learning to advance.",
+  "certifiedTitle": "Get certified!",
+  "certifiedDescription": "Once you complete all topics within the three units with an assessment of 70% or higher, you will complete the course and unlock your huqouqi fil 3amal certificate!"
 }

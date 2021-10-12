@@ -11,10 +11,12 @@ const Footer = () => {
       </div>
       <div className={styles["description-container"]}>
         <span className={styles["description"]}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, diam nonumy
-          eirmod tempor iLorem ipsum dolor sit amet, consetetur sadipscing
-          elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna
-          aliquyam erat, sed diam voluptua. At vero eos et
+          Huqouqi fil 3amal is a learning application developed through an ILO
+          project in partnership with government and NGO stakeholders across
+          Lebanon. The objective of the app is to raise the awareness of
+          training graduates and new entrants to the labour market on their
+          rights and responsibilities as workers and to enhance the capacity and
+          knowledge of NGOs providing vocational training.
         </span>
       </div>
       <div className={styles["menu-group"]}>

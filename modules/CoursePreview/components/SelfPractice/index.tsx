@@ -17,8 +17,8 @@ const SelfPractice = () => {
           Exercise files to practice while learning
         </div>
         <div className="description-container">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor
-          lacinia ornare. Sed venenatis viverra pretium. Suspendisse potenti.
+          Download exercises and other supporting documents here for this
+          learning Unit.
         </div>
         {SAMPLE_MODULES.map((item, index) => (
           <div className="download-modules-wrapper" key={index}>

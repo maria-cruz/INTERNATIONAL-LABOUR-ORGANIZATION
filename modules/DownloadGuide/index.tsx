@@ -57,10 +57,10 @@ const DownloadGuide = () => {
         <div className="download-cards-container">
           <div className="description-label-container">
             <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, diam
-              nonumy eirmod tempor iLorem ipsum dolor sit amet, consetetur
-              sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              The huqouqi fil 3amal guides are available for each of the three
+              units. Download the guides to support your learning as you
+              progress through each of the three units, and also to use as a
+              reference after completing the online course.
             </p>
           </div>
 
