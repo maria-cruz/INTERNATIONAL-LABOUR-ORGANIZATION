@@ -27,23 +27,23 @@ const HowItWorks = () => {
           <div className="how-it-works-description-container">
             <div className="description-title-container">Start unit</div>
             <div className="description-container">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos
+              The huqouqi fil 3amal course is organized into 3 units. As you
+              complete a unit, the next unit will unlock. Each unit includes
+              learning objectives, topics, Q&A and self practice resources.
             </div>
             <div className="description-title-container">
-              Learn and fill up assessments
+              Learn and complete assessments
             </div>
             <div className="description-container">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos
+              Complete each topic in unit to progress. Each topic includes a
+              pre-assessment, video instruction, exercises, and a final
+              assessment of your learning to advance.
             </div>
             <div className="description-title-container">Get certified!</div>
             <div className="description-container">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos
+              Once you complete all topics within the three units with an
+              assessment of 70% or higher, you will complete the course and
+              unlock your huqouqi fil 3amal certificate!
             </div>
           </div>
         </div>
