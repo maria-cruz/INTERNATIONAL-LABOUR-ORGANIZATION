@@ -7,25 +7,21 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const jwt = await useJWT(ctx, true);
 
-  let data: any[] = [];
-
-  await axios
-    .get(`${process.env.API_URL}/units`, {
-      headers: {
-        Authorization: jwt,
-      },
-    })
-    .then((res) => {
-      data = res.data;
-    })
-    .catch((err) => {
-      data = [];
-      console.error(err);
-    });
+  const { data } = await axios.get(`${process.env.API_URL}/units`, {
+    headers: {
+      Authorization: jwt,
+    },
+  });
 
   return {
     props: { data },
   };
 };
 
-export default CoursesMain;
+const CoursesPage = ({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  return <CoursesMain allCoursesData={data} />;
+};
+
+export default CoursesPage;

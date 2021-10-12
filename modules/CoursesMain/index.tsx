@@ -37,11 +37,10 @@ const CARD_DETAILS_SAMPLE = [
   },
 ];
 
-const CoursesMain = () => {
+const CoursesMain = ({ allCoursesData }: any) => {
   const router = useRouter();
 
-  // const courses2 = useCourses();
-  // console.log(jwt, "lol");
+  console.log(allCoursesData);
 
   const sampleData = CARD_DETAILS_SAMPLE.filter((item: CoursesCardProps) => {
     return item.status === router.query.category;
