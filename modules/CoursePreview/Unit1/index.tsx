@@ -20,9 +20,14 @@ const Unit1 = () => {
   const handleStartClick = () => {
     router.push("/courses/view");
   };
-
+  const handleUnit2Click = () => {
+    router.push("/courses/unit2");
+  };
+  const handleUnit3Click = () => {
+    router.push("/courses/unit3");
+  };
   return (
-    <div className="unit1-container">
+    <div className="unit-container">
       <div className="banner-container">
         <Image
           src={Unit1Banner}
@@ -36,13 +41,13 @@ const Unit1 = () => {
       <div className="bg-descriiption-wrapper">
         <div className="unit-label-container">Unit 1</div>
         <div className="title-container">
-          <div className="back-icon">
+          <div className="back-icon" onClick={handleUnit3Click}>
             <BackArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
           <span className="title-wrapper">
             The Employment Contract. (Conclusion, Execution and Termination)
           </span>
-          <div className="forward-icon">
+          <div className="forward-icon" onClick={handleUnit2Click}>
             <ForwardArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
         </div>
