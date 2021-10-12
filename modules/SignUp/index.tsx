@@ -7,7 +7,6 @@ import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import Layout, { Header } from "@common/components/Layout";
 import SignUpBg from "@public/images/sign-up-bg.jpg";
-
 import { setCookie } from "nookies";
 import Router from "next/router";
 
@@ -49,7 +48,7 @@ const SignUp = () => {
           return;
         }
 
-        Router.push("/log-in");
+        Router.push("/sign-up/success");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -65,101 +64,113 @@ const SignUp = () => {
   };
 
   return (
-    <Layout header={<Header title={"Header"} />}>
-      <section className="sign-up-section">
-        <div className="background">
-          <Image
-            src={SignUpBg}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            placeholder="blur"
-          />
-        </div>
-        <div className="banner-container">
-          <div className="banner-description-container">
-            <div className="banner-description-text">
-              {t("description")}{" "}
-              <span className="journey-text"> {t("descriptionEmphasis")} </span>
-            </div>
+    <div className="sign-up-container">
+      <Layout header={<Header title={"Header"} />}>
+        <section className="sign-up-section">
+          <div className="background">
+            <Image
+              src={SignUpBg}
+              alt="sign-up-bg.jpg"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+              placeholder="blur"
+            />
           </div>
-          <div className="sign-up-container">
-            <div className="sign-up-title">{t("signUpTitle")}</div>
-            <div className="login-container">
-              <div className="login-sub-text">{t("loginSubText")}</div>
-              <div className="login-text">{t("login")}</div>
+          <div className="banner-container">
+            <div className="banner-description-container">
+              <div className="banner-description-text">
+                {t("description")}{" "}
+                <span className="journey-text">
+                  {" "}
+                  {t("descriptionEmphasis")}{" "}
+                </span>
+              </div>
             </div>
-            <Form
-              form={signUpForm}
-              className="sign-up-form-container"
-              layout="vertical"
-              onFinish={handleSignUpFinish}
-              requiredMark={false}
-            >
-              <Form.Item
-                label={t("emailAddress")}
-                className="email-container"
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your email.",
-                  },
-                  { type: "email", message: "The input is not valid E-mail!" },
-                ]}
+            <div className="sign-up-container">
+              <div className="sign-up-title">{t("signUpTitle")}</div>
+              <div className="login-container">
+                <div className="login-sub-text">{t("loginSubText")}</div>
+                <div className="login-text">{t("login")}</div>
+              </div>
+              <Form
+                form={signUpForm}
+                className="sign-up-form-container"
+                layout="vertical"
+                onFinish={handleSignUpFinish}
+                requiredMark={false}
               >
-                <Input className="sign-up-input" />
-              </Form.Item>
-              <Form.Item
-                label={t("password")}
-                className="password-container"
-                name="password"
-                rules={[
-                  { required: true, message: "Please input your password." },
-                  {
-                    min: 8,
-                    message: "Should be a minimum of 8 characters",
-                  },
-                ]}
-              >
-                <Input className="sign-up-input" type="password" />
-              </Form.Item>
-              <Form.Item
-                name="termsAndCondition"
-                valuePropName="checked"
-                className="terms-and-condition-container"
-                rules={[{ validator: checkCheckBox }]}
-              >
-                <Checkbox className="sign-up-checkbox">
-                  {t("accept")}{" "}
-                  <span className="terms-and-condition-text">
-                    {t("termsAndCondition")}
-                  </span>
-                </Checkbox>
-              </Form.Item>
-              <Form.Item
-                name="newsAndUpdate"
-                valuePropName="checked"
-                className="sign-up-checkbox-container"
-              >
-                <Checkbox className="sign-up-checkbox">
-                  {t("newAndUpdate")}
-                </Checkbox>
-              </Form.Item>
-              <Form.Item noStyle>
-                <Button
-                  className="sign-up-btn"
-                  type="primary"
-                  htmlType="submit"
+                <Form.Item
+                  label={t("emailAddress")}
+                  className="email-container"
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your email.",
+                    },
+                    {
+                      type: "email",
+                      message: "The input is not valid E-mail!",
+                    },
+                  ]}
                 >
-                  {t("signUp")}
-                </Button>
-              </Form.Item>
-            </Form>
+                  <Input className="sign-up-input" />
+                </Form.Item>
+                <Form.Item
+                  label={t("password")}
+                  className="password-container"
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your password.",
+                    },
+                    {
+                      min: 8,
+                      message: "Should be a minimum of 8 characters",
+                    },
+                  ]}
+                >
+                  <Input className="sign-up-input" type="password" />
+                </Form.Item>
+                <Form.Item
+                  name="termsAndCondition"
+                  valuePropName="checked"
+                  className="terms-and-condition-container"
+                  rules={[{ validator: checkCheckBox }]}
+                >
+                  <Checkbox className="sign-up-checkbox">
+                    {t("accept")}{" "}
+                    <span className="terms-and-condition-text">
+                      {t("termsAndCondition")}
+                    </span>
+                  </Checkbox>
+                </Form.Item>
+                <Form.Item
+                  name="newsAndUpdate"
+                  valuePropName="checked"
+                  className="sign-up-checkbox-container"
+                >
+                  <Checkbox className="sign-up-checkbox">
+                    {t("newAndUpdate")}
+                  </Checkbox>
+                </Form.Item>
+                <Form.Item noStyle>
+                  <Button
+                    className="sign-up-btn"
+                    type="primary"
+                    htmlType="submit"
+                  >
+                    {t("signUp")}
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
           </div>
-        </div>
-      </section>
-    </Layout>
+        </section>
+      </Layout>
+    </div>
   );
 };
 

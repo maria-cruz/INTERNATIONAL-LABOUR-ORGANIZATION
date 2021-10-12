@@ -14,7 +14,9 @@ const ProfilePreview = () => {
         <div className="profile-title">
           <div className="title-container">Profile preview</div>
           <div className="description-container">
-            Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet
+            Fill in your personal info and create your account to begin the
+            course.Fill in your personal info and create your account to begin
+            the course.
           </div>
         </div>
         <div className="name-text">Khashifa Omen</div>

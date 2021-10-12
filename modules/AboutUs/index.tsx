@@ -40,7 +40,7 @@ const AboutUs = () => {
                   alt="background-scope.jpg"
                   placeholder="blur"
                   width={960}
-                  height={751}
+                  height={500}
                 />
               </div>
             </div>
@@ -74,14 +74,14 @@ const AboutUs = () => {
                   alt="training-references.jpg"
                   placeholder="blur"
                   width={960}
-                  height={751}
+                  height={500}
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <Partners />
+        <Partners subheading="Supported by" />
         <Inquiry />
       </section>
     </Layout>

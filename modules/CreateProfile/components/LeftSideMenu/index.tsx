@@ -27,9 +27,6 @@ const LeftSideMenu = () => {
           <div className="title-container">
             Rights & Responsibilities at Work
           </div>
-          <div className="description-container">
-            Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet
-          </div>
         </div>
       </div>
     </div>
