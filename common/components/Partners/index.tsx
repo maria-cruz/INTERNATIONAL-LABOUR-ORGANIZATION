@@ -9,8 +9,7 @@ const Partners = () => {
   return (
     <section className="partners-section">
       <span className="partners-section-title">
-        An International Labour Organization initiative with the help of the
-        following partners
+        This app was developed by an ILO project with the following partners
       </span>
       <div className="partners-section-logos">
         <div>

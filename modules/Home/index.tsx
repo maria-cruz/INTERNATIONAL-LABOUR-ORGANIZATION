@@ -41,13 +41,9 @@ const Home = () => {
               <Image src="/images/open-book.svg" width={33} height={35} />
             </div>
             <div className={styles["text-group"]}>
-              <div className={styles["title"]}>
-                Learn and fill up assessments
-              </div>
+              <div className={styles["title"]}>{t("assessmentsTitle")}</div>
               <div className={styles["description"]}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua.
+                {t("assessmentsDescription")}
               </div>
             </div>
           </div>
@@ -57,11 +53,9 @@ const Home = () => {
               <Image src="/images/trophy.svg" width={33} height={35} />
             </div>
             <div className={styles["text-group"]}>
-              <div className={styles["title"]}>Get certified!</div>
+              <div className={styles["title"]}>{t("certifiedTitle")}</div>
               <div className={styles["description"]}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua.
+                {t("certifiedDescription")}
               </div>
             </div>
           </div>
@@ -71,29 +65,21 @@ const Home = () => {
       <section className={styles["visitors-section"]}>
         <div>
           <div className={styles["main-count-container"]}>
-            <span className={styles["title"]}>Visitors today</span>
+            <span className={styles["title"]}>{t("visitorsToday")}</span>
             <span className={styles["count"]}>002897</span>
           </div>
         </div>
         <div className={styles["sub-count-group"]}>
           <div className={styles["sub-count-container"]}>
-            <span className={styles["title"]}>This week</span>
+            <span className={styles["title"]}>{t("thisWeek")}</span>
             <span className={styles["count"]}>5324</span>
           </div>
           <div className={styles["sub-count-container"]}>
-            <span className={styles["title"]}>Last week</span>
-            <span className={styles["count"]}>4271</span>
-          </div>
-          <div className={styles["sub-count-container"]}>
-            <span className={styles["title"]}>This month</span>
+            <span className={styles["title"]}>{t("thisMonth")}</span>
             <span className={styles["count"]}>551,324</span>
           </div>
           <div className={styles["sub-count-container"]}>
-            <span className={styles["title"]}>Last month</span>
-            <span className={styles["count"]}>524,653</span>
-          </div>
-          <div className={styles["sub-count-container"]}>
-            <span className={styles["title"]}>Total</span>
+            <span className={styles["title"]}>{t("total")}</span>
             <span className={styles["count"]}>1,551,532</span>
           </div>
         </div>
