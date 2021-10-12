@@ -28,6 +28,12 @@ const FAQ = () => {
           />
         </div>
         <div className="faq-bg-filter"></div>
+        <div className="bg-description-container ">
+          <div className="subheading-upper">Have a Question?</div>
+          <div className="subheading-lower _section-label">
+            Frequently Asked Questions
+          </div>
+        </div>
         <div className="unit-container">
           <div className="unit-wrapper">
             <Tabs

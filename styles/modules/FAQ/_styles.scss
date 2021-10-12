@@ -27,6 +27,22 @@
   ._subheading-label {
     margin-bottom: 5rem;
   }
+
+  .bg-description-container {
+    position: absolute;
+    top: 22rem;
+    padding: 10rem;
+    max-width: 100rem;
+  }
+  .subheading-upper {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  .subheading-lower {
+    line-height: 1.2;
+  }
+
   @import "./components/QuestionForm/styles.scss";
   @import "./components//SearchQuestion/styles";
 }

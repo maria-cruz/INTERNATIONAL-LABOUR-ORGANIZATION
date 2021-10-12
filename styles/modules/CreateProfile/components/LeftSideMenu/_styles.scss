@@ -1,12 +1,12 @@
 .menu-step-container {
   background: $tropical-rain-forest;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 36.15vw;
+  width: 100%;
   max-width: 69.4rem;
   min-height: 100vh;
-  padding: 5rem;
+  padding: 7rem 10rem 6.5rem;
 
   .menu-step {
     height: 100%;

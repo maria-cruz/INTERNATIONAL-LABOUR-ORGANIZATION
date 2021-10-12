@@ -81,7 +81,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <Partners />
+        <Partners subheading="Supported by" />
         <Inquiry />
       </section>
     </Layout>
