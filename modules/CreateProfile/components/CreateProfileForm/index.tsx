@@ -5,7 +5,6 @@ import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import DatePicker from "antd/lib/date-picker";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
-import Image from "next/image";
 import ReactFlagsSelect from "react-flags-select";
 import {
   DAYS,

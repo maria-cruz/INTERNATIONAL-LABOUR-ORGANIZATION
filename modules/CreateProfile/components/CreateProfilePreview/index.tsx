@@ -1,11 +1,11 @@
 import React from "react";
 import Button, { ButtonProps } from "antd/lib/button";
 import usePersistentState from "@common/methods/usePersistentState";
-import { defaultFormValues } from "@modules/CreateProfile";
 import nationalities from "@common/constants/nationalities";
 import { MONTH } from "@modules/CreateProfile/helpers/constants";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
+import { defaultFormValues } from "@modules/CreateProfile/helpers/interface";
 
 interface CreateProfilePreviewProps {
   onSubmitClick: ButtonProps["onClick"];
