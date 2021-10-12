@@ -52,16 +52,19 @@
       width: 90vw;
     }
   }
-
   .start-btn {
-    font-size: 2.4rem;
-    margin-top: 6.3rem;
-    height: 7rem;
     width: 20.6rem;
     background-color: $faux-green;
   }
+  .start-btn,
+  .locked-btn {
+    font-size: 2.4rem;
+    margin-top: 6.3rem;
+    height: 7rem;
+  }
   .unit-label-container,
-  .start-btn {
+  .start-btn,
+  .locked-btn {
     margin-left: 4.7rem;
   }
   .bg-filter {
@@ -71,6 +74,22 @@
     width: 100%;
     background: transparent linear-gradient(180deg, #000000 0%, #0000001f 100%)
       0% 0% no-repeat padding-box;
+  }
+  .locked-btn {
+    background: $manatee;
+    width: 18.4rem;
+    color: $white;
+    border: none;
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: none;
+      color: $white;
+    }
+
+    svg {
+      margin-right: 1rem;
+    }
   }
 
   @import "./components/UnitDetails/styles";
