@@ -41,26 +41,23 @@
   }
 }
 
-.select-countries-dropdown {
-  width: 11rem !important;
+// .select-countries-dropdown {
+//   width: 11rem !important;
 
-  .ant-select-item {
-    padding: 0;
-  }
+//   .ant-select-item {
+//     padding: 0;
+//   }
 
-  .ant-select-selection-item {
-    display: flex;
-    justify-content: center;
-  }
+//   // .ant-select-selection-item {
+//   //   display: flex;
+//   // }
 
-  .ant-select-single.ant-select-open .ant-select-selection-item {
-    display: flex;
-    justify-content: center;
-  }
+//   // .ant-select-single.ant-select-open .ant-select-selection-item {
+//   //   display: flex;
+//   // }
 
-  .ant-select-item-option-content {
-    display: flex;
-    justify-content: center;
-    padding-right: 2.8rem !important;
-  }
-}
+//   // .ant-select-item-option-content {
+//   //   display: flex;
+//   //   padding-right: 2.8rem !important;
+//   //  }
+// }

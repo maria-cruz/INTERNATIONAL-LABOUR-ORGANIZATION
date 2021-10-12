@@ -57,13 +57,32 @@
     border: none;
   }
 
-  .form-select-organization-type,
-  .form-select-country {
+  .form-select-organization-type {
     height: 5rem;
   }
 
-  .form-select-country .ant-select-selection-item {
-    display: flex;
-    justify-content: center;
+  .ant-select-selector {
+    height: 5rem;
+  }
+
+  .date-picker-year {
+    height: 5rem;
+  }
+
+  // .form-select-country .ant-select-selection-item {
+  //   display: flex;
+  //   justify-content: center;
+  // }
+
+  //SELECT
+
+  //FLAG
+
+  .flag {
+    padding-bottom: 0;
+  }
+
+  .flag > button {
+    height: 5rem;
   }
 }

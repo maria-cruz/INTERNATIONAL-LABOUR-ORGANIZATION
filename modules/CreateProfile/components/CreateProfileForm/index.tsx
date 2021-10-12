@@ -1,50 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import DatePicker from "antd/lib/date-picker";
 import Image from "next/image";
+import ReactFlagsSelect from "react-flags-select";
+import {
+  DAYS,
+  GENDER,
+  MONTH,
+  SAMPLE_DATA_ORGANIZATION_TYPE,
+} from "@modules/CreateProfile/helpers/constants";
+import nationalities from "i18n-nationality";
+import en from "i18n-nationality/langs/en.json";
+nationalities.registerLocale(en);
+interface CreateProfileFormProps {
+  onFlagSelect: (code: string) => void;
+  flagCode: string;
+  isDisabledEmailAddress: boolean;
+}
 
-const SAMPLE_DATA_ORGANIZATION_TYPE = [
-  {
-    label: "Training/academic institution – Staff",
-    value: 1,
-  },
-  {
-    label: "Training/academic institution – Student/Trainee",
-    value: 2,
-  },
-  {
-    label: "Private Enterprise - Employer",
-    value: 3,
-  },
-  {
-    label: "Private Enterprise - Worker",
-    value: 4,
-  },
-  {
-    label: "Trade union organization",
-    value: 5,
-  },
-  {
-    label: "Employer organization",
-    value: 6,
-  },
-  {
-    label: "Non-governmental Organization",
-    value: 8,
-  },
-];
-
-const CreateProfileForm = ({ data }: any) => {
+const CreateProfileForm = ({
+  onFlagSelect,
+  flagCode,
+  isDisabledEmailAddress,
+}: CreateProfileFormProps) => {
+  const listOfNationalities = nationalities.getNames("en");
+  const nationalitiess = Object.keys(listOfNationalities).map((item) => {
+    listOfNationalities[item];
+  });
+  console.log("national", nationalitiess);
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">
-        <Form.Item label="First name" name="firstName" className="form-width">
+        <Form.Item
+          label="First name"
+          name="firstName"
+          className="form-width"
+          rules={[
+            {
+              required: true,
+              message: "Please input your first name.",
+            },
+          ]}
+        >
           <Input className="form-input" />
         </Form.Item>
-        <Form.Item label="Last name" name="lastName" className="form-width">
+        <Form.Item
+          label="Last name"
+          name="lastName"
+          className="form-width"
+          rules={[
+            {
+              required: true,
+              message: "Please input your last name.",
+            },
+          ]}
+        >
           <Input className="form-input" />
         </Form.Item>
       </div>
@@ -53,6 +66,12 @@ const CreateProfileForm = ({ data }: any) => {
           label="Organization type"
           name="organizationType"
           className="form-width"
+          rules={[
+            {
+              required: true,
+              message: "Please input your organization type.",
+            },
+          ]}
         >
           <Select className="form-select-organization-type">
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
@@ -72,7 +91,7 @@ const CreateProfileForm = ({ data }: any) => {
         </Form.Item>
       </div>
       <Form.Item label="Email address" name="emailAddress">
-        <Input className="form-input" />
+        <Input className="form-input" disabled={isDisabledEmailAddress} />
       </Form.Item>
       <div className="form-column-container">
         <div className="column-container">
@@ -80,24 +99,35 @@ const CreateProfileForm = ({ data }: any) => {
             label="Country"
             name="country"
             className="form-width-country"
+            rules={[
+              {
+                required: true,
+                message: "Please select your country.",
+              },
+            ]}
           >
-            <Select
-              className="form-select-country"
-              dropdownClassName="select-countries-dropdown"
-            >
-              {/* {data.map((item: { code: string; flag: string }) => (
-                <Select.Option value={item.code} key={item.code}>
-                  <Image src={item.flag} height={25} width={35.85} />
-                </Select.Option>
-              ))} */}
-              {/* <Select> */}
-            </Select>
+            <ReactFlagsSelect
+              className="flag"
+              selected={flagCode}
+              onSelect={onFlagSelect}
+              showSelectedLabel={false}
+              showOptionLabel={false}
+              placeholder={" "}
+              selectedSize={35.8}
+              optionsSize={35.8}
+            />
           </Form.Item>
 
           <Form.Item
             label="Your phone number"
             name="phoneNumber"
             className="form-width-phone-number"
+            rules={[
+              {
+                required: true,
+                message: "Please input your phone number.",
+              },
+            ]}
           >
             <Input className="form-input" />
           </Form.Item>
@@ -108,21 +138,26 @@ const CreateProfileForm = ({ data }: any) => {
             name="month"
             className="form-width-month"
           >
-            {/* <Select className="form-select-country" placeholder="Month" /> */}
-            <DatePicker
-              className="form-select-country"
-              picker="month"
-              placeholder="Month"
-            />
+            <Select className="form-select-country" placeholder="Month">
+              {MONTH.map((month: any) => (
+                <Select.Option value={month.value} key={month.value}>
+                  {month.label}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
           <Form.Item name="day" className="form-width-day">
-            {/* <Select className="form-select-country" placeholder="Day" /> */}
-            <DatePicker className="form-select-country" placeholder="Day" />
+            <Select className="form-select-country" placeholder="Day">
+              {DAYS.map((day) => (
+                <Select.Option value={day.value} key={day.value}>
+                  {day.label}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
           <Form.Item name="year" className="form-width-year">
-            {/* <Select className="form-select-country" placeholder="Year" /> */}
             <DatePicker
-              className="form-select-country"
+              className="date-picker-year"
               picker="year"
               placeholder="Year"
             />
@@ -130,26 +165,56 @@ const CreateProfileForm = ({ data }: any) => {
         </div>
       </div>
       <div className="form-column-container margin-bottom">
-        <Form.Item label="Gender" name="gender" className="form-width">
-          <Select
-            className="form-select-organization-type"
-            placeholder="Please Select"
-          />
-        </Form.Item>
-
         <Form.Item
-          label="Nationality"
-          name="organizationName"
+          label="Gender"
+          name="gender"
           className="form-width"
+          rules={[
+            {
+              required: true,
+              message: "Please select your gender.",
+            },
+          ]}
         >
           <Select
             className="form-select-organization-type"
             placeholder="Please Select"
-          />
+          >
+            {GENDER.map((gender) => (
+              <Select.Option value={gender.value} key={gender.value}>
+                {gender.label}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+
+        <Form.Item
+          label="Nationality"
+          name="nationality"
+          className="form-width"
+          rules={[
+            {
+              required: true,
+              message: "Please select your nationality.",
+            },
+          ]}
+        >
+          <Select
+            className="form-select-organization-type"
+            placeholder="Please Select"
+          >
+            {/* {listOfNationalities.map((nationalities) => (
+
+              <Select.Option>{}</Select.Option>
+            ))
+            } */}
+          </Select>
         </Form.Item>
       </div>
       <div className="form-button-container">
-        <Button className="btn-continue">Continue</Button>
+        <Button className="btn-continue" htmlType="submit">
+          Continue
+        </Button>
       </div>
     </div>
   );

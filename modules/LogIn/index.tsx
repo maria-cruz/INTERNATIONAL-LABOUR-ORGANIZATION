@@ -49,6 +49,11 @@ const LogIn = () => {
           return;
         }
 
+        setCookie(null, "user_id", data.user.id, {
+          maxAge: 30 * 24 * 60 * 60,
+          path: "/",
+        });
+
         setCookie(null, "jwt", data.jwt, {
           maxAge: 30 * 24 * 60 * 60,
           path: "/",
