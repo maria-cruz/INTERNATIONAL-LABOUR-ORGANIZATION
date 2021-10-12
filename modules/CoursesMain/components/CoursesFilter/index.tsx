@@ -20,7 +20,9 @@ const CoursesFilter = () => {
   const isCertificate = router.query[QUERY_KEY] === QUERY_VALUE.CERTIFICATE;
 
   const handleFilterClick = (category: string) => () => {
-    router.push(`${PATHNAME}?${QUERY_KEY}=${category}`);
+    router.push(`${PATHNAME}?${QUERY_KEY}=${category}`, undefined, {
+      shallow: true,
+    });
   };
 
   return (
