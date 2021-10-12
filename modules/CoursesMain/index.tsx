@@ -66,7 +66,6 @@ const CoursesMain = () => {
   const sampleData = CARD_DETAILS_SAMPLE.filter((item: CoursesCardProps) => {
     return item.status === router.query.category;
   });
-  console.log(sampleData, "teresa");
 
   const getDataByCategory = (category?: string | string[]) => {
     switch (category) {
