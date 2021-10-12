@@ -10,6 +10,7 @@ import { defaultFormValues } from "@modules/CreateProfile/helpers/interface";
 interface CreateProfilePreviewProps {
   onSubmitClick: ButtonProps["onClick"];
 }
+
 const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
   const [storeData] = usePersistentState("create-profile", defaultFormValues);
 
