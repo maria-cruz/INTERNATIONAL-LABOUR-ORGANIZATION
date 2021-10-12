@@ -36,8 +36,12 @@ const CARD_DETAILS_SAMPLE = [
     status: "",
   },
 ];
+
 const CoursesMain = () => {
   const router = useRouter();
+
+  // const courses2 = useCourses();
+  // console.log(jwt, "lol");
 
   const sampleData = CARD_DETAILS_SAMPLE.filter((item: CoursesCardProps) => {
     return item.status === router.query.category;
