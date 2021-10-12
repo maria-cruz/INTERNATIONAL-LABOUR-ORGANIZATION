@@ -13,7 +13,7 @@ const CreateProfile = () => {
   const [flag, setFlag] = useState("");
 
   const router = useRouter();
-  const [createProfile] = Form.useForm();
+  const [form] = Form.useForm();
   const cookies = parseCookies();
   const fetcher = (url: string) =>
     axios
@@ -79,8 +79,9 @@ const CreateProfile = () => {
 
     console.log("ye");
   };
-  const email = createProfile.getFieldValue("emailAddress");
+  const email = form.getFieldValue("emailAddress");
   const isDisabledEmailAddress = !email;
+
   const initialValues = {
     emailAddress: data?.email,
   };
@@ -98,13 +99,14 @@ const CreateProfile = () => {
               </div>
             </div>
             <Form
-              form={createProfile}
+              form={form}
               layout="vertical"
               onFinish={handleCreateProfileFinish}
               initialValues={initialValues}
               requiredMark={false}
             >
               <CreateProfileForm
+                form={form}
                 flagCode={flag}
                 onFlagSelect={handleFlagSelect}
                 isDisabledEmailAddress={isDisabledEmailAddress}

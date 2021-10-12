@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Form from "antd/lib/form";
+import Form, { FormInstance } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import DatePicker from "antd/lib/date-picker";
+import NationalitiesSelect from "@common/components/NationalitiesSelect";
 import Image from "next/image";
 import ReactFlagsSelect from "react-flags-select";
 import {
@@ -16,12 +17,14 @@ interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
   isDisabledEmailAddress: boolean;
+  form: FormInstance;
 }
 
 const CreateProfileForm = ({
   onFlagSelect,
   flagCode,
   isDisabledEmailAddress,
+  form,
 }: CreateProfileFormProps) => {
   return (
     <div className="create-profile-form-container">
@@ -91,12 +94,6 @@ const CreateProfileForm = ({
             label="Country"
             name="country"
             className="form-width-country"
-            rules={[
-              {
-                required: true,
-                message: "Please select your country.",
-              },
-            ]}
           >
             <ReactFlagsSelect
               className="flag"
@@ -129,6 +126,12 @@ const CreateProfileForm = ({
             label="Date of birthday"
             name="month"
             className="form-width-month"
+            rules={[
+              {
+                required: true,
+                message: "Please select month.",
+              },
+            ]}
           >
             <Select className="form-select-country" placeholder="Month">
               {MONTH.map((month: any) => (
@@ -138,7 +141,16 @@ const CreateProfileForm = ({
               ))}
             </Select>
           </Form.Item>
-          <Form.Item name="day" className="form-width-day">
+          <Form.Item
+            name="day"
+            className="form-width-day"
+            rules={[
+              {
+                required: true,
+                message: "Please select day.",
+              },
+            ]}
+          >
             <Select className="form-select-country" placeholder="Day">
               {DAYS.map((day) => (
                 <Select.Option value={day.value} key={day.value}>
@@ -147,7 +159,16 @@ const CreateProfileForm = ({
               ))}
             </Select>
           </Form.Item>
-          <Form.Item name="year" className="form-width-year">
+          <Form.Item
+            name="year"
+            className="form-width-year"
+            rules={[
+              {
+                required: true,
+                message: "Please select year.",
+              },
+            ]}
+          >
             <DatePicker
               className="date-picker-year"
               picker="year"
@@ -191,16 +212,10 @@ const CreateProfileForm = ({
             },
           ]}
         >
-          <Select
+          <NationalitiesSelect
             className="form-select-organization-type"
             placeholder="Please Select"
-          >
-            {/* {listOfNationalities.map((nationalities) => (
-
-              <Select.Option>{}</Select.Option>
-            ))
-            } */}
-          </Select>
+          />
         </Form.Item>
       </div>
       <div className="form-button-container">
