@@ -1,0 +1,47 @@
+.success-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20rem 0;
+  .success-message-wrapper {
+    max-width: 108rem;
+    text-align: center;
+  }
+
+  .success-message-wrapper svg {
+    margin-bottom: 6rem;
+  }
+
+  .heading-container,
+  .subheading-container {
+    font-weight: 600;
+  }
+  .heading-container {
+    color: $tropical-rain-forest;
+    font-size: 4.2rem;
+    margin-bottom: 4.3rem;
+  }
+
+  .subheading-container {
+    color: $shuttle-gray;
+    font-size: 2.4rem;
+    margin-bottom: 4rem;
+  }
+
+  .description-container {
+    color: $shuttle-gray;
+    font-size: 1.8rem;
+    line-height: 2;
+    margin-bottom: 5rem;
+  }
+
+  .description-container span {
+    font-weight: 600;
+  }
+
+  .success-message-btn {
+    width: 19.6rem;
+    background-color: $faux-green;
+  }
+}
