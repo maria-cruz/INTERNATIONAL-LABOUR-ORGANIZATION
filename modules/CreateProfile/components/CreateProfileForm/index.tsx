@@ -12,9 +12,6 @@ import {
   MONTH,
   SAMPLE_DATA_ORGANIZATION_TYPE,
 } from "@modules/CreateProfile/helpers/constants";
-import nationalities from "i18n-nationality";
-import en from "i18n-nationality/langs/en.json";
-nationalities.registerLocale(en);
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
@@ -26,11 +23,6 @@ const CreateProfileForm = ({
   flagCode,
   isDisabledEmailAddress,
 }: CreateProfileFormProps) => {
-  const listOfNationalities = nationalities.getNames("en");
-  const nationalitiess = Object.keys(listOfNationalities).map((item) => {
-    listOfNationalities[item];
-  });
-  console.log("national", nationalitiess);
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">
