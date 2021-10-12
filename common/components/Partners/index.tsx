@@ -5,12 +5,12 @@ import IloLogo from "@public/images/ilo-logo.png";
 import UnicefLogo from "@public/images/unicef-logo.png";
 import Logo from "@public/images/logo.svg";
 
-const Partners = () => {
+const Partners = ({
+  subheading = "This app was developed by an ILO project with the following partners",
+}) => {
   return (
     <section className="partners-section">
-      <span className="partners-section-title">
-        This app was developed by an ILO project with the following partners
-      </span>
+      <span className="partners-section-title">{subheading}</span>
       <div className="partners-section-logos">
         <div>
           <Image src={Logo} width={189} height={189} />
