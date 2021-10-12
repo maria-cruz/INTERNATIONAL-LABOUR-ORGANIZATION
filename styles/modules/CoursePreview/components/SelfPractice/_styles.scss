@@ -15,6 +15,11 @@
     align-items: center;
     justify-content: center;
     color: $faux-green;
+    &.active,
+    &:hover,
+    &:focus {
+      border-color: $white;
+    }
   }
 
   .download-btn {

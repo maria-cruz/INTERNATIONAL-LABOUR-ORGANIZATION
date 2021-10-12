@@ -1,12 +1,18 @@
 import { IconProps } from "@common/types/IconProps";
+import { fill } from "lodash";
 import React from "react";
 
-const Locked = ({ width = "20", height = "20" }: IconProps) => {
+const Locked = ({
+  width = "20",
+  height = "20",
+  fill = "#000000",
+}: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      fill={fill}
       viewBox="0 0 27.997 36.747"
     >
       <path
