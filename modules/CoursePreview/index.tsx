@@ -1,7 +1,5 @@
 import Layout, { Header } from "@common/components/Layout";
 import Unit1 from "./Unit1";
-import Unit2 from "./Unit2";
-import Unit3 from "./Unit3";
 import React from "react";
 
 const CoursePreview = () => {
