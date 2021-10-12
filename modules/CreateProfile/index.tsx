@@ -5,13 +5,21 @@ import Form from "antd/lib/form";
 import CreateProfileForm from "./components/CreateProfileForm";
 import CreateProfilePreview from "./components/CreateProfilePreview";
 import axios from "axios";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { parseCookies } from "nookies";
 import moment from "moment";
+import usePersistentState from "@common/methods/usePersistentState";
+import {
+  CREATE_PROFILE_FORM_VALUES,
+  defaultFormValues,
+} from "./helpers/interface";
 
 const CreateProfile = () => {
-  const [flag, setFlag] = useState("");
-
+  const [country, setCountry] = useState("LB");
+  const [storeData, setStoreData] = usePersistentState(
+    "create-profile",
+    defaultFormValues
+  );
   const router = useRouter();
   const [form] = Form.useForm();
   const cookies = parseCookies();
@@ -28,23 +36,42 @@ const CreateProfile = () => {
         };
       });
 
-  const { data } = useSWR(
+  const { data } = useSWRImmutable(
     [`${process.env.API_URL}/users/me`, cookies.jwt],
     fetcher
   );
 
-  const handleFlagSelect = (e: string) => {
-    console.log("a", e);
-    setFlag(e);
+  const handleFlagSelect = (country: string) => {
+    setCountry(country);
   };
 
-  const handleCreateProfileFinish = (value: any) => {
+  const handleCreateProfileFinish = (value: CREATE_PROFILE_FORM_VALUES) => {
     const year = moment(value.year).year();
 
-    const birthYear = moment().set({
-      year: year,
+    setStoreData({
+      ...storeData,
+      firstName: value.firstName,
+      lastName: value.lastName,
+      organizationType: value.organizationType,
+      organizationName: value.organizationName,
+      emailAddress: value.emailAddress,
+      country: country,
+      phoneNumber: value.phoneNumber,
+      gender: value.gender,
+      nationality: value.nationality,
       month: value.month,
-      date: value.day,
+      day: value.day,
+      year: year,
+    });
+
+    router?.push(`/create-profile/2/${cookies.user_id}`);
+  };
+
+  const handleSubmitClick = () => {
+    const birthYear = moment().set({
+      year: storeData.year,
+      month: storeData.month,
+      date: storeData.day,
     });
 
     const birthDate = moment(birthYear).toISOString(true);
@@ -53,15 +80,15 @@ const CreateProfile = () => {
       .put(
         `${process.env.API_URL}/users/${cookies.user_id}`,
         {
-          given_name: value.firstName,
-          family_name: value.lastName,
-          organization_type: value.organizationType,
-          organization_name: value.organizationName,
-          email: value.emailAddress,
-          country: flag,
-          phone_number: value.phoneNumber,
-          gender: value.gender,
-          nationality: value.nationality,
+          given_name: storeData.firstName,
+          family_name: storeData.lastName,
+          organization_type: storeData.organizationType,
+          organization_name: storeData.organizationName,
+          email: storeData.emailAddress,
+          country: country,
+          phone_number: storeData.phoneNumber,
+          gender: storeData.gender,
+          nationality: storeData.nationality,
           birth_date: birthDate,
         },
         {
@@ -70,21 +97,29 @@ const CreateProfile = () => {
           },
         }
       )
-      .then(function (response) {
-        console.log("res", response);
+      .then(function () {
+        router?.push("/how-it-works");
       })
       .catch(function (error) {
         console.log("err", error);
       });
-
-    console.log("ye");
   };
-  const email = form.getFieldValue("emailAddress");
-  const isDisabledEmailAddress = !email;
 
   const initialValues = {
-    emailAddress: data?.email,
+    firstName: storeData.firstName,
+    lastName: storeData.lastName,
+    organizationType: storeData.organizationType,
+    organizationName: storeData.organizationName,
+    emailAddress: data?.email ?? storeData.emailAddress,
+    country: country,
+    phoneNumber: storeData.phoneNumber,
+    gender: storeData.gender,
+    nationality: storeData.nationality,
+    month: storeData.month,
+    day: storeData.day,
+    year: storeData.year ? moment(storeData.year, "YYYY") : undefined,
   };
+
   if (!data) return <div>loading</div>;
   return (
     <div className="create-profile-container">
@@ -107,15 +142,16 @@ const CreateProfile = () => {
             >
               <CreateProfileForm
                 form={form}
-                flagCode={flag}
+                flagCode={country}
                 onFlagSelect={handleFlagSelect}
-                isDisabledEmailAddress={isDisabledEmailAddress}
               />
             </Form>
           </div>
         </div>
       )}
-      {router.query.steps === "2" && <CreateProfilePreview />}
+      {router.query.steps === "2" && (
+        <CreateProfilePreview onSubmitClick={handleSubmitClick} />
+      )}
     </div>
   );
 };

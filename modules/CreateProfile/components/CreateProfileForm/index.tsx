@@ -16,16 +16,17 @@ import {
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
-  isDisabledEmailAddress: boolean;
   form: FormInstance;
 }
 
 const CreateProfileForm = ({
   onFlagSelect,
   flagCode,
-  isDisabledEmailAddress,
   form,
 }: CreateProfileFormProps) => {
+  const email = form.getFieldValue("emailAddress");
+  const isDisabledEmailAddress = email !== "";
+
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">

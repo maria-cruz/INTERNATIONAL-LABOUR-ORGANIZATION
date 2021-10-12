@@ -59,7 +59,7 @@ const LogIn = () => {
           path: "/",
         });
 
-        Router.push("/create-profile/1/1");
+        Router.push(`/create-profile/1/${data.user.id}`);
       })
       .catch((error) => {
         console.error("Error:", error);
