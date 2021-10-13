@@ -45,7 +45,9 @@ const CoursesCard = ({
             <div className="card-description">{description}</div>
             <div className="spacer" />
             <div className="card-view-button">
-              <Button type="primary">View Unit</Button>
+              <Button type="primary" href={"/courses/preview"}>
+                View Unit
+              </Button>
             </div>
           </div>
         </div>

@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       unit: `Unit ${courseData?.unit ?? 0}`,
       title: courseData?.title,
       description: courseData?.description,
-      thumbnail: getStrapiImageUrl(courseData?.thumbnail?.url),
+      thumbnail: getStrapiImageUrl(courseData?.thumbnail),
       percentage: percentage,
       status: getProgressStatus(),
     };

@@ -44,6 +44,7 @@ a.ant-btn {
   align-items: center;
   justify-content: center;
   padding-top: 0.5rem !important; // Needs !important to override the !important inside Antd CSS
+  max-width: 10.8rem;
 }
 
 .ant-btn.ant-btn-link {
