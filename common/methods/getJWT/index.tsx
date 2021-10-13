@@ -1,6 +1,6 @@
 import nookies, { parseCookies } from "nookies";
 
-const useJWT = (context: any, isBearer = false) => {
+const getJWT = (context: any, isBearer = false) => {
   const hasNoContext = !context;
   const jwt = hasNoContext ? parseCookies()?.jwt : nookies.get(context)?.jwt;
 
@@ -8,4 +8,4 @@ const useJWT = (context: any, isBearer = false) => {
   return jwt;
 };
 
-export default useJWT;
+export default getJWT;

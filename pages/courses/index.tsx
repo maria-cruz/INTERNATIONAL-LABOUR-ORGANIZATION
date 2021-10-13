@@ -1,6 +1,6 @@
 import CoursesMain from "@modules/CoursesMain";
 import axios from "axios";
-import useJWT from "@common/hooks/useJWT";
+import getJWT from "@common/methods/getJWT";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import getStrapiImageUrl from "@common/utils/getStrapiImageUrl";
 
@@ -19,7 +19,7 @@ interface AllCoursesDataType {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const jwt = await useJWT(ctx, true);
+  const jwt = await getJWT(ctx, true);
 
   const { data: allCoursesData }: AllCoursesDataType = await axios.get(
     `${process.env.API_URL}/units/me?_locale=en`,
