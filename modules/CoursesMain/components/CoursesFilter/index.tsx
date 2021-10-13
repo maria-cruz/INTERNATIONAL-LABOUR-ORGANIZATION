@@ -10,19 +10,19 @@ const CoursesFilter = () => {
   const isCertificate = router.query.category === "certificate";
 
   const handleAllUnitClick = () => {
-    router.push("/courses-main/all", undefined, { scroll: false });
+    router.push("/courses/all");
   };
 
   const handleInProgressClick = () => {
-    router.push("/courses-main/in-progress", undefined, { scroll: false });
+    router.push("/courses/in-progress");
   };
 
   const handleCompleteClick = () => {
-    router.push("/courses-main/completed", undefined, { scroll: false });
+    router.push("/courses/completed");
   };
 
   const handleCertificateClick = () => {
-    router.push("/courses-main/certificate", undefined, { scroll: false });
+    router.push("/courses/certificate");
   };
   return (
     <div className="courses-filter-container">
