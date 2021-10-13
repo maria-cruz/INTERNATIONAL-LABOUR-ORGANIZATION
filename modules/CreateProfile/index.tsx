@@ -46,8 +46,8 @@ const CreateProfile = () => {
   };
 
   const handleCreateProfileFinish = (value: CREATE_PROFILE_FORM_VALUES) => {
-    const year = moment(value.year).year();
-
+    const year = moment(value.birthDate.year).year();
+    console.log("value", value);
     setStoreData({
       ...storeData,
       firstName: value.firstName,
@@ -59,8 +59,8 @@ const CreateProfile = () => {
       phoneNumber: value.phoneNumber,
       gender: value.gender,
       nationality: value.nationality,
-      month: value.month,
-      day: value.day,
+      month: value.birthDate.month,
+      day: value.birthDate.day,
       year: year,
     });
 
@@ -115,9 +115,14 @@ const CreateProfile = () => {
     phoneNumber: storeData.phoneNumber,
     gender: storeData.gender,
     nationality: storeData.nationality,
-    month: storeData.month,
-    day: storeData.day,
-    year: storeData.year ? moment(storeData.year, "YYYY") : undefined,
+    birthDate: {
+      month: storeData.month,
+      day: storeData.day,
+      year: storeData.year ? moment(storeData.year, "YYYY") : undefined,
+    },
+    // month: storeData.month,
+    // day: storeData.day,
+    // year: storeData.year ? moment(storeData.year, "YYYY") : undefined,
   };
 
   if (!data) return <div>loading</div>;

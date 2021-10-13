@@ -64,6 +64,10 @@
     height: 5rem;
   }
 
+  .form-width-day > .ant-select-selector {
+    width: 10.5rem;
+  }
+
   .date-picker-year {
     height: 5rem;
   }
@@ -76,5 +80,11 @@
 
   .flag > button {
     height: 5rem;
+  }
+
+  //ANTD
+
+  .ant-form-item-explain-error > div {
+    height: 1rem;
   }
 }
