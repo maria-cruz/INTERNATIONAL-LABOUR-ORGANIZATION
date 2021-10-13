@@ -3,12 +3,13 @@ import Image from "next/image";
 import Progress from "antd/lib/progress";
 import Button from "antd/lib/button";
 import Locked from "@common/components/Icons/Locked";
+import CardSampleImage from "@public/images/card-sample-3.jpg";
 
 export interface CoursesCardProps {
   unit?: string;
   title?: string;
   description?: string;
-  logo: StaticImageData | string;
+  thumbnail: StaticImageData | string;
   percentage?: number;
   status?: string;
 }
@@ -16,19 +17,19 @@ const CoursesCard = ({
   unit = "",
   title = "",
   description = "",
-  logo,
+  thumbnail = CardSampleImage,
   percentage = 0,
 }: CoursesCardProps) => {
   const isLocked = percentage === 0;
+  const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
   return (
     <div className="course-card">
       <div className="card-image-container">
         <Image
-          src={logo}
+          src={imageSrc}
           width={553}
           height={303}
           layout="fixed"
-          placeholder="blur"
           alt="courses-image"
         />
       </div>

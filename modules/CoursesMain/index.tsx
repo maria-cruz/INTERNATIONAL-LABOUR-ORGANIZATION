@@ -58,26 +58,24 @@ const TITLE_DESCRIPTION = [
   },
 ];
 
-const CoursesMain = ({ allCoursesData }: any) => {
+const CoursesMain = ({ allCourseCardsData }: any) => {
   const router = useRouter();
-
-  console.log(allCoursesData);
 
   const data = TITLE_DESCRIPTION.filter((item) => {
     return item.route === router.query.category;
   });
 
-  const sampleData = CARD_DETAILS_SAMPLE.filter((item: CoursesCardProps) => {
+  const sampleData = allCourseCardsData.filter((item: CoursesCardProps) => {
     return item.status === router.query.category;
   });
 
   const getDataByCategory = (category?: string | string[]) => {
     switch (category) {
       case "all": {
-        return CARD_DETAILS_SAMPLE;
+        return allCourseCardsData;
       }
       case "certificate": {
-        return CARD_DETAILS_SAMPLE;
+        return allCourseCardsData;
       }
       default:
         return sampleData;
@@ -95,7 +93,7 @@ const CoursesMain = ({ allCoursesData }: any) => {
         ))}
         <div className="courses-main-card-container">
           {getDataByCategory(router?.query?.category).map(
-            (item: CoursesCardProps, index) => (
+            (item: CoursesCardProps, index: number) => (
               <div
                 className={`${
                   router.query.category === "certificate" ? "courses-card" : ""
@@ -106,7 +104,7 @@ const CoursesMain = ({ allCoursesData }: any) => {
                   unit={item.unit}
                   title={item.title}
                   description={item.description}
-                  logo={item.logo}
+                  thumbnail={item.thumbnail}
                   percentage={item.percentage}
                 />
               </div>
