@@ -16,9 +16,8 @@
   .form-container {
     width: 100%;
     max-width: 92.6rem;
-    // height: 84.5rem;
     background: $white 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 16px $black-29;
+    box-shadow: 0 0.3rem 1.6rem $black-29;
     border-radius: 0.4rem;
     opacity: 1;
     padding: 5rem;
@@ -38,29 +37,5 @@
   .description-container {
     font-size: 1.8rem;
     color: $shuttle-gray;
-  }
-}
-
-.select-countries-dropdown {
-  width: 11rem !important;
-
-  .ant-select-item {
-    padding: 0;
-  }
-
-  .ant-select-selection-item {
-    display: flex;
-    justify-content: center;
-  }
-
-  .ant-select-single.ant-select-open .ant-select-selection-item {
-    display: flex;
-    justify-content: center;
-  }
-
-  .ant-select-item-option-content {
-    display: flex;
-    justify-content: center;
-    padding-right: 2.8rem !important;
   }
 }
