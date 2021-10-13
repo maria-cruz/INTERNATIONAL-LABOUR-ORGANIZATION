@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import LogoFooter from "@public/images/logo-footer.svg";
 
 const Footer = () => {
   return (
     <footer className={styles["footer"]}>
       <div>
-        <Image src="/images/logo.svg" width={110} height={110} />
+        <Image src={LogoFooter} width={103} height={86} alt="logo.svg" />
       </div>
       <div className={styles["description-container"]}>
         <span className={styles["description"]}>

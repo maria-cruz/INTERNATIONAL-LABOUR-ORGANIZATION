@@ -1,17 +1,19 @@
 .log-in-section {
-  margin-bottom: 30rem;
   .background {
     position: fixed !important; // Override for nextjs/Image position. Can't change without !important
     z-index: -1;
     width: 100%;
-    height: 125vh;
+    height: 101rem;
   }
 
   .banner-container {
     display: flex;
     padding: 13.2rem 15rem 13.2rem 10rem;
     justify-content: space-between;
-
+    background: transparent
+      linear-gradient(179deg, $white 0%, $transparent 100%) 0% 0% no-repeat
+      padding-box;
+    height: 95.9rem;
     @include view-size(tab-land) {
       display: flex;
       row-gap: 5rem;
@@ -54,6 +56,7 @@
     background: $white;
     padding: 4.8rem 5rem 5.4rem 4.8rem;
     width: 62.5rem;
+    max-height: 51.9rem;
 
     @include view-size(tab-land) {
       width: 100%;

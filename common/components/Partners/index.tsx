@@ -3,7 +3,7 @@ import Image from "next/image";
 import AgencyLogo from "@public/images/italian-agency-logo.png";
 import IloLogo from "@public/images/ilo-logo.png";
 import UnicefLogo from "@public/images/unicef-logo.png";
-import Logo from "@public/images/logo.svg";
+import Logo from "@public/images/supporters-logo.svg";
 
 const Partners = ({
   subheading = "This app was developed by an ILO project with the following partners",

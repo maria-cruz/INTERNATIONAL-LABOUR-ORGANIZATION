@@ -7,7 +7,7 @@ import { setCookie } from "nookies";
 import Router from "next/router";
 import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
-import HomeBackground from "@public/images/group-cheerful-friends.jpg";
+import HomeBackground from "@public/images/bg-banner.jpg";
 
 interface HandleLoginFinishProps {
   email: string;
@@ -72,6 +72,7 @@ const LogIn = () => {
         <div className="background">
           <Image
             src={HomeBackground}
+            alt="bg-banner.jpg"
             layout="fill"
             objectFit="cover"
             objectPosition="center"
@@ -86,6 +87,7 @@ const LogIn = () => {
               <span className="emphasis-text"> {t("work")} </span>
             </div>
           </div>
+
           <div className="log-in-container">
             <div className="log-in-title">{t("log-in")}</div>
             <div className="login-container">

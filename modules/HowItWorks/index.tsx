@@ -12,13 +12,13 @@ const HowItWorks = () => {
         <div className="how-it-works-icon-and-description-container">
           <div className="icon-container">
             <div className="icon-wrapper">
-              <Flag fill="#CCCCCC" height="73" width="71" />
+              <Flag fill="#EE161F" height="73" width="71" />
             </div>
             <div className="icon-wrapper">
-              <OpenBook fill="#CCCCCC" height="76.5" width="78" />
+              <OpenBook fill="#EE161F" height="76.5" width="78" />
             </div>
             <div className="icon-wrapper">
-              <Trophy fill="#CCCCCC" height="76.5" width="78" />
+              <Trophy fill="#EE161F" height="76.5" width="78" />
             </div>
           </div>
           <div className="divider-container">
