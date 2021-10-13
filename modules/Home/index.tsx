@@ -5,7 +5,8 @@ import Layout, { Header } from "@common/components/Layout";
 import Banner from "@modules/Home/components/Banner";
 import Partners from "@common/components/Partners";
 import useTranslation from "next-translate/useTranslation";
-import HomeBanner from "@public/images/group-cheerful-friends.jpg";
+import HomeBanner from "@public/images/bg-banner.jpg";
+import IloDevices from "@public/images/ilo-devices.jpg";
 const Home = () => {
   const { t } = useTranslation("home");
 
@@ -13,6 +14,7 @@ const Home = () => {
     <Layout header={<Header title={"Header"} />}>
       <div className={styles["background"]}>
         <Image
+          alt="bg-banner.jpg"
           src={HomeBanner}
           layout="fill"
           objectFit="cover"
@@ -20,8 +22,9 @@ const Home = () => {
           placeholder="blur"
         />
       </div>
-
-      <Banner />
+      <div className={styles["bg-filter"]}>
+        <Banner />
+      </div>
       <Partners />
 
       <section className={styles["steps-section"]}>
@@ -87,7 +90,13 @@ const Home = () => {
 
       <section className={styles["gadgets-section"]}>
         <div>
-          <Image src="/images/ilo-gadgets.jpg" width={1920} height={1080} />
+          <Image
+            src={IloDevices}
+            width={1920}
+            height={1258}
+            alt="ilo-devices.jpg"
+            placeholder="blur"
+          />
         </div>
       </section>
     </Layout>

@@ -5,6 +5,7 @@ import Button from "antd/lib/button";
 import Select from "antd/lib/select";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Logo from "@public/images/logo.svg";
 const { Option } = Select;
 interface HeaderProps {
   title?: string;
@@ -32,7 +33,7 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
       <div className={styles["left-container"]}>
         <NavLink href="/">
           <div className={styles["logo-container"]}>
-            <Image src="/images/logo.svg" width={110} height={110} />
+            <Image src={Logo} width={495} height={79} alt="logo.svg" />
           </div>
         </NavLink>
       </div>
