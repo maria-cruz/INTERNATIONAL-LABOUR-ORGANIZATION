@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Form, { FormInstance } from "antd/lib/form";
-import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import { DAYS, MONTH } from "@modules/CreateProfile/helpers/constants";
 import DatePicker from "antd/lib/date-picker";
@@ -27,7 +25,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
-  const handleMonthChange = (e: string) => {
+  const handleMonthChange = (e: any) => {
     if (!("month" in value)) {
       setMonth(e);
     }
@@ -36,7 +34,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
-  const handleDayChange = (e: string) => {
+  const handleDayChange = (e: any) => {
     if (!("day" in value)) {
       setDay(e);
     }
