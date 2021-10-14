@@ -7,10 +7,14 @@ import LogoFooter from "@public/images/logo-footer.svg";
 const Footer = () => {
   return (
     <footer className={styles["footer"]}>
-      <div>
-        <Image src={LogoFooter} width={103} height={86} alt="logo.svg" />
-      </div>
       <div className={styles["description-container"]}>
+        <Image
+          className={styles["footer-image"]}
+          src={LogoFooter}
+          width={103}
+          height={86}
+          alt="logo.svg"
+        />
         <span className={styles["description"]}>
           Huqouqi fil 3amal is a learning application developed through an ILO
           project in partnership with government and NGO stakeholders across
@@ -20,6 +24,7 @@ const Footer = () => {
           knowledge of NGOs providing vocational training.
         </span>
       </div>
+
       <div className={styles["menu-group"]}>
         <div className={styles["menu"]}>
           <span className={styles["menu-title"]}>General</span>
