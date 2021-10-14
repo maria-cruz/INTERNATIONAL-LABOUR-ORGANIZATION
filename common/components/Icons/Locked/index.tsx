@@ -12,7 +12,6 @@ const Locked = ({
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
-      fill={fill}
       viewBox="0 0 27.997 36.747"
     >
       <path
