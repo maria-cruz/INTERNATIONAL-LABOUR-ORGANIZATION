@@ -25,7 +25,6 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
-  console.log("aaa", value.month);
   const handleMonthChange = (e: any) => {
     if (!("month" in value)) {
       setMonth(e);
@@ -61,7 +60,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         className="form-select-country"
         placeholder="Month"
         onChange={handleMonthChange}
-        value={value.month || month}
+        value={month || value.month}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
         {MONTH.map((month: any) => (
