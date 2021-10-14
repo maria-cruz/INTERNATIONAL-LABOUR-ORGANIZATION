@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextTranslate = require("next-translate");
 const path = require("path");
+const API_URL = process.env.API_URL ?? "";
+const API_DOMAIN = process.env.API_DOMAIN ?? "";
 
 module.exports = nextTranslate({
   reactStrictMode: true,
@@ -13,9 +15,9 @@ module.exports = nextTranslate({
     `,
   },
   images: {
-    domains: ["restcountries.eu"],
+    domains: [API_DOMAIN],
   },
   env: {
-    API_URL: process.env.API_URL,
+    API_URL: API_URL,
   },
 });

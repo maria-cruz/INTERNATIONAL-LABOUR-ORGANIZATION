@@ -3,13 +3,14 @@ import Image from "next/image";
 import Progress from "antd/lib/progress";
 import Button from "antd/lib/button";
 import Locked from "@common/components/Icons/Locked";
+import CardSampleImage from "@public/images/card-sample-3.jpg";
 import router from "next/router";
 
 export interface CoursesCardProps {
   unit?: string;
   title?: string;
   description?: string;
-  logo: StaticImageData | string;
+  thumbnail: StaticImageData | string;
   percentage?: number;
   status?: string;
 }
@@ -17,11 +18,12 @@ const CoursesCard = ({
   unit = "",
   title = "",
   description = "",
-  logo,
+  thumbnail = CardSampleImage,
   percentage = 0,
 }: CoursesCardProps) => {
   const isLocked = percentage === 0;
-  const HandleViewUnit1Click = () => {
+  const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
+  const handleViewUnit1Click = () => {
     router.push("/courses/preview");
   };
 
@@ -29,11 +31,10 @@ const CoursesCard = ({
     <div className="course-card">
       <div className="card-image-container">
         <Image
-          src={logo}
+          src={imageSrc}
           width={553}
           height={303}
           layout="fixed"
-          placeholder="blur"
           alt="courses-image"
         />
       </div>
@@ -49,7 +50,7 @@ const CoursesCard = ({
             <div className="card-description">{description}</div>
             <div className="spacer" />
             <div className="card-view-button">
-              <Button type="primary" onClick={HandleViewUnit1Click}>
+              <Button type="primary" onClick={handleViewUnit1Click}>
                 View Unit
               </Button>
             </div>

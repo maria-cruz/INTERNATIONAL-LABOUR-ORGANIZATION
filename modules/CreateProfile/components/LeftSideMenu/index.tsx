@@ -1,7 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 const LeftSideMenu = () => {
+  const router = useRouter();
+
+  const isActiveStepOne = router.query.steps === "1";
+  const isActiveStepTwo = router.query.steps === "2";
+
   return (
     <div className="menu-step-container">
       <div className="menu-step">
@@ -9,18 +16,38 @@ const LeftSideMenu = () => {
           <Image src="/images/logo-footer.svg" width={120} height={100} />
         </div>
         <div className="steps-container">
-          <Link href="/create-profile/1/id">
-            <div className="step-one-container">
-              <div className="number-container">1</div>
-              <div className="text-container">Create your profile</div>
+          <div className="step-one-container">
+            <div
+              className={`${
+                isActiveStepOne ? "-active-number" : " number-container"
+              }  `}
+            >
+              1
             </div>
-          </Link>
-          <Link href="/create-profile/2/id">
-            <div className="step-two-container">
-              <div className="number-container">2</div>
-              <div className="text-container">Profile preview</div>
+            <div
+              className={`${
+                isActiveStepOne ? "-active-text" : "text-container"
+              }  `}
+            >
+              Create your profile
             </div>
-          </Link>{" "}
+          </div>
+          <div className="step-two-container">
+            <div
+              className={`${
+                isActiveStepTwo ? "-active-number" : " number-container"
+              }  `}
+            >
+              2
+            </div>
+            <div
+              className={`${
+                isActiveStepTwo ? "-active-text" : " text-container"
+              }  `}
+            >
+              Profile preview
+            </div>
+          </div>
         </div>
 
         <div className="menu-title-container">

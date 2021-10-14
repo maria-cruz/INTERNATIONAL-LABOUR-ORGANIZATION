@@ -8,9 +8,11 @@ export interface CREATE_PROFILE_FORM_VALUES {
   phoneNumber: string;
   gender: string;
   nationality: string;
-  year: string;
-  day: string;
-  month: string;
+  birthDate: {
+    year: string;
+    day: string;
+    month: string;
+  };
 }
 
 export const defaultFormValues = {
@@ -23,5 +25,7 @@ export const defaultFormValues = {
   phoneNumber: "",
   gender: "",
   nationality: "",
-  birth_date: "",
+  month: "",
+  day: "",
+  year: "",
 };
