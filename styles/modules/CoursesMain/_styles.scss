@@ -7,7 +7,8 @@
   background: $whisper;
   .courses-main-card-container {
     display: flex;
-    gap: 5rem;
+    gap: 3rem;
+    flex-wrap: wrap;
   }
 
   .courses-description {
