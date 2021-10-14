@@ -11,8 +11,8 @@ interface BirthDateProps {
 }
 
 const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
-  const [month, setMonth] = useState("");
-  const [day, setDay] = useState("");
+  const [month, setMonth] = useState();
+  const [day, setDay] = useState();
   const [year, setYear] = useState<Moment | null>();
 
   const triggerChange = (changedValue: {}) => {
@@ -25,6 +25,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
+  console.log("aaa", value.month);
   const handleMonthChange = (e: any) => {
     if (!("month" in value)) {
       setMonth(e);
