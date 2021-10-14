@@ -16,6 +16,7 @@ import {
 
 const CreateProfile = () => {
   const [country, setCountry] = useState("LB");
+  const [isActive, setIsActive] = useState(false);
   const [storeData, setStoreData] = usePersistentState(
     "create-profile",
     defaultFormValues
@@ -105,6 +106,38 @@ const CreateProfile = () => {
       });
   };
 
+  const onFieldsChange = (
+    _change: any,
+    allValues: CREATE_PROFILE_FORM_VALUES
+  ) => {
+    const isFirstName = allValues.firstName !== "";
+    const isLastName = allValues.lastName !== "";
+    const isOrganizationType = allValues.organizationType !== "";
+    const isMonth = allValues.birthDate.month !== "";
+    const isDay = allValues.birthDate.day !== "";
+    const isYear = allValues.birthDate.year !== "";
+    const isGender = allValues.gender !== "";
+    const isNationality = allValues.nationality !== "";
+
+    const hasValues =
+      isFirstName &&
+      isLastName &&
+      isOrganizationType &&
+      isMonth &&
+      isDay &&
+      isYear &&
+      isGender &&
+      isNationality;
+
+    if (hasValues) {
+      setIsActive(true);
+    }
+
+    if (!hasValues) {
+      setIsActive(false);
+    }
+  };
+
   const initialValues = {
     firstName: storeData.firstName,
     lastName: storeData.lastName,
@@ -120,9 +153,6 @@ const CreateProfile = () => {
       day: storeData.day,
       year: storeData.year ? moment(storeData.year, "YYYY") : undefined,
     },
-    // month: storeData.month,
-    // day: storeData.day,
-    // year: storeData.year ? moment(storeData.year, "YYYY") : undefined,
   };
 
   if (!data) return <div>loading</div>;
@@ -145,11 +175,13 @@ const CreateProfile = () => {
               onFinish={handleCreateProfileFinish}
               initialValues={initialValues}
               requiredMark={false}
+              onValuesChange={onFieldsChange}
             >
               <CreateProfileForm
                 form={form}
                 flagCode={country}
                 onFlagSelect={handleFlagSelect}
+                isActiveSubmit={isActive}
               />
             </Form>
           </div>

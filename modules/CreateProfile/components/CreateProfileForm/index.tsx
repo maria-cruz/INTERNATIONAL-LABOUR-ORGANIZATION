@@ -17,12 +17,14 @@ interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
   form: FormInstance;
+  isActiveSubmit: boolean;
 }
 
 const CreateProfileForm = ({
   onFlagSelect,
   flagCode,
   form,
+  isActiveSubmit,
 }: CreateProfileFormProps) => {
   const email = form.getFieldValue("emailAddress");
   const isDisabledEmailAddress = email !== "";
@@ -39,6 +41,7 @@ const CreateProfileForm = ({
     return Promise.resolve();
   };
 
+  console.log(isActiveSubmit ? "primary" : "default");
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">
@@ -179,7 +182,11 @@ const CreateProfileForm = ({
         </Form.Item>
       </div>
       <div className="form-button-container">
-        <Button className="btn-continue" htmlType="submit">
+        <Button
+          className={`${isActiveSubmit ? "" : "btn-continue"}`}
+          htmlType="submit"
+          type="primary"
+        >
           Continue
         </Button>
       </div>
