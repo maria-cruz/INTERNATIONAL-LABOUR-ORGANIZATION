@@ -89,15 +89,13 @@ const Home = () => {
       </section>
 
       <section className={styles["gadgets-section"]}>
-        <div>
-          <Image
-            src={IloDevices}
-            width={1920}
-            height={1258}
-            alt="ilo-devices.jpg"
-            placeholder="blur"
-          />
-        </div>
+        <Image
+          src={IloDevices}
+          width={1920}
+          height={1258}
+          alt="ilo-devices.jpg"
+          placeholder="blur"
+        />
       </section>
     </Layout>
   );

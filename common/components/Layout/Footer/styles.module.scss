@@ -3,8 +3,8 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  background: $shuttle-gray;
-  height: 35.1rem;
+  background: $dark-gray;
+  height: 39.1rem;
   width: 100%;
   padding: 10rem;
   overflow: hidden;
@@ -12,14 +12,15 @@
   font-size: 1.8rem;
 
   .description-container {
-    max-width: 74.8rem;
-    max-height: 12.6rem;
+    display: flex;
+    column-gap: 5rem;
+    align-items: flex-start;
   }
 
-  .description-container .description {
-    line-height: 4rem;
+  .description {
+    max-width: 83.1rem;
+    line-height: 2.3;
   }
-
   .menu-group {
     display: flex;
     align-items: flex-start;
