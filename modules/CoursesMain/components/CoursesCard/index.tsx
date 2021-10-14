@@ -3,6 +3,7 @@ import Image from "next/image";
 import Progress from "antd/lib/progress";
 import Button from "antd/lib/button";
 import Locked from "@common/components/Icons/Locked";
+import router from "next/router";
 
 export interface CoursesCardProps {
   unit?: string;
@@ -20,6 +21,10 @@ const CoursesCard = ({
   percentage = 0,
 }: CoursesCardProps) => {
   const isLocked = percentage === 0;
+  const HandleViewUnit1Click = () => {
+    router.push("/courses/preview");
+  };
+
   return (
     <div className="course-card">
       <div className="card-image-container">
@@ -44,7 +49,9 @@ const CoursesCard = ({
             <div className="card-description">{description}</div>
             <div className="spacer" />
             <div className="card-view-button">
-              <Button type="primary">View Unit</Button>
+              <Button type="primary" onClick={HandleViewUnit1Click}>
+                View Unit
+              </Button>
             </div>
           </div>
         </div>
