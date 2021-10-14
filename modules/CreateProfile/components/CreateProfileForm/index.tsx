@@ -1,36 +1,55 @@
 import React, { useState } from "react";
-import Form, { FormInstance } from "antd/lib/form";
+import Form, { FormInstance, RuleObject } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import DatePicker from "antd/lib/date-picker";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
-import ReactFlagsSelect from "react-flags-select";
+import ReactFlagsSelect, { Bi } from "react-flags-select";
 import {
   DAYS,
   GENDER,
   MONTH,
   SAMPLE_DATA_ORGANIZATION_TYPE,
 } from "@modules/CreateProfile/helpers/constants";
+import BirthDate from "../BirthDate";
+import DownArrow from "@common/components/Icons/DownArrow";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
   form: FormInstance;
+  isActiveSubmit: boolean;
 }
 
 const CreateProfileForm = ({
   onFlagSelect,
   flagCode,
   form,
+  isActiveSubmit,
 }: CreateProfileFormProps) => {
   const email = form.getFieldValue("emailAddress");
   const isDisabledEmailAddress = email !== "";
+
+  const checkPrice = (
+    _: RuleObject,
+    value: { month: string; day: string; year: string }
+  ) => {
+    if (
+      value.month === undefined ||
+      value.day === undefined ||
+      value.year === undefined
+    ) {
+      return Promise.reject("Please select date");
+    }
+
+    return Promise.resolve();
+  };
 
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">
         <Form.Item
-          label="First name"
+          label="First name*"
           name="firstName"
           className="form-width"
           rules={[
@@ -43,7 +62,7 @@ const CreateProfileForm = ({
           <Input className="form-input" />
         </Form.Item>
         <Form.Item
-          label="Last name"
+          label="Last name*"
           name="lastName"
           className="form-width"
           rules={[
@@ -58,7 +77,7 @@ const CreateProfileForm = ({
       </div>
       <div className="form-column-container">
         <Form.Item
-          label="Organization type"
+          label="Organization type*"
           name="organizationType"
           className="form-width"
           rules={[
@@ -68,7 +87,10 @@ const CreateProfileForm = ({
             },
           ]}
         >
-          <Select className="form-select-organization-type">
+          <Select
+            className="form-select-organization-type"
+            suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
+          >
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
               <Select.Option value={item.value} key={item.value}>
                 {item.label}
@@ -85,7 +107,7 @@ const CreateProfileForm = ({
           <Input className="form-input" />
         </Form.Item>
       </div>
-      <Form.Item label="Email address" name="emailAddress">
+      <Form.Item label="Email address*" name="emailAddress">
         <Input className="form-input" disabled={isDisabledEmailAddress} />
       </Form.Item>
       <div className="form-column-container">
@@ -111,75 +133,22 @@ const CreateProfileForm = ({
             label="Your phone number"
             name="phoneNumber"
             className="form-width-phone-number"
-            rules={[
-              {
-                required: true,
-                message: "Please input your phone number.",
-              },
-            ]}
           >
             <Input className="form-input" />
           </Form.Item>
         </div>
-        <div className="column-container">
-          <Form.Item
-            label="Date of birthday"
-            name="month"
-            className="form-width-month"
-            rules={[
-              {
-                required: true,
-                message: "Please select month.",
-              },
-            ]}
-          >
-            <Select className="form-select-country" placeholder="Month">
-              {MONTH.map((month: any) => (
-                <Select.Option value={month.value} key={month.value}>
-                  {month.label}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name="day"
-            className="form-width-day"
-            rules={[
-              {
-                required: true,
-                message: "Please select day.",
-              },
-            ]}
-          >
-            <Select className="form-select-country" placeholder="Day">
-              {DAYS.map((day) => (
-                <Select.Option value={day.value} key={day.value}>
-                  {day.label}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name="year"
-            className="form-width-year"
-            rules={[
-              {
-                required: true,
-                message: "Please select year.",
-              },
-            ]}
-          >
-            <DatePicker
-              className="date-picker-year"
-              picker="year"
-              placeholder="Year"
-            />
-          </Form.Item>
-        </div>
+        <Form.Item
+          label="Date of birthday*"
+          name="birthDate"
+          className="form-width-month"
+          rules={[{ validator: checkPrice }]}
+        >
+          <BirthDate />
+        </Form.Item>
       </div>
       <div className="form-column-container margin-bottom">
         <Form.Item
-          label="Gender"
+          label="Gender*"
           name="gender"
           className="form-width"
           rules={[
@@ -192,6 +161,7 @@ const CreateProfileForm = ({
           <Select
             className="form-select-organization-type"
             placeholder="Please Select"
+            suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
           >
             {GENDER.map((gender) => (
               <Select.Option value={gender.value} key={gender.value}>
@@ -202,7 +172,7 @@ const CreateProfileForm = ({
         </Form.Item>
 
         <Form.Item
-          label="Nationality"
+          label="Nationality*"
           name="nationality"
           className="form-width"
           rules={[
@@ -219,7 +189,11 @@ const CreateProfileForm = ({
         </Form.Item>
       </div>
       <div className="form-button-container">
-        <Button className="btn-continue" htmlType="submit">
+        <Button
+          className={`${isActiveSubmit ? "" : "btn-continue"}`}
+          htmlType="submit"
+          type="primary"
+        >
           Continue
         </Button>
       </div>
