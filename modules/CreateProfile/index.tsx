@@ -48,7 +48,6 @@ const CreateProfile = () => {
 
   const handleCreateProfileFinish = (value: CREATE_PROFILE_FORM_VALUES) => {
     const year = moment(value.birthDate.year).year();
-    console.log("value", value);
     setStoreData({
       ...storeData,
       firstName: value.firstName,
@@ -107,7 +106,7 @@ const CreateProfile = () => {
   };
 
   const onFieldsChange = (
-    _change: any,
+    _change: {},
     allValues: CREATE_PROFILE_FORM_VALUES
   ) => {
     const isFirstName = allValues.firstName !== "";

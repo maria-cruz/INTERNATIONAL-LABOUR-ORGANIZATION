@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Form, { FormInstance } from "antd/lib/form";
+import Form, { FormInstance, RuleObject } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
@@ -30,7 +30,10 @@ const CreateProfileForm = ({
   const email = form.getFieldValue("emailAddress");
   const isDisabledEmailAddress = email !== "";
 
-  const checkPrice = (_: any, value: any) => {
+  const checkPrice = (
+    _: RuleObject,
+    value: { month: string; day: string; year: string }
+  ) => {
     if (
       value.month === undefined ||
       value.day === undefined ||
