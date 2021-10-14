@@ -13,6 +13,7 @@ import {
   SAMPLE_DATA_ORGANIZATION_TYPE,
 } from "@modules/CreateProfile/helpers/constants";
 import BirthDate from "../BirthDate";
+import DownArrow from "@common/components/Icons/DownArrow";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
@@ -41,7 +42,6 @@ const CreateProfileForm = ({
     return Promise.resolve();
   };
 
-  console.log(isActiveSubmit ? "primary" : "default");
   return (
     <div className="create-profile-form-container">
       <div className="form-column-container">
@@ -84,7 +84,10 @@ const CreateProfileForm = ({
             },
           ]}
         >
-          <Select className="form-select-organization-type">
+          <Select
+            className="form-select-organization-type"
+            suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
+          >
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
               <Select.Option value={item.value} key={item.value}>
                 {item.label}
@@ -155,6 +158,7 @@ const CreateProfileForm = ({
           <Select
             className="form-select-organization-type"
             placeholder="Please Select"
+            suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
           >
             {GENDER.map((gender) => (
               <Select.Option value={gender.value} key={gender.value}>

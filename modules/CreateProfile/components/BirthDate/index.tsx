@@ -4,20 +4,20 @@ import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import { DAYS, MONTH } from "@modules/CreateProfile/helpers/constants";
 import DatePicker from "antd/lib/date-picker";
+import DownArrow from "@common/components/Icons/DownArrow";
+import { Moment } from "moment";
 
 interface BirthDateProps {
   value?: any;
-  onChange?: any;
+  onChange?: ({}) => void;
 }
 
 const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
-  const [month, setMonth] = useState();
-  const [day, setDay] = useState();
-  const [year, setYear] = useState();
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState<Moment | null>();
 
-  const triggerChange = (changedValue: any) => {
-    console.log("change", month);
-
+  const triggerChange = (changedValue: {}) => {
     onChange?.({
       month,
       day,
@@ -27,7 +27,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
-  const handleMonthChange = (e: any) => {
+  const handleMonthChange = (e: string) => {
     if (!("month" in value)) {
       setMonth(e);
     }
@@ -36,7 +36,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
-  const handleDayChange = (e: any) => {
+  const handleDayChange = (e: string) => {
     if (!("day" in value)) {
       setDay(e);
     }
@@ -46,7 +46,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     });
   };
 
-  const handleYearChange = (e: any) => {
+  const handleYearChange = (e: Moment | null) => {
     if (!("year" in value)) {
       setYear(e);
     }
@@ -63,6 +63,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         placeholder="Month"
         onChange={handleMonthChange}
         value={value.month || month}
+        suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
         {MONTH.map((month: any) => (
           <Select.Option value={month.value} key={month.value}>
@@ -76,6 +77,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         placeholder="Day"
         onChange={handleDayChange}
         value={value.day || day}
+        suffixIcon={<DownArrow width={"1.5rem"} height={"1.5rem"} />}
       >
         {DAYS.map((day) => (
           <Select.Option value={day.value} key={day.value}>
@@ -90,6 +92,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         placeholder="Year"
         onChange={handleYearChange}
         value={value.year || year}
+        suffixIcon={<DownArrow width={"1.5rem"} height={"1.5rem"} />}
       />
     </div>
   );
