@@ -1,0 +1,39 @@
+.contact-success-container {
+  max-width: 62.4rem;
+  height: 63.2rem;
+  padding: 5rem;
+  background: $white;
+  box-shadow: 0 0.3rem 1.6rem $black-29;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .success-description {
+    text-align: center;
+    max-width: 49.4rem;
+  }
+
+  .icon-container svg {
+    margin-bottom: 6rem;
+  }
+  .sent-label {
+    font-weight: 600;
+    font-size: 4.2rem;
+    font-family: Arial;
+    color: $tropical-rain-forest;
+    margin-bottom: 2.5rem;
+  }
+
+  .sent-description {
+    font-size: 1.8rem;
+    color: $shuttle-gray;
+    opacity: 1;
+  }
+
+  .message-upper-description {
+    line-height: 2;
+    margin-bottom: 5rem;
+  }
+}
