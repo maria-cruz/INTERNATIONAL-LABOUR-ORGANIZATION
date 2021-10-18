@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Location from "@common/components/Icons/Location";
 import Email from "@common/components/Icons/Email";
 import Telephone from "@common/components/Icons/Telephone";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
+import ContactSuccessMessage from "@common/components/ContactSuccessMessage";
+import axios from "axios";
+
+interface HandleContactsProps {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+}
 
 const validateMessages = {
   required: "${label} is required!",
@@ -12,66 +21,93 @@ const validateMessages = {
     email: "${label} is not a valid email!",
   },
 };
-/* eslint-enable no-template-curly-in-string */
 
 const Inquiry = () => {
-  const onFinish = (values: any) => {
-    console.log(values);
+  const [isVisibleText, setIsVisibleText] = useState(false);
+  const [inquiryForm] = Form.useForm();
+
+  const handleInquiryFinish = (value: HandleContactsProps) => {
+    axios
+      .post(`${process.env.API_URL}/contacts`, {
+        given_name: value.firstName,
+        family_name: value.lastName,
+        email: value.email,
+        message: value.message,
+      })
+
+      .then((data) => console.log(data, "success"))
+      .then((res) => {
+        setIsVisibleText(true);
+        setTimeout(() => {
+          setIsVisibleText(false);
+        }, 7000);
+      })
+      .then((res) => {
+        inquiryForm.resetFields();
+      })
+      .catch((err) => console.error(err));
   };
 
-  const [inquiryForm] = Form.useForm();
   return (
     <div className="inquiry-container">
       <div className="inquiry-wrapper">
         <div className="inquiry-form">
-          <Form
-            className="inquiry-form-wrapper"
-            layout={"vertical"}
-            form={inquiryForm}
-            name="nest-messages"
-            onFinish={onFinish}
-            validateMessages={validateMessages}
-          >
-            <Form.Item
-              className="first-name-container"
-              name="firstName"
-              label="First name"
-              rules={[{ required: true }]}
+          {isVisibleText ? (
+            <ContactSuccessMessage />
+          ) : (
+            <Form
+              className="inquiry-form-wrapper"
+              layout={"vertical"}
+              form={inquiryForm}
+              name="nest-messages"
+              onFinish={handleInquiryFinish}
+              validateMessages={validateMessages}
             >
-              <Input className="inquiry-input" />
-            </Form.Item>
+              <Form.Item
+                className="first-name-container"
+                name="firstName"
+                label="First name"
+                rules={[{ required: true }]}
+              >
+                <Input className="inquiry-input" />
+              </Form.Item>
 
-            <Form.Item
-              className="last-name-container"
-              name="lastName"
-              label="Last name"
-              rules={[{ required: true }]}
-            >
-              <Input className="inquiry-input" />
-            </Form.Item>
+              <Form.Item
+                className="last-name-container"
+                name="lastName"
+                label="Last name"
+                rules={[{ required: true }]}
+              >
+                <Input className="inquiry-input" />
+              </Form.Item>
 
-            <Form.Item
-              className="email-container"
-              name="email"
-              label="Email"
-              rules={[{ type: "email" }]}
-            >
-              <Input className="inquiry-input" />
-            </Form.Item>
+              <Form.Item
+                className="email-container"
+                name="email"
+                label="Email"
+                rules={[{ type: "email" }]}
+              >
+                <Input className="inquiry-input" />
+              </Form.Item>
 
-            <Form.Item
-              name="message"
-              className="message-container"
-              label="Message"
-            >
-              <Input.TextArea className="message-input" />
-            </Form.Item>
-            <Form.Item noStyle>
-              <Button type="primary" htmlType="submit" className="inquire-btn">
-                Send message
-              </Button>
-            </Form.Item>
-          </Form>
+              <Form.Item
+                name="message"
+                className="message-container"
+                label="Message"
+              >
+                <Input.TextArea className="message-input" />
+              </Form.Item>
+              <Form.Item noStyle>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="inquire-btn"
+                >
+                  Send message
+                </Button>
+              </Form.Item>
+            </Form>
+          )}
         </div>
 
         <div className="info-container">
