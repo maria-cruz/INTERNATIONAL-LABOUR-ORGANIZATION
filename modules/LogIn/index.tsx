@@ -59,7 +59,20 @@ const LogIn = () => {
           path: "/",
         });
 
-        Router.push(`/create-profile/1/${data.user.id}`);
+        const hasNoData =
+          !data.user.given_name ||
+          !data.user.family_name ||
+          !data.user.organization_type ||
+          !data.user.birth_date ||
+          !data.user.gender ||
+          !data.user.nationality;
+
+        if (hasNoData) {
+          Router.push(`/create-profile/1/${data.user.id}`);
+          return;
+        }
+
+        Router.push(`/courses?category=all`);
       })
       .catch((error) => {
         console.error("Error:", error);
