@@ -7,6 +7,7 @@ import getStrapiImageUrl from "@common/utils/getStrapiImageUrl";
 interface CoursesDataType {
   unit: string;
   title: string;
+  slug: string;
   description: string;
   thumbnail: any;
   percentage: number;
@@ -30,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  const allCourseCardsData = allCoursesData.map((courseData) => {
+  let allCourseCardsData = allCoursesData.map((courseData) => {
     const completedTopics = courseData?.progress?.completed_topics_count ?? 1;
     const totalTopics = courseData?.progress?.total_topics_count ?? 0;
     const percentage = Math.floor(totalTopics / completedTopics);
@@ -42,14 +43,19 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
 
     return {
-      unit: `Unit ${courseData?.unit ?? 0}`,
+      unit: courseData?.unit ?? 0,
       title: courseData?.title,
+      slug: courseData?.slug,
       description: courseData?.description,
       thumbnail: getStrapiImageUrl(courseData?.thumbnail),
       percentage: percentage,
       status: getProgressStatus(),
     };
   });
+
+  allCourseCardsData = allCourseCardsData.sort((a, b) =>
+    a?.unit > b.unit ? 1 : b.unit > a.unit ? -1 : 0
+  );
 
   return {
     props: { allCourseCardsData },
