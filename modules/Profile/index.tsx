@@ -22,11 +22,14 @@ interface ProfileProps {
 const Profile = ({ profileData }: ProfileProps) => {
   const { router } = useRouter;
 
-  const checkNationality = nationalities.filter(
-    (item) => item.countryCode === profileData.nationality
+  const currentNationalities = nationalities.filter(
+    (nationality) => nationality.countryCode === profileData.nationality
   );
 
-  const nationality = checkNationality.map((item) => item.nationality);
+  const nationality = currentNationalities.map(
+    (currentNationality) => currentNationality.nationality
+  );
+
   const handleEditProfileClick = () => {
     router?.push("/profile/edit");
   };
