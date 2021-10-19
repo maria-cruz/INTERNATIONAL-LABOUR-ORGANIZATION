@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  let allCourseCardsData = allCoursesData.map((courseData) => {
+  const allCourseCardsData = allCoursesData.map((courseData) => {
     const completedTopics = courseData?.progress?.completed_topics_count ?? 1;
     const totalTopics = courseData?.progress?.total_topics_count ?? 0;
     const percentage = Math.floor(totalTopics / completedTopics);
@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
 
     return {
-      unit: courseData?.unit ?? 0,
+      unit: `Unit ${courseData?.unit ?? 0}`,
       title: courseData?.title,
       slug: courseData?.slug,
       description: courseData?.description,
@@ -52,10 +52,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       status: getProgressStatus(),
     };
   });
-
-  allCourseCardsData = allCourseCardsData.sort((a, b) =>
-    a?.unit > b.unit ? 1 : b.unit > a.unit ? -1 : 0
-  );
 
   return {
     props: { allCourseCardsData },
