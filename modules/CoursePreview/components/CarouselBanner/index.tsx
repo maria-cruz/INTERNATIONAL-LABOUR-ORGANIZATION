@@ -8,12 +8,6 @@ import BackArrow from "@common/components/Icons/BackArrow";
 import ForwardArrow from "@common/components/Icons/ForwardArrow";
 import { useRouter } from "next/router";
 
-// const { TabPane } = Tabs;
-
-// const handleTabsChange = (key: any) => {
-//   console.log(key);
-// };
-
 interface CarouselBannerProps {
   unit?: number | string;
   title?: string;
