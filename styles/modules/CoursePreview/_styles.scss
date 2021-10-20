@@ -1,17 +1,15 @@
 .course-preview-container {
-  // background: $whisper;
-
-  // .course-details-container {
-  //   max-width: 192rem;
-  //   display: flex;
-  //   justify-content: flex-start;
-  // }
-  // .tab-container {
-  //   padding: 5rem 8rem 10rem 8.4rem;
-  // }
-
   @import "./components/CarouselBanner/styles";
   @import "./components/UnitDetails/styles";
   @import "./components/SelfPractice/styles";
   @import "./components/QandA/styles";
+
+  background: $whisper;
+
+  .tab-container {
+    padding-top: 5rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-bottom: 5rem;
+  }
 }
