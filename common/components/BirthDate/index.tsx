@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "antd/lib/select";
-import { DAYS, MONTH } from "@modules/CreateProfile/helpers/constants";
+import { DAYS, MONTHS } from "@modules/CreateProfile/helpers/constants";
 import DatePicker from "antd/lib/date-picker";
 import DownArrow from "@common/components/Icons/DownArrow";
 import { Moment } from "moment";
@@ -63,7 +63,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         value={month || value.month}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
-        {MONTH.map((month) => (
+        {MONTHS.map((month) => (
           <Select.Option value={month.value} key={month.value}>
             {month.label}
           </Select.Option>

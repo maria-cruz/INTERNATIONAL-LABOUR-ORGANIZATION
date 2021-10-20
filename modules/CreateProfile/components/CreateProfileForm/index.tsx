@@ -3,16 +3,13 @@ import Form, { FormInstance, RuleObject } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
-import DatePicker from "antd/lib/date-picker";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
 import ReactFlagsSelect, { Bi } from "react-flags-select";
 import {
-  DAYS,
   GENDER,
-  MONTH,
   SAMPLE_DATA_ORGANIZATION_TYPE,
 } from "@modules/CreateProfile/helpers/constants";
-import BirthDate from "../../../../common/components/BirthDate";
+import BirthDate from "@common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;

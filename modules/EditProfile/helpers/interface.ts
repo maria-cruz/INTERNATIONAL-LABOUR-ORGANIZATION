@@ -9,7 +9,7 @@ export interface EDIT_PROFILE_FORM_VALUES {
   gender: string;
   nationality: string;
   birthDate: {
-    year: string;
+    year: string | number;
     day: number;
     month: number;
   };

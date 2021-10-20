@@ -3,12 +3,11 @@ import Form, { FormInstance, RuleObject } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
-import DatePicker from "antd/lib/date-picker";
 import Layout, { Header } from "@common/components/Layout";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "./helpers/constants";
 import ReactFlagsSelect from "react-flags-select";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
-import { GENDER, MONTH } from "@modules/CreateProfile/helpers/constants";
+import { GENDER } from "@modules/CreateProfile/helpers/constants";
 import DownArrow from "@common/components/Icons/DownArrow";
 import BirthDate from "@common/components/BirthDate";
 import moment from "moment";
@@ -68,7 +67,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
     setCountry(country);
   };
 
-  const checkBirthDate = (
+  const validationOnBirthDate = (
     _: RuleObject,
     value: { month: string; day: string; year: string }
   ) => {
@@ -252,7 +251,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     label="Date of birthday*"
                     name="birthDate"
                     className="form-width-month"
-                    rules={[{ validator: checkBirthDate }]}
+                    rules={[{ validator: validationOnBirthDate }]}
                   >
                     <BirthDate />
                   </Form.Item>
