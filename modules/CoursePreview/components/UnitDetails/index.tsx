@@ -14,7 +14,29 @@ const SAMPLE_LIST = [
   "Morbi auctor lacinia ornare. Sed venenatis viverra pretium.",
 ];
 
-const UnitDetails = () => {
+type ObjectiveType = {
+  objective: string;
+};
+
+interface UnitDetails {
+  avatar?: any;
+  instructor?: string;
+  topicsCount?: number;
+  progress?: number;
+  description?: string;
+  objectives?: ObjectiveType[] | [];
+}
+
+const UnitDetails = ({
+  avatar,
+  instructor = "No Instructor",
+  topicsCount = 0,
+  progress = 0,
+  description = "",
+  objectives = [],
+}: UnitDetails) => {
+  const hasObjectives = objectives.length > 0;
+
   return (
     <section className="details-container">
       <div className="upper-details-wrapper">
@@ -27,39 +49,35 @@ const UnitDetails = () => {
             placeholder="blur"
           />
         </div>
-        <div className="instructor-name">Reyhan Mahfouz</div>
+        <div className="instructor-name">{instructor}</div>
         <div className="topic-container">
-          Unit topics: <span className="digit-wrapper">7</span>
+          Unit topics: <span className="digit-wrapper">{topicsCount}</span>
         </div>
         <div className="progress-wrapper">
           Progress:
           <Progress
-            percent={0}
+            percent={progress}
             strokeColor="#E3FFF5"
             className="progress-bar-container"
           />
         </div>
       </div>
-      <div className="introduction-container">
-        By the end of this unit, the trainee will be able to understand the
-        nature of work contracts, their contents and types, and the rights and
-        duties of each of the parties to the contract stipulated in the relevant
-        laws and regulations and will also be able to distinguish between those
-        subject to and excluded from the provisions of these laws.
-      </div>
+      <div className="introduction-container">{description}</div>
 
-      <div className="learning-objectives-container">
-        <div className="_subheading-label">Learning objectives</div>
-        {SAMPLE_LIST.map((item, index) => (
-          <div className="list-item" key={index}>
-            <CheckCircleFilled
-              className="checklist"
-              style={{ color: "#007a50" }}
-            />
-            {item}
-          </div>
-        ))}
-      </div>
+      {hasObjectives ? (
+        <div className="learning-objectives-container">
+          <div className="_subheading-label">Learning objectives</div>
+          {objectives.map((item, index) => (
+            <div className="list-item" key={index}>
+              <CheckCircleFilled
+                className="checklist"
+                style={{ color: "#007a50" }}
+              />
+              {item}
+            </div>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 };
