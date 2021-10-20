@@ -15,33 +15,31 @@ import { useRouter } from "next/router";
 
 import CarouselBanner from "./components/CarouselBanner";
 
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
-const handleTabsChange = (key: any) => {
-  console.log(key);
-};
+// const handleTabsChange = (key: any) => {
+//   console.log(key);
+// };
 
 const CoursePreview = () => {
-  const router = useRouter();
-  const handleStartClick = () => {
-    router.push("/courses/view");
-  };
-  const handleUnit2Click = () => {
-    router.push("/courses/unit2");
-  };
-  const handleUnit3Click = () => {
-    router.push("/courses/unit3");
-  };
+  // const router = useRouter();
+  // const handleStartClick = () => {
+  //   router.push("/courses/view");
+  // };
+  // const handleUnit2Click = () => {
+  //   router.push("/courses/unit2");
+  // };
+  // const handleUnit3Click = () => {
+  //   router.push("/courses/unit3");
+  // };
 
   return (
     <Layout header={<Header title={"Header"} />}>
-      <section className="course-preview-section">
+      <div className="course-preview-container">
         <div className="course-details-container">
-          {
-            <div className="unit-container">
-              <CarouselBanner />
+          <CarouselBanner unit={1} title={"lol"} />
 
-              {/* <Tabs
+          {/* <Tabs
                 className="tab-container"
                 defaultActiveKey="1"
                 onChange={handleTabsChange}
@@ -56,10 +54,8 @@ const CoursePreview = () => {
                   <SelfPractice />
                 </TabPane>
               </Tabs> */}
-            </div>
-          }
         </div>
-      </section>
+      </div>
     </Layout>
   );
 };

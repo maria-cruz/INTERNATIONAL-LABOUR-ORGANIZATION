@@ -1,6 +1,6 @@
 import Layout, { Header } from "@common/components/Layout";
 import React from "react";
-import Tabs from "antd/lib/tabs";
+// import Tabs from "antd/lib/tabs";
 import Image from "next/image";
 import Unit1Banner from "@public/images/unit1-banner.jpg";
 import Button from "antd/lib/button";
@@ -8,16 +8,23 @@ import BackArrow from "@common/components/Icons/BackArrow";
 import ForwardArrow from "@common/components/Icons/ForwardArrow";
 import { useRouter } from "next/router";
 
-const { TabPane } = Tabs;
+// const { TabPane } = Tabs;
 
-const handleTabsChange = (key: any) => {
-  console.log(key);
-};
+// const handleTabsChange = (key: any) => {
+//   console.log(key);
+// };
 
-const CarouselBanner = () => {
+interface CarouselBannerProps {
+  unit?: number | string;
+  title?: string;
+}
+
+const CarouselBanner = ({ unit = 0, title = "Untitled" }) => {
   const router = useRouter();
+  const slug = router?.query?.slug;
+
   const handleStartClick = () => {
-    router.push("/courses/view");
+    router.push(`/courses/${slug}`);
   };
   const handleUnit2Click = () => {
     router.push("/courses/unit2");
@@ -41,15 +48,13 @@ const CarouselBanner = () => {
       <div className="bg-filter" />
 
       <div className="bg-description-container">
-        <div className="unit-label">Unit 1</div>
+        <div className="unit-label">{`Unit ${unit}`}</div>
 
         <div className="title-container">
           <div className="back-icon" onClick={handleUnit3Click}>
             <BackArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
-          <span className="title">
-            The Employment Contract. (Conclusion, Execution and Termination)
-          </span>
+          <span className="title">{title}</span>
           <div className="forward-icon" onClick={handleUnit2Click}>
             <ForwardArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
