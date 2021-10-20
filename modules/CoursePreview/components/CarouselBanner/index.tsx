@@ -19,7 +19,10 @@ interface CarouselBannerProps {
   title?: string;
 }
 
-const CarouselBanner = ({ unit = 0, title = "Untitled" }) => {
+const CarouselBanner = ({
+  unit = 0,
+  title = "Untitled",
+}: CarouselBannerProps) => {
   const router = useRouter();
   const slug = router?.query?.slug;
 
