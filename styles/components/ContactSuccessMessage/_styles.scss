@@ -1,7 +1,6 @@
 .contact-success-container {
   max-width: 62.4rem;
   height: 63.2rem;
-  padding: 5rem;
   background: $white;
   box-shadow: 0 0.3rem 1.6rem $black-29;
   border-radius: 0.4rem;
@@ -9,6 +8,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 1.6rem;
+  @include view-size(tab-port) {
+    padding: 5rem;
+  }
 
   .success-description {
     text-align: center;
@@ -16,20 +19,32 @@
   }
 
   .icon-container svg {
-    margin-bottom: 6rem;
+    width: 10rem;
+    margin-bottom: 3rem;
+    @include view-size(tab-port) {
+      margin-bottom: 6rem;
+      width: 14.8rem;
+    }
   }
   .sent-label {
     font-weight: 600;
-    font-size: 4.2rem;
     font-family: Arial;
+    font-size: 2.8rem;
     color: $tropical-rain-forest;
     margin-bottom: 2.5rem;
+    @include view-size(tab-port) {
+      font-size: 4.2rem;
+    }
   }
 
   .sent-description {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $shuttle-gray;
     opacity: 1;
+    line-height: 1.7;
+    @include view-size(tab-port) {
+      font-size: 1.8rem;
+    }
   }
 
   .message-upper-description {

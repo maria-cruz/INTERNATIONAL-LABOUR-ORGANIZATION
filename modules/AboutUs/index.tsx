@@ -2,11 +2,12 @@ import React from "react";
 import Layout, { Header } from "@common/components/Layout";
 import Image from "next/image";
 import Banner from "@public/images/about-us-banner.jpg";
-import BackgroundScope from "@public/images/background-scope.jpg";
-import TrainingReferencesImage from "@public/images/training-references.jpg";
 import useTranslation from "next-translate/useTranslation";
 import Partners from "@common/components/Partners";
 import Inquiry from "./Inquiry";
+import AboutMobile from "@public/images/about-us-mobile.jpg";
+import GalleryDesktop from "./GalleryDesktop";
+import GalleryMobile from "./GalleryMobile";
 
 const AboutUs = () => {
   const { t } = useTranslation("about-us");
@@ -16,10 +17,18 @@ const AboutUs = () => {
       <section className="about-us-section">
         <div className="about-us-banner">
           <Image
+            className="banner-desktop"
             src={Banner}
-            height={513}
             width={1920}
             alt="banner.jpg"
+            placeholder="blur"
+          />
+        </div>
+        <div className="about-us-mobile">
+          <Image
+            className="banner-mobile"
+            src={AboutMobile}
+            alt="about-us-mobile.jpg"
             placeholder="blur"
           />
         </div>
@@ -32,53 +41,8 @@ const AboutUs = () => {
         </div>
 
         <div className="gallery-section">
-          <div className="gallery-wrapper">
-            <div className="content-item">
-              <div className="image-container">
-                <Image
-                  src={BackgroundScope}
-                  alt="background-scope.jpg"
-                  placeholder="blur"
-                  width={960}
-                  height={500}
-                />
-              </div>
-            </div>
-
-            <div className="content-item-info">
-              <div className="content-item-wrapper">
-                <div className="item-label _subheading-label">
-                  {t("scopeLabel")}
-                </div>
-                <div className="description-container">
-                  {t("scopeDescription")}
-                </div>
-              </div>
-            </div>
-
-            <div className="content-item-info">
-              <div className="content-item-wrapper _lower">
-                <div className="item-label _subheading-label">
-                  {t("referencesLabel")}
-                </div>
-                <div className="description-container">
-                  {t("referencesDescription")}
-                </div>
-              </div>
-            </div>
-
-            <div className="content-item">
-              <div className="image-container">
-                <Image
-                  src={TrainingReferencesImage}
-                  alt="training-references.jpg"
-                  placeholder="blur"
-                  width={960}
-                  height={500}
-                />
-              </div>
-            </div>
-          </div>
+          <GalleryDesktop />
+          <GalleryMobile />
         </div>
 
         <Partners subheading="Supported by" />

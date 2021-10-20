@@ -8,13 +8,13 @@ const Footer = () => {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["description-container"]}>
-        <Image
-          className={styles["footer-image"]}
-          src={LogoFooter}
-          width={103}
-          height={86}
-          alt="logo.svg"
-        />
+        <div className={styles["footer-logo-container"]}>
+          <Image
+            className={styles["footer-image"]}
+            src={LogoFooter}
+            alt="logo.svg"
+          />
+        </div>
         <span className={styles["description"]}>
           Huqouqi fil 3amal is a learning application developed through an ILO
           project in partnership with government and NGO stakeholders across
@@ -26,19 +26,22 @@ const Footer = () => {
       </div>
 
       <div className={styles["menu-group"]}>
-        <div className={styles["menu"]}>
-          <span className={styles["menu-title"]}>General</span>
-          <Link href={"/sign-up"}>Sign up</Link>
-          <Link href={"/log-in"}>Log in</Link>
-          <Link href={"/download-guide"}>Download guide</Link>
-          <Link href={"/faq"}>FAQ</Link>
+        <div className={styles["upper-menu"]}>
+          <div className={styles["menu"]}>
+            <span className={styles["menu-title"]}>General</span>
+            <Link href={"/sign-up"}>Sign up</Link>
+            <Link href={"/log-in"}>Log in</Link>
+            <Link href={"/download-guide"}>Download guide</Link>
+            <Link href={"/faq"}>FAQ</Link>
+          </div>
+          <div className={styles["menu"]}>
+            <span className={styles["menu-title"]}>About us</span>
+            <Link href={"/privacy-policy"}>Privacy Policy</Link>
+            <Link href={"/terms-of-use"}>Terms of Use</Link>
+            <Link href={"/contact-us"}>Contact us</Link>
+          </div>
         </div>
-        <div className={styles["menu"]}>
-          <span className={styles["menu-title"]}>About us</span>
-          <Link href={"/privacy-policy"}>Privacy Policy</Link>
-          <Link href={"/terms-of-use"}>Terms of Use</Link>
-          <Link href={"/contact-us"}>Contact us</Link>
-        </div>
+
         <div className={styles["menu"]}>
           <span className={styles["menu-title"]}>Follow</span>
           <Link href={"/sign-up"}>Facebook</Link>

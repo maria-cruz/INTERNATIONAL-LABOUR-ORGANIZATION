@@ -2,26 +2,59 @@
   display: flex;
   justify-content: center;
   background-color: $whisper;
-  .gallery-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    row-gap: 5.5rem;
-    max-width: 192rem;
+
+  .gallery-wrapper-desktop {
+    display: none;
+    @include view-size(630px) {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      row-gap: 5.5rem;
+      max-width: 192rem;
+    }
+  }
+  .gallery-wrapper-mobile {
+    display: flex;
+    flex-direction: column;
+    @include view-size(630px) {
+      display: none;
+    }
   }
   .content-item {
     display: flex;
     justify-content: center;
   }
   .content-item-info {
-    padding: 10rem;
+    padding: 3rem 4.45vw 6rem;
+    @include view-size(tab-port) {
+      padding: 2rem 4.45vw;
+    }
+    @include view-size(tab-land) {
+      padding: 4rem 6.45vw;
+    }
+    @include view-size(desktop) {
+      padding: 6rem;
+    }
+    @include view-size(big-desktop) {
+      padding: 10rem;
+    }
   }
 
   .content-item-wrapper .description-container {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $black;
     max-height: 30rem;
-    line-height: 2;
     max-width: 75.6rem;
+    line-height: 1.7;
+    @include view-size(tab-port) {
+      line-height: 1.6;
+    }
+    @include view-size(tab-land) {
+      line-height: 1.7;
+    }
+    @include view-size(desktop) {
+      font-size: 1.8rem;
+      line-height: 2;
+    }
   }
 
   .item-label {
@@ -29,6 +62,34 @@
   }
 
   ._lower {
-    text-align: end;
+    text-align: left;
+    @include view-size(tab-port) {
+      text-align: end;
+    }
+  }
+  ._lower-desciption {
+    @include view-size(big-desktop) {
+      padding-left: 3rem;
+    }
+  }
+
+  ._subheading-label {
+    font-size: 1.8rem;
+    @include view-size(desktop) {
+      font-size: 2.8rem;
+    }
+  }
+}
+
+.gallery-wrapper-desktop {
+  .image-container div {
+    @include view-size(630px) {
+      height: 43vw;
+    }
+
+    @include view-size(tab-land) {
+      height: 40vw;
+      max-height: 50rem;
+    }
   }
 }

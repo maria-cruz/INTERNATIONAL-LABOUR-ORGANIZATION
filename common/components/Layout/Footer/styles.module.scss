@@ -1,32 +1,92 @@
 .footer {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   background: $dark-gray;
-  height: 39.1rem;
   width: 100%;
-  padding: 10rem;
   overflow: hidden;
   color: $white;
-  font-size: 1.8rem;
+  padding: 6rem 4.45vw;
+  flex-direction: column;
+  font-size: 1.6rem;
+  @include view-size(tab-land) {
+    padding: 6rem 6.45vw;
+  }
+  @include view-size(desktop) {
+    flex-direction: row;
+    padding: 10rem;
+  }
+  @include view-size(big-desktop) {
+    font-size: 1.8rem;
+    height: 39.1rem;
+  }
 
   .description-container {
     display: flex;
     column-gap: 5rem;
     align-items: flex-start;
+    flex-direction: column;
+    @include view-size(desktop) {
+      flex-direction: column;
+    }
+    @include view-size(1400px) {
+      flex-direction: row;
+    }
+  }
+  .footer-logo-container {
+    margin-bottom: 6rem;
+    width: 8.739rem;
+    height: 7.3rem;
+    @include view-size(desktop) {
+      margin-bottom: 4rem;
+    }
+    @include view-size(big-desktop) {
+      width: 10.3rem;
+      height: 8.6rem;
+      margin-bottom: 0;
+    }
   }
 
   .description {
-    max-width: 83.1rem;
-    line-height: 2.3;
+    max-width: 87rem;
+    line-height: 1.8;
+    margin-bottom: 6rem;
+    @include view-size(desktop) {
+      max-width: 55rem;
+      width: 40vw;
+      line-height: 2;
+      margin-bottom: 0;
+    }
+    @include view-size(1400px) {
+      max-width: 58rem;
+      width: 35vw;
+    }
+    @include view-size(big-desktop) {
+      max-width: 83.1rem;
+      line-height: 2.3;
+    }
   }
+
   .menu-group {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     max-width: 55rem;
+    flex-direction: column;
+    @include view-size(tab-port) {
+      flex-direction: row;
+      max-width: 45rem;
+    }
+    @include view-size(tab-land) {
+      max-width: 55rem;
+    }
+    @include view-size(desktop) {
+      max-width: 45rem;
+    }
+    @include view-size(big-desktop) {
+      max-width: 55rem;
+    }
   }
 
   .menu {
@@ -47,6 +107,23 @@
     font-size: 1.6rem;
   }
 
+  .upper-menu {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6rem;
+    column-gap: 5.5rem;
+    @include view-size(tab-land) {
+      margin-bottom: 0;
+      column-gap: 13rem;
+    }
+    @include view-size(desktop) {
+      column-gap: 7rem;
+    }
+    @include view-size(big-desktop) {
+      margin-bottom: 0;
+      column-gap: 13rem;
+    }
+  }
   // .menu {
   //   display: flex;
   //   flex-direction: row;
