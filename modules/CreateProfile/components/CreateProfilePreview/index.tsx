@@ -2,7 +2,7 @@ import React from "react";
 import Button, { ButtonProps } from "antd/lib/button";
 import usePersistentState from "@common/methods/usePersistentState";
 import nationalities from "@common/constants/nationalities";
-import { MONTH } from "@modules/CreateProfile/helpers/constants";
+import { MONTHS } from "@modules/CreateProfile/helpers/constants";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { defaultFormValues } from "@modules/CreateProfile/helpers/interface";
@@ -18,7 +18,7 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
 
   const cookies = parseCookies();
 
-  const checkMonth = MONTH.filter((item) => item.value === storeData.month);
+  const checkMonth = MONTHS.filter((item) => item.value === storeData.month);
 
   const month = checkMonth.map((item) => item.label);
 

@@ -37,7 +37,6 @@
   .form-column-container {
     display: flex;
     gap: 3rem;
-    flex-wrap: wrap;
   }
 
   .form-width {
@@ -68,10 +67,6 @@
     width: 15rem;
   }
 
-  .form-width-day {
-    width: 10.5rem;
-  }
-
   .form-width-year {
     width: 12.3rem;
   }
@@ -83,21 +78,59 @@
   .form-button-container {
     display: flex;
     justify-content: flex-end;
-    gap: 2rem;
   }
 
   .btn-continue {
     width: 16.6rem;
+    color: $white;
     border: none;
   }
 
-  .form-select-organization-type,
-  .form-select-country {
+  .btn-cancel {
+    margin-right: 2rem;
+  }
+
+  .form-select-organization-type {
     height: 5rem;
   }
 
-  .form-select-country .ant-select-selection-item {
-    display: flex;
-    justify-content: center;
+  .ant-select-selector {
+    height: 5rem;
+  }
+
+  //FLAG
+
+  .flag {
+    padding-bottom: 0;
+  }
+
+  .flag > button {
+    height: 5rem;
+  }
+
+  //ANTD
+
+  .ant-select-arrow {
+    right: 1.6rem;
+  }
+
+  .ant-form-item-explain-error > div {
+    height: 1rem;
+  }
+
+  .ant-select .ant-select-arrow svg {
+    transform: rotate(90deg);
+  }
+
+  .ant-select.ant-select-open .ant-select-arrow svg {
+    transform: rotate(270deg);
+  }
+
+  .ant-picker-suffix {
+    transform: rotate(90deg);
+  }
+
+  .ant-picker-focused .ant-picker-suffix {
+    transform: rotate(270deg);
   }
 }
