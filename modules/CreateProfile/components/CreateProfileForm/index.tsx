@@ -12,7 +12,7 @@ import {
   MONTH,
   SAMPLE_DATA_ORGANIZATION_TYPE,
 } from "@modules/CreateProfile/helpers/constants";
-import BirthDate from "../BirthDate";
+import BirthDate from "../../../../common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
@@ -30,7 +30,7 @@ const CreateProfileForm = ({
   const email = form.getFieldValue("emailAddress");
   const isDisabledEmailAddress = email !== "";
 
-  const checkPrice = (
+  const checkBirthDate = (
     _: RuleObject,
     value: { month: string; day: string; year: string }
   ) => {
@@ -141,7 +141,7 @@ const CreateProfileForm = ({
           label="Date of birthday*"
           name="birthDate"
           className="form-width-month"
-          rules={[{ validator: checkPrice }]}
+          rules={[{ validator: checkBirthDate }]}
         >
           <BirthDate />
         </Form.Item>

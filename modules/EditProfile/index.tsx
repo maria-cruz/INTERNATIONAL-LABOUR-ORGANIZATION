@@ -1,44 +1,131 @@
-import React from "react";
-import Form from "antd/lib/form";
+import React, { useEffect, useState } from "react";
+import Form, { FormInstance, RuleObject } from "antd/lib/form";
 import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import DatePicker from "antd/lib/date-picker";
 import Layout, { Header } from "@common/components/Layout";
+import { SAMPLE_DATA_ORGANIZATION_TYPE } from "./helpers/constants";
+import ReactFlagsSelect from "react-flags-select";
+import NationalitiesSelect from "@common/components/NationalitiesSelect";
+import { GENDER, MONTH } from "@modules/CreateProfile/helpers/constants";
+import DownArrow from "@common/components/Icons/DownArrow";
+import BirthDate from "@common/components/BirthDate";
+import moment from "moment";
+import axios from "axios";
+import router from "next/router";
+import { parseCookies } from "nookies";
+import { EDIT_PROFILE_FORM_VALUES } from "./helpers/interface";
 
-const SAMPLE_DATA_ORGANIZATION_TYPE = [
-  {
-    label: "Training/academic institution – Staff",
-    value: 1,
-  },
-  {
-    label: "Training/academic institution – Student/Trainee",
-    value: 2,
-  },
-  {
-    label: "Private Enterprise - Employer",
-    value: 3,
-  },
-  {
-    label: "Private Enterprise - Worker",
-    value: 4,
-  },
-  {
-    label: "Trade union organization",
-    value: 5,
-  },
-  {
-    label: "Employer organization",
-    value: 6,
-  },
-  {
-    label: "Non-governmental Organization",
-    value: 8,
-  },
-];
+interface EditProfileData {
+  nationality: string;
+  given_name: string;
+  family_name: string;
+  organization_type: string;
+  email: string;
+  organization_name: string;
+  phone_number: string;
+  gender: string;
+  birth_date: string;
+  country: string;
+}
+interface EditProfileProps {
+  editProfileData: EditProfileData;
+}
 
-const EditProfile = () => {
+const EditProfile = ({ editProfileData }: EditProfileProps) => {
+  const cookies = parseCookies();
+
+  const [country, setCountry] = useState("LB");
+
+  useEffect(() => {
+    setCountry(editProfileData.country);
+  }, []);
+  const month = moment(editProfileData.birth_date).month();
+
+  const day = moment(editProfileData.birth_date).date();
+
+  const year = moment(editProfileData.birth_date).year();
+
+  const intialValues = {
+    firstName: editProfileData.given_name,
+    lastName: editProfileData.family_name,
+    organizationType: editProfileData.organization_type,
+    organizationName: editProfileData.organization_name,
+    emailAddress: editProfileData.email,
+    birthDate: {
+      month,
+      day,
+      year: moment(year, "YYYY"),
+    },
+    gender: editProfileData.gender,
+    phoneNumber: editProfileData.phone_number,
+    nationality: editProfileData.nationality,
+  };
   const [editProfile] = Form.useForm();
+
+  const handleFlagSelect = (country: string) => {
+    setCountry(country);
+  };
+
+  const checkBirthDate = (
+    _: RuleObject,
+    value: { month: string; day: string; year: string }
+  ) => {
+    if (
+      value.month === undefined ||
+      value.day === undefined ||
+      value.year === undefined
+    ) {
+      return Promise.reject("Please select date");
+    }
+
+    return Promise.resolve();
+  };
+
+  const handleSaveChangesFinish = (value: EDIT_PROFILE_FORM_VALUES) => {
+    const year = moment(value.birthDate.year).year();
+
+    const birthYear = moment().set({
+      year: year,
+      month: value.birthDate.month,
+      date: value.birthDate.day,
+    });
+
+    const birthDate = moment(birthYear).toISOString(true);
+
+    axios
+      .put(
+        `${process.env.API_URL}/users/${cookies.user_id}`,
+        {
+          given_name: value.firstName,
+          family_name: value.lastName,
+          organization_type: value.organizationType,
+          organization_name: value.organizationName,
+          email: value.emailAddress,
+          country: country,
+          phone_number: value.phoneNumber,
+          gender: value.gender,
+          nationality: value.nationality,
+          birth_date: birthDate,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${cookies?.jwt}`,
+          },
+        }
+      )
+      .then(function () {
+        router?.push("/profile");
+      })
+      .catch(function (error) {
+        console.log("err", error);
+      });
+  };
+
+  const handleCancelClick = () => {
+    router?.push("/profile");
+  };
 
   return (
     <Layout header={<Header title={"Header"} />}>
@@ -46,36 +133,65 @@ const EditProfile = () => {
         <div className="form-create-profile-container">
           <div className="form-container">
             <div className="form-title-container">
-              <div className="title-container">Create profile</div>
+              <div className="title-container">Edit profile</div>
               <div className="description-container">
-                Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet
+                Edit your profile here. This is how other users see you across
+                the site.
               </div>
             </div>
-            <Form form={editProfile} layout="vertical">
+            <Form
+              form={editProfile}
+              layout="vertical"
+              initialValues={intialValues}
+              onFinish={handleSaveChangesFinish}
+            >
               <div className="edit-profile-form-container">
                 <div className="form-column-container">
                   <Form.Item
-                    label="First name"
+                    label="First name*"
                     name="firstName"
                     className="form-width"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your first name.",
+                      },
+                    ]}
                   >
                     <Input className="form-input" />
                   </Form.Item>
                   <Form.Item
-                    label="Last name"
+                    label="Last name*"
                     name="lastName"
                     className="form-width"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your last name.",
+                      },
+                    ]}
                   >
                     <Input className="form-input" />
                   </Form.Item>
                 </div>
                 <div className="form-column-container">
                   <Form.Item
-                    label="Organization type"
+                    label="Organization type*"
                     name="organizationType"
                     className="form-width"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your organization type.",
+                      },
+                    ]}
                   >
-                    <Select className="form-select-organization-type">
+                    <Select
+                      className="form-select-organization-type"
+                      suffixIcon={
+                        <DownArrow width={"1.3rem"} height={"1.3rem"} />
+                      }
+                    >
                       {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
                         <Select.Option value={item.value} key={item.value}>
                           {item.label}
@@ -92,7 +208,17 @@ const EditProfile = () => {
                     <Input className="form-input" />
                   </Form.Item>
                 </div>
-                <Form.Item label="Email address" name="emailAddress">
+                <Form.Item
+                  label="Email address*"
+                  name="emailAddress"
+                  rules={[
+                    {
+                      required: true,
+                      type: "email",
+                      message: "Please input your email address.",
+                    },
+                  ]}
+                >
                   <Input className="form-input" />
                 </Form.Item>
                 <div className="form-column-container">
@@ -102,17 +228,16 @@ const EditProfile = () => {
                       name="country"
                       className="form-width-country"
                     >
-                      <Select
-                        className="form-select-country"
-                        dropdownClassName="select-countries-dropdown"
-                      >
-                        {/* {data.map((item: { code: string; flag: string }) => (
-              <Select.Option value={item.code} key={item.code}>
-                <Image src={item.flag} height={25} width={35.85} />
-              </Select.Option>
-            ))} */}
-                        {/* <Select> */}
-                      </Select>
+                      <ReactFlagsSelect
+                        className="flag"
+                        selected={country}
+                        onSelect={handleFlagSelect}
+                        showSelectedLabel={false}
+                        showOptionLabel={false}
+                        placeholder={" "}
+                        selectedSize={35.8}
+                        optionsSize={35.8}
+                      />
                     </Form.Item>
 
                     <Form.Item
@@ -123,63 +248,73 @@ const EditProfile = () => {
                       <Input className="form-input" />
                     </Form.Item>
                   </div>
-                  <div className="column-container">
-                    <Form.Item
-                      label="Date of birthday"
-                      name="month"
-                      className="form-width-month"
-                    >
-                      {/* <Select className="form-select-country" placeholder="Month" /> */}
-                      <DatePicker
-                        className="form-select-country"
-                        picker="month"
-                        placeholder="Month"
-                      />
-                    </Form.Item>
-                    <Form.Item name="day" className="form-width-day">
-                      <DatePicker
-                        className="form-select-country"
-                        placeholder="Day"
-                      />
-                    </Form.Item>
-                    <Form.Item name="year" className="form-width-year">
-                      <DatePicker
-                        className="form-select-country"
-                        picker="year"
-                        placeholder="Year"
-                      />
-                    </Form.Item>
-                  </div>
+                  <Form.Item
+                    label="Date of birthday*"
+                    name="birthDate"
+                    className="form-width-month"
+                    rules={[{ validator: checkBirthDate }]}
+                  >
+                    <BirthDate />
+                  </Form.Item>
                 </div>
                 <div className="form-column-container margin-bottom">
                   <Form.Item
-                    label="Gender"
+                    label="Gender*"
                     name="gender"
                     className="form-width"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select your gender.",
+                      },
+                    ]}
                   >
                     <Select
                       className="form-select-organization-type"
                       placeholder="Please Select"
-                    />
+                      suffixIcon={
+                        <DownArrow width={"1.3rem"} height={"1.3rem"} />
+                      }
+                    >
+                      {GENDER.map((gender) => (
+                        <Select.Option value={gender.value} key={gender.value}>
+                          {gender.label}
+                        </Select.Option>
+                      ))}
+                    </Select>
                   </Form.Item>
 
                   <Form.Item
-                    label="Nationality"
-                    name="organizationName"
+                    label="Nationality*"
+                    name="nationality"
                     className="form-width"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please select your nationality.",
+                      },
+                    ]}
                   >
-                    <Select
+                    <NationalitiesSelect
                       className="form-select-organization-type"
                       placeholder="Please Select"
                     />
                   </Form.Item>
                 </div>
                 <div className="form-button-container">
-                  <Button className="btn-cancel" type="link">
+                  <Button
+                    className="btn-cancel"
+                    type="link"
+                    onClick={handleCancelClick}
+                  >
                     Cancel
                   </Button>
-                  <Button className="btn-continue" type="primary">
-                    Save changes
+                  <Button
+                    className="btn-continue"
+                    htmlType="submit"
+                    type="primary"
+                  >
+                    Save Changes
                   </Button>
                 </div>
               </div>

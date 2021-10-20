@@ -55,15 +55,15 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
   };
 
   return (
-    <div className="column-container">
+    <div className="birth-date-container">
       <Select
-        className="form-select-country"
+        className="select-country"
         placeholder="Month"
         onChange={handleMonthChange}
         value={month || value.month}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
-        {MONTH.map((month: any) => (
+        {MONTH.map((month) => (
           <Select.Option value={month.value} key={month.value}>
             {month.label}
           </Select.Option>
@@ -71,7 +71,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
       </Select>
 
       <Select
-        className="form-width-day"
+        className="width-day"
         placeholder="Day"
         onChange={handleDayChange}
         value={value.day || day}
