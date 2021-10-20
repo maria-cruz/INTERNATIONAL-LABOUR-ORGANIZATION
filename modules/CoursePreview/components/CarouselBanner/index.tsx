@@ -37,7 +37,7 @@ const CarouselBanner = ({
           src={Unit1Banner}
           alt="unit1-banner.jpg"
           placeholder="blur"
-          height={500}
+          height={452}
           width={1920}
         />
       </div>
