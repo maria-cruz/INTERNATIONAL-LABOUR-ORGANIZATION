@@ -17,7 +17,14 @@ const CoursePreview = () => {
 
           <Tabs className="tab-container" defaultActiveKey="1">
             <TabPane className="tab-item" tab="Unit Details" key="1">
-              <UnitDetails />
+              <UnitDetails
+                avatar=""
+                instructor=""
+                topicsCount={1}
+                progress={0}
+                description=""
+                objectives={[]}
+              />
             </TabPane>
             <TabPane className="tab-item" tab={"Q & A"} key="2">
               <QandA />
