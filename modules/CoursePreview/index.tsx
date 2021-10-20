@@ -8,33 +8,14 @@ import CarouselBanner from "./components/CarouselBanner";
 
 const { TabPane } = Tabs;
 
-const handleTabsChange = (key: any) => {
-  console.log(key);
-};
-
 const CoursePreview = () => {
-  // const router = useRouter();
-  // const handleStartClick = () => {
-  //   router.push("/courses/view");
-  // };
-  // const handleUnit2Click = () => {
-  //   router.push("/courses/unit2");
-  // };
-  // const handleUnit3Click = () => {
-  //   router.push("/courses/unit3");
-  // };
-
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="course-preview-container">
         <div className="course-details-container">
           <CarouselBanner unit={1} title={"lol"} />
 
-          <Tabs
-            className="tab-container"
-            defaultActiveKey="1"
-            onChange={handleTabsChange}
-          >
+          <Tabs className="tab-container" defaultActiveKey="1">
             <TabPane className="tab-item" tab="Unit Details" key="1">
               <UnitDetails />
             </TabPane>
