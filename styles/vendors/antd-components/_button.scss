@@ -32,10 +32,13 @@
     }
   }
   &.ant-btn-lg {
-    min-width: 14.6rem;
-    height: 6rem;
-    padding: 6.4px 15px;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
+    @include view-size(big-desktop) {
+      min-width: 14.6rem;
+      height: 6rem;
+      padding: 6.4px 15px;
+      font-size: 2.4rem;
+    }
   }
 }
 

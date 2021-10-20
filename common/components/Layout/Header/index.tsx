@@ -6,6 +6,8 @@ import Select from "antd/lib/select";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "@public/images/logo.svg";
+import LogoMobile from "@public/images/logo-footer.svg";
+
 const { Option } = Select;
 interface HeaderProps {
   title?: string;
@@ -33,7 +35,15 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
       <div className={styles["left-container"]}>
         <NavLink href="/">
           <div className={styles["logo-container"]}>
-            <Image src={Logo} width={495} height={79} alt="logo.svg" />
+            <Image src={Logo} height={79} alt="logo.svg" />
+          </div>
+          <div className={styles["logo-container-mobile"]}>
+            <Image
+              src={LogoMobile}
+              alt="logo-footer.svg"
+              width={50}
+              height={42}
+            />
           </div>
         </NavLink>
       </div>
@@ -71,7 +81,12 @@ const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
 
       <div className={styles["right-container-mobile"]}>
-        <div className={styles["menu"]}> Mobile Menu </div>
+        <div className={styles["menu"]}>
+          {" "}
+          <div className={styles["line"]}></div>
+          <div className={styles["line"]}></div>
+          <div className={styles["line"]}></div>
+        </div>
       </div>
     </header>
   );

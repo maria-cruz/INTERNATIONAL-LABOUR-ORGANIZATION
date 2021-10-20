@@ -1,14 +1,30 @@
 .about-us-section {
   .about-us-banner {
+    display: none;
+    @media only screen and (min-width: 765px) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .about-us-mobile {
     display: flex;
-    justify-content: center;
+    justify-self: center;
+    @media only screen and (min-width: 765px) {
+      display: none;
+    }
   }
 
   .about-us-info {
-    padding: 10rem;
     background-color: $whisper;
     display: flex;
     justify-content: center;
+    padding: 6rem 4.45vw;
+    @include view-size(tab-land) {
+      padding: 6rem 6.45vw;
+    }
+    @include view-size(desktop) {
+      padding: 10rem;
+    }
   }
 
   .info-wrapper {
@@ -18,15 +34,23 @@
   .info-wrapper .about-us-label {
     color: $tropical-rain-forest;
     margin-bottom: 2.2rem;
+    font-size: 3.2rem;
+    @include view-size(desktop) {
+      font-size: 6.3rem;
+    }
   }
 
   .about-us-description {
-    max-height: 18.2rem;
-    font-size: 2.4rem;
     color: $shuttle-gray;
     max-width: 172rem;
-    line-height: 1.6;
-    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: 500;
+    @include view-size(desktop) {
+      font-size: 2.4rem;
+      line-height: 1.6;
+      max-height: 18.2rem;
+    }
   }
 
   .partners-section {

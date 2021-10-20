@@ -63,23 +63,25 @@ const Inquiry = () => {
               onFinish={handleInquiryFinish}
               validateMessages={validateMessages}
             >
-              <Form.Item
-                className="first-name-container"
-                name="firstName"
-                label="First name"
-                rules={[{ required: true }]}
-              >
-                <Input className="inquiry-input" />
-              </Form.Item>
+              <div className="name-container">
+                <Form.Item
+                  className="first-name-container"
+                  name="firstName"
+                  label="First name"
+                  rules={[{ required: true }]}
+                >
+                  <Input className="inquiry-input" />
+                </Form.Item>
 
-              <Form.Item
-                className="last-name-container"
-                name="lastName"
-                label="Last name"
-                rules={[{ required: true }]}
-              >
-                <Input className="inquiry-input" />
-              </Form.Item>
+                <Form.Item
+                  className="last-name-container"
+                  name="lastName"
+                  label="Last name"
+                  rules={[{ required: true }]}
+                >
+                  <Input className="inquiry-input" />
+                </Form.Item>
+              </div>
 
               <Form.Item
                 className="email-container"
@@ -118,7 +120,7 @@ const Inquiry = () => {
             </div>
 
             <div className="details-wrappper">
-              <div className="details-item">
+              <div className="details-item _upper">
                 <Location width="20" height="20" fill="#007A50" />
                 <p className="details-label">
                   Location Lorem ipsum dolor sit amet, consetetur sadipscing
