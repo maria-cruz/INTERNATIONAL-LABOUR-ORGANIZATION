@@ -1,0 +1,101 @@
+.carousel-banner-container {
+  position: relative;
+  height: 45.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Background */
+  .banner-container {
+    position: absolute;
+    top: 0;
+    height: inherit;
+    width: 192rem;
+  }
+
+  /* Background Filter */
+  .bg-filter {
+    position: absolute;
+    top: 0;
+    height: inherit;
+    width: 100%;
+    background: transparent linear-gradient(180deg, #000000 0%, #0000001f 100%)
+      0% 0% no-repeat padding-box;
+  }
+
+  /* Background Content */
+  .bg-description-container {
+    position: absolute;
+    top: 0;
+    padding: 5rem;
+    height: inherit;
+  }
+
+  .bg-description-container .unit-label {
+    font-size: 4.2rem;
+    font-weight: 600;
+    color: $tropical-rain-forest;
+    margin-left: 4.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .bg-description-container .title-container {
+    display: flex;
+    align-items: flex-end;
+    svg:hover {
+      fill: $white;
+      cursor: pointer;
+    }
+  }
+
+  .bg-description-container .title-container .back-icon svg {
+    margin-right: 1.4rem;
+  }
+
+  .bg-description-container .title-container .title {
+    font-size: 6.3rem;
+    color: $white;
+    font-weight: 600;
+    line-height: 1.2;
+    max-width: 174rem;
+    width: 86vw;
+    max-height: 14.2rem;
+    height: 8vw;
+    @include view-size(big-desktop) {
+      width: 90vw;
+    }
+  }
+  .start-btn {
+    width: 20.6rem;
+    background-color: $faux-green;
+  }
+  .start-btn,
+  .locked-btn {
+    font-size: 2.4rem;
+    margin-top: 6.3rem;
+    height: 7rem;
+  }
+
+  .start-btn,
+  .locked-btn {
+    margin-left: 4.7rem;
+  }
+
+  // .locked-btn {
+  //   background: $manatee;
+  //   width: 18.4rem;
+  //   color: $white;
+  //   border: none;
+  //   &:hover,
+  //   &:focus,
+  //   &:active {
+  //     border-color: none;
+  //     color: $white;
+  //   }
+
+  //   svg {
+  //     margin-right: 1rem;
+  //   }
+  // }
+}

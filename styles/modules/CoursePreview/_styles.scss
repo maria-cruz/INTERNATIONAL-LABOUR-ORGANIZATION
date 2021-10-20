@@ -1,97 +1,16 @@
 .course-preview-section {
-  background: $whisper;
+  // background: $whisper;
 
-  .course-details-container {
-    max-width: 192rem;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .tab-container {
-    padding: 5rem 8rem 10rem 8.4rem;
-  }
-  .banner-container {
-    position: relative;
-  }
+  // .course-details-container {
+  //   max-width: 192rem;
+  //   display: flex;
+  //   justify-content: flex-start;
+  // }
+  // .tab-container {
+  //   padding: 5rem 8rem 10rem 8.4rem;
+  // }
 
-  .bg-descriiption-wrapper {
-    position: absolute;
-    top: 14rem;
-    padding: 5rem;
-    height: 23.2vw;
-  }
-
-  .unit-label-container {
-    font-size: 4.2rem;
-    font-weight: 600;
-    color: $tropical-rain-forest;
-    margin-bottom: 2rem;
-  }
-
-  .title-container {
-    display: flex;
-    align-items: flex-end;
-    svg:hover {
-      fill: $white;
-      cursor: pointer;
-    }
-  }
-
-  .back-icon svg {
-    margin-right: 1.4rem;
-  }
-  .title-wrapper {
-    font-size: 6.3rem;
-    color: $white;
-    font-weight: 500;
-    line-height: 1.2;
-    max-width: 174rem;
-    width: 86vw;
-    max-height: 14.2rem;
-    height: 8vw;
-    @include view-size(big-desktop) {
-      width: 90vw;
-    }
-  }
-  .start-btn {
-    width: 20.6rem;
-    background-color: $faux-green;
-  }
-  .start-btn,
-  .locked-btn {
-    font-size: 2.4rem;
-    margin-top: 6.3rem;
-    height: 7rem;
-  }
-  .unit-label-container,
-  .start-btn,
-  .locked-btn {
-    margin-left: 4.7rem;
-  }
-  .bg-filter {
-    position: absolute;
-    top: 14rem;
-    height: 44.5rem;
-    width: 100%;
-    background: transparent linear-gradient(180deg, #000000 0%, #0000001f 100%)
-      0% 0% no-repeat padding-box;
-  }
-  .locked-btn {
-    background: $manatee;
-    width: 18.4rem;
-    color: $white;
-    border: none;
-    &:hover,
-    &:focus,
-    &:active {
-      border-color: none;
-      color: $white;
-    }
-
-    svg {
-      margin-right: 1rem;
-    }
-  }
-
+  @import "./components/CarouselBanner/styles";
   @import "./components/UnitDetails/styles";
   @import "./components/SelfPractice/styles";
   @import "./components/QandA/styles";
