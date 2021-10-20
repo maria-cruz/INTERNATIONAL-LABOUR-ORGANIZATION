@@ -4,7 +4,7 @@ import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
-import ReactFlagsSelect, { Bi } from "react-flags-select";
+import ReactFlagsSelect from "react-flags-select";
 import {
   GENDER,
   SAMPLE_DATA_ORGANIZATION_TYPE,
