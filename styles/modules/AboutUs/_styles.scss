@@ -1,7 +1,7 @@
 .about-us-section {
   .about-us-banner {
     display: none;
-    @media only screen and (min-width: 765px) {
+    @include view-size(765px) {
       display: flex;
       justify-content: center;
     }
@@ -9,7 +9,7 @@
   .about-us-mobile {
     display: flex;
     justify-self: center;
-    @media only screen and (min-width: 765px) {
+    @include view-size(765px) {
       display: none;
     }
   }
