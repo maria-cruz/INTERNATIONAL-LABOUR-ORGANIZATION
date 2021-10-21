@@ -1,0 +1,22 @@
+.birth-date-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.6rem;
+  width: 39.8rem;
+
+  .width-day {
+    width: 10.5rem;
+  }
+
+  .width-day > .ant-select-selector {
+    width: 10.5rem;
+  }
+
+  .date-picker-year {
+    height: 5rem;
+  }
+
+  .ant-select {
+    height: 5rem;
+  }
+}

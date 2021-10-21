@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LeftSideMenu from "./components/LeftSideMenu";
 import Form from "antd/lib/form";
@@ -23,6 +23,7 @@ const CreateProfile = () => {
   );
   const router = useRouter();
   const [form] = Form.useForm();
+
   const cookies = parseCookies();
   const fetcher = (url: string) =>
     axios
@@ -41,6 +42,12 @@ const CreateProfile = () => {
     [`${process.env.API_URL}/users/me`, cookies.jwt],
     fetcher
   );
+
+  useEffect(() => {
+    if (!storeData.country) {
+      setCountry(storeData.country);
+    }
+  }, []);
 
   const handleFlagSelect = (country: string) => {
     setCountry(country);
@@ -143,7 +150,7 @@ const CreateProfile = () => {
     organizationType: storeData.organizationType,
     organizationName: storeData.organizationName,
     emailAddress: data?.email ?? storeData.emailAddress,
-    country: country,
+    country: storeData.country,
     phoneNumber: storeData.phoneNumber,
     gender: storeData.gender,
     nationality: storeData.nationality,

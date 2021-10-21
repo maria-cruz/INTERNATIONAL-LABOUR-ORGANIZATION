@@ -29,7 +29,7 @@ export const SAMPLE_DATA_ORGANIZATION_TYPE = [
   },
 ];
 
-export const MONTH = [
+export const MONTHS = [
   {
     label: "January",
     value: 0,
