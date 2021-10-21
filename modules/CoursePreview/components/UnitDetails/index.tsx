@@ -4,16 +4,6 @@ import InstructorProfile from "@public/images/girl-profile.jpeg";
 import Progress from "antd/lib/progress";
 import CheckCircleFilled from "@ant-design/icons/CheckCircleFilled";
 
-const SAMPLE_LIST = [
-  "Morbi auctor lacinia ornare. Sed venenatis viverra pretium.",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor lacinia ornare. Sed venenatis viverra pretium. Suspendisse potenti.",
-  "Suspendisse potenti.",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "Morbi auctor lacinia ornare. Sed venenatis viverra pretium.",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "Morbi auctor lacinia ornare. Sed venenatis viverra pretium.",
-];
-
 type ObjectiveType = {
   objective: string;
 };
@@ -67,13 +57,13 @@ const UnitDetails = ({
       {hasObjectives ? (
         <div className="learning-objectives-container">
           <div className="_subheading-label">Learning objectives</div>
-          {objectives.map((item, index) => (
+          {objectives.map((objective, index) => (
             <div className="list-item" key={index}>
               <CheckCircleFilled
                 className="checklist"
                 style={{ color: "#007a50" }}
               />
-              {item}
+              {objective?.objective}
             </div>
           ))}
         </div>
