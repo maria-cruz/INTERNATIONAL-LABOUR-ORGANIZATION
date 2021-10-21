@@ -9,6 +9,7 @@ import router from "next/router";
 export interface CoursesCardProps {
   unit?: string;
   title?: string;
+  slug?: string;
   description?: string;
   thumbnail: StaticImageData | string;
   percentage?: number;
@@ -17,6 +18,7 @@ export interface CoursesCardProps {
 const CoursesCard = ({
   unit = "",
   title = "",
+  slug = "",
   description = "",
   thumbnail = CardSampleImage,
   percentage = 0,
@@ -24,7 +26,7 @@ const CoursesCard = ({
   const isLocked = percentage === 0;
   const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
   const handleViewUnit1Click = () => {
-    router.push("/courses/preview");
+    router.push(`/courses/preview/${slug}`);
   };
 
   return (

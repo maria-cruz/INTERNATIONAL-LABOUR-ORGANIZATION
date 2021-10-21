@@ -1,10 +1,21 @@
 .details-container {
   .upper-details-wrapper {
-    display: grid;
-    grid-template-columns: 8rem 29.2rem 24.3rem 58.5rem;
+    display: flex;
     align-items: center;
     margin-bottom: 1.9rem;
     font-size: 2.4rem;
+    gap: 10rem;
+  }
+
+  .upper-details-wrapper .instructor-details-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .upper-details-wrapper .instructor-details-container .img-container {
+    display: flex;
+    align-items: center;
   }
 }
 .progress-wrapper {

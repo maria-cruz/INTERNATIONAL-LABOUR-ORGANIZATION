@@ -101,11 +101,12 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
                 key={index}
               >
                 <CoursesCard
-                  unit={item.unit}
-                  title={item.title}
-                  description={item.description}
-                  thumbnail={item.thumbnail}
-                  percentage={item.percentage}
+                  unit={item?.unit}
+                  title={item?.title}
+                  slug={item?.slug}
+                  description={item?.description}
+                  thumbnail={item?.thumbnail}
+                  percentage={item?.percentage}
                 />
               </div>
             )
