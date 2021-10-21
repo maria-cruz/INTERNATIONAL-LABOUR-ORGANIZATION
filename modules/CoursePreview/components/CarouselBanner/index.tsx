@@ -1,6 +1,5 @@
 import Layout, { Header } from "@common/components/Layout";
 import React from "react";
-// import Tabs from "antd/lib/tabs";
 import Image from "next/image";
 import Unit1Banner from "@public/images/unit1-banner.jpg";
 import Button from "antd/lib/button";
@@ -23,11 +22,11 @@ const CarouselBanner = ({
   const handleStartClick = () => {
     router.push(`/courses/${slug}`);
   };
-  const handleUnit2Click = () => {
-    router.push("/courses/unit2");
+  const handleBackArrowClick = () => {
+    // router.push("/courses/unit2");
   };
-  const handleUnit3Click = () => {
-    router.push("/courses/unit3");
+  const handleForwardArrowClick = () => {
+    // router.push("/courses/unit3");
   };
 
   return (
@@ -48,11 +47,11 @@ const CarouselBanner = ({
         <div className="unit-label">{`Unit ${unit}`}</div>
 
         <div className="title-container">
-          <div className="back-icon" onClick={handleUnit3Click}>
+          <div className="back-icon" onClick={handleBackArrowClick}>
             <BackArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
           <span className="title">{title}</span>
-          <div className="forward-icon" onClick={handleUnit2Click}>
+          <div className="forward-icon" onClick={handleForwardArrowClick}>
             <ForwardArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
         </div>
