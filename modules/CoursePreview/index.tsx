@@ -13,7 +13,7 @@ interface CoursePreviewProps {
 }
 
 const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
-  const { unit, title, description, percentage, objectives } =
+  const { unit, title, description, percentage, objectives, topicsCount } =
     coursePreviewData;
 
   return (
@@ -25,7 +25,7 @@ const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
           <Tabs className="tab-container" defaultActiveKey="1">
             <TabPane className="tab-item" tab="Unit Details" key="1">
               <UnitDetails
-                topicsCount={1}
+                topicsCount={topicsCount}
                 progress={percentage}
                 description={description}
                 objectives={objectives}

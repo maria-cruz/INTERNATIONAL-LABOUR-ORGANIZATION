@@ -17,9 +17,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
+  console.log(courseData);
+
   const completedTopics = courseData?.progress?.completed_topics_count ?? 0;
   const totalTopics = courseData?.progress?.total_topics_count ?? 1;
   const percentage = Math.floor((completedTopics / totalTopics) * 100);
+
+  const topics = !!courseData?.topics ? courseData.topics : [];
+  const topicsCount = topics.length;
 
   const coursePreviewData = {
     unit: courseData?.unit ?? 0,
@@ -27,6 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     slug: courseData?.slug,
     description: courseData?.description,
     thumbnail: getStrapiImageUrl(courseData?.thumbnail),
+    topicsCount: topicsCount,
     percentage: percentage,
     objectives: courseData?.learning_objectives,
   };
