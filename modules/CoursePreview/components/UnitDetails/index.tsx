@@ -19,7 +19,7 @@ interface UnitDetails {
 
 const UnitDetails = ({
   avatar,
-  instructor = "No Instructor",
+  instructor = "Reyhan Mahfouz",
   topicsCount = 0,
   progress = 0,
   description = "",
@@ -30,16 +30,20 @@ const UnitDetails = ({
   return (
     <section className="details-container">
       <div className="upper-details-wrapper">
-        <div className="img-container">
-          <Image
-            src={InstructorProfile}
-            alt="girl-profile.jpg"
-            width={60}
-            height={60}
-            placeholder="blur"
-          />
+        <div className="instructor-details-container">
+          <div className="img-container">
+            <Image
+              src={InstructorProfile}
+              alt="girl-profile.jpg"
+              width={60}
+              height={60}
+              placeholder="blur"
+            />
+          </div>
+
+          <div className="instructor-name">{instructor}</div>
         </div>
-        <div className="instructor-name">{instructor}</div>
+
         <div className="topic-container">
           Unit topics: <span className="digit-wrapper">{topicsCount}</span>
         </div>

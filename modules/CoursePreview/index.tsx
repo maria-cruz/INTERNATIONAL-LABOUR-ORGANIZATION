@@ -25,8 +25,6 @@ const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
           <Tabs className="tab-container" defaultActiveKey="1">
             <TabPane className="tab-item" tab="Unit Details" key="1">
               <UnitDetails
-                avatar=""
-                instructor=""
                 topicsCount={1}
                 progress={percentage}
                 description={description}
