@@ -49,7 +49,7 @@ const DownloadGuide = () => {
               placeholder="blur"
             />
           </div>
-          <div className="banner-desktop">
+          <div className="banner-mobile">
             <Image
               src={DowloadBannerMobile}
               alt="dowload-guide-mobile.jpg"
@@ -57,11 +57,9 @@ const DownloadGuide = () => {
             />
           </div>
           <div className="dl-guide-filter"></div>
-          <div className="bg-description-container ">
-            <div className="subheading-upper _section-label">Download</div>
-            <div className="subheading-lower _section-label">
-              Training Guide
-            </div>
+          <div className="bg-description-container">
+            <div className="subheading-upper">Download</div>
+            <div className="subheading-lower">Training Guide</div>
           </div>
         </div>
         <div className="download-cards-container">
