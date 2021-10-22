@@ -1,4 +1,6 @@
 .footer {
+  @include side-padding;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -6,15 +8,11 @@
   width: 100%;
   overflow: hidden;
   color: $white;
-  padding: 6rem 4.45vw;
-  flex-direction: column;
+
   font-size: 1.6rem;
-  @include view-size(tab-land) {
-    padding: 6rem 6.45vw;
-  }
+  flex-direction: column;
   @include view-size(desktop) {
     flex-direction: row;
-    padding: 10rem;
   }
   @include view-size(big-desktop) {
     font-size: 1.8rem;
