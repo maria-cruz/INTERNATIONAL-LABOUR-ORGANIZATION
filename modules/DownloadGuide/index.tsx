@@ -6,8 +6,9 @@ import Unit1Pic from "@public/images/employment-contract-guide.jpg";
 import Unit2Pic from "@public/images/employment-termination-guide.jpg";
 import Unit3Pic from "@public/images/SS-work-emergency-guide.jpg";
 import GuideCard, { GuideCardProps } from "./components/card";
+import DowloadBannerMobile from "@public/images/download-guide-mobile.jpg";
 
-const CARD_DETAILS_SAMPLE = [
+const CARD_DETAILS_SAMPLES = [
   {
     unit: "Unit 1",
     title:
@@ -39,13 +40,22 @@ const DownloadGuide = () => {
     <Layout header={<Header title={"Header"} />}>
       <section className="download-guide-section">
         <div className="background-container">
-          <Image
-            src={DownloadGuideBackground}
-            alt="download-guide-banner.jpg"
-            width={1920}
-            height={513}
-            placeholder="blur"
-          />
+          <div className="banner-desktop">
+            <Image
+              src={DownloadGuideBackground}
+              alt="download-guide-banner.jpg"
+              width={1920}
+              height={513}
+              placeholder="blur"
+            />
+          </div>
+          <div className="banner-desktop">
+            <Image
+              src={DowloadBannerMobile}
+              alt="dowload-guide-mobile.jpg"
+              placeholder="blur"
+            />
+          </div>
           <div className="dl-guide-filter"></div>
           <div className="bg-description-container ">
             <div className="subheading-upper _section-label">Download</div>
@@ -66,7 +76,7 @@ const DownloadGuide = () => {
 
           <div className="guide-container">
             <div className="download-wrapper">
-              {CARD_DETAILS_SAMPLE.map((item: GuideCardProps, index) => (
+              {CARD_DETAILS_SAMPLES.map((item: GuideCardProps, index) => (
                 <GuideCard
                   unit={item.unit}
                   title={item.title}
