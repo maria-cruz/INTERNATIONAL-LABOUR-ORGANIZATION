@@ -18,13 +18,7 @@
     background-color: $whisper;
     display: flex;
     justify-content: center;
-    padding: 6rem 4.45vw;
-    @include view-size(tab-land) {
-      padding: 6rem 6.45vw;
-    }
-    @include view-size(desktop) {
-      padding: 10rem;
-    }
+    @include side-padding;
   }
 
   .info-wrapper {

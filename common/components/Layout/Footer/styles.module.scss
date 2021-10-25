@@ -110,6 +110,9 @@
     align-items: flex-start;
     margin-bottom: 6rem;
     column-gap: 5.5rem;
+    @include view-size(tab-port) {
+      column-gap: 8rem;
+    }
     @include view-size(tab-land) {
       margin-bottom: 0;
       column-gap: 13rem;
