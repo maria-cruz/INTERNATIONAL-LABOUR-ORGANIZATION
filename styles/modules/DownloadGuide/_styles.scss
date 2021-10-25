@@ -49,14 +49,27 @@
   .image-container {
     padding: 0 10rem 12rem;
   }
+
   .guide-container {
-    padding: 0 10rem 12rem;
+    @include side-padding;
+    padding-top: 0;
+    padding-bottom: 8rem;
+    @include view-size(big-desktop) {
+      padding: 0 10rem 12rem;
+    }
   }
 
   .download-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    column-gap: 3rem;
+    grid-template-columns: repeat(1, auto);
+    row-gap: 3rem;
+    @include view-size(tab-land) {
+      column-gap: 3rem;
+      grid-template-columns: repeat(2, auto);
+    }
+    @include view-size(1400px) {
+      grid-template-columns: repeat(3, auto);
+    }
   }
 
   .dl-guide-filter {
