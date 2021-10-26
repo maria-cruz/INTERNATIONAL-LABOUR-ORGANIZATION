@@ -108,7 +108,7 @@ const CreateProfileForm = ({
         <Input className="form-input" disabled={isDisabledEmailAddress} />
       </Form.Item>
       <div className="form-column-container">
-        <div className="column-container">
+        <div className="country-and-phone-number-container">
           <Form.Item
             label="Country"
             name="country"
@@ -137,7 +137,7 @@ const CreateProfileForm = ({
         <Form.Item
           label="Date of birthday*"
           name="birthDate"
-          className="form-width-month"
+          className="form-width-birthdate"
           rules={[{ validator: checkBirthDate }]}
         >
           <BirthDate />
