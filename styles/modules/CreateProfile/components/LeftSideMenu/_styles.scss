@@ -14,7 +14,7 @@
   }
 
   @include view-size(tab-land) {
-    width: 36.146%;
+    width: 52%;
     max-width: 69.4rem;
     min-height: 100vh;
     justify-content: flex-start;
@@ -22,10 +22,6 @@
   }
 
   @include view-size(desktop) {
-    min-height: 100vh;
-
-    max-width: 69.4rem;
-    justify-content: flex-start;
     padding: 7rem 5.208% 6.5rem;
   }
 
@@ -33,7 +29,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    // max-width: 32.8rem;
 
     @include view-size(tab-land) {
       justify-content: space-between;
