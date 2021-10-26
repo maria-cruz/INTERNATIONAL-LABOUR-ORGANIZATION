@@ -1,12 +1,23 @@
 .create-profile-form-container {
   .form-column-container {
     display: flex;
-    gap: 3rem;
+    column-gap: 3rem;
+    flex-wrap: wrap;
   }
 
   .form-width {
-    width: 100%;
-    max-width: 39.8rem;
+    flex: 1;
+    min-width: 25rem;
+
+    @include view-size(tab-port) {
+    }
+  }
+
+  /* AntD Form Item Label Override */
+  .ant-col.ant-form-item-label,
+  .ant-form-item-control {
+    flex: none !important;
+    min-height: 0 !important;
   }
 
   .form-input {
