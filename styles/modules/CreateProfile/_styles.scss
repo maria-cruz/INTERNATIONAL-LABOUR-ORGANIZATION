@@ -4,6 +4,12 @@
   @import "./components/LeftSideMenu/styles";
 
   display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include view-size(tab-land) {
+    flex-direction: row;
+  }
 
   .form-create-profile-container {
     width: 63.85vw;
@@ -11,6 +17,8 @@
     justify-content: center;
     align-items: center;
     padding: 5rem;
+
+    overflow: hidden;
   }
 
   .form-container {

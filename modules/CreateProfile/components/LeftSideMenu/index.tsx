@@ -10,40 +10,36 @@ const LeftSideMenu = () => {
   const isActiveStepTwo = router.query.steps === "2";
 
   return (
-    <div className="menu-step-container">
-      <div className="menu-step">
+    <div className="left-side-menu-container">
+      <div className="left-side-menu">
         <div className="logo-container">
           <Image src="/images/logo-footer.svg" width={120} height={100} />
         </div>
         <div className="steps-container">
-          <div className="step-one-container">
+          <div className="step-container step-1">
             <div
-              className={`${
-                isActiveStepOne ? "-active-number" : " number-container"
-              }  `}
+              className={`step-number ${
+                isActiveStepOne ? "-active-number" : ""
+              }`}
             >
               1
             </div>
             <div
-              className={`${
-                isActiveStepOne ? "-active-text" : "text-container"
-              }  `}
+              className={`step-text ${isActiveStepOne ? "-active-text" : ""}`}
             >
               Create your profile
             </div>
           </div>
-          <div className="step-two-container">
+          <div className="step-container">
             <div
-              className={`${
-                isActiveStepTwo ? "-active-number" : " number-container"
-              }  `}
+              className={`step-number ${
+                isActiveStepTwo ? "-active-number" : ""
+              }`}
             >
               2
             </div>
             <div
-              className={`${
-                isActiveStepTwo ? "-active-text" : " text-container"
-              }  `}
+              className={`step-text ${isActiveStepTwo ? "-active-text" : ""}`}
             >
               Profile preview
             </div>
@@ -51,9 +47,7 @@ const LeftSideMenu = () => {
         </div>
 
         <div className="menu-title-container">
-          <div className="title-container">
-            Rights & Responsibilities at Work
-          </div>
+          Rights & Responsibilities at Work
         </div>
       </div>
     </div>
