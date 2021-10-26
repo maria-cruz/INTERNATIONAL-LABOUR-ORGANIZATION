@@ -143,7 +143,7 @@ const CreateProfileForm = ({
           <BirthDate />
         </Form.Item>
       </div>
-      <div className="form-column-container margin-bottom">
+      <div className="form-column-container">
         <Form.Item
           label="Gender*"
           name="gender"

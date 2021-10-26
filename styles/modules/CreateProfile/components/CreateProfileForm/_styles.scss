@@ -7,7 +7,7 @@
 
   .form-width {
     flex: 1;
-    min-width: 30rem;
+    min-width: 28rem;
 
     @include view-size(tab-port) {
     }
@@ -20,6 +20,14 @@
     min-height: 0 !important;
   }
 
+  .ant-form-item {
+    margin-bottom: 2rem;
+
+    @include view-size(tab-land) {
+      margin-bottom: 3rem;
+    }
+  }
+
   .form-input {
     height: 5rem;
   }
@@ -29,7 +37,7 @@
     display: flex;
     gap: 1.6rem;
     flex: 1;
-    min-width: 30rem;
+    min-width: 28rem;
   }
 
   .country-and-phone-number-container .form-width-country {
@@ -42,29 +50,38 @@
 
   .form-width-birthdate {
     flex: 1;
-    min-width: 30rem;
+    min-width: 28rem;
   }
   /* Column */
 
-  .margin-bottom {
-    margin-bottom: 5.8rem;
-  }
+  // .margin-bottom {
+  //   margin-bottom: 5.8rem;
+  // }
 
   .form-button-container {
     display: flex;
     justify-content: flex-end;
+    margin-top: 1rem;
+
+    @include view-size(tab-land) {
+      margin-top: 5rem;
+    }
   }
 
-  .btn-continue {
-    width: 13rem;
+  .form-button-container .btn-continue {
     background: $manatee;
     color: $white;
     border: none;
+
+    width: 100%;
+    @include view-size(tab-land) {
+      width: 13rem;
+    }
   }
 
-  .ant-btn.ant-btn-primary {
-    width: 13rem;
-  }
+  // .ant-btn.ant-btn-primary {
+  //   width: 13rem;
+  // }
 
   .form-select-organization-type {
     height: 5rem;

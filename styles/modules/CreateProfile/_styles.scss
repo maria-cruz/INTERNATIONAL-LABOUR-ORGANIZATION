@@ -5,7 +5,6 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   @include view-size(tab-land) {
     flex-direction: row;
@@ -34,7 +33,7 @@
     padding-left: min(4.45vw, 5rem);
     padding-right: min(4.45vw, 5rem);
     padding-top: 3.3rem;
-    padding-bottom: 3.3rem;
+    padding-bottom: 10rem;
   }
 
   .form-title-container {
@@ -58,6 +57,7 @@
 
   .description-container {
     color: $shuttle-gray;
+    line-height: 2rem;
     font-size: 1.6rem;
     @include view-size(tab-land) {
       font-size: 1.8rem;
