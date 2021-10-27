@@ -9,6 +9,7 @@ interface NavLinkProps {
   children?: ReactNode;
   className?: string;
   props?: any;
+  query?: string;
 }
 
 const NavLink = ({
@@ -16,12 +17,13 @@ const NavLink = ({
   exact = false,
   children,
   className = "",
+  query = "",
 }: NavLinkProps) => {
   const { pathname } = useRouter();
   const isActive = exact ? pathname === href : pathname.startsWith(href);
 
   return (
-    <Link href={href}>
+    <Link href={`${href}${query}`}>
       <a
         className={`${className} ${styles["nav-link"]} ${
           isActive ? styles["active"] : ""

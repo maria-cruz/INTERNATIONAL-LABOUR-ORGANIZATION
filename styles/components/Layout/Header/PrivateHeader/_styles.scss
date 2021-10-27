@@ -1,0 +1,129 @@
+.private-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 8rem;
+  box-shadow: 0 0.4rem 0.4rem $black-03;
+  padding: 1.6rem;
+  @include view-size(tab-port) {
+    padding: 2.8rem min(5.208vw, 10rem);
+  }
+  @include view-size(desktop) {
+    height: 12rem;
+    box-shadow: none;
+  }
+  @include view-size(big-desktop) {
+    height: 14rem;
+  }
+  .logo-container-mobile {
+    display: block;
+    @include view-size(desktop) {
+      display: none;
+    }
+  }
+
+  .left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-container .logo-container {
+    display: none;
+    @include view-size(desktop) {
+      display: block;
+      max-width: 30rem;
+    }
+    @include view-size(big-desktop) {
+      max-width: 49.5rem;
+      min-width: 18rem;
+    }
+  }
+
+  .right-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .right-container .menu {
+    display: none;
+    margin-right: 2.5rem;
+    @include view-size(tab-land) {
+      display: none;
+    }
+
+    @include view-size(desktop) {
+      display: flex;
+      align-items: center;
+    }
+
+    @include view-size(big-desktop) {
+    }
+  }
+
+  .right-container .menu a {
+    font-size: 1.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    @include view-size(big-desktop) {
+      font-size: 2.4rem;
+    }
+  }
+
+  .right-container .menu a.log-in-link {
+    color: $jade;
+
+    &.active {
+      display: none;
+    }
+  }
+
+  .right-container-mobile {
+    display: block;
+    font-size: 1.6rem;
+
+    @include view-size(desktop) {
+      display: none;
+    }
+  }
+
+  .right-container-mobile .menu {
+    width: 2.4rem;
+    height: 1.6rem;
+    position: unset;
+    top: 3rem;
+    right: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    cursor: pointer;
+
+    @include view-size(desktop) {
+      display: none;
+    }
+  }
+
+  .menu .line {
+    width: 80%;
+    height: 0.2rem;
+    background-color: $shuttle-gray;
+  }
+
+  .btn-dropdown {
+    width: fit-content;
+    padding: 0;
+  }
+
+  .ant-btn.ant-btn:hover,
+  .ant-btn.ant-btn:focus,
+  .ant-btn:active {
+    border-color: transparent;
+  }
+}
