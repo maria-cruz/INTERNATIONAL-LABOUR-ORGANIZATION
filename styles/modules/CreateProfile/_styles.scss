@@ -4,13 +4,22 @@
   @import "./components/LeftSideMenu/styles";
 
   display: flex;
+  flex-direction: column;
+
+  @include view-size(tab-land) {
+    flex-direction: row;
+  }
 
   .form-create-profile-container {
-    width: 63.85vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5rem;
+    overflow: hidden;
+
+    @include view-size(tab-land) {
+      padding: 5rem;
+    }
   }
 
   .form-container {
@@ -20,22 +29,38 @@
     box-shadow: 0 0.3rem 1.6rem $black-29;
     border-radius: 0.4rem;
     opacity: 1;
-    padding: 5rem;
+
+    padding-left: min(4.45vw, 5rem);
+    padding-right: min(4.45vw, 5rem);
+    padding-top: 3.3rem;
+    padding-bottom: 10rem;
   }
 
   .form-title-container {
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
+
+    @include view-size(tab-land) {
+      margin-bottom: 6rem;
+    }
   }
 
   .title-container {
-    font-size: 2.8rem;
     font-weight: bold;
     color: $tropical-rain-forest;
     margin-bottom: 1.1rem;
+
+    font-size: 2.4rem;
+    @include view-size(tab-land) {
+      font-size: 2.8rem;
+    }
   }
 
   .description-container {
-    font-size: 1.8rem;
     color: $shuttle-gray;
+    line-height: 2rem;
+    font-size: 1.6rem;
+    @include view-size(tab-land) {
+      font-size: 1.8rem;
+    }
   }
 }

@@ -57,7 +57,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
   return (
     <div className="birth-date-container">
       <Select
-        className="select-country"
+        className="month-select"
         placeholder="Month"
         onChange={handleMonthChange}
         value={month || value.month}

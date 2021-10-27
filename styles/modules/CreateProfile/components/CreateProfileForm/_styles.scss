@@ -1,59 +1,78 @@
 .create-profile-form-container {
   .form-column-container {
     display: flex;
-    gap: 3rem;
+    column-gap: 3rem;
+    flex-wrap: wrap;
   }
 
   .form-width {
-    width: 100%;
-    max-width: 39.8rem;
+    flex: 1;
+    min-width: 28rem;
+
+    @include view-size(tab-port) {
+    }
+  }
+
+  /* AntD Form Item Label Override */
+  .ant-col.ant-form-item-label,
+  .ant-form-item-control {
+    flex: none !important;
+    min-height: 0 !important;
+  }
+
+  .ant-form-item {
+    margin-bottom: 2rem;
+
+    @include view-size(tab-land) {
+      margin-bottom: 3rem;
+    }
   }
 
   .form-input {
     height: 5rem;
   }
 
-  .column-container {
+  /* Column */
+  .country-and-phone-number-container {
     display: flex;
-    align-items: flex-end;
     gap: 1.6rem;
-    width: 39.8rem;
+    flex: 1;
+    min-width: 28rem;
   }
 
-  .form-width-country {
-    width: 12.2rem;
+  .country-and-phone-number-container .form-width-country {
+    flex: 1;
   }
 
-  .form-width-phone-number {
-    width: 26rem;
+  .country-and-phone-number-container .form-width-phone-number {
+    flex: 2;
   }
 
-  .form-width-month {
-    width: 15rem;
+  .form-width-birthdate {
+    flex: 1;
+    min-width: 28rem;
   }
-
-  .form-width-year {
-    width: 12.3rem;
-  }
-
-  .margin-bottom {
-    margin-bottom: 5.8rem;
-  }
+  /* Column */
 
   .form-button-container {
     display: flex;
     justify-content: flex-end;
+    margin-top: 1rem;
+
+    @include view-size(tab-land) {
+      margin-top: 5rem;
+    }
   }
 
-  .btn-continue {
-    width: 13rem;
+  .form-button-container .btn-continue {
     background: $manatee;
     color: $white;
     border: none;
-  }
 
-  .ant-btn.ant-btn-primary {
-    width: 13rem;
+    width: 100%;
+    @include view-size(tab-land) {
+      width: 13rem;
+    }
   }
 
   .form-select-organization-type {
