@@ -63,7 +63,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         value={month || value.month}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
-        {MONTHS.map((month) => (
+        {MONTHS?.map((month) => (
           <Select.Option value={month.value} key={month.value}>
             {month.label}
           </Select.Option>
@@ -77,7 +77,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         value={value.day || day}
         suffixIcon={<DownArrow width={"1.5rem"} height={"1.5rem"} />}
       >
-        {DAYS.map((day) => (
+        {DAYS?.map((day) => (
           <Select.Option value={day.value} key={day.value}>
             {day.label}
           </Select.Option>
