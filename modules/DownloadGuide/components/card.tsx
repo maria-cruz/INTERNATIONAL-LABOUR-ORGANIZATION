@@ -2,23 +2,28 @@ import React from "react";
 import Image from "next/image";
 import Button from "antd/lib/button";
 import Download from "@common/components/Icons/Download";
+import CardSampleImage from "@public/images/card-sample-3.jpg";
 
 export interface GuideCardProps {
   unit?: string;
   title?: string;
   description?: string;
-  logo: StaticImageData | string;
+  thumbnail: StaticImageData | string;
+  url?: string;
 }
-const DownloadCard = ({ unit, title, description, logo }: GuideCardProps) => {
+
+const DownloadCard = ({
+  unit = "",
+  title = "",
+  description = "",
+  thumbnail = CardSampleImage,
+  url = "",
+}: GuideCardProps) => {
+  const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
   return (
     <div className="course-card">
       <div className="card-image-container">
-        <Image
-          src={logo}
-          layout="intrinsic"
-          placeholder="blur"
-          alt="image.jpg"
-        />
+        <Image src={imageSrc} placeholder="blur" alt="courses-image" />
       </div>
       <div className="card-details-container">
         <div className="card-unit">{unit}</div>
@@ -28,10 +33,12 @@ const DownloadCard = ({ unit, title, description, logo }: GuideCardProps) => {
           <div className="card-description">{description}</div>
           <div className="spacer" />
           <div className="card-view-button">
-            <Button type="primary" className="download-btn">
-              <Download fill="#ffffff" width="1.4rem" height="1.7rem" />
-              Download
-            </Button>
+            <a download={title} href={url}>
+              <Button type="primary" className="download-btn">
+                <Download fill="#ffffff" width="1.4rem" height="1.7rem" />
+                Download
+              </Button>
+            </a>
           </div>
         </div>
       </div>

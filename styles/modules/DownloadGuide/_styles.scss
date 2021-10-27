@@ -52,8 +52,13 @@
 
   .guide-container {
     @include side-padding;
+    max-width: 192rem;
     padding-top: 0;
     padding-bottom: 8rem;
+    @include view-size(tab-land) {
+      width: 100%;
+      display: flex;
+    }
     @include view-size(big-desktop) {
       padding: 0 10rem 12rem;
     }
