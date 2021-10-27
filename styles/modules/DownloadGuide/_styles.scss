@@ -5,14 +5,21 @@
     align-items: center;
   }
   .bg-description-container {
+    @include side-padding;
     position: absolute;
     left: 0;
-    padding: 10rem;
     font-family: Arial;
+    font-size: 8.88888vw;
+    @include view-size(tab-port) {
+      font-size: 5.5rem;
+    }
+    @include view-size(desktop) {
+      font-size: 6.3rem;
+    }
   }
 
-  .subheading-upper {
-    font-weight: 400;
+  .subheading-lower {
+    font-weight: 500;
   }
 
   .download-cards-container {
@@ -23,36 +30,89 @@
     background-color: $whisper;
   }
   .description-label-container {
-    padding: 5rem 10rem;
-    font-size: 1.8rem;
-    color: $shuttle-gray;
-    line-height: 2;
+    @include side-padding;
+    font-size: 1.6rem;
+    color: $black03;
+    padding-bottom: 5rem;
     max-width: 191.9rem;
+    line-height: 1.7;
+    @include view-size(tab-land) {
+      color: $shuttle-gray;
+    }
+    @include view-size(desktop) {
+      line-height: 2;
+      font-size: 1.8rem;
+      padding: 5rem 10rem;
+    }
   }
 
   .image-container {
     padding: 0 10rem 12rem;
   }
+
   .guide-container {
-    padding: 0 10rem 12rem;
+    @include side-padding;
+    padding-top: 0;
+    padding-bottom: 8rem;
+    @include view-size(big-desktop) {
+      padding: 0 10rem 12rem;
+    }
   }
 
   .download-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    column-gap: 3rem;
+    grid-template-columns: repeat(1, auto);
+    row-gap: 3rem;
+    @include view-size(tab-land) {
+      column-gap: 3rem;
+      grid-template-columns: repeat(2, auto);
+    }
+    @include view-size(1400px) {
+      grid-template-columns: repeat(3, auto);
+    }
   }
 
   .dl-guide-filter {
     position: absolute;
-    top: 14rem;
-    height: 51.3rem;
     width: 100%;
     opacity: 0.75;
-    background: transparent
-      linear-gradient(111deg, $white 0%, $transparent 100%) 0% 0% no-repeat
-      padding-box;
     mix-blend-mode: lighten;
+    top: 8rem;
+    height: 75.2vw;
+    max-height: 67rem;
+    background: transparent
+      linear-gradient(128deg, $white 0%, $white-2e 82%, $transparent 100%) 0% 0%
+      no-repeat padding-box;
+    @include view-size(tab-land) {
+      top: 8rem;
+      height: 27vw;
+      max-height: 66rem;
+
+      background: transparent
+        linear-gradient(111deg, $white 0%, $transparent 100%) 0% 0% no-repeat
+        padding-box;
+    }
+    @include view-size(desktop) {
+      top: 12rem;
+    }
+    @include view-size(big-desktop) {
+      height: 51.3rem;
+      top: 14rem;
+    }
   }
+
+  .banner-desktop {
+    display: none;
+    @include view-size(tab-land) {
+      display: block;
+    }
+  }
+  .banner-mobile {
+    display: block;
+    @include view-size(tab-land) {
+      display: none;
+    }
+  }
+
   @import "./component/card";
 }

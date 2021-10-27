@@ -9,7 +9,7 @@ export interface GuideCardProps {
   description?: string;
   logo: StaticImageData | string;
 }
-const CoursesCard = ({ unit, title, description, logo }: GuideCardProps) => {
+const DownloadCard = ({ unit, title, description, logo }: GuideCardProps) => {
   return (
     <div className="course-card">
       <div className="card-image-container">
@@ -39,4 +39,4 @@ const CoursesCard = ({ unit, title, description, logo }: GuideCardProps) => {
   );
 };
 
-export default CoursesCard;
+export default DownloadCard;

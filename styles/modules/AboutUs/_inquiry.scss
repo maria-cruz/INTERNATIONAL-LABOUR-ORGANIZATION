@@ -1,15 +1,10 @@
 .inquiry-container {
   display: flex;
   background-color: $whisper;
-  padding: 6rem 4.45vw 8rem;
-  @include view-size(tab-port) {
-    padding: 6rem 5rem 8rem;
-  }
-  @include view-size(tab-land) {
-    padding: 6rem 6.45vw 8rem;
-  }
+  padding-bottom: 8rem;
+  @include side-padding;
   @include view-size(desktop) {
-    padding: 10rem;
+    padding-bottom: 10rem;
   }
 
   .inquiry-wrapper {
