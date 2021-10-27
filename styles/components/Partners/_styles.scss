@@ -11,7 +11,7 @@
     padding: 6rem 6.45vw;
   }
   @include view-size(desktop) {
-    height: 51.2rem;
+    // height: 51.2rem;
     padding: 10rem;
   }
 
@@ -28,11 +28,7 @@
   }
 
   .partners-section-logos {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     width: 100%;
-    gap: 2rem;
     @include view-size(tab-port) {
       gap: 5rem;
     }
@@ -42,5 +38,12 @@
     @include view-size(desktop) {
       gap: 4rem;
     }
+  }
+
+  .carousel-image-container {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
   }
 }

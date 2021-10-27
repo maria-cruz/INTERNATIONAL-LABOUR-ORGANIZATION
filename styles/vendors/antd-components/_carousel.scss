@@ -1,0 +1,34 @@
+.slick-track {
+  display: flex !important;
+  align-items: center;
+}
+
+.slick-dots.slick-dots-bottom {
+  bottom: -5rem;
+  li {
+    background: $silver;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+  }
+
+  li button {
+    background: $silver;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+  }
+
+  li.slick-active {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+  }
+
+  li.slick-active button {
+    background: $tropical-rain-forest;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+  }
+}
