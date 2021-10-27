@@ -2,7 +2,7 @@ import CoursesMain from "@modules/CoursesMain";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import getStrapiImageUrl from "@common/utils/getStrapiImageUrl";
+import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface CoursesDataType {
   unit: string;
@@ -30,6 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
     }
   );
+  console.log(allCoursesData, "allcourses");
 
   const allCourseCardsData = allCoursesData.map((courseData) => {
     const completedTopics = courseData?.progress?.completed_topics_count ?? 0;
@@ -47,11 +48,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       title: courseData?.title,
       slug: courseData?.slug,
       description: courseData?.description,
-      thumbnail: getStrapiImageUrl(courseData?.thumbnail),
+      thumbnail: getStrapiFileUrl(courseData?.thumbnail),
       percentage: percentage,
       status: getProgressStatus(),
     };
   });
+  console.log(allCourseCardsData, "course");
 
   return {
     props: { allCourseCardsData },
