@@ -38,28 +38,29 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
   const [country, setCountry] = useState("LB");
 
   useEffect(() => {
-    setCountry(editProfileData.country);
+    setCountry(editProfileData?.country);
   }, []);
-  const month = moment(editProfileData.birth_date).month();
 
-  const day = moment(editProfileData.birth_date).date();
+  const month = moment(editProfileData?.birth_date).month();
 
-  const year = moment(editProfileData.birth_date).year();
+  const day = moment(editProfileData?.birth_date).date();
+
+  const year = moment(editProfileData?.birth_date).year();
 
   const intialValues = {
-    firstName: editProfileData.given_name,
-    lastName: editProfileData.family_name,
-    organizationType: editProfileData.organization_type,
-    organizationName: editProfileData.organization_name,
-    emailAddress: editProfileData.email,
+    firstName: editProfileData?.given_name,
+    lastName: editProfileData?.family_name,
+    organizationType: editProfileData?.organization_type,
+    organizationName: editProfileData?.organization_name,
+    emailAddress: editProfileData?.email,
     birthDate: {
       month,
       day,
       year: moment(year, "YYYY"),
     },
-    gender: editProfileData.gender,
-    phoneNumber: editProfileData.phone_number,
-    nationality: editProfileData.nationality,
+    gender: editProfileData?.gender,
+    phoneNumber: editProfileData?.phone_number,
+    nationality: editProfileData?.nationality,
   };
   const [editProfile] = Form.useForm();
 
