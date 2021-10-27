@@ -1,8 +1,6 @@
 .birth-date-container {
   display: flex;
-  // align-items: flex-end;
   gap: 1.6rem;
-  // width: 39.8rem;
   width: auto;
   flex: 1;
 
@@ -17,7 +15,6 @@
 
   // Year
   .month-select {
-    // width: auto;
     height: 5rem;
     flex: 2;
   }
