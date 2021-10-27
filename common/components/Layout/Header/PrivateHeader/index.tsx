@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import NavLink from "@common/components/NavLink";
 import Button from "antd/lib/button";
-import Select from "antd/lib/select";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "@public/images/logo.svg";
@@ -10,8 +9,6 @@ import HamburgerMenu from "@common/components/Icons/HamburgerMenu";
 import Dropdown from "antd/lib/dropdown";
 import Menu from "antd/lib/menu";
 import HamburgerMenuActive from "@common/components/Icons/HamburgerMenuActive";
-
-const { Option } = Select;
 interface HeaderProps {
   title?: string;
   gap?: string;
@@ -24,43 +21,78 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
   const { pathname } = router;
   const handleEnglishClick = () => {
     router.push(`${pathname}`, "", { locale: "en" });
+    setState(false);
   };
 
   const handleArabicClick = () => {
     router.push(`${pathname}`, "", { locale: "ar" });
+    setState(false);
   };
 
+  const handleLogOutClick = () => {
+    //destroy cookies
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, "")
+        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+
+    router.push("/");
+
+    setState(false);
+  };
   const handleVisibleChange = (e: any) => {
     setState(e);
   };
 
+  const handleLanguageClick = () => {
+    setState(false);
+  };
+
+  const handleUserAccountClick = () => {
+    router.push("/profile");
+  };
+
   const languageMenu = (
     <Menu className="dropdown-menu">
-      <Menu.Item>
-        <div onClick={handleEnglishClick}>English</div>
+      <Menu.Item key="english">
+        <Button className="btn-menu">
+          <div onClick={handleEnglishClick}>English</div>
+        </Button>
       </Menu.Item>
-      <Menu.Item>
-        <div onClick={handleArabicClick}> العربية</div>
+      <Menu.Item key="arabic">
+        <Button className="btn-menu">
+          <div onClick={handleArabicClick}> العربية</div>
+        </Button>
       </Menu.Item>
     </Menu>
   );
 
   const menu = (
     <Menu className="dropdown-menu">
-      <Menu.Item>
-        <div className="menu-title">User account</div>
+      <Menu.Item key="user-account">
+        <Button className="btn-menu" onClick={handleUserAccountClick}>
+          <div className="menu-title">User account</div>
+        </Button>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="language">
         <Dropdown
           overlay={languageMenu}
           placement="bottomRight"
           overlayClassName="language-menu-dropdown"
+          trigger={["hover"]}
         >
-          <div className="menu-title">Language</div>
+          <Button onClick={handleLanguageClick} className="btn-menu">
+            <div className="menu-title">Language</div>
+          </Button>
         </Dropdown>
       </Menu.Item>
-      <Menu.Item>
-        <div className="menu-title">Log out</div>
+      <Menu.Item key="log-out">
+        <Button className="btn-menu">
+          <div className="menu-title" onClick={handleLogOutClick}>
+            Log out
+          </div>
+        </Button>
       </Menu.Item>
     </Menu>
   );
