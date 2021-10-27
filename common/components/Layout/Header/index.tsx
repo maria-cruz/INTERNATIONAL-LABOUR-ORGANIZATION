@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles.module.scss";
+// import styles from "./styles.module.scss";
 import NavLink from "@common/components/NavLink";
 import Button from "antd/lib/button";
 import Select from "antd/lib/select";
@@ -7,7 +7,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "@public/images/logo.svg";
 import LogoMobile from "@public/images/logo-footer.svg";
-
+import PublicHeader from "./PublicHeader";
+import PrivateHeader from "./PrivateHeader";
+import includes from "lodash/includes";
 const { Option } = Select;
 interface HeaderProps {
   title?: string;
@@ -17,78 +19,21 @@ interface HeaderProps {
 
 const Header = ({ gap = "0rem", className = "" }: HeaderProps) => {
   const router = useRouter();
-
-  const { pathname } = router;
-  const handleEnglishClick = () => {
-    router.push(`${pathname}`, "", { locale: "en" });
-  };
-
-  const handleArabicClick = () => {
-    router.push(`${pathname}`, "", { locale: "ar" });
-  };
-
+  const isActiveNavLink =
+    includes(router?.pathname, "courses") ||
+    includes(router?.pathname, "profile") ||
+    includes(router?.pathname, "courses");
   return (
-    <header
-      className={`${styles["header"]} ${className}`}
-      style={{ marginBottom: gap }}
-    >
-      <div className={styles["left-container"]}>
-        <NavLink href="/">
-          <div className={styles["logo-container"]}>
-            <Image src={Logo} height={79} alt="logo.svg" />
-          </div>
-          <div className={styles["logo-container-mobile"]}>
-            <Image
-              src={LogoMobile}
-              alt="logo-footer.svg"
-              width={50}
-              height={42}
-            />
-          </div>
-        </NavLink>
-      </div>
-      <div className={styles["right-container"]}>
-        <div className={styles["menu"]}>
-          <NavLink href="/download-guide">Download Guide</NavLink>
-          <NavLink href="/faq">FAQ</NavLink>
-          <NavLink href="/about-us">About Us</NavLink>
-          <NavLink className={styles["log-in-link"]} href="/log-in">
-            Log In
-          </NavLink>
-          <NavLink href="/sign-up">
-            <Button type="primary" size="large">
-              Sign up
-            </Button>
-          </NavLink>
-        </div>
-        <div className={styles["divider"]} />
-        <div className={styles["language-select"]}>
-          <Select
-            size="large"
-            defaultValue="english"
-            bordered={false}
-            dropdownAlign={{ offset: [-100, 4] }}
-          >
-            <Option value="english">
-              <div onClick={handleEnglishClick}>English</div>
-            </Option>
-
-            <Option value="arabic">
-              <div onClick={handleArabicClick}> العربية</div>
-            </Option>
-          </Select>
-        </div>
-      </div>
-
-      <div className={styles["right-container-mobile"]}>
-        <div className={styles["menu"]}>
-          {" "}
-          <div className={styles["line"]}></div>
-          <div className={styles["line"]}></div>
-          <div className={styles["line"]}></div>
-        </div>
-      </div>
-    </header>
+    <>
+      <PublicHeader
+        className={`${!isActiveNavLink ? className : "hide-menu"}`}
+        gap={gap}
+      />
+      <PrivateHeader
+        className={`${isActiveNavLink ? className : "hide-menu"}`}
+        gap={gap}
+      />
+    </>
   );
 };
 

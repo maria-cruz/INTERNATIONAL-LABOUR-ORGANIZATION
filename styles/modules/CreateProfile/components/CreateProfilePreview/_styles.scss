@@ -1,19 +1,30 @@
 .create-profile-preview-container {
-  width: 63.85vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5rem;
+
+  @include view-size(tab-land) {
+    padding: 5rem;
+    width: 63.85vw;
+  }
 
   .create-profile-preview {
     width: 100%;
     max-width: 92.6rem;
     background: $white 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 16px $black-29;
+
     border-radius: 0.4rem;
     opacity: 1;
-    padding: 5rem;
+
+    padding-left: min(4.45vw, 5rem);
+    padding-right: min(4.45vw, 5rem);
+    padding-top: 3.3rem;
+    padding-bottom: 10rem;
+
+    @include view-size(tab-land) {
+      box-shadow: 0px 3px 16px $black-29;
+    }
   }
 
   .create-profile-title {
@@ -83,7 +94,18 @@
 
   .preview-button-container {
     display: flex;
-    justify-content: flex-end;
     gap: 1rem;
+
+    @include view-size(tab-land) {
+      justify-content: flex-end;
+    }
+  }
+
+  .preview-button-container .preview-button {
+    flex: 1;
+
+    @include view-size(tab-land) {
+      flex: none;
+    }
   }
 }

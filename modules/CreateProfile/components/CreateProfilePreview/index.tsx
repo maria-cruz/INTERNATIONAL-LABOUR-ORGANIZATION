@@ -81,10 +81,18 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
           </div>
         </div>
         <div className="preview-button-container">
-          <Button className="btn-back" type="link" onClick={handleBackClick}>
+          <Button
+            className="preview-button"
+            type="link"
+            onClick={handleBackClick}
+          >
             Back
           </Button>
-          <Button className="btn-submit" type="primary" onClick={onSubmitClick}>
+          <Button
+            className="preview-button"
+            type="primary"
+            onClick={onSubmitClick}
+          >
             Submit
           </Button>
         </div>

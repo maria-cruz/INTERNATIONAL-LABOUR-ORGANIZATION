@@ -1,72 +1,145 @@
-.menu-step-container {
+.left-side-menu-container {
   background: $tropical-rain-forest;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  width: 100%;
-  max-width: 69.4rem;
-  min-height: 100vh;
-  padding: 7rem 10rem 6.5rem;
+  justify-content: center;
 
-  .menu-step {
-    height: 100%;
-    max-height: 96.7rem;
+  width: 100%;
+  padding-top: 1.6rem;
+  padding-left: 4.45vw;
+  padding-right: 4.45vw;
+
+  @include view-size(tab-port) {
+    padding-top: 1.8rem;
+  }
+
+  @include view-size(tab-land) {
+    width: 52%;
+    max-width: 69.4rem;
+    min-height: 100vh;
+    justify-content: flex-start;
+    padding: 4.5rem 3.646% 3.25rem;
+  }
+
+  @include view-size(desktop) {
+    padding: 7rem 5.208% 6.5rem;
+  }
+
+  .left-side-menu {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
+
+    @include view-size(tab-land) {
+      justify-content: space-between;
+      max-width: 69.4rem;
+      height: 100%;
+      min-height: 100vh;
+    }
   }
 
-  .step-one-container,
-  .step-two-container {
+  .logo-container {
+    width: 5rem;
+    margin-bottom: 3.727rem;
+
+    @include view-size(tab-land) {
+      width: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  .steps-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 3.727rem;
+
+    @include view-size(tab-land) {
+      flex-direction: column;
+    }
+  }
+
+  .step-container {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    font-size: 1.6rem;
   }
 
-  .step-one-container {
-    margin-bottom: 5rem;
+  .step-container.step-1 {
+    margin-right: 3rem;
+    @include view-size(tab-land) {
+      margin-bottom: 5rem;
+    }
   }
 
-  .number-container {
-    font-size: 2.6rem;
+  .step-number {
     background: $white-50;
-    width: 5.3rem;
-    height: 5.2rem;
+    margin-right: 1.8rem;
+
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+
+    font-size: 1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    @include view-size(tab-land) {
+      font-size: 2rem;
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    @include view-size(desktop) {
+      font-size: 2.6rem;
+      width: 5.3rem;
+      height: 5.2rem;
+    }
   }
 
   .-active-number {
-    font-size: 2.6rem;
     background: $white;
-    width: 5.3rem;
-    height: 5.2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .step-text {
+    color: $white-50;
     font-weight: bold;
+    white-space: nowrap;
+
+    font-size: 1.1rem;
+    @include view-size(tab-port) {
+      font-size: 1.4rem;
+    }
+    @include view-size(tab-land) {
+      font-size: 1.8rem;
+    }
+    @include view-size(desktop) {
+      font-size: 2.4rem;
+    }
   }
 
   .-active-text {
-    font-size: 2.4rem;
     color: $white;
     font-weight: bold;
   }
 
-  .text-container {
-    font-size: 2.4rem;
-    color: $white-50;
-    font-weight: bold;
-  }
+  .menu-title-container {
+    display: none;
 
-  .title-container {
-    font-size: 2.4rem;
-    color: $white;
-    margin-bottom: 1.2rem;
+    @include view-size(tab-land) {
+      display: block;
+      font-size: 2rem;
+      color: $white;
+      margin-bottom: 1.2rem;
+    }
+
+    @include view-size(desktop) {
+      display: block;
+      font-size: 2.4rem;
+      color: $white;
+      margin-bottom: 1.2rem;
+    }
   }
 
   .description-container {
