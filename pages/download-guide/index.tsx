@@ -24,9 +24,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { data: allDownloadData }: AllGuidesDataType = await axios.get(
     `${process.env.API_URL}/guides`
   );
-  console.log(allDownloadData, "alldl");
 
-  let allGuidesData = allDownloadData.map((guideData) => {
+  const sortedAllDownloadData = allDownloadData.sort((a, b) => {
+    if (a?.unit?.unit > b?.unit?.unit) {
+      return 1;
+    }
+    if (a?.unit?.unit < b?.unit?.unit) {
+      return -1;
+    }
+    return 0;
+  });
+
+  let allGuidesData = sortedAllDownloadData.map((guideData) => {
     const guideUnit = guideData?.unit?.unit;
     const guideTitle = guideData?.unit?.title;
     const guideDescription = guideData?.unit?.description;
@@ -46,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   });
 
   allGuidesData = allGuidesData.filter((guideData) => !!guideData);
+
   console.log(allGuidesData, "download");
 
   return {

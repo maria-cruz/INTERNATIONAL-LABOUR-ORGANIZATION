@@ -23,7 +23,7 @@ const DownloadCard = ({
   return (
     <div className="course-card">
       <div className="card-image-container">
-        <Image src={imageSrc} placeholder="blur" alt="courses-image" />
+        <Image src={CardSampleImage} placeholder="blur" alt="courses-image" />
       </div>
       <div className="card-details-container">
         <div className="card-unit">{unit}</div>
