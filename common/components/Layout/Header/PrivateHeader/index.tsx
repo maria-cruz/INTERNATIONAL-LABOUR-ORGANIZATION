@@ -97,7 +97,6 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
     </Menu>
   );
 
-  console.log(state ? "totoo" : "false");
   return (
     <header
       className={`private-header ${className}`}
