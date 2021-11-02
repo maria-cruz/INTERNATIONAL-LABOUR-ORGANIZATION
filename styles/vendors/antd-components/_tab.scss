@@ -9,9 +9,15 @@
   color: $shuttle-gray;
 }
 .ant-tabs-tab-btn {
-  font-size: 2.4rem;
+  font-size: 5.55555vw;
   color: $shuttle-gray;
   font-weight: 600;
+  @include view-size(400px) {
+    font-size: 2.2rem;
+  }
+  @include view-size(tab-land) {
+    font-size: 2.4rem;
+  }
 }
 .ant-tabs-ink-bar {
   background: $faux-green;

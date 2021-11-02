@@ -8,11 +8,18 @@
     height: 5rem;
     border: 0.1rem solid $silver;
     border-right: 0.2rem solid $silver;
-    width: 108.8rem;
+  }
+  .ant-select-selector {
+    width: 90vw;
+    max-width: 108.8rem;
+    @include view-size(tab-land) {
+      width: 87vw;
+    }
   }
   .ant-input-prefix {
     margin-left: 1.9rem;
   }
+
   ._subheading-label,
   .dropdown-container {
     margin-bottom: 5rem;
@@ -36,27 +43,54 @@
     margin-bottom: 2rem;
 
     .ant-collapse-header {
-      font-size: 2.4rem;
+      font-size: 5vw;
       color: $black03;
       font-weight: 500;
       display: flex;
-      align-items: center;
-      height: 8rem;
+      line-height: 1.4;
+      height: 10.6rem;
+      width: 88vw;
+      max-width: 108rem;
+      @include view-size(400px) {
+        font-size: 2rem;
+      }
+      @include view-size(tab-port) {
+        height: 8rem;
+        font-size: 2.2rem;
+        align-items: flex-start;
+      }
+      @include view-size(tab-land) {
+        align-items: center;
+      }
+      @include view-size(desktop) {
+        font-size: 2.4rem;
+      }
     }
 
     .ant-collapse-content-box {
-      font-size: 1.8rem;
+      font-size: 4.44444vw;
       color: $shuttle-gray;
-      line-height: 2;
-      width: 75.6rem;
-      margin-left: 7.5rem;
+      line-height: 1.7;
+      max-width: 107rem;
+      margin-left: 5rem;
+      @include view-size(365px) {
+        font-size: 1.6rem;
+      }
+      @include view-size(1000px) {
+        line-height: 2;
+        margin-left: 7.5rem;
+        font-size: 1.8rem;
+      }
     }
     .ant-collapse-arrow svg {
       fill: $shuttle-gray;
     }
 
     .ant-collapse-header .ant-collapse-arrow {
-      margin-right: 5rem;
+      margin-right: 3rem;
+      @include view-size(1000px) {
+        margin-right: 5rem;
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ import Tabs from "antd/lib/tabs";
 import FaqUnit1 from "./FaqUnit1";
 import FaqUnit2 from "./FaqUnit2";
 import FaqUnit3 from "./FaqUnit3";
-
+import FAQBackgroundMobile from "@public/images/FAQ-mobile-banner.jpg";
 const { TabPane } = Tabs;
 const callback = (key: any) => {
   console.log(key);
@@ -27,12 +27,17 @@ const FAQ = () => {
             placeholder="blur"
           />
         </div>
+        <div className="faq-bg-mobile">
+          <Image
+            src={FAQBackgroundMobile}
+            alt="FAQ-mobile-banner.jpg"
+            placeholder="blur"
+          />
+        </div>
         <div className="faq-bg-filter"></div>
         <div className="bg-description-container ">
           <div className="subheading-upper">Have a Question?</div>
-          <div className="subheading-lower _section-label">
-            Frequently Asked Questions
-          </div>
+          <div className="subheading-lower">Frequently Asked Questions</div>
         </div>
         <div className="unit-container">
           <div className="unit-wrapper">
