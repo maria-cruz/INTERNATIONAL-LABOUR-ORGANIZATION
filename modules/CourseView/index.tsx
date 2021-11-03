@@ -32,7 +32,7 @@ const CourseView = ({ courseViewData }: CourseViewProps) => {
         </header>
 
         <ProgressTracker percentage={26} />
-        <SessionCollapse />
+        <SessionCollapse topics={courseViewData?.topics} />
       </div>
     </div>
   );

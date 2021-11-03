@@ -25,14 +25,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const topicsCount = topics.length;
 
   const courseViewData: any = {
-    unit: courseData?.unit ?? 0,
-    title: courseData?.title,
-    slug: courseData?.slug,
-    description: courseData?.description,
-    thumbnail: getStrapiFileUrl(courseData?.thumbnail),
-    topicsCount: topicsCount,
-    percentage: percentage,
-    objectives: courseData?.learning_objectives,
+    ...courseData,
+    // unit: courseData?.unit ?? 0,
+    // title: courseData?.title,
+    // slug: courseData?.slug,
+    // description: courseData?.description,
+    // thumbnail: getStrapiFileUrl(courseData?.thumbnail),
+    // topicsCount: topicsCount,
+    // percentage: percentage,
+    // objectives: courseData?.learning_objectives,
   };
 
   return {
