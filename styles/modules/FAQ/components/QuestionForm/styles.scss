@@ -5,7 +5,10 @@
 
   .form-wrapper {
     max-width: 108.8rem;
-    width: 108.8rem;
+    width: 90vw;
+    @include view-size(tab-land) {
+      width: 87vw;
+    }
   }
 
   .text-container {
@@ -21,13 +24,22 @@
   .form-description {
     font-size: 1.8rem;
     color: $shuttle-gray;
-    margin-bottom: 2rem;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+    @include view-size(tab-land) {
+      margin-bottom: 2rem;
+    }
   }
 
   .upper-input-container {
-    display: grid;
-    grid-template-columns: repeat(2, 53.6rem);
-    column-gap: 1.6rem;
+    @include view-size(tab-port) {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, 49%);
+    }
+    @include view-size(tab-land) {
+      gap: 2;
+    }
   }
   .form-input,
   .ant-select-selector {
@@ -47,7 +59,10 @@
     margin-bottom: 4rem;
   }
   .form-btn {
-    width: 18.4rem;
+    width: 100%;
+    @include view-size(tab-port) {
+      width: 18.4rem;
+    }
   }
 
   .email-container,
@@ -56,6 +71,11 @@
     label {
       color: $manatee;
     }
+  }
+
+  //ANTD SELECTOR
+  .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border: solid 0.1rem $manatee;
   }
 
   .ant-select-arrow svg {

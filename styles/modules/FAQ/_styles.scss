@@ -1,48 +1,121 @@
 .FAQ-section {
   background: $whisper;
+
+  .faq-bg {
+    display: none;
+    @include view-size(tab-land) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .faq-bg-mobile {
+    display: block;
+    @include view-size(tab-land) {
+      display: none;
+    }
+  }
   .faq-bg-filter {
     position: absolute;
-    top: 14rem;
-    height: 51.3rem;
+    top: 8rem;
+    height: 73vw;
     width: 100%;
     opacity: 0.75;
     background: transparent
-      linear-gradient(111deg, $white 0%, $transparent 100%) 0% 0% no-repeat
+      linear-gradient(111deg, $white 25%, $transparent 100%) 0% 0% no-repeat
       padding-box;
     mix-blend-mode: lighten;
-  }
-  .unit-container {
-    display: flex;
-    justify-content: center;
-    padding: 9rem 0 6rem;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .unit-wrapper {
-    max-width: 108.8rem;
-    width: 108.8rem;
+    @include view-size(tab-land) {
+      max-height: 52rem;
+      height: 27vw;
+    }
+    @include view-size(desktop) {
+      top: 12rem;
+      height: 27vw;
+    }
+    @include view-size(big-desktop) {
+      top: 14rem;
+    }
   }
 
   ._subheading-label {
     margin-bottom: 5rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    @include view-size(tab-land) {
+      font-size: 2.8rem;
+    }
   }
 
   .bg-description-container {
+    @include side-padding;
+    color: $black03;
     position: absolute;
-    top: 22rem;
-    padding: 10rem;
-    max-width: 100rem;
-  }
-  .subheading-upper {
-    font-size: 2.8rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
+    top: 29vw;
+    @include view-size(tab-port) {
+      top: 27vw;
+      max-width: 77.5rem;
+    }
+    @include view-size(tab-land) {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      top: 9vw;
+    }
+    @include view-size(desktop) {
+      max-width: 100rem;
+      padding: 7rem 10rem;
+    }
+    @include view-size(big-desktop) {
+      top: 22rem;
+      padding: 10rem;
+    }
   }
   .subheading-lower {
-    line-height: 1.2;
+    font-size: 8.88888vw;
+    font-weight: 500;
+    @include view-size(tab-port) {
+      font-size: 5.5rem;
+    }
+    @include view-size(desktop) {
+      font-size: 6.3rem;
+    }
+  }
+  .subheading-upper {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 4.44444vw;
+    @include view-size(tab-port) {
+      font-size: 2.7rem;
+    }
+    @include view-size(desktop) {
+      margin-bottom: 2rem;
+      font-size: 2.8rem;
+    }
+  }
+  .subheading-lower {
+    line-height: 1.1;
+    @include view-size(desktop) {
+      line-height: 1.2;
+    }
   }
 
+  .unit-container {
+    @include side-padding;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include view-size(desktop) {
+      padding-top: 9rem;
+      padding-bottom: 6rem;
+    }
+  }
+  .unit-wrapper {
+    max-width: 108.8rem;
+    width: 90vw;
+    @include view-size(tab-land) {
+      width: 87vw;
+    }
+  }
   @import "./components/QuestionForm/styles.scss";
   @import "./components//SearchQuestion/styles";
 }

@@ -36,7 +36,7 @@ const QuestionForm = () => {
           <div className="_subheading-label">Have a Question?</div>
           <div className="form-description">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor
+            nonumy eirmod tempor invidunt ut labore et
           </div>
         </div>
         <Form
