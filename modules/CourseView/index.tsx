@@ -7,7 +7,12 @@ import Content from "@modules/CourseView/components/Content";
 import ProgressTracker from "./components/ProgressTracker";
 import SessionCollapse from "./components/SessionCollapse";
 
-const CourseView = () => {
+interface CourseViewProps {
+  courseViewData: any;
+}
+
+const CourseView = ({ courseViewData }: CourseViewProps) => {
+  console.log("HEY ", courseViewData);
   return (
     <div className="courses-view">
       <Content />
