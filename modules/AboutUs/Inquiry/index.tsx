@@ -5,7 +5,7 @@ import Telephone from "@common/components/Icons/Telephone";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
-import ContactSuccessMessage from "@common/components/ContactSuccessMessage";
+import SuccessMessage from "@common/components/SuccessMessage";
 import axios from "axios";
 
 interface HandleContactsProps {
@@ -21,8 +21,15 @@ const validateMessages = {
     email: "${label} is not a valid email!",
   },
 };
+{
+}
 
 const Inquiry = () => {
+  const successMesssageProps = {
+    subDescription: "Otherwise, we will reply by email as soon as possible.",
+    description:
+      "We have received your message and would like to thank you for writing to us. If your inquiry is urgent, please use the telephone number listed to talk to one of our staff members.",
+  };
   const [isVisibleText, setIsVisibleText] = useState(false);
   const [inquiryForm] = Form.useForm();
 
@@ -40,7 +47,7 @@ const Inquiry = () => {
         setIsVisibleText(true);
         setTimeout(() => {
           setIsVisibleText(false);
-        }, 7000);
+        }, 8000);
       })
       .then((res) => {
         inquiryForm.resetFields();
@@ -53,7 +60,7 @@ const Inquiry = () => {
       <div className="inquiry-wrapper">
         <div className="inquiry-form">
           {isVisibleText ? (
-            <ContactSuccessMessage />
+            <SuccessMessage {...successMesssageProps} />
           ) : (
             <Form
               className="inquiry-form-wrapper"
