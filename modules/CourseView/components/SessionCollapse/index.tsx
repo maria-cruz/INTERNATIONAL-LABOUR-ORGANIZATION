@@ -22,8 +22,6 @@ interface SessionCollapseProps {
 }
 
 const SessionCollapse = ({ topics }: SessionCollapseProps) => {
-  console.log("T: ", topics);
-
   function callback(key: any) {
     // console.log(key);
   }
@@ -49,7 +47,8 @@ const SessionCollapse = ({ topics }: SessionCollapseProps) => {
               key={`${idx + 1}`}
             >
               <PreAssessment />
-              <Topic title={topic?.title} />
+              <Topic title={topic?.title} id={topic?.id} />
+
               <PostAssessment />
             </Panel>
           );

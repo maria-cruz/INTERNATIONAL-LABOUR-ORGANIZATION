@@ -12,7 +12,7 @@ interface CourseViewProps {
 }
 
 const CourseView = ({ courseViewData }: CourseViewProps) => {
-  console.log("HEY ", courseViewData);
+  // console.log("HEY ", courseViewData);
   return (
     <div className="courses-view">
       <Content />

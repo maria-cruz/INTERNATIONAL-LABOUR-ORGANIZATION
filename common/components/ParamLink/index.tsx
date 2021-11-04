@@ -13,6 +13,8 @@ interface ParamLinkProps {
   children?: ReactNode;
   className?: string;
   props?: any;
+  scroll?: boolean;
+  shallow?: boolean;
 }
 
 const ParamLink = ({
@@ -20,6 +22,8 @@ const ParamLink = ({
   children,
   className = "",
   isDefault = false,
+  scroll = false,
+  shallow = false,
 }: ParamLinkProps) => {
   const { pathname, query: currentQuery } = useRouter();
 
@@ -28,7 +32,11 @@ const ParamLink = ({
   const isActive = isDefault ? isActiveDefault : isEqual(query, currentQuery);
 
   return (
-    <Link href={{ pathname: pathname, query: query }} scroll={false}>
+    <Link
+      href={{ pathname: pathname, query: { ...currentQuery, ...query } }}
+      scroll={scroll}
+      shallow={shallow}
+    >
       <a className={`${className} ${"param-link"} ${isActive ? "active" : ""}`}>
         {children}
       </a>

@@ -1,10 +1,11 @@
 import React from "react";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
 import getEmbedUrl from "better-video-embeds";
+import ParamLink from "@common/components/ParamLink";
 
 interface TopicProps {
   // description: string;
-  // id: number;
+  id: number;
   // media_embed?: string;
   title: string;
 }
@@ -20,7 +21,7 @@ interface TopicProps {
 //   return parsedOEmbed;
 // };
 
-const Topic = ({ title }: TopicProps) => {
+const Topic = ({ title, id }: TopicProps) => {
   // const oembed = media_embed || "";
   // const mediaEmbed = getMediaEmbed(media_embed);
   // const embedUrl = getEmbedUrl(mediaEmbed?.url);
@@ -29,12 +30,14 @@ const Topic = ({ title }: TopicProps) => {
 
   // console.log();
   return (
-    <div className="session-panel-item">
-      <div className="icon">
-        <CheckCircleOutline />
+    <ParamLink query={{ topic: `${id}` }} shallow>
+      <div className="session-panel-item">
+        <div className="icon">
+          <CheckCircleOutline />
+        </div>
+        <div className="text">{`${title}`}</div>
       </div>
-      <div className="text">{`${title}`}</div>
-    </div>
+    </ParamLink>
   );
 };
 
