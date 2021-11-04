@@ -81,4 +81,12 @@
   .ant-select-arrow svg {
     fill: $black03;
   }
+
+  .contact-success-container {
+    max-width: 100rem;
+    height: 60rem;
+    @include view-size(desktop) {
+      margin-left: 5rem;
+    }
+  }
 }

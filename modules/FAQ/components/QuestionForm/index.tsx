@@ -1,34 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
 import Select from "antd/lib/select";
+import axios from "axios";
+import SuccessMessage from "@common/components/SuccessMessage";
 
-const SAMPLE_TOPIC = [
+interface QuestionProps {
+  email: string;
+  topic: string;
+  sampleQuestion: string;
+}
+const SAMPLE_TOPICS = [
   {
-    label: "The Employment Contract. ",
-    value: 1,
+    label: "The Employment Contract",
+    value: "The Employment Contract",
   },
   {
     label: "Termination of Employment Contracts",
-    value: 2,
+    value: "Termination of Employment Contracts",
   },
   {
     label: "Social Security and Work Emergencies",
-    value: 3,
+    value: "Social Security and Work Emergencies",
   },
   {
     label: "other",
-    value: 4,
+    value: "other",
   },
 ];
 
-const QuestionForm = () => {
-  const onFinish = (values: any) => {
-    console.log(values);
+const validation = {
+  required: "${label} is required",
+  types: {
+    email: "${label} is not a valid email!",
+  },
+};
+
+const QuestionForm = ({
+  description = "We have received your message and would like to thank you for writing to us.",
+}) => {
+  const [questionForm] = Form.useForm();
+  const [isVisibleText, setIsVisibleText] = useState(false);
+
+  const handleFormSubmit = (value: QuestionProps) => {
+    axios
+      .post(`${process.env.API_URL}/question-inquiries`, {
+        email: value.email,
+        subject: value.topic,
+        question: value.sampleQuestion,
+      })
+
+      .then((data) => console.log(data, "success"))
+      .then((res) => {
+        setIsVisibleText(true);
+        setTimeout(() => {
+          setIsVisibleText(false);
+        }, 5000);
+      })
+      .then((res) => {
+        questionForm.resetFields();
+      })
+      .catch((err) => console.error(err));
   };
 
-  const [inquiryForm] = Form.useForm();
   return (
     <section className="form-section-container">
       <div className="form-wrapper">
@@ -39,40 +74,50 @@ const QuestionForm = () => {
             nonumy eirmod tempor invidunt ut labore et
           </div>
         </div>
-        <Form
-          className="inquiry-form-wrapper"
-          layout={"vertical"}
-          form={inquiryForm}
-          name="nest-messages"
-          onFinish={onFinish}
-        >
-          <div className="upper-input-container">
-            <Form.Item className="email-container" name="email" label="Email">
-              <Input className="form-input" />
-            </Form.Item>
-            <Form.Item label="Topic" name="topic" className="dropdown-menu">
-              <Select className="form-select">
-                {SAMPLE_TOPIC.map((item) => (
-                  <Select.Option value={item.value} key={item.value}>
-                    {item.label}
-                  </Select.Option>
-                ))}
-              </Select>
-            </Form.Item>
-          </div>
-          <Form.Item
-            name="question"
-            className="question-container"
-            label="Question"
+        {isVisibleText ? (
+          <SuccessMessage description={description} />
+        ) : (
+          <Form
+            className="inquiry-form-wrapper"
+            layout={"vertical"}
+            form={questionForm}
+            name="nest-messages"
+            onFinish={handleFormSubmit}
+            validateMessages={validation}
           >
-            <Input.TextArea className="question-input" />
-          </Form.Item>
-          <Form.Item noStyle>
-            <Button type="primary" htmlType="submit" className="form-btn">
-              Submit question
-            </Button>
-          </Form.Item>
-        </Form>
+            <div className="upper-input-container">
+              <Form.Item
+                className="email-container"
+                rules={[{ type: "email" }]}
+                name="email"
+                label="Email"
+              >
+                <Input className="form-input" />
+              </Form.Item>
+              <Form.Item label="Topic" name="topic" className="dropdown-menu">
+                <Select className="form-select">
+                  {SAMPLE_TOPICS.map((topic) => (
+                    <Select.Option value={topic.value} key={topic.value}>
+                      {topic.label}
+                    </Select.Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </div>
+            <Form.Item
+              name="sampleQuestion"
+              className="question-container"
+              label="Question"
+            >
+              <Input.TextArea className="question-input" />
+            </Form.Item>
+            <Form.Item noStyle>
+              <Button type="primary" htmlType="submit" className="form-btn">
+                Submit question
+              </Button>
+            </Form.Item>
+          </Form>
+        )}
       </div>
     </section>
   );
