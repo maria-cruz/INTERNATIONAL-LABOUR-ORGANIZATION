@@ -6,11 +6,47 @@ import Content from "@modules/CourseView/components/Content";
 
 import ProgressTracker from "./components/ProgressTracker";
 import SessionCollapse from "./components/SessionCollapse";
+import { useRouter } from "next/router";
 
-const CourseView = () => {
+interface ProgressType {
+  unit: number;
+  completed_topics_count: number;
+  total_topics_count: number;
+  is_unit_completed: boolean;
+}
+
+interface TopicsType {
+  id: number;
+  title?: string;
+  description?: string;
+  media_embed?: string;
+  pre_assessment: any[];
+  post_assessment: any[];
+}
+
+interface CourseDataType {
+  id: number;
+  unit?: number;
+  title?: string;
+  slug?: string;
+  description?: string;
+  topics: TopicsType[];
+  progress?: ProgressType;
+}
+
+interface CourseDataProps {
+  data: CourseDataType;
+}
+
+const CourseView = ({ data }: CourseDataProps) => {
+  const { query } = useRouter();
+  const currentContentData = data.topics.find(
+    (topic) => query.topic == `${topic.id}`
+  );
+
   return (
     <div className="courses-view">
-      <Content />
+      <Content data={currentContentData} />
       <div className="right-column">
         <header className="session-header">
           <div className="session-menu-left-container">
@@ -27,7 +63,7 @@ const CourseView = () => {
         </header>
 
         <ProgressTracker percentage={26} />
-        <SessionCollapse />
+        <SessionCollapse topics={data?.topics} />
       </div>
     </div>
   );

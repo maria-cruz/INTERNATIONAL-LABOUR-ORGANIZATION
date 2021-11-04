@@ -20,7 +20,7 @@ const CarouselBanner = ({
   const slug = router?.query?.slug;
 
   const handleStartClick = () => {
-    router.push(`/courses/${slug}`);
+    router.push(`/courses/view/${slug}`);
   };
   const handleBackArrowClick = () => {
     // router.push("/courses/unit2");
