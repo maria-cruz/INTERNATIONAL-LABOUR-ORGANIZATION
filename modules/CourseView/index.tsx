@@ -23,6 +23,7 @@ interface TopicsType {
   pre_assessment: any[];
   post_assessment: any[];
 }
+
 interface CourseDataType {
   id: number;
   unit?: number;

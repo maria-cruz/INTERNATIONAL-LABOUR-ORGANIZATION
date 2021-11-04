@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import AgencyLogo from "@public/images/italian-agency-logo.png";
+import FenasolLogo from "@public/images/fenasol-logo.jpeg";
+import WiscLogo from "@public/images/wisc-international-logo.png";
 import IloLogo from "@public/images/ilo-logo.png";
 import UnicefLogo from "@public/images/unicef-logo.png";
 import Logo from "@public/images/supporters-logo.svg";
@@ -84,29 +86,20 @@ const Partners = ({
           </div>
           <div className="carousel-image-container">
             <Image
-              src={IloLogo}
-              width={326}
-              height={117}
+              src={FenasolLogo}
+              width={190}
+              height={200}
               placeholder="blur"
-              alt="@public/images/ilo-logo.png"
+              alt="@public/images/fenasol-logo.jpeg"
             />
           </div>
           <div className="carousel-image-container">
             <Image
-              src={IloLogo}
-              width={326}
-              height={117}
+              src={WiscLogo}
+              width={400}
+              height={100}
               placeholder="blur"
-              alt="@public/images/ilo-logo.png"
-            />
-          </div>
-          <div className="carousel-image-container">
-            <Image
-              src={IloLogo}
-              width={326}
-              height={117}
-              placeholder="blur"
-              alt="@public/images/ilo-logo.png"
+              alt="@public/images/wisc-international-logo.png"
             />
           </div>
         </Carousel>

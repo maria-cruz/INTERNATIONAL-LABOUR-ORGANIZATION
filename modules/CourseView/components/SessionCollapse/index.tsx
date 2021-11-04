@@ -10,12 +10,12 @@ import Topic from "@modules/CourseView/components/SessionCollapse/Topic";
 const { Panel } = Collapse;
 
 interface TopicType {
-  description: string;
   id: number;
-  media_embed: string;
-  post_assessment: any[];
+  title?: string;
+  description?: string;
+  media_embed?: string;
   pre_assessment: any[];
-  title: string;
+  post_assessment: any[];
 }
 interface SessionCollapseProps {
   topics: TopicType[];
@@ -47,7 +47,7 @@ const SessionCollapse = ({ topics }: SessionCollapseProps) => {
               key={`${idx + 1}`}
             >
               <PreAssessment />
-              <Topic title={topic?.title} id={topic?.id} />
+              <Topic title={topic?.title || ""} id={topic?.id} />
 
               <PostAssessment />
             </Panel>

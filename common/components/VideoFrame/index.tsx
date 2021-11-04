@@ -8,7 +8,7 @@ interface VideoFrameProps {
 const VideoFrame = ({ url }: VideoFrameProps) => {
   const isVideoURLMissing = !url;
   if (isVideoURLMissing) return <div />;
-  const embedLink = getEmbedUrl(url);
+  const embedLink = getEmbedUrl(url || "");
 
   return (
     <div className={"video-container"}>
