@@ -3,7 +3,6 @@ import router, { useRouter } from "next/router";
 import ParamLink from "@common/components/ParamLink";
 import BackArrow from "@common/components/Icons/BackArrow";
 import CheckCircle from "@common/components/Icons/CheckCircle";
-import VideoFrame from "@common/components/VideoFrame";
 
 const UNIT_DETAILS_TAB = "unit-details";
 const QNA_TAB = "qna";
@@ -17,6 +16,8 @@ const Content = ({ data }: { data: any }) => {
   const handleBackClick = () => {
     router.push("preview");
   };
+
+  const videoHTML = data?.media_embed?.rawData?.html;
   return (
     <div className="content-container">
       <header className="unit-header">
@@ -32,7 +33,10 @@ const Content = ({ data }: { data: any }) => {
 
       <section className="unit-content">
         <div className="title">Session 1 - Post assessment</div>
-        <VideoFrame url={data?.media_embed?.url || ""} />
+        <div
+          className="video-container"
+          dangerouslySetInnerHTML={{ __html: videoHTML }}
+        />
       </section>
 
       <section className="unit-info">
