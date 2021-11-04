@@ -3,12 +3,13 @@ import router, { useRouter } from "next/router";
 import ParamLink from "@common/components/ParamLink";
 import BackArrow from "@common/components/Icons/BackArrow";
 import CheckCircle from "@common/components/Icons/CheckCircle";
+import VideoFrame from "@common/components/VideoFrame";
 
 const UNIT_DETAILS_TAB = "unit-details";
 const QNA_TAB = "qna";
 const SELF_PRACTICE_TAB = "self-practice";
 
-const Content = () => {
+const Content = ({ data }: { data: any }) => {
   const { pathname, query: currentQuery } = useRouter();
   const isUnitDetailsActive = currentQuery.tab === UNIT_DETAILS_TAB;
   const isQNAActive = currentQuery.tab === QNA_TAB;
@@ -31,7 +32,7 @@ const Content = () => {
 
       <section className="unit-content">
         <div className="title">Session 1 - Post assessment</div>
-        <div className="score"></div>
+        <VideoFrame url={data?.media_embed?.url || ""} />
       </section>
 
       <section className="unit-info">
