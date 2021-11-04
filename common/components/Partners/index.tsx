@@ -10,7 +10,7 @@ import Carousel from "antd/lib/carousel";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const Partners = ({
-  subheading = "This app was developed by an ILO project with the following partners",
+  subheading = "This is a National Initiative with the Support of the Following Partners",
 }) => {
   const settings = {
     dots: true,

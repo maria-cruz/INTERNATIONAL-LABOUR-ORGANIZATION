@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import BackgroundScope from "@public/images/background-scope.jpg";
+import AboutUsImage1 from "@public/images/about-us-image-1.jpg";
 import TrainingReferencesImage from "@public/images/training-references.jpg";
 import useTranslation from "next-translate/useTranslation";
 
@@ -12,7 +12,7 @@ const GalleryDesktop = () => {
       <div className="content-item">
         <div className="image-container">
           <Image
-            src={BackgroundScope}
+            src={AboutUsImage1}
             alt="background-scope.jpg"
             placeholder="blur"
             width={960}
