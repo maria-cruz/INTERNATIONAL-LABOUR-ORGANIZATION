@@ -17,10 +17,14 @@ const Home = () => {
       </span>
 
       <div className={styles["button-container"]}>
-        <Button href="/log-in" type="primary" size="middle">
+        <Button href="/log-in" type="primary" className={styles["log-in-btn"]}>
           {t("logIn")}
         </Button>
-        <Button href="/sign-up" type="default" size="middle">
+        <Button
+          href="/sign-up"
+          type="default"
+          className={styles["sign-up-btn"]}
+        >
           {t("signUp")}
         </Button>
       </div>
