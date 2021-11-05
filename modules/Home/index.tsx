@@ -8,7 +8,7 @@ import useTranslation from "next-translate/useTranslation";
 import HomeBanner from "@public/images/bg-banner.jpg";
 import IloDevices from "@public/images/ilo-devices.jpg";
 import HomeBannerMobile from "@public/images/home-banner-mobile.jpg";
-import IloDevicesMobile from "@public/images/ilo-devices-mobile.jpg";
+import IloDevicesMobile from "@public/images/Ilo-devices-mobile.jpg";
 
 const Home = () => {
   const { t } = useTranslation("home");
@@ -110,7 +110,7 @@ const Home = () => {
       <section className={styles["gadgets-mobile-section"]}>
         <Image
           src={IloDevicesMobile}
-          alt="ilo-devices.jpg"
+          alt="Ilo-devices-mobile.jpg"
           placeholder="blur"
         />
       </section>
