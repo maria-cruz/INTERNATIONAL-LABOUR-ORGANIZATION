@@ -56,8 +56,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   allGuidesData = allGuidesData.filter((guideData) => !!guideData);
 
-  console.log(allGuidesData, "download");
-
   return {
     props: { allGuidesData },
   };

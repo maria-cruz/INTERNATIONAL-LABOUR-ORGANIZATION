@@ -7,6 +7,9 @@ import Partners from "@common/components/Partners";
 import useTranslation from "next-translate/useTranslation";
 import HomeBanner from "@public/images/bg-banner.jpg";
 import IloDevices from "@public/images/ilo-devices.jpg";
+import HomeBannerMobile from "@public/images/home-banner-mobile.jpg";
+import IloDevicesMobile from "@public/images/ilo-devices-mobile.jpg";
+
 const Home = () => {
   const { t } = useTranslation("home");
 
@@ -24,6 +27,13 @@ const Home = () => {
       </div>
       <div className={styles["bg-filter"]}>
         <Banner />
+      </div>
+      <div className={styles["home-banner-mobile"]}>
+        <Image
+          alt="home-banner-mobile.jpg"
+          src={HomeBannerMobile}
+          placeholder="blur"
+        />
       </div>
       <Partners />
 
@@ -93,6 +103,13 @@ const Home = () => {
           src={IloDevices}
           width={1920}
           height={1258}
+          alt="ilo-devices.jpg"
+          placeholder="blur"
+        />
+      </section>
+      <section className={styles["gadgets-mobile-section"]}>
+        <Image
+          src={IloDevicesMobile}
           alt="ilo-devices.jpg"
           placeholder="blur"
         />

@@ -1,24 +1,41 @@
 .background {
-  position: fixed !important; // Override for nextjs/Image position. Can't change without !important
-  z-index: -1;
-  width: 192rem;
-  height: 95.9rem;
+  display: none;
+  @include view-size(tab-port) {
+    position: fixed !important; // Override for nextjs/Image position. Can't change without !important
+    z-index: -1;
+    width: 100%;
+    height: 95.9rem;
+    display: block;
+  }
+}
+.home-banner-mobile {
+  display: block;
+  @include view-size(tab-port) {
+    display: none;
+  }
 }
 .bg-filter {
-  background: transparent linear-gradient(179deg, $white 24%, $transparent 100%)
-    0% 0% no-repeat padding-box;
-  height: 95.9rem;
-  opacity: 0.9;
+  @include view-size(tab-port) {
+    opacity: 0.9;
+    background: transparent
+      linear-gradient(179deg, $white 50%, $transparent 100%) 0% 0% no-repeat
+      padding-box;
+  }
+  @include view-size(desktop) {
+    background: transparent
+      linear-gradient(179deg, $white 24%, $transparent 100%) 0% 0% no-repeat
+      padding-box;
+    height: 95.9rem;
+  }
 }
 .steps-section {
   width: 100%;
   min-height: 49.8rem;
   background: $whisper;
-  padding: 10rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  @include side-padding;
 
   .steps-container {
     width: 100%;
@@ -27,8 +44,10 @@
     align-items: flex-start;
     justify-content: space-around;
     flex-wrap: wrap;
-    row-gap: 5rem;
-
+    gap: 3rem;
+    @include view-size(tab-port) {
+      gap: 5rem;
+    }
     @include view-size(1600px) {
       justify-content: space-between;
     }
@@ -36,7 +55,12 @@
 
   .step-container {
     display: flex;
-    gap: 3.5rem;
+    flex-direction: column;
+    gap: 2rem;
+    @include view-size(tab-port) {
+      gap: 3.5rem;
+      flex-direction: row;
+    }
   }
 
   .step-container .logo {
@@ -44,7 +68,13 @@
     border-radius: 50%;
     min-width: 6.9rem;
     height: 100%;
-
+    height: 8rem;
+    max-width: 8rem;
+    justify-content: center;
+    display: flex;
+    @include view-size(tab-port) {
+      height: 100%;
+    }
     img {
       padding: 1.4rem !important;
     }
@@ -53,7 +83,10 @@
   .step-container .text-group {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
+    @include view-size(tab-port) {
+      gap: 2.5rem;
+    }
   }
 
   .text-group .title {
@@ -63,10 +96,14 @@
   }
 
   .text-group .description {
-    font-size: 1.8rem;
-    line-height: 4rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
     color: $shuttle-gray;
     max-width: 36rem;
+    @include view-size(desktop) {
+      font-size: 1.8rem;
+      line-height: 4rem;
+    }
   }
 }
 
@@ -75,13 +112,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
   background: $tropical-rain-forest;
   color: $white;
-
-  height: 49.3rem;
-  padding: 10rem;
-
+  @include view-size(tab-port) {
+    height: 40rem;
+  }
+  @include view-size(tab-land) {
+    height: 49.3rem;
+  }
+  @include side-padding;
   .main-count-container {
     display: flex;
     flex-direction: column;
@@ -93,16 +132,28 @@
       margin-bottom: 2rem;
     }
     .count {
-      font-size: 10rem;
       font-weight: 600;
+      font-size: 6rem;
+      margin-bottom: 4rem;
+      @include view-size(tab-port) {
+        margin-bottom: 0;
+      }
+      @include view-size(tab-land) {
+        font-size: 10rem;
+      }
     }
   }
 
   .sub-count-group {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    gap: 6rem;
+    @include view-size(tab-port) {
+      flex-direction: row;
+    }
   }
 
   .sub-count-container {
@@ -126,6 +177,15 @@
   width: 100%;
   height: 100%;
   background: $white;
-  display: flex;
   justify-content: center;
+  display: none;
+  @include view-size(tab-land) {
+    display: flex;
+  }
+}
+.gadgets-mobile-section {
+  display: block;
+  @include view-size(tab-land) {
+    display: none;
+  }
 }
