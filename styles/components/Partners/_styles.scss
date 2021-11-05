@@ -46,4 +46,8 @@
     justify-content: center;
     width: 50px;
   }
+
+  .ant-carousel .slick-dots {
+    z-index: 0;
+  }
 }
