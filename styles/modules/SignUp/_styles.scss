@@ -1,5 +1,7 @@
 .sign-up-section {
   padding-bottom: 13.7rem;
+
+  @import "./PasswordRule/styles";
   .background {
     position: fixed !important; // Override for nextjs/Image position. Can't change without !important
     z-index: -1;
@@ -116,6 +118,10 @@
 
   .sign-up-btn {
     width: 100%;
+  }
+
+  .ant-checkbox + span {
+    padding-left: 1.3rem;
   }
 }
 @import "./SuccessMessage/styles";

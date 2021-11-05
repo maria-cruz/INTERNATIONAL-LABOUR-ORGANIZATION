@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Form, { FormInstance } from "antd/lib/form";
 import Input from "antd/lib/input";
@@ -7,9 +7,15 @@ import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import Layout, { Header } from "@common/components/Layout";
 import SignUpBg from "@public/images/sign-up-bg.jpg";
-import { setCookie } from "nookies";
 import Router from "next/router";
-
+import PasswordRule from "./PasswordRule";
+import isEmpty from "lodash/isEmpty";
+import form from "antd/lib/form";
+import {
+  isAtleastOneNumberRegex,
+  hasUppercaseRegex,
+  hasLowercaseRegex,
+} from "./regex";
 interface HandleSignUpFinishProps {
   email: string;
   password: string;
@@ -17,6 +23,16 @@ interface HandleSignUpFinishProps {
 
 const SignUp = () => {
   const [signUpForm] = Form.useForm();
+
+  const passwordRuleInitialState = {
+    isLongerThanSevenChars: false,
+    isAtleastOneNumber: false,
+    hasUppercase: false,
+    hasLowercase: false,
+    hasSpecialCharacters: false,
+  };
+
+  const [passwordRule, setPasswordRule] = useState(passwordRuleInitialState);
 
   const { t } = useTranslation("sign-up");
 
@@ -57,12 +73,58 @@ const SignUp = () => {
 
   const checkCheckBox = (rule: any, value: any, callback: any) => {
     if (!value) {
-      callback("Please agree the terms and conditions!");
+      callback("Please agree to the terms and conditions!");
     } else {
       callback();
     }
   };
 
+  const handleNewPasswordChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = event.target;
+
+    const isLongerThanSevenChars = value.length > 7;
+
+    const isAtleastOneNumber = isAtleastOneNumberRegex.test(value);
+    const hasUppercase = hasUppercaseRegex.test(value);
+    const hasLowercase = hasLowercaseRegex.test(value);
+
+    console.log(isAtleastOneNumber);
+    setPasswordRule({
+      ...passwordRule,
+      isLongerThanSevenChars,
+      isAtleastOneNumber,
+      hasUppercase,
+      hasLowercase,
+    });
+    signUpForm.setFields([{ name: "newPassword", errors: [] }]);
+  };
+
+  const isCheckAllPasswordRule =
+    passwordRule.isLongerThanSevenChars &&
+    passwordRule.hasLowercase &&
+    passwordRule.hasUppercase &&
+    passwordRule.isAtleastOneNumber;
+
+  const isShownPasswordRule =
+    passwordRule.isLongerThanSevenChars ||
+    passwordRule.hasLowercase ||
+    passwordRule.hasUppercase ||
+    passwordRule.isAtleastOneNumber;
+
+  const newPasswordValidation = () => ({
+    validator(_: {}, newPassword: string) {
+      const isEmptyNewPassword = isEmpty(newPassword);
+
+      if (isEmptyNewPassword) return Promise.reject("Please enter a password");
+
+      if (!isCheckAllPasswordRule)
+        return Promise.reject("Please enter a valid password.");
+
+      return Promise.resolve();
+    },
+  });
   return (
     <div className="sign-up-container">
       <Layout header={<Header title={"Header"} />}>
@@ -99,6 +161,7 @@ const SignUp = () => {
                 layout="vertical"
                 onFinish={handleSignUpFinish}
                 requiredMark={false}
+                validateTrigger="submit"
               >
                 <Form.Item
                   label={t("emailAddress")}
@@ -121,19 +184,22 @@ const SignUp = () => {
                   label={t("password")}
                   className="password-container"
                   name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password.",
-                    },
-                    {
-                      min: 8,
-                      message: "Should be a minimum of 8 characters",
-                    },
-                  ]}
+                  rules={[newPasswordValidation]}
                 >
-                  <Input className="sign-up-input" type="password" />
+                  <Input
+                    className="sign-up-input"
+                    type="password"
+                    onChange={handleNewPasswordChange}
+                  />
                 </Form.Item>
+                {isShownPasswordRule && (
+                  <PasswordRule
+                    isLongerThanSevenChars={passwordRule.isLongerThanSevenChars}
+                    hasLowercase={passwordRule.hasLowercase}
+                    hasUppercase={passwordRule.hasUppercase}
+                    isAtleastOneNumber={passwordRule.isAtleastOneNumber}
+                  />
+                )}
                 <Form.Item
                   name="termsAndCondition"
                   valuePropName="checked"
