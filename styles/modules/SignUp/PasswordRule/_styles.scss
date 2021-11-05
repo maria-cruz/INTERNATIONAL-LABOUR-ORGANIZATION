@@ -1,0 +1,18 @@
+.set-password-rule-container {
+  .bullet-icon {
+    width: 1.358rem;
+  }
+  .password-rule-title {
+    color: $black;
+  }
+
+  .set-password-requirements {
+    margin-left: 1.5rem;
+    color: $black;
+  }
+
+  .error-text {
+    color: $red;
+    margin-left: 1.5rem;
+  }
+}
