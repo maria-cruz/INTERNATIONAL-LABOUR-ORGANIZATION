@@ -1,50 +1,89 @@
 .sign-up-section {
-  padding-bottom: 13.7rem;
+  @include view-size(big-desktop) {
+    padding-bottom: 13.7rem;
+  }
 
   @import "./PasswordRule/styles";
   .background {
-    position: fixed !important; // Override for nextjs/Image position. Can't change without !important
-    z-index: -1;
-    width: 100%;
-    height: 100%;
+    display: none;
+    @include view-size(desktop) {
+      display: block;
+      position: fixed !important; // Override for nextjs/Image position. Can't change without !important
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      min-width: 130rem;
+    }
   }
-
+  .background-mobile {
+    display: block;
+    @include view-size(desktop) {
+      display: none;
+    }
+  }
   .banner-container {
     display: flex;
-    padding: 13.2rem 15rem 13.2rem 10rem;
-    justify-content: space-between;
-
+    justify-content: center;
+    @include side-padding;
+    padding-bottom: 10rem;
     @include view-size(tab-land) {
-      display: flex;
       row-gap: 5rem;
-      flex-direction: column;
     }
-
     @include view-size(desktop) {
-      display: flex;
-      padding: 13.2rem 15rem 0 10rem;
       justify-content: space-between;
       flex-direction: row;
     }
-  }
-
-  .banner-description-text {
-    max-width: 58rem;
+    @include view-size(big-desktop) {
+      padding: 13.2rem 15rem 0 10rem;
+    }
   }
 
   .banner-description-text {
     color: $tropical-rain-forest;
-
-    font-size: 10rem;
+    position: absolute;
+    top: 29vw;
+    left: 0;
+    font-size: 8.88888vw;
+    max-width: 80rem;
+    width: 80vw;
+    @include side-padding;
+    @include view-size(tab-port) {
+      top: 27vw;
+    }
+    @include view-size(tab-land) {
+      font-size: 8rem;
+    }
     @include view-size(desktop) {
+      position: unset;
+      max-width: 58rem;
+      width: 43vw;
       font-size: min(5.208vw, 10rem);
+      padding: 0;
+    }
+  }
+
+  .sign-up-filter {
+    height: 72vw;
+    width: 100%;
+    background: transparent
+      linear-gradient(127deg, $white 0%, $white-2e 82%, $transparent 100%) 0% 0%
+      no-repeat padding-box;
+    mix-blend-mode: lighten;
+    opacity: 0.75;
+    position: absolute;
+    top: 8rem;
+    @include view-size(desktop) {
+      display: none;
     }
   }
 
   .journey-text {
     color: $tropical-rain-forest;
-
-    font-size: 12rem;
+    font-size: 8.88888vw;
+    font-weight: 500;
+    @include view-size(tab-land) {
+      font-size: 8rem;
+    }
     @include view-size(desktop) {
       font-size: min(6.25vw, 12rem);
     }
@@ -52,29 +91,40 @@
 
   .sign-up-container {
     background: $white;
-    padding: 4.8rem 5rem 5.4rem 4.8rem;
-    width: 62.5rem;
-
-    @include view-size(tab-land) {
-      width: 100%;
-    }
-
+    width: 100%;
+    max-width: 70rem;
     @include view-size(desktop) {
+      padding: 4.8rem 5rem 5.4rem 4.8rem;
       width: 62.5rem;
     }
   }
 
   .sign-up-title {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     font-weight: bold;
     color: $tropical-rain-forest;
     margin-bottom: 1.7rem;
+
+    @include view-size(tab-port) {
+      text-align: center;
+    }
+    @include view-size(desktop) {
+      font-size: 2.8rem;
+      text-align: start;
+    }
   }
 
   .login-container {
     display: flex;
     align-items: center;
     margin-bottom: 4.3rem;
+    justify-content: flex-start;
+    @include view-size(tab-port) {
+      justify-content: center;
+    }
+    @include view-size(desktop) {
+      justify-content: flex-start;
+    }
   }
 
   .login-sub-text {
@@ -101,11 +151,11 @@
 
   .terms-and-condition-text {
     color: $jade;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .sign-up-checkbox {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .terms-and-condition-container {
@@ -115,9 +165,21 @@
   .ant-checkbox-wrapper {
     margin-left: 0;
   }
-
+  .sign-up-btn-container {
+    display: flex;
+    justify-content: center;
+    @include view-size(desktop) {
+      justify-content: flex-start;
+    }
+  }
   .sign-up-btn {
     width: 100%;
+    @include view-size(tab-port) {
+      max-width: 15rem;
+    }
+    @include view-size(desktop) {
+      max-width: 100%;
+    }
   }
 
   .ant-checkbox + span {
