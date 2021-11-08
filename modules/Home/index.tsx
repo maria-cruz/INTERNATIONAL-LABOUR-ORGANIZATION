@@ -9,9 +9,24 @@ import HomeBanner from "@public/images/bg-banner.jpg";
 import IloDevices from "@public/images/ilo-devices.jpg";
 import HomeBannerMobile from "@public/images/home-banner-mobile.jpg";
 import IloDevicesMobile from "@public/images/Ilo-devices-mobile.jpg";
+import useSWR from "swr";
 
 const Home = () => {
   const { t } = useTranslation("home");
+
+  const { data } = useSWR(
+    `/api/page-views`,
+    async (url) => {
+      const res = await fetch(url);
+      return res.json();
+    },
+    { revalidateOnFocus: false }
+  );
+
+  const visitorsToday = data?.active1DayUsers || 0;
+  const visitorsThisWeek = data?.active7DayUsers || 0;
+  const visitorsThisMonth = data?.active28DayUsers || 0;
+  const visitorsTotal = data?.activeUsers || 0;
 
   return (
     <Layout header={<Header title={"Header"} />}>
@@ -79,21 +94,21 @@ const Home = () => {
         <div>
           <div className={styles["main-count-container"]}>
             <span className={styles["title"]}>{t("visitorsToday")}</span>
-            <span className={styles["count"]}>002897</span>
+            <span className={styles["count"]}>{visitorsToday}</span>
           </div>
         </div>
         <div className={styles["sub-count-group"]}>
           <div className={styles["sub-count-container"]}>
             <span className={styles["title"]}>{t("thisWeek")}</span>
-            <span className={styles["count"]}>5324</span>
+            <span className={styles["count"]}>{visitorsThisWeek}</span>
           </div>
           <div className={styles["sub-count-container"]}>
             <span className={styles["title"]}>{t("thisMonth")}</span>
-            <span className={styles["count"]}>551,324</span>
+            <span className={styles["count"]}>{visitorsThisMonth}</span>
           </div>
           <div className={styles["sub-count-container"]}>
             <span className={styles["title"]}>{t("total")}</span>
-            <span className={styles["count"]}>1,551,532</span>
+            <span className={styles["count"]}>{visitorsTotal}</span>
           </div>
         </div>
       </section>
