@@ -1,93 +1,143 @@
 .edit-profile-section {
-  padding: 12rem 5rem 12.6rem 5rem;
+  padding: 0;
   background: $whisper;
 
+  @include view-size(desktop) {
+    padding: 12rem 5rem 12.6rem 5rem;
+  }
   .form-create-profile-container {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+
+    @include view-size(tab-land) {
+      padding: 5rem;
+    }
   }
 
   .form-container {
     width: 100%;
     max-width: 92.6rem;
     background: $white 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 16px $black-29;
+    box-shadow: 0 0.3rem 1.6rem $black-29;
     border-radius: 0.4rem;
     opacity: 1;
-    padding: 5rem;
+
+    padding-left: min(4.45vw, 5rem);
+    padding-right: min(4.45vw, 5rem);
+    padding-top: 3.3rem;
+    padding-bottom: 10rem;
   }
 
   .form-title-container {
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
+
+    @include view-size(tab-land) {
+      margin-bottom: 6rem;
+    }
   }
 
   .title-container {
-    font-size: 2.8rem;
     font-weight: bold;
     color: $tropical-rain-forest;
     margin-bottom: 1.1rem;
+
+    font-size: 2.4rem;
+    @include view-size(tab-land) {
+      font-size: 2.8rem;
+    }
   }
 
   .description-container {
-    font-size: 1.8rem;
     color: $shuttle-gray;
+    line-height: 2rem;
+    font-size: 1.6rem;
+    @include view-size(tab-land) {
+      font-size: 1.8rem;
+    }
   }
 
   .form-column-container {
     display: flex;
-    gap: 3rem;
+    column-gap: 3rem;
+    flex-wrap: wrap;
   }
 
   .form-width {
-    width: 100%;
-    max-width: 39.8rem;
+    flex: 1;
+    min-width: 28rem;
+  }
+
+  /* AntD Form Item Label Override */
+  .ant-col.ant-form-item-label,
+  .ant-form-item-control {
+    flex: none !important;
+    min-height: 0 !important;
+  }
+
+  .ant-form-item {
+    margin-bottom: 2rem;
+
+    @include view-size(tab-land) {
+      margin-bottom: 3rem;
+    }
   }
 
   .form-input {
     height: 5rem;
   }
 
-  .column-container {
+  /* Column */
+  .country-and-phone-number-container {
     display: flex;
-    align-items: flex-end;
     gap: 1.6rem;
-    width: 39.8rem;
+    flex: 1;
+    min-width: 28rem;
   }
 
-  .form-width-country {
-    width: 12.2rem;
+  .country-and-phone-number-container .form-width-country {
+    flex: 1;
   }
 
-  .form-width-phone-number {
-    width: 26rem;
+  .country-and-phone-number-container .form-width-phone-number {
+    flex: 2;
   }
 
-  .form-width-month {
-    width: 15rem;
+  .form-width-birthdate {
+    flex: 1;
+    min-width: 28rem;
   }
-
-  .form-width-year {
-    width: 12.3rem;
-  }
-
-  .margin-bottom {
-    margin-bottom: 5.8rem;
-  }
+  /* Column */
 
   .form-button-container {
     display: flex;
-    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    @include view-size(tab-land) {
+      justify-content: flex-end;
+      margin-top: 5rem;
+    }
   }
 
-  .btn-continue {
-    width: 16.6rem;
+  .form-button-container .btn-continue {
     color: $white;
     border: none;
+    flex: 1;
+
+    @include view-size(tab-land) {
+      flex: none;
+    }
   }
 
-  .btn-cancel {
-    margin-right: 2rem;
+  .form-button-container .btn-cancel {
+    border: none;
+    flex: 1;
+    @include view-size(tab-land) {
+      flex: none;
+    }
   }
 
   .form-select-organization-type {
@@ -113,7 +163,6 @@
   .ant-select-arrow {
     right: 1.6rem;
   }
-
   .ant-form-item-explain-error > div {
     height: 1rem;
   }
