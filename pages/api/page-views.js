@@ -26,10 +26,31 @@ async function runReport() {
       {
         name: "screenPageViews",
       },
+      {
+        name: "active1DayUsers",
+      },
+      {
+        name: "active7DayUsers",
+      },
+      {
+        name: "active28DayUsers",
+      },
+      {
+        name: "activeUsers",
+      },
     ],
   });
 
-  return response;
+  let modifiedResponse = {};
+
+  response.metricHeaders.forEach((header, idx) => {
+    modifiedResponse = {
+      ...modifiedResponse,
+      [header.name]: response.rows[0].metricValues[idx].value,
+    };
+  });
+
+  return modifiedResponse;
 }
 
 export default async (req, res) => {
