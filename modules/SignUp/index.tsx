@@ -10,7 +10,8 @@ import SignUpBg from "@public/images/sign-up-bg.jpg";
 import Router from "next/router";
 import PasswordRule from "./PasswordRule";
 import isEmpty from "lodash/isEmpty";
-import form from "antd/lib/form";
+import SignUpBgMobile from "@public/images/sign-up-mobile.jpg";
+
 import {
   isAtleastOneNumberRegex,
   hasUppercaseRegex,
@@ -130,15 +131,16 @@ const SignUp = () => {
       <Layout header={<Header title={"Header"} />}>
         <section className="sign-up-section">
           <div className="background">
+            <Image src={SignUpBg} alt="sign-up-bg.jpg" placeholder="blur" />
+          </div>
+          <div className="background-mobile">
             <Image
-              src={SignUpBg}
+              src={SignUpBgMobile}
               alt="sign-up-bg.jpg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
               placeholder="blur"
             />
           </div>
+          <div className="sign-up-filter"></div>
           <div className="banner-container">
             <div className="banner-description-container">
               <div className="banner-description-text">
@@ -223,13 +225,15 @@ const SignUp = () => {
                   </Checkbox>
                 </Form.Item>
                 <Form.Item noStyle>
-                  <Button
-                    className="sign-up-btn"
-                    type="primary"
-                    htmlType="submit"
-                  >
-                    {t("signUp")}
-                  </Button>
+                  <div className="sign-up-btn-container">
+                    <Button
+                      className="sign-up-btn"
+                      type="primary"
+                      htmlType="submit"
+                    >
+                      {t("signUp")}
+                    </Button>
+                  </div>
                 </Form.Item>
               </Form>
             </div>

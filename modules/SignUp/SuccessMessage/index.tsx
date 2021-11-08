@@ -13,7 +13,10 @@ const SuccessMessage = () => {
         <SuccessMessageIcon fill="#CCCCCC" width="147" height="140" />
         <div className="heading-container">Account Successfully Created</div>
         <div className="subheading-container ">
-          Log in to start learning about your Rights & Responsibilities at Work.
+          <p>
+            Log in to start learning about your Rights & Responsibilities at
+            Work.
+          </p>
         </div>
         <div className="description-container ">
           Learn from a comprehensive training that let you learn about your
