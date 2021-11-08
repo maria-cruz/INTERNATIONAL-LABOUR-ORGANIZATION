@@ -9,7 +9,14 @@ const { BetaAnalyticsDataClient } = require("@google-analytics/data");
 
 // Using a default constructor instructs the client to use the credentials
 // specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
-const analyticsDataClient = new BetaAnalyticsDataClient();
+
+const analyticsDataClient = new BetaAnalyticsDataClient({
+  projectId: process.env.GOOGLE_PROJECT_ID,
+  credentials: {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY,
+  },
+});
 
 // Runs a simple report.
 async function runReport() {
