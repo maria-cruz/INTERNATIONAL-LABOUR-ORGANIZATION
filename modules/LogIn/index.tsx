@@ -8,7 +8,7 @@ import Router from "next/router";
 import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import HomeBackground from "@public/images/bg-banner.jpg";
-
+import HomeBackgroundMobile from "@public/images/log-in-mobile.jpg";
 interface HandleLoginFinishProps {
   email: string;
   password: string;
@@ -92,6 +92,14 @@ const LogIn = () => {
             placeholder="blur"
           />
         </div>
+        <div className="banner-mobile-container">
+          <Image
+            src={HomeBackgroundMobile}
+            alt="bg-banner.jpg"
+            placeholder="blur"
+          />
+        </div>
+        <div className="bg-filter"></div>
         <div className="banner-container">
           <div className="banner-description-container">
             <div className="banner-description-text">
@@ -103,7 +111,7 @@ const LogIn = () => {
 
           <div className="log-in-container">
             <div className="log-in-title">{t("log-in")}</div>
-            <div className="login-container">
+            <div className="sign-up-container">
               <div className="login-sub-text">{t("signUpSubText")}</div>
               <div className="login-text">{t("sign-up")}</div>
             </div>
@@ -144,9 +152,15 @@ const LogIn = () => {
                 </Button>
               </div>
               <Form.Item noStyle>
-                <Button className="log-in-btn" type="primary" htmlType="submit">
-                  {t("log-in")}
-                </Button>
+                <div className="login-btn-container">
+                  <Button
+                    className="log-in-btn"
+                    type="primary"
+                    htmlType="submit"
+                  >
+                    {t("log-in")}
+                  </Button>
+                </div>
               </Form.Item>
             </Form>
           </div>
