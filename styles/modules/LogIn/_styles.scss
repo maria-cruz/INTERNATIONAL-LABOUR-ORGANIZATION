@@ -1,52 +1,85 @@
 .log-in-section {
   .background {
-    position: fixed !important; // Override for nextjs/Image position. Can't change without !important
-    z-index: -1;
-    width: 100%;
-    height: 101rem;
+    display: none;
+    @include view-size(desktop) {
+      display: block;
+      position: fixed !important; // Override for nextjs/Image position. Can't change without !important
+      z-index: -1;
+      width: 100%;
+      height: 101rem;
+    }
+  }
+
+  .banner-mobile-container {
+    display: block;
+    @include view-size(desktop) {
+      display: none;
+    }
   }
 
   .banner-container {
     display: flex;
-    padding: 13.2rem 15rem 13.2rem 10rem;
-    justify-content: space-between;
-    background: transparent
-      linear-gradient(179deg, $white 0%, $transparent 100%) 0% 0% no-repeat
-      padding-box;
-    height: 95.9rem;
-    @include view-size(tab-land) {
-      display: flex;
-      row-gap: 5rem;
-      flex-direction: column;
-    }
+    justify-content: center;
+    @include side-padding;
+    padding-bottom: 10rem;
 
     @include view-size(desktop) {
       display: flex;
-      padding: 13.2rem 15rem 0 10rem;
-      justify-content: space-between;
       flex-direction: row;
+      justify-content: space-between;
+      height: 85rem;
+      gap: 5rem;
+      background: transparent
+        linear-gradient(179deg, $white 0%, $transparent 100%) 0% 0% no-repeat
+        padding-box;
+    }
+    @include view-size(big-desktop) {
+      height: 95.9rem;
+      padding: 13.2rem 15rem 0 10rem;
     }
   }
 
-  .banner-description-text {
-    max-width: 58rem;
+  .bg-filter {
+    mix-blend-mode: lighten;
+    opacity: 0.75;
+    background: transparent
+      linear-gradient(156deg, $white 40%, $white-2e 82%, $transparent 100%) 0%
+      0% no-repeat padding-box;
+    position: absolute;
+    top: 8rem;
+    height: 80vw;
+    width: 100%;
+    @include view-size(desktop) {
+      display: none;
+    }
   }
 
   .banner-description-text {
     color: $tropical-rain-forest;
-
-    font-size: 10rem;
+    position: absolute;
+    padding: 4rem 0;
+    top: 28vw;
+    left: 0;
+    font-size: min(8.88888vw, 10rem);
+    @include side-padding;
+    @include view-size(tab-port) {
+      top: 19vw;
+    }
+    @include view-size(tab-land) {
+      top: 17vw;
+    }
     @include view-size(desktop) {
+      padding: 0;
+      max-width: 58rem;
+      position: unset;
       font-size: min(5.208vw, 10rem);
     }
   }
 
   .emphasis-text {
     color: $tropical-rain-forest;
-
-    font-size: 10rem;
     font-weight: bold;
-
+    font-size: min(8.88888vw, 10rem);
     @include view-size(desktop) {
       font-size: min(5.208vw, 10rem);
     }
@@ -54,30 +87,40 @@
 
   .log-in-container {
     background: $white;
-    padding: 4.8rem 5rem 5.4rem 4.8rem;
-    width: 62.5rem;
-    max-height: 51.9rem;
-
-    @include view-size(tab-land) {
-      width: 100%;
-    }
-
+    width: 100%;
+    max-width: 70rem;
     @include view-size(desktop) {
+      max-height: 51.9rem;
+      padding: 4.8rem 5rem 5.4rem 4.8rem;
       width: 62.5rem;
     }
   }
 
   .log-in-title {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     font-weight: bold;
     color: $tropical-rain-forest;
     margin-bottom: 1.7rem;
+    @include view-size(tab-port) {
+      text-align: center;
+    }
+    @include view-size(desktop) {
+      font-size: 2.8rem;
+      text-align: start;
+    }
   }
 
-  .login-container {
+  .sign-up-container {
     display: flex;
     align-items: center;
     margin-bottom: 4.3rem;
+    justify-content: flex-start;
+    @include view-size(tab-port) {
+      justify-content: center;
+    }
+    @include view-size(desktop) {
+      justify-content: flex-start;
+    }
   }
 
   .login-sub-text {
@@ -119,8 +162,21 @@
     margin-left: 0;
   }
 
+  .login-btn-container {
+    display: flex;
+    justify-content: center;
+    @include view-size(desktop) {
+      justify-content: flex-start;
+    }
+  }
   .log-in-btn {
     width: 100%;
+    @include view-size(tab-port) {
+      max-width: 15rem;
+    }
+    @include view-size(desktop) {
+      max-width: 100%;
+    }
   }
 
   .password-container {
@@ -137,5 +193,9 @@
     color: $black;
     height: 1.7rem;
     margin-bottom: 3rem;
+    font-size: 1.4rem;
+    @include view-size(desktop) {
+      font-size: 1.6rem;
+    }
   }
 }
