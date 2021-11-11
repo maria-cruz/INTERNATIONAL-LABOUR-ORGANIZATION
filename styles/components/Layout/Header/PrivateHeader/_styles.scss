@@ -117,8 +117,12 @@
   }
 
   .btn-dropdown {
+    display: none;
     width: fit-content;
     padding: 0;
+    @include view-size(desktop) {
+      display: block;
+    }
   }
 
   .ant-btn.ant-btn:hover,
