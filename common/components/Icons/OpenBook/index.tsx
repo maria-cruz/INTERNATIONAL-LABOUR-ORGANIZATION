@@ -1,15 +1,11 @@
 import React from "react";
 import { IconProps } from "@common/types/IconProps";
 
-interface OpenBookProps {
-  width?: string;
-  height?: string;
-  fill?: string;
-}
 const OpenBook = ({
   width = "20",
   height = "20",
   fill = "#000000",
+  className = "",
 }: IconProps) => {
   return (
     <svg
@@ -17,6 +13,7 @@ const OpenBook = ({
       width={width}
       height={height}
       fill={fill}
+      className={className}
       viewBox="0 0 42 42"
     >
       <path fill="none" d="M0 0h42v42H0z" data-name="Path 639"></path>

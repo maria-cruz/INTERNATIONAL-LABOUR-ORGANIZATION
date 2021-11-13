@@ -1,13 +1,19 @@
 import React from "react";
 import { IconProps } from "@common/types/IconProps";
 
-const Flag = ({ width = "20", height = "20", fill = "#000000" }: IconProps) => {
+const Flag = ({
+  width = "20",
+  height = "20",
+  fill = "#000000",
+  className = "",
+}: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
       fill={fill}
+      className={className}
       viewBox="0 0 42 42"
     >
       <path fill="none" d="M0 0h42v42H0z" data-name="Path 637"></path>
