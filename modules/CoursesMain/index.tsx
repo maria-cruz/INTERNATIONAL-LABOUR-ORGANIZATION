@@ -64,21 +64,14 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
         <div className="courses-main-card-container">
           {getDataByCategory(router?.query?.category).map(
             (item: CoursesCardProps, index: number) => (
-              <div
-                className={`${
-                  router.query.category === "certificate" ? "courses-card" : ""
-                }`}
-                key={index}
-              >
-                <CoursesCard
-                  unit={item?.unit}
-                  title={item?.title}
-                  slug={item?.slug}
-                  description={item?.description}
-                  thumbnail={item?.thumbnail}
-                  percentage={item?.percentage}
-                />
-              </div>
+              <CoursesCard
+                unit={item?.unit}
+                title={item?.title}
+                slug={item?.slug}
+                description={item?.description}
+                thumbnail={item?.thumbnail}
+                percentage={item?.percentage}
+              />
             )
           )}
           <div
