@@ -11,7 +11,6 @@ const QUERY_VALUE = {
   CERTIFICATE: "certificate",
 };
 
-// const CATEGORIES = ["All Units", "In Progress", "Completed", "Certificate"];
 const CATEGORIES = [
   { label: "All Units", value: "all" },
   { label: "In Progress", value: "in-progress" },
