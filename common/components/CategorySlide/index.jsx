@@ -77,17 +77,18 @@ const CategorySlide = ({
     <div className={`result-category-container ${className}`}>
       <SimpleBar className="result-category" ref={scrollElementRef}>
         {categories.map((category, index) => {
-          const categoryName = category.label || "";
-          const isCategoryActive = categoryName === activeCategory;
+          const categoryLabel = category?.label || "";
+          const categoryValue = category?.value || "";
+          const isCategoryActive = categoryValue === activeCategory;
           return (
             <div className="text-link-container" key={index}>
               <button
                 className={classNames("text-link-label", {
                   "text-link-label-active": isCategoryActive,
                 })}
-                onClick={onClick(category.value)}
+                onClick={onClick(categoryValue)}
               >
-                {categoryName}
+                {categoryLabel}
               </button>
             </div>
           );
