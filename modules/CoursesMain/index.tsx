@@ -31,13 +31,15 @@ const TITLE_DESCRIPTION = [
 const CoursesMain = ({ allCourseCardsData }: any) => {
   const router = useRouter();
 
-  const filteredTitleDescriptions = TITLE_DESCRIPTION.filter((item) => {
-    return item.route === router.query.category;
-  });
+  const filteredTitleDescriptions = TITLE_DESCRIPTION.filter(
+    (titleDescription) => {
+      return titleDescription.route === router.query.category;
+    }
+  );
 
   const filteredCourseCardsData = allCourseCardsData.filter(
-    (item: CoursesCardProps) => {
-      return item.status === router.query.category;
+    (courseCardsData: CoursesCardProps) => {
+      return courseCardsData.status === router.query.category;
     }
   );
 
@@ -58,9 +60,9 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
     <Layout header={<Header title={"Header"} />}>
       <section className="courses-main-section">
         <CoursesFilter />
-        {filteredTitleDescriptions.map((item, idx) => (
+        {filteredTitleDescriptions.map((titleDescription, idx) => (
           <div className="courses-description" key={idx}>
-            {item.subheading}
+            {titleDescription.subheading}
           </div>
         ))}
         <div className="courses-main-card-container">
