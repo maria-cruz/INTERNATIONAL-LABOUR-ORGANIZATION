@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import CategorySlide from "@common/components/CategorySlide";
 
 const PATHNAME = "/courses";
 const QUERY_KEY = "category";
@@ -9,6 +10,14 @@ const QUERY_VALUE = {
   COMPLETED: "completed",
   CERTIFICATE: "certificate",
 };
+
+// const CATEGORIES = ["All Units", "In Progress", "Completed", "Certificate"];
+const CATEGORIES = [
+  { label: "All Units", value: "all" },
+  { label: "In Progress", value: "in-progress" },
+  { label: "Completed", value: "completed" },
+  { label: "Certificate", value: "certificate" },
+];
 
 const CoursesFilter = () => {
   const router = useRouter();
@@ -27,7 +36,13 @@ const CoursesFilter = () => {
 
   return (
     <div className="courses-filter-container">
-      <div
+      <CategorySlide
+        className="result-preview-category"
+        categories={CATEGORIES}
+        currentCategory={"All Units"}
+        onClick={handleFilterClick}
+      />
+      {/* <div
         className={`${isActiveAllUnit ? "-active-filter" : "default-filter"}`}
         onClick={handleFilterClick(QUERY_VALUE.ALL)}
       >
@@ -52,7 +67,7 @@ const CoursesFilter = () => {
         onClick={handleFilterClick(QUERY_VALUE.CERTIFICATE)}
       >
         Certificate
-      </div>
+      </div> */}
     </div>
   );
 };
