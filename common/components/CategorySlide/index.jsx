@@ -27,6 +27,15 @@ const CategorySlide = ({
 
   useEffect(() => {
     handleScroll();
+    scrollElementRef.current
+      .getScrollElement()
+      .addEventListener("scroll", handleScroll);
+
+    return () => {
+      scrollElementRef.current
+        .getScrollElement()
+        .removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const isEndOfSlide = () => {
@@ -66,11 +75,7 @@ const CategorySlide = ({
 
   return (
     <div className={`result-category-container ${className}`}>
-      <SimpleBar
-        className="result-category"
-        ref={scrollElementRef}
-        onScroll={handleScroll}
-      >
+      <SimpleBar className="result-category" ref={scrollElementRef}>
         {categories.map((category, index) => {
           const categoryName = category.label || "";
           const isCategoryActive = categoryName === activeCategory;
