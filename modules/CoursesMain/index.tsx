@@ -31,15 +31,17 @@ const TITLE_DESCRIPTION = [
 const CoursesMain = ({ allCourseCardsData }: any) => {
   const router = useRouter();
 
-  const data = TITLE_DESCRIPTION.filter((item) => {
+  const filteredTitleDescriptions = TITLE_DESCRIPTION.filter((item) => {
     return item.route === router.query.category;
   });
 
-  const sampleData = allCourseCardsData.filter((item: CoursesCardProps) => {
-    return item.status === router.query.category;
-  });
+  const filteredCourseCardsData = allCourseCardsData.filter(
+    (item: CoursesCardProps) => {
+      return item.status === router.query.category;
+    }
+  );
 
-  const getDataByCategory = (category?: string | string[]) => {
+  const getCoursesByCategory = (category?: string | string[]) => {
     switch (category) {
       case "all": {
         return allCourseCardsData;
@@ -48,7 +50,7 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
         return allCourseCardsData;
       }
       default:
-        return sampleData;
+        return filteredCourseCardsData;
     }
   };
 
@@ -56,21 +58,21 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
     <Layout header={<Header title={"Header"} />}>
       <section className="courses-main-section">
         <CoursesFilter />
-        {data.map((item, idx) => (
+        {filteredTitleDescriptions.map((item, idx) => (
           <div className="courses-description" key={idx}>
             {item.subheading}
           </div>
         ))}
         <div className="courses-main-card-container">
-          {getDataByCategory(router?.query?.category).map(
-            (item: CoursesCardProps, index: number) => (
+          {getCoursesByCategory(router?.query?.category).map(
+            (course: CoursesCardProps, index: number) => (
               <CoursesCard
-                unit={item?.unit}
-                title={item?.title}
-                slug={item?.slug}
-                description={item?.description}
-                thumbnail={item?.thumbnail}
-                percentage={item?.percentage}
+                unit={course?.unit}
+                title={course?.title}
+                slug={course?.slug}
+                description={course?.description}
+                thumbnail={course?.thumbnail}
+                percentage={course?.percentage}
               />
             )
           )}
