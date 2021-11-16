@@ -1,0 +1,188 @@
+.result-category-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  overflow: hidden;
+
+  .result-category {
+    max-width: 115.5rem;
+    width: 100%;
+  }
+
+  .result-category .simplebar-content {
+    display: flex;
+    scroll-behavior: smooth;
+
+    .text-link-container:last-child .text-link-label {
+      margin-right: 0;
+    }
+  }
+
+  .result-category .simplebar-scrollbar::before {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .result-category .simplebar-track {
+    display: none;
+  }
+
+  .text-link-collection-container {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+    &::-webkit-scrollbar {
+      /* WebKit */
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .text-link-label {
+    color: $shuttle-gray;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-right: 2.4rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    border-bottom: 0.5rem solid $transparent;
+    padding-bottom: 2.1rem;
+  }
+
+  .text-link-label:focus {
+    outline: 0;
+  }
+
+  .text-link-label-active {
+    color: $black !important;
+    border-bottom: 0.5rem solid $tropical-rain-forest;
+  }
+
+  .ant-carousel .slick-initialized .slick-slide {
+    pointer-events: auto;
+  }
+
+  .ant-carousel .slick-list::before {
+    content: "";
+    display: block;
+    box-shadow: inset 3rem 0rem 1rem -2rem rgba(255, 255, 255, 1),
+      inset -7rem 0rem 4rem -2rem rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    width: 91vw;
+
+    @include view-size(tab-land) {
+      width: 84.6vw;
+    }
+
+    @include view-size(desktop-up) {
+      width: 85.3vw;
+    }
+  }
+
+  .ant-carousel .slick-next {
+    display: flex !important;
+    align-items: center;
+
+    left: calc(91vw - 1.3112rem);
+
+    @include view-size(tab-land) {
+      left: calc(84.6vw - 2.0056rem);
+    }
+
+    @include view-size(desktop-up) {
+      display: none !important;
+    }
+
+    > svg {
+      font-size: 1.6rem;
+      fill: $shuttle-gray;
+    }
+  }
+
+  .ant-carousel .slick-track {
+    margin-left: 1rem;
+  }
+
+  .scroll-left-btn-container,
+  .scroll-right-btn-container {
+    margin-top: 0.3rem;
+    height: inherit;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.1s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .scroll-left-btn-container.start-scroll,
+  .scroll-right-btn-container.end-scroll {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.1s ease;
+  }
+
+  .scroll-left-btn-container {
+    visibility: visible;
+    opacity: 1;
+    width: 50%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, $whisper 2%, rgba(255, 255, 255, 0) 20%);
+    position: absolute;
+
+    left: 1.4rem;
+    @include view-size(tab-port) {
+      left: 4vw;
+    }
+    @include view-size(tab-land) {
+      left: 7.3vw;
+    }
+  }
+
+  .scroll-right-btn-container {
+    visibility: visible;
+    opacity: 1;
+    width: 50%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      270deg,
+      $whisper 2%,
+      rgba(255, 255, 255, 0) 20%
+    );
+    text-align: right;
+    position: absolute;
+
+    right: 1.4rem;
+    @include view-size(tab-port) {
+      right: 4vw;
+    }
+    @include view-size(tab-land) {
+      right: 7.3vw;
+    }
+  }
+
+  .scroll-right-btn,
+  .scroll-left-btn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+    pointer-events: auto;
+  }
+}

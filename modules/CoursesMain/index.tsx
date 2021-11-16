@@ -65,6 +65,7 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
             {titleDescription.subheading}
           </div>
         ))}
+
         <div className="courses-main-card-container">
           {getCoursesByCategory(router?.query?.category).map(
             (course: CoursesCardProps, index: number) => (
