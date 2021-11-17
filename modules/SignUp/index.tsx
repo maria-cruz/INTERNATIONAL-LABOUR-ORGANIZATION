@@ -17,6 +17,7 @@ import {
   hasUppercaseRegex,
   hasLowercaseRegex,
 } from "./regex";
+import PreviewPassword from "@common/components/Icons/PreviewPassword";
 interface HandleSignUpFinishProps {
   email: string;
   password: string;
@@ -34,6 +35,7 @@ const SignUp = () => {
   };
 
   const [passwordRule, setPasswordRule] = useState(passwordRuleInitialState);
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   const { t } = useTranslation("sign-up");
 
@@ -126,6 +128,11 @@ const SignUp = () => {
       return Promise.resolve();
     },
   });
+
+  const handlePasswordShowClick = () => {
+    setIsPasswordShown(isPasswordShown ? false : true);
+  };
+
   return (
     <div className="sign-up-container">
       <Layout header={<Header title={"Header"} />}>
@@ -190,8 +197,19 @@ const SignUp = () => {
                 >
                   <Input
                     className="sign-up-input"
-                    type="password"
+                    type={isPasswordShown ? "text" : "password"}
                     onChange={handleNewPasswordChange}
+                    suffix={
+                      <>
+                        <Button
+                          className="password-shown-btn"
+                          type="link"
+                          onClick={handlePasswordShowClick}
+                        >
+                          <PreviewPassword width="22" height="15" />
+                        </Button>
+                      </>
+                    }
                   />
                 </Form.Item>
                 {isShownPasswordRule && (

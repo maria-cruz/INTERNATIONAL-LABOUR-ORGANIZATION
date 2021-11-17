@@ -38,6 +38,7 @@ MyApp.getInitialProps = async ({ ctx }: AppContext) => {
   const publicPaths = [
     "/",
     "/log-in",
+    "/forgot-password",
     "/sign-up",
     "/about-us",
     "/download-guide",

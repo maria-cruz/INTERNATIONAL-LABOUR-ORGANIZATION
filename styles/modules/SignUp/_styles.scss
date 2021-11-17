@@ -185,5 +185,16 @@
   .ant-checkbox + span {
     padding-left: 1.3rem;
   }
+
+  .password-shown-btn {
+    width: fit-content;
+    min-width: 2.2rem;
+    height: fit-content;
+    padding: 0;
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
 }
 @import "./SuccessMessage/styles";
