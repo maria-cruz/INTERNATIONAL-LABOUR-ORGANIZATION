@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout, { Header } from "@common/components/Layout";
 import Image from "next/image";
 import Form from "antd/lib/form";
@@ -9,6 +9,7 @@ import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import HomeBackground from "@public/images/bg-banner.jpg";
 import HomeBackgroundMobile from "@public/images/log-in-mobile.jpg";
+import PreviewPassword from "@common/components/Icons/PreviewPassword";
 interface HandleLoginFinishProps {
   email: string;
   password: string;
@@ -16,6 +17,7 @@ interface HandleLoginFinishProps {
 const LogIn = () => {
   const [loginForm] = Form.useForm();
 
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
   const { t } = useTranslation("log-in");
 
   const handleLoginFinish = (value: HandleLoginFinishProps) => {
@@ -84,6 +86,11 @@ const LogIn = () => {
       scroll: false,
     });
   };
+
+  const handlePasswordShowClick = () => {
+    setIsPasswordShown(isPasswordShown ? false : true);
+  };
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="log-in-section">
@@ -145,7 +152,21 @@ const LogIn = () => {
                   { required: true, message: "Please input your password." },
                 ]}
               >
-                <Input className="log-in-input" type="password" />
+                <Input
+                  className="log-in-input"
+                  type={isPasswordShown ? "text" : "password"}
+                  suffix={
+                    <>
+                      <Button
+                        className="password-shown-btn"
+                        type="link"
+                        onClick={handlePasswordShowClick}
+                      >
+                        <PreviewPassword width="22" height="15" />
+                      </Button>
+                    </>
+                  }
+                />
               </Form.Item>
               <div className="forgot-password-btn-container">
                 <Button
