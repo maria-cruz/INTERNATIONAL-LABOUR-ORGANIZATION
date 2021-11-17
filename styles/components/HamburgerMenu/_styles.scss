@@ -19,5 +19,18 @@
     width: 80%;
     height: 0.2rem;
     background-color: $shuttle-gray;
+    transition: 0.3s;
+  }
+
+  &.active {
+    .line-1 {
+      transform: rotate(135deg) translate(4px, -4px); // 135deg
+    }
+    .line-2 {
+      opacity: 0;
+    }
+    .line-3 {
+      transform: rotate(-135deg) translate(3px, 3px); //-135deg
+    }
   }
 }

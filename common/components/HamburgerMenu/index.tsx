@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Drawer from "antd/lib/drawer";
 import NavLink from "@common/components/NavLink";
+import classNames from "classnames";
 
 const HamburgerMenu = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -11,11 +12,15 @@ const HamburgerMenu = () => {
 
   return (
     <>
-      <button className={"hamburger-menu"} onClick={handleHamburgerMenuClick}>
-        <div className={"line"}></div>
-        <div className={"line"}></div>
-        <div className={"line"}></div>
+      <button
+        className={classNames("hamburger-menu", { active: isDrawerOpen })}
+        onClick={handleHamburgerMenuClick}
+      >
+        <div className={"line line-1"}></div>
+        <div className={"line line-2"}></div>
+        <div className={"line line-3"}></div>
       </button>
+
       <Drawer
         className={"hamburger-menu-drawer"}
         title="Drawer with extra actions"
