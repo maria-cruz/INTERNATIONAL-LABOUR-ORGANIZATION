@@ -79,6 +79,11 @@ const LogIn = () => {
       });
   };
 
+  const handleForgotPasswordClick = () => {
+    Router.push(`/forgot-password`, undefined, {
+      scroll: false,
+    });
+  };
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="log-in-section">
@@ -146,7 +151,7 @@ const LogIn = () => {
                 <Button
                   className="forgot-password-btn"
                   type="link"
-                  htmlType="submit"
+                  onClick={handleForgotPasswordClick}
                 >
                   {t("forgotPassword")}
                 </Button>
