@@ -5,10 +5,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "@public/images/logo.svg";
 import LogoMobile from "@public/images/logo-footer.svg";
-import HamburgerMenu from "@common/components/Icons/HamburgerMenu";
+import HamburgerMenuIcon from "@common/components/Icons/HamburgerMenu";
 import Dropdown from "antd/lib/dropdown";
 import Menu from "antd/lib/menu";
-import HamburgerMenuActive from "@common/components/Icons/HamburgerMenuActive";
+import HamburgerMenuActiveIcon from "@common/components/Icons/HamburgerMenuActive";
+import HamburgerMenu from "@common/components/HamburgerMenu";
+
 interface HeaderProps {
   title?: string;
   gap?: string;
@@ -133,9 +135,9 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
           >
             <Button className="btn-dropdown" type="link">
               {state ? (
-                <HamburgerMenuActive width="44.59" height="30.71" />
+                <HamburgerMenuActiveIcon width="44.59" height="30.71" />
               ) : (
-                <HamburgerMenu width="44.59" height="30.71" />
+                <HamburgerMenuIcon width="44.59" height="30.71" />
               )}
             </Button>
           </Dropdown>
@@ -143,12 +145,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
 
       <div className={"right-container-mobile"}>
-        <div className={"menu"}>
-          {" "}
-          <div className={"line"}></div>
-          <div className={"line"}></div>
-          <div className={"line"}></div>
-        </div>
+        <HamburgerMenu />
       </div>
     </header>
   );
