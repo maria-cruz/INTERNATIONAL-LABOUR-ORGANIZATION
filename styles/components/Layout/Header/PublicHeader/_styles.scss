@@ -115,25 +115,4 @@
       display: none;
     }
   }
-
-  .right-container-mobile .menu {
-    width: 2.4rem;
-    height: 1.6rem;
-    position: unset;
-    top: 3rem;
-    right: 2.5rem;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    cursor: pointer;
-    @include view-size(desktop) {
-      display: none;
-    }
-  }
-
-  .menu .line {
-    width: 80%;
-    height: 0.2rem;
-    background-color: $shuttle-gray;
-  }
 }

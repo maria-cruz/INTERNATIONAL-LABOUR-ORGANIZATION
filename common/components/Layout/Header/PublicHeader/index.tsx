@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "@public/images/logo.svg";
 import LogoMobile from "@public/images/logo-footer.svg";
+import HamburgerMenu from "@common/components/HamburgerMenu";
 
 const { Option } = Select;
 interface HeaderProps {
@@ -77,12 +78,7 @@ const PublicHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
 
       <div className={"right-container-mobile"}>
-        <div className={"menu"}>
-          {" "}
-          <div className={"line"}></div>
-          <div className={"line"}></div>
-          <div className={"line"}></div>
-        </div>
+        <HamburgerMenu />
       </div>
     </header>
   );
