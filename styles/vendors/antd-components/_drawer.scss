@@ -1,0 +1,31 @@
+/* <AntD  Drawer/>  */
+.hamburger-menu-drawer {
+  z-index: 1;
+
+  .ant-drawer-header {
+    display: none;
+  }
+
+  .ant-drawer-content-wrapper {
+    height: 100vh !important;
+  }
+
+  .ant-drawer-content {
+    background: $white;
+  }
+
+  .ant-drawer-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-top: 8rem;
+  }
+
+  .nav-link {
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 2rem;
+    transition: 0.2s;
+    border-bottom: 0.1rem solid $cold-morning;
+  }
+}
