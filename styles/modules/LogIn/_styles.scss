@@ -191,11 +191,26 @@
   .forgot-password-btn {
     padding: 0;
     color: $black;
-    height: 1.7rem;
+    height: fit-content;
     margin-bottom: 3rem;
     font-size: 1.4rem;
+
+    &:hover {
+      border-color: transparent;
+    }
     @include view-size(desktop) {
       font-size: 1.6rem;
+    }
+  }
+
+  .password-shown-btn {
+    width: fit-content;
+    min-width: 2.2rem;
+    height: fit-content;
+    padding: 0;
+
+    &:hover {
+      border-color: transparent;
     }
   }
 }
