@@ -24,7 +24,7 @@ const HamburgerMenu = () => {
   const handleArabicClick = () => {
     router.push(`${pathname}`, "", { locale: "ar" });
   };
-
+  //
   return (
     <>
       <button
@@ -62,7 +62,7 @@ const HamburgerMenu = () => {
               <div onClick={handleEnglishClick}>English</div>
             </Option>
             <Option value="arabic">
-              <div onClick={handleArabicClick}> العربية</div>
+              <div onClick={handleArabicClick}>العربية</div>
             </Option>
           </Select>
         </div>
