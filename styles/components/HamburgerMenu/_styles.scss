@@ -24,13 +24,13 @@
 
   &.active {
     .line-1 {
-      transform: rotate(135deg) translate(4px, -4px); // 135deg
+      transform: rotate(135deg) translate(0.4rem, -0.4rem);
     }
     .line-2 {
       opacity: 0;
     }
     .line-3 {
-      transform: rotate(-135deg) translate(3px, 3px); //-135deg
+      transform: rotate(-135deg) translate(0.3rem, 0.3rem);
     }
   }
 }
