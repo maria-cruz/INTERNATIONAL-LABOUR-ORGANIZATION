@@ -24,7 +24,7 @@ const HamburgerMenu = () => {
   const handleArabicClick = () => {
     router.push(`${pathname}`, "", { locale: "ar" });
   };
-  //
+
   return (
     <>
       <button
