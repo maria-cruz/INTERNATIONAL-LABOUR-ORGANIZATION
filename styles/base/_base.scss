@@ -168,6 +168,10 @@ html {
   font-size: 62.5%; //1rem = 10px
 }
 
+body {
+  width: 100% !important;
+}
+
 *,
 *::after,
 *::before {
