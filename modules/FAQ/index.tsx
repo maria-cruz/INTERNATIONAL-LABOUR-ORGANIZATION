@@ -3,18 +3,16 @@ import React from "react";
 import Image from "next/image";
 import FAQBackground from "@public/images/FAQ-banner.jpg";
 import QuestionForm from "./components/QuestionForm";
-import SearchQuestion from "./components/SearchQuestion";
 import Tabs from "antd/lib/tabs";
-import FaqUnit1 from "./FaqUnit1";
-import FaqUnit2 from "./FaqUnit2";
-import FaqUnit3 from "./FaqUnit3";
 import FAQBackgroundMobile from "@public/images/FAQ-mobile-banner.jpg";
+import { FaqsProps } from "./types";
+import FaqUnit from "./FaqUnit";
 const { TabPane } = Tabs;
 const callback = (key: any) => {
   console.log(key);
 };
 
-const FAQ = () => {
+const FAQ = ({ allFaqsData }: any) => {
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="FAQ-section">
@@ -46,20 +44,18 @@ const FAQ = () => {
               defaultActiveKey="1"
               onChange={callback}
             >
-              <TabPane className="tab-item" tab="Unit 1" key="1">
-                <FaqUnit1 />
-              </TabPane>
-              <TabPane className="tab-item" tab={"Unit 2"} key="2">
-                <FaqUnit2 />
-              </TabPane>
-              <TabPane className="tab-item" tab="Unit 3" key="3">
-                <FaqUnit3 />
-              </TabPane>
+              {allFaqsData.map((faqData: FaqsProps) => {
+                const faqUnit = faqData?.unit;
+                return (
+                  <TabPane className="tab-item" tab={faqUnit} key={faqUnit}>
+                    <FaqUnit faqData={faqData} />
+                  </TabPane>
+                );
+              })}
             </Tabs>
-            <SearchQuestion />
+            <QuestionForm />
           </div>
         </div>
-        <QuestionForm />
       </section>
     </Layout>
   );
