@@ -1,0 +1,36 @@
+.hamburger-menu {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 2.4rem;
+  height: 1.6rem;
+  position: unset;
+  top: 3rem;
+  right: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  cursor: pointer;
+  @include view-size(desktop) {
+    display: none;
+  }
+
+  .line {
+    width: 80%;
+    height: 0.2rem;
+    background-color: $shuttle-gray;
+    transition: 0.3s;
+  }
+
+  &.active {
+    .line-1 {
+      transform: rotate(135deg) translate(0.4rem, -0.4rem);
+    }
+    .line-2 {
+      opacity: 0;
+    }
+    .line-3 {
+      transform: rotate(-135deg) translate(0.3rem, 0.3rem);
+    }
+  }
+}

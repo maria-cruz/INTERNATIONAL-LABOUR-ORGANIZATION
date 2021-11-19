@@ -31,15 +31,19 @@ const TITLE_DESCRIPTION = [
 const CoursesMain = ({ allCourseCardsData }: any) => {
   const router = useRouter();
 
-  const data = TITLE_DESCRIPTION.filter((item) => {
-    return item.route === router.query.category;
-  });
+  const filteredTitleDescriptions = TITLE_DESCRIPTION.filter(
+    (titleDescription) => {
+      return titleDescription.route === router.query.category;
+    }
+  );
 
-  const sampleData = allCourseCardsData.filter((item: CoursesCardProps) => {
-    return item.status === router.query.category;
-  });
+  const filteredCourseCardsData = allCourseCardsData.filter(
+    (courseCardsData: CoursesCardProps) => {
+      return courseCardsData.status === router.query.category;
+    }
+  );
 
-  const getDataByCategory = (category?: string | string[]) => {
+  const getCoursesByCategory = (category?: string | string[]) => {
     switch (category) {
       case "all": {
         return allCourseCardsData;
@@ -48,7 +52,7 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
         return allCourseCardsData;
       }
       default:
-        return sampleData;
+        return filteredCourseCardsData;
     }
   };
 
@@ -56,29 +60,23 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
     <Layout header={<Header title={"Header"} />}>
       <section className="courses-main-section">
         <CoursesFilter />
-        {data.map((item, idx) => (
+        {filteredTitleDescriptions.map((titleDescription, idx) => (
           <div className="courses-description" key={idx}>
-            {item.subheading}
+            {titleDescription.subheading}
           </div>
         ))}
+
         <div className="courses-main-card-container">
-          {getDataByCategory(router?.query?.category).map(
-            (item: CoursesCardProps, index: number) => (
-              <div
-                className={`${
-                  router.query.category === "certificate" ? "courses-card" : ""
-                }`}
-                key={index}
-              >
-                <CoursesCard
-                  unit={item?.unit}
-                  title={item?.title}
-                  slug={item?.slug}
-                  description={item?.description}
-                  thumbnail={item?.thumbnail}
-                  percentage={item?.percentage}
-                />
-              </div>
+          {getCoursesByCategory(router?.query?.category).map(
+            (course: CoursesCardProps, index: number) => (
+              <CoursesCard
+                unit={course?.unit}
+                title={course?.title}
+                slug={course?.slug}
+                description={course?.description}
+                thumbnail={course?.thumbnail}
+                percentage={course?.percentage}
+              />
             )
           )}
           <div

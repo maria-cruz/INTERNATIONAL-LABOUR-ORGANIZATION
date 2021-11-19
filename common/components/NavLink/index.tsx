@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "./styles.module.scss";
 
 interface NavLinkProps {
   href: string;
@@ -24,11 +23,7 @@ const NavLink = ({
 
   return (
     <Link href={`${href}${query}`}>
-      <a
-        className={`${className} ${styles["nav-link"]} ${
-          isActive ? styles["active"] : ""
-        }`}
-      >
+      <a className={`${className} nav-link  ${isActive ? "active" : ""}`}>
         {children}
       </a>
     </Link>

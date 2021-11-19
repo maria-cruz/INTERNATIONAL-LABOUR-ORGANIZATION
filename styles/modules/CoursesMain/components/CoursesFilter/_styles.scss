@@ -1,9 +1,14 @@
 .courses-filter-container {
   display: flex;
   gap: 5rem;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 4rem;
+  white-space: nowrap;
+
+  @include view-size(tab-port) {
+    font-size: 2.4rem;
+  }
 
   .-active-filter {
     border-bottom: 0.5rem solid $tropical-rain-forest;
@@ -13,7 +18,7 @@
 
   .default-filter {
     padding-bottom: 2.1rem;
+    color: $shuttle-gray;
     cursor: pointer;
-    color: #616771;
   }
 }

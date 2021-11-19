@@ -5,6 +5,7 @@ const Trophy = ({
   width = "20",
   height = "20",
   fill = "#000000",
+  className = "",
 }: IconProps) => {
   return (
     <svg
@@ -12,6 +13,7 @@ const Trophy = ({
       width={width}
       height={height}
       fill={fill}
+      className={className}
       viewBox="0 0 42 42"
     >
       <path fill="none" d="M0 0H42V42H0z" data-name="Rectangle 644"></path>

@@ -25,25 +25,48 @@ const HowItWorks = () => {
             <div className="divider-vertical" />
           </div>
           <div className="how-it-works-description-container">
-            <div className="description-title-container">Start unit</div>
-            <div className="description-container">
-              The huqouqi fil 3amal course is organized into 3 units. As you
-              complete a unit, the next unit will unlock. Each unit includes
-              learning objectives, topics, Q&A and self practice resources.
+            <div className="start-unit-container">
+              <div className="flag-icon-wrapper">
+                <Flag fill="#EE161F" className="flag-icon" />
+              </div>
+              <div className="start-unit">
+                <div className="description-title-container">Start unit</div>
+                <div className="description-container">
+                  The huqouqi fil 3amal course is organized into 3 units. As you
+                  complete a unit, the next unit will unlock. Each unit includes
+                  learning objectives, topics, Q&A and self practice resources.
+                </div>
+              </div>
             </div>
-            <div className="description-title-container">
-              Learn and complete assessments
+            <div className="assessments-container">
+              <div className="flag-icon-wrapper">
+                <OpenBook fill="#EE161F" className="open-book-icon" />
+              </div>
+              <div className="assessments">
+                <div className="description-title-container">
+                  Learn and complete assessments
+                </div>
+                <div className="description-container">
+                  Complete each topic in unit to progress. Each topic includes a
+                  pre-assessment, video instruction, exercises, and a final
+                  assessment of your learning to advance.
+                </div>
+              </div>
             </div>
-            <div className="description-container">
-              Complete each topic in unit to progress. Each topic includes a
-              pre-assessment, video instruction, exercises, and a final
-              assessment of your learning to advance.
-            </div>
-            <div className="description-title-container">Get certified!</div>
-            <div className="description-container">
-              Once you complete all topics within the three units with an
-              assessment of 70% or higher, you will complete the course and
-              unlock your huqouqi fil 3amal certificate!
+            <div className="get-certified-container">
+              <div className="flag-icon-wrapper">
+                <Trophy fill="#EE161F" className="trophy-icon" />
+              </div>
+              <div className="get-certified">
+                <div className="description-title-container">
+                  Get certified!
+                </div>
+                <div className="description-container">
+                  Once you complete all topics within the three units with an
+                  assessment of 70% or higher, you will complete the course and
+                  unlock your huqouqi fil 3amal certificate!
+                </div>
+              </div>
             </div>
           </div>
         </div>

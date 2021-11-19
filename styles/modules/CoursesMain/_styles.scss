@@ -3,18 +3,24 @@
   @import "./components/CoursesFilter/styles";
   @import "./components/CoursesCertificate/styles";
 
-  padding: 8rem 10rem 13.7rem 10rem;
+  padding-top: 8rem;
+  padding-bottom: 13.7rem;
+  @include side-padding-only;
+  width: 100vw;
+
   background: $whisper;
   .courses-main-card-container {
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .courses-description {
     font-size: 1.8rem;
     color: #616771;
     margin-bottom: 5rem;
+    line-height: 2.8rem;
   }
 
   .certificate-container,
