@@ -24,7 +24,7 @@ const FaqUnit: FC<FaqUnitProps> = ({ faqData }) => {
   const topics = faqData?.topics ?? [];
   const faqs = topics.find((topic) => topic.id == topicId)?.faqs ?? allFaqs;
   const searchFaqs = faqs.filter((faq) =>
-    faq.question.toLowerCase().includes(searchInput)
+    faq?.question?.toLowerCase().includes(searchInput)
   );
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value.toLowerCase());
