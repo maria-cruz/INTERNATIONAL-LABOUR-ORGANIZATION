@@ -5,14 +5,15 @@ import FAQBackground from "@public/images/FAQ-banner.jpg";
 import QuestionForm from "./components/QuestionForm";
 import Tabs from "antd/lib/tabs";
 import FAQBackgroundMobile from "@public/images/FAQ-mobile-banner.jpg";
-import { FaqsProps } from "./types";
+import { FaqsProps, AllFaqDataType } from "./types";
 import FaqUnit from "./FaqUnit";
+
 const { TabPane } = Tabs;
 const callback = (key: any) => {
   console.log(key);
 };
 
-const FAQ = ({ allFaqsData }: any) => {
+const FAQ = ({ allFaqsData }: AllFaqDataType) => {
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="FAQ-section">
@@ -49,11 +50,11 @@ const FAQ = ({ allFaqsData }: any) => {
                 return (
                   <TabPane className="tab-item" tab={faqUnit} key={faqUnit}>
                     <FaqUnit faqData={faqData} />
+                    <QuestionForm faqData={faqData} />
                   </TabPane>
                 );
               })}
             </Tabs>
-            <QuestionForm />
           </div>
         </div>
       </section>

@@ -1,34 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
 import Select from "antd/lib/select";
 import axios from "axios";
 import SuccessMessage from "@common/components/SuccessMessage";
-
+import { FaqsProps } from "modules/FAQ/types";
 interface QuestionProps {
   email: string;
   topic: string;
   sampleQuestion: string;
 }
-const SAMPLE_TOPICS = [
-  {
-    label: "The Employment Contract",
-    value: "The Employment Contract",
-  },
-  {
-    label: "Termination of Employment Contracts",
-    value: "Termination of Employment Contracts",
-  },
-  {
-    label: "Social Security and Work Emergencies",
-    value: "Social Security and Work Emergencies",
-  },
-  {
-    label: "other",
-    value: "other",
-  },
-];
+interface FaqUnitProps {
+  faqData: FaqsProps;
+}
 
 const validation = {
   required: "${label} is required",
@@ -37,12 +22,14 @@ const validation = {
   },
 };
 
-const QuestionForm = ({
-  description = "We have received your message and would like to thank you for writing to us.",
-}) => {
+const QuestionForm: FC<FaqUnitProps> = ({ faqData }) => {
+  const description = {
+    description:
+      "We have received your message and would like to thank you for writing to us.",
+  };
   const [questionForm] = Form.useForm();
   const [isVisibleText, setIsVisibleText] = useState(false);
-
+  const topics = faqData?.topics ?? [];
   const handleFormSubmit = (value: QuestionProps) => {
     axios
       .post(`${process.env.API_URL}/question-inquiries`, {
@@ -75,7 +62,7 @@ const QuestionForm = ({
           </div>
         </div>
         {isVisibleText ? (
-          <SuccessMessage description={description} />
+          <SuccessMessage {...description} />
         ) : (
           <Form
             className="inquiry-form-wrapper"
@@ -96,11 +83,15 @@ const QuestionForm = ({
               </Form.Item>
               <Form.Item label="Topic" name="topic" className="dropdown-menu">
                 <Select className="form-select">
-                  {SAMPLE_TOPICS.map((topic) => (
-                    <Select.Option value={topic.value} key={topic.value}>
-                      {topic.label}
-                    </Select.Option>
-                  ))}
+                  <Select.Option value="All Topics">All Topics</Select.Option>
+                  {topics.map((topic, index: number) => {
+                    const topicTitle = topic.title ?? "";
+                    return (
+                      <Select.Option value={topicTitle} key={index}>
+                        {topicTitle}
+                      </Select.Option>
+                    );
+                  })}
                 </Select>
               </Form.Item>
             </div>

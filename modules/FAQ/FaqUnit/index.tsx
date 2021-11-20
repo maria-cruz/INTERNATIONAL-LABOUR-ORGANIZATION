@@ -2,17 +2,17 @@ import React, { FC, useState, useMemo, ChangeEvent } from "react";
 import Input from "antd/lib/input";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import Select from "antd/lib/select";
-import CollapseSection, { CollapseProps } from "../components/CollapseSection";
+import CollapseSection from "../components/CollapseSection";
 import { FaqsProps, Faq } from "../types/index";
 
 interface FaqUnitProps {
   faqData: FaqsProps;
 }
 const FaqUnit: FC<FaqUnitProps> = ({ faqData }) => {
+  const [topicId, setTopicId] = useState<number>(0);
   const handleTopicChange = (value: number) => {
     setTopicId(value);
   };
-  const [topicId, setTopicId] = useState<number>(0);
   const [searchInput, setSearchInput] = useState("");
   const allFaqs = useMemo(() => {
     let list: Faq[] = [];
@@ -28,7 +28,6 @@ const FaqUnit: FC<FaqUnitProps> = ({ faqData }) => {
   );
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value.toLowerCase());
-    // setTopicId(0);
   };
 
   return (

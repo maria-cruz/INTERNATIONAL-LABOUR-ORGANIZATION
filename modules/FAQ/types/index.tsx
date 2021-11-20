@@ -1,3 +1,7 @@
+export interface AllFaqDataType {
+  allFaqsData: FaqsProps[];
+}
+
 export interface FaqsProps {
   unit?: string;
   title?: string;
