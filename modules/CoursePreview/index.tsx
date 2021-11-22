@@ -1,8 +1,8 @@
 import Layout, { Header } from "@common/components/Layout";
 import React from "react";
-import SelfPractice from "./components/SelfPractice";
-import UnitDetails from "./components/UnitDetails";
-import QandA from "./components/Q&A";
+import SelfPractice from "@common/components/SelfPractice";
+import QandA from "@common/components/Q&A";
+import UnitDetails from "@common/components/UnitDetails";
 import Tabs from "antd/lib/tabs";
 import CarouselBanner from "./components/CarouselBanner";
 
