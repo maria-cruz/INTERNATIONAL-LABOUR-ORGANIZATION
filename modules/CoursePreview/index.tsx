@@ -1,12 +1,7 @@
 import Layout, { Header } from "@common/components/Layout";
 import React from "react";
-import SelfPractice from "@common/components/SelfPractice";
-import QandA from "@common/components/Q&A";
-import UnitDetails from "@common/components/UnitDetails";
-import Tabs from "antd/lib/tabs";
 import CarouselBanner from "./components/CarouselBanner";
-
-const { TabPane } = Tabs;
+import CourseTabs from "@common/components/CourseTabs";
 
 interface CoursePreviewProps {
   coursePreviewData: any;
@@ -17,12 +12,19 @@ const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
     unit,
     title,
     description,
-    percentage,
+    progress,
     objectives,
     topicsCount,
     prevSlug,
     nextSlug,
   } = coursePreviewData;
+
+  const unitDetailsProps = {
+    topicsCount,
+    progress,
+    description,
+    objectives,
+  };
 
   return (
     <Layout header={<Header title={"Header"} />}>
@@ -35,22 +37,7 @@ const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
             nextSlug={nextSlug}
           />
 
-          <Tabs className="tab-container" defaultActiveKey="1">
-            <TabPane className="tab-item" tab="Unit Details" key="1">
-              <UnitDetails
-                topicsCount={topicsCount}
-                progress={percentage}
-                description={description}
-                objectives={objectives}
-              />
-            </TabPane>
-            <TabPane className="tab-item" tab={"Q & A"} key="2">
-              <QandA />
-            </TabPane>
-            <TabPane className="tab-item" tab="Self Practice" key="3">
-              <SelfPractice />
-            </TabPane>
-          </Tabs>
+          <CourseTabs unitDetailsProps={unitDetailsProps} />
         </div>
       </div>
     </Layout>

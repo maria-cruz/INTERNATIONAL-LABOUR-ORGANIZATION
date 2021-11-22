@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     description: currentCourseData?.description ?? "",
     thumbnail: getStrapiFileUrl(currentCourseData?.thumbnail),
     topicsCount: topicsCount ?? 0,
-    percentage: percentage ?? 0,
+    progress: percentage ?? 0,
     objectives: currentCourseData?.learning_objectives ?? [],
     prevSlug: prevCourse?.slug ?? "",
     nextSlug: nextCourse?.slug ?? "",

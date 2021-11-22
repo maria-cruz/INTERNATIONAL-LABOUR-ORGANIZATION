@@ -1,0 +1,76 @@
+.details-container {
+  .upper-details-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.9rem;
+    font-size: 2.4rem;
+    gap: 10rem;
+  }
+
+  .upper-details-wrapper .instructor-details-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .upper-details-wrapper .instructor-details-container .img-container {
+    display: flex;
+    align-items: center;
+  }
+}
+.progress-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.img-container img {
+  border-radius: 50%;
+}
+.instructor-name {
+  font-weight: 600;
+}
+
+.progress-bar-container {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.8rem;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.ant-progress-text {
+  margin-right: 2.8rem;
+}
+.digit-wrapper {
+  font-weight: 600;
+}
+
+.introduction-container {
+  max-width: 175.6rem;
+  font-size: 1.8rem;
+  line-height: 2;
+  color: $shuttle-gray;
+  margin-bottom: 9rem;
+}
+.ant-progress-text {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.checklist svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-right: 1.5rem;
+}
+
+._subheading-label {
+  margin-bottom: 3.6rem;
+}
+
+.list-item {
+  margin-bottom: 2.3rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+}
