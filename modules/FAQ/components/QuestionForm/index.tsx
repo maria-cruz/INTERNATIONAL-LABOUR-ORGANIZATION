@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import React, { useState, VFC } from "react";
 import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
@@ -22,7 +22,7 @@ const validation = {
   },
 };
 
-const QuestionForm: FC<FaqUnitProps> = ({ faqData }) => {
+const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
   const description = {
     description:
       "We have received your message and would like to thank you for writing to us.",
@@ -75,7 +75,7 @@ const QuestionForm: FC<FaqUnitProps> = ({ faqData }) => {
             <div className="upper-input-container">
               <Form.Item
                 className="email-container"
-                rules={[{ type: "email" }]}
+                rules={[{ type: "email", required: true }]}
                 name="email"
                 label="Email"
               >
