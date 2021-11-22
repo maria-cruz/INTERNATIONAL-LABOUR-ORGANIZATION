@@ -3,7 +3,6 @@
     padding-bottom: 13.7rem;
   }
 
-  @import "./PasswordRule/styles";
   .background {
     display: none;
     @include view-size(desktop) {
