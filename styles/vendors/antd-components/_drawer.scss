@@ -28,4 +28,14 @@
     transition: 0.2s;
     border-bottom: 0.1rem solid $cold-morning;
   }
+
+  .lang-select-container {
+    padding: 2rem;
+    padding-left: 1rem;
+    border-bottom: 0.1rem solid $cold-morning;
+    font-weight: 600;
+    .ant-select-selection-item {
+      color: $shuttle-gray;
+    }
+  }
 }

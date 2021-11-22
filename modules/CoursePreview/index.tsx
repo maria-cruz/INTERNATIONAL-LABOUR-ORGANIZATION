@@ -13,14 +13,27 @@ interface CoursePreviewProps {
 }
 
 const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
-  const { unit, title, description, percentage, objectives, topicsCount } =
-    coursePreviewData;
+  const {
+    unit,
+    title,
+    description,
+    percentage,
+    objectives,
+    topicsCount,
+    prevSlug,
+    nextSlug,
+  } = coursePreviewData;
 
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="course-preview-container">
         <div className="course-details-container">
-          <CarouselBanner unit={unit} title={title} />
+          <CarouselBanner
+            unit={unit}
+            title={title}
+            prevSlug={prevSlug}
+            nextSlug={nextSlug}
+          />
 
           <Tabs className="tab-container" defaultActiveKey="1">
             <TabPane className="tab-item" tab="Unit Details" key="1">

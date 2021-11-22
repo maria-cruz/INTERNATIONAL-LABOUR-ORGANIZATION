@@ -6,15 +6,19 @@ import Button from "antd/lib/button";
 import BackArrow from "@common/components/Icons/BackArrow";
 import ForwardArrow from "@common/components/Icons/ForwardArrow";
 import { useRouter } from "next/router";
-
+import classNames from "classnames";
 interface CarouselBannerProps {
   unit?: number | string;
   title?: string;
+  prevSlug?: string;
+  nextSlug?: string;
 }
 
 const CarouselBanner = ({
   unit = 0,
   title = "Untitled",
+  prevSlug,
+  nextSlug,
 }: CarouselBannerProps) => {
   const router = useRouter();
   const slug = router?.query?.slug;
@@ -23,10 +27,10 @@ const CarouselBanner = ({
     router.push(`/courses/view/${slug}`);
   };
   const handleBackArrowClick = () => {
-    // router.push("/courses/unit2");
+    router.push(`/courses/preview/${prevSlug}`);
   };
   const handleForwardArrowClick = () => {
-    // router.push("/courses/unit3");
+    router.push(`/courses/preview/${nextSlug}`);
   };
 
   return (
@@ -47,11 +51,18 @@ const CarouselBanner = ({
         <div className="unit-label">{`Unit ${unit}`}</div>
 
         <div className="title-container">
-          <div className="back-icon" onClick={handleBackArrowClick}>
+          <div
+            className={classNames("back-icon", { _invisible: !prevSlug })}
+            onClick={handleBackArrowClick}
+          >
             <BackArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
+
           <span className="title">{title}</span>
-          <div className="forward-icon" onClick={handleForwardArrowClick}>
+          <div
+            className={classNames("forward-icon", { _invisible: !nextSlug })}
+            onClick={handleForwardArrowClick}
+          >
             <ForwardArrow width="3.6rem" height="4.3rem" fill="#8F949D" />
           </div>
         </div>

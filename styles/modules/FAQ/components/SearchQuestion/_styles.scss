@@ -2,6 +2,9 @@
   .input-search .ant-btn {
     display: none;
   }
+  .ant-select {
+    margin-bottom: 5rem;
+  }
 
   .ant-input-affix-wrapper,
   .ant-select-selector {
@@ -48,19 +51,15 @@
       font-weight: 500;
       display: flex;
       line-height: 1.4;
-      height: 10.6rem;
+      height: auto;
       width: 88vw;
       max-width: 108rem;
+      align-items: flex-start;
       @include view-size(400px) {
         font-size: 2rem;
       }
       @include view-size(tab-port) {
-        height: 8rem;
         font-size: 2.2rem;
-        align-items: flex-start;
-      }
-      @include view-size(tab-land) {
-        align-items: center;
       }
       @include view-size(desktop) {
         font-size: 2.4rem;
