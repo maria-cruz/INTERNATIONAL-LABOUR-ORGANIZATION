@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Form, { FormInstance } from "antd/lib/form";
 import Input from "antd/lib/input";
-import Checkbox from "antd/lib/checkbox";
 import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import Layout, { Header } from "@common/components/Layout";
 import SignUpBg from "@public/images/sign-up-bg.jpg";
 import Router from "next/router";
-import PasswordRule from "../../common/components/PasswordRule";
+import PasswordRule from "@common/components/PasswordRule";
 import isEmpty from "lodash/isEmpty";
 import SignUpBgMobile from "@public/images/sign-up-mobile.jpg";
 
@@ -23,8 +22,8 @@ interface HandleSignUpFinishProps {
   password: string;
 }
 
-const SignUp = () => {
-  const [signUpForm] = Form.useForm();
+const ResetPassword = () => {
+  const [resetPasswordForm] = Form.useForm();
 
   const passwordRuleInitialState = {
     isLongerThanSevenChars: false,
@@ -39,7 +38,7 @@ const SignUp = () => {
 
   const { t } = useTranslation("sign-up");
 
-  const handleSignUpFinish = (value: HandleSignUpFinishProps) => {
+  const handleResetPasswordFinish = (value: HandleSignUpFinishProps) => {
     const registerInfo = {
       username: value.email,
       email: value.email,
@@ -58,7 +57,7 @@ const SignUp = () => {
       .then((data) => {
         console.log("Success:", data);
         if (data?.statusCode === 400) {
-          signUpForm.setFields([
+          resetPasswordForm.setFields([
             {
               name: "email",
               errors: [`${data?.message[0]?.messages[0]?.message}`],
@@ -74,14 +73,6 @@ const SignUp = () => {
       });
   };
 
-  const checkCheckBox = (rule: any, value: any, callback: any) => {
-    if (!value) {
-      callback("Please agree to the terms and conditions!");
-    } else {
-      callback();
-    }
-  };
-
   const handleNewPasswordChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -93,7 +84,6 @@ const SignUp = () => {
     const hasUppercase = hasUppercaseRegex.test(value);
     const hasLowercase = hasLowercaseRegex.test(value);
 
-    console.log(isAtleastOneNumber);
     setPasswordRule({
       ...passwordRule,
       isLongerThanSevenChars,
@@ -101,7 +91,7 @@ const SignUp = () => {
       hasUppercase,
       hasLowercase,
     });
-    signUpForm.setFields([{ name: "newPassword", errors: [] }]);
+    resetPasswordForm.setFields([{ name: "newPassword", errors: [] }]);
   };
 
   const isCheckAllPasswordRule =
@@ -120,7 +110,8 @@ const SignUp = () => {
     validator(_: {}, newPassword: string) {
       const isEmptyNewPassword = isEmpty(newPassword);
 
-      if (isEmptyNewPassword) return Promise.reject("Please enter a password");
+      if (isEmptyNewPassword)
+        return Promise.reject("Please enter a new password");
 
       if (!isCheckAllPasswordRule)
         return Promise.reject("Please enter a valid password.");
@@ -159,16 +150,17 @@ const SignUp = () => {
               </div>
             </div>
             <div className="sign-up-container">
-              <div className="sign-up-title">{t("signUpTitle")}</div>
+              <div className="sign-up-title">Reset your password</div>
               <div className="login-container">
-                <div className="login-sub-text">{t("loginSubText")}</div>
-                <div className="login-text">{t("login")}</div>
+                <div className="login-sub-text">
+                  Please provide a new password to continue using your account.
+                </div>
               </div>
               <Form
-                form={signUpForm}
+                form={resetPasswordForm}
                 className="sign-up-form-container"
                 layout="vertical"
-                onFinish={handleSignUpFinish}
+                onFinish={handleResetPasswordFinish}
                 requiredMark={false}
                 validateTrigger="submit"
               >
@@ -176,23 +168,13 @@ const SignUp = () => {
                   label={t("emailAddress")}
                   className="email-container"
                   name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your email.",
-                    },
-                    {
-                      type: "email",
-                      message: "The input is not valid E-mail!",
-                    },
-                  ]}
                 >
-                  <Input className="sign-up-input" />
+                  <Input className="sign-up-input" disabled={true} />
                 </Form.Item>
                 <Form.Item
-                  label={t("password")}
+                  label="New password"
                   className="password-container"
-                  name="password"
+                  name="newPassword"
                   rules={[newPasswordValidation]}
                 >
                   <Input
@@ -220,28 +202,6 @@ const SignUp = () => {
                     isAtleastOneNumber={passwordRule.isAtleastOneNumber}
                   />
                 )}
-                <Form.Item
-                  name="termsAndCondition"
-                  valuePropName="checked"
-                  className="terms-and-condition-container"
-                  rules={[{ validator: checkCheckBox }]}
-                >
-                  <Checkbox className="sign-up-checkbox">
-                    {t("accept")}{" "}
-                    <span className="terms-and-condition-text">
-                      {t("termsAndCondition")}
-                    </span>
-                  </Checkbox>
-                </Form.Item>
-                <Form.Item
-                  name="newsAndUpdate"
-                  valuePropName="checked"
-                  className="sign-up-checkbox-container"
-                >
-                  <Checkbox className="sign-up-checkbox">
-                    {t("newAndUpdate")}
-                  </Checkbox>
-                </Form.Item>
                 <Form.Item noStyle>
                   <div className="sign-up-btn-container">
                     <Button
@@ -249,7 +209,7 @@ const SignUp = () => {
                       type="primary"
                       htmlType="submit"
                     >
-                      {t("signUp")}
+                      Reset password
                     </Button>
                   </div>
                 </Form.Item>
@@ -262,4 +222,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default ResetPassword;

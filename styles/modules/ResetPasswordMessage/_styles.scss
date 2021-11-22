@@ -1,0 +1,64 @@
+.reset-password-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include side-padding;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  @include view-size(tab-land) {
+    padding-top: 20rem;
+    padding-bottom: 20rem;
+  }
+  .success-message-wrapper {
+    max-width: 108rem;
+    text-align: center;
+  }
+
+  .success-message-wrapper svg {
+    margin-bottom: 5rem;
+    @include view-size(desktop) {
+      margin-bottom: 6rem;
+    }
+  }
+
+  .heading-container,
+  .subheading-container {
+    font-weight: 600;
+  }
+  .heading-container {
+    color: $tropical-rain-forest;
+    font-size: min(7.77777vw, 4.2rem);
+    margin-bottom: 4.3rem;
+  }
+
+  .subheading-container {
+    color: $shuttle-gray;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    line-height: 2rem;
+
+    @include view-size(desktop) {
+      margin-bottom: 4rem;
+      font-size: 2.4rem;
+      line-height: 4rem;
+    }
+  }
+  .subheading-container p {
+    width: 77vw;
+    @include view-size(tab-land) {
+      width: 100%;
+    }
+  }
+
+  .success-message-btn {
+    background-color: $faux-green;
+    width: 100%;
+    @include view-size(450px) {
+      width: 19.6rem;
+    }
+  }
+}
