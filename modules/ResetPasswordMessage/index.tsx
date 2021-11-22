@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "antd/lib/button";
 import { useRouter } from "next/router";
-import Email from "@common/components/Icons/Email";
 import EmailUnfill from "@common/components/Icons/EmailUnFill";
 const ResetPasswordMessage = () => {
   const router = useRouter();

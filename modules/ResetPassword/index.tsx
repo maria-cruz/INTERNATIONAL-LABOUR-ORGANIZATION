@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Form, { FormInstance } from "antd/lib/form";
 import Input from "antd/lib/input";
-import Checkbox from "antd/lib/checkbox";
 import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import Layout, { Header } from "@common/components/Layout";
@@ -72,14 +71,6 @@ const ResetPassword = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-  };
-
-  const checkCheckBox = (rule: any, value: any, callback: any) => {
-    if (!value) {
-      callback("Please agree to the terms and conditions!");
-    } else {
-      callback();
-    }
   };
 
   const handleNewPasswordChange = (
@@ -212,28 +203,6 @@ const ResetPassword = () => {
                     isAtleastOneNumber={passwordRule.isAtleastOneNumber}
                   />
                 )}
-                {/* <Form.Item
-                  name="termsAndCondition"
-                  valuePropName="checked"
-                  className="terms-and-condition-container"
-                  rules={[{ validator: checkCheckBox }]}
-                >
-                  <Checkbox className="sign-up-checkbox">
-                    {t("accept")}{" "}
-                    <span className="terms-and-condition-text">
-                      {t("termsAndCondition")}
-                    </span>
-                  </Checkbox>
-                </Form.Item>
-                <Form.Item
-                  name="newsAndUpdate"
-                  valuePropName="checked"
-                  className="sign-up-checkbox-container"
-                >
-                  <Checkbox className="sign-up-checkbox">
-                    {t("newAndUpdate")}
-                  </Checkbox>
-                </Form.Item> */}
                 <Form.Item noStyle>
                   <div className="sign-up-btn-container">
                     <Button
