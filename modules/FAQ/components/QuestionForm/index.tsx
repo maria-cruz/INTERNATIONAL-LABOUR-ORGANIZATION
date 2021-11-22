@@ -75,7 +75,7 @@ const QuestionForm: FC<FaqUnitProps> = ({ faqData }) => {
             <div className="upper-input-container">
               <Form.Item
                 className="email-container"
-                rules={[{ type: "email" }]}
+                rules={[{ type: "email", required: true }]}
                 name="email"
                 label="Email"
               >

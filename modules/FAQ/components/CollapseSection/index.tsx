@@ -13,7 +13,7 @@ const CollapseSection = ({ question = "", answer = "" }: CollapseProps) => {
     <Collapse
       bordered={false}
       expandIcon={({ isActive }) => (
-        <UpOutlined rotate={isActive ? 180 : 0} style={{ fontSize: "100%" }} />
+        <UpOutlined rotate={isActive ? 0 : 180} style={{ fontSize: "100%" }} />
       )}
       className="collapse-container"
     >

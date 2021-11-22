@@ -1,4 +1,4 @@
-import React, { FC, useState, useMemo, ChangeEvent } from "react";
+import React, { VFC, useState, useMemo, ChangeEvent } from "react";
 import Input from "antd/lib/input";
 import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import Select from "antd/lib/select";
@@ -8,7 +8,7 @@ import { FaqsProps, Faq } from "../types/index";
 interface FaqUnitProps {
   faqData: FaqsProps;
 }
-const FaqUnit: FC<FaqUnitProps> = ({ faqData }) => {
+const FaqUnit: VFC<FaqUnitProps> = ({ faqData }) => {
   const [topicId, setTopicId] = useState<number>(0);
   const handleTopicChange = (value: number) => {
     setTopicId(value);
