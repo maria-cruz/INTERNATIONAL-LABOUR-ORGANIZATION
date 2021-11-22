@@ -23,7 +23,7 @@ interface HandleSignUpFinishProps {
 }
 
 const ResetPassword = () => {
-  const [signUpForm] = Form.useForm();
+  const [resetPasswordForm] = Form.useForm();
 
   const passwordRuleInitialState = {
     isLongerThanSevenChars: false,
@@ -38,7 +38,7 @@ const ResetPassword = () => {
 
   const { t } = useTranslation("sign-up");
 
-  const handleSignUpFinish = (value: HandleSignUpFinishProps) => {
+  const handleResetPasswordFinish = (value: HandleSignUpFinishProps) => {
     const registerInfo = {
       username: value.email,
       email: value.email,
@@ -57,7 +57,7 @@ const ResetPassword = () => {
       .then((data) => {
         console.log("Success:", data);
         if (data?.statusCode === 400) {
-          signUpForm.setFields([
+          resetPasswordForm.setFields([
             {
               name: "email",
               errors: [`${data?.message[0]?.messages[0]?.message}`],
@@ -84,7 +84,6 @@ const ResetPassword = () => {
     const hasUppercase = hasUppercaseRegex.test(value);
     const hasLowercase = hasLowercaseRegex.test(value);
 
-    console.log(isAtleastOneNumber);
     setPasswordRule({
       ...passwordRule,
       isLongerThanSevenChars,
@@ -92,7 +91,7 @@ const ResetPassword = () => {
       hasUppercase,
       hasLowercase,
     });
-    signUpForm.setFields([{ name: "newPassword", errors: [] }]);
+    resetPasswordForm.setFields([{ name: "newPassword", errors: [] }]);
   };
 
   const isCheckAllPasswordRule =
@@ -158,10 +157,10 @@ const ResetPassword = () => {
                 </div>
               </div>
               <Form
-                form={signUpForm}
+                form={resetPasswordForm}
                 className="sign-up-form-container"
                 layout="vertical"
-                onFinish={handleSignUpFinish}
+                onFinish={handleResetPasswordFinish}
                 requiredMark={false}
                 validateTrigger="submit"
               >
