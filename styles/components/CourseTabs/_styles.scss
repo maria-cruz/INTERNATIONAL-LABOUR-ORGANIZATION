@@ -1,7 +1,7 @@
-.course-preview-container {
-  @import "./components/CarouselBanner/styles";
-
-  background: $whisper;
+.tab-container {
+  @import "./QandA/styles";
+  @import "./SelfPractice/styles";
+  @import "./UnitDetails/styles";
 
   .tab-container {
     padding-top: 5rem;

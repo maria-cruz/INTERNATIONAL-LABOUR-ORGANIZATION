@@ -8,7 +8,7 @@ type ObjectiveType = {
   objective: string;
 };
 
-interface UnitDetails {
+export interface UnitDetailsProps {
   avatar?: any;
   instructor?: string;
   topicsCount?: number;
@@ -24,7 +24,7 @@ const UnitDetails = ({
   progress = 0,
   description = "",
   objectives = [],
-}: UnitDetails) => {
+}: UnitDetailsProps) => {
   const hasObjectives = objectives.length > 0;
 
   return (
