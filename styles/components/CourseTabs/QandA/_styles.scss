@@ -7,18 +7,42 @@
   }
 
   .text-input-container {
-    width: 123.3rem;
+    max-width: 123.3rem;
+    width: 91vw;
     height: 8.5rem;
     position: relative;
+    @include view-size(tab-port) {
+      width: 89vw;
+    }
+    @include view-size(tab-land) {
+      width: 87vw;
+    }
+    @include view-size(desktop) {
+      width: 85vw;
+    }
   }
   .submit-btn {
-    position: absolute;
-    right: 2rem;
-    top: 1.7rem;
-    width: 16rem;
+    display: none;
+    @include view-size(tab-port) {
+      display: block;
+      position: absolute;
+      right: 2rem;
+      top: 1.7rem;
+      width: 16rem;
+    }
+  }
+  .submit-btn-mobile {
+    margin-bottom: 5rem;
+    width: 100%;
+    @include view-size(tab-port) {
+      display: none;
+    }
   }
   .comment-container {
-    margin-bottom: 4.3rem;
+    margin-bottom: 2.2rem;
+    @include view-size(tab-port) {
+      margin-bottom: 4.3rem;
+    }
   }
   .ant-form-item-label > label {
     font-family: Arial;
@@ -28,18 +52,27 @@
   .conversation-container {
     background: $white;
     border-top: 0.1rem solid $shuttle-gray;
-    padding: 4rem;
+    padding: 4rem 1.6rem;
     margin-bottom: 4rem;
+    @include view-size(tab-port) {
+      padding: 4rem;
+    }
   }
   .name-container {
-    font-size: 2.4rem;
     font-weight: 600;
+    font-size: 2rem;
+    @include view-size(tab-land) {
+      font-size: 2.4rem;
+    }
   }
   .description-container,
   .question-display-container,
   .label-container {
-    font-size: 1.8rem;
     color: $shuttle-gray;
+    font-size: 1.6rem;
+    @include view-size(tab-land) {
+      font-size: 1.8rem;
+    }
   }
   .description-container {
     margin-bottom: 3.6rem;

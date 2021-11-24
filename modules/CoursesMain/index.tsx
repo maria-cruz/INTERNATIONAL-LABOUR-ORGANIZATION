@@ -76,6 +76,7 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
                 description={course?.description}
                 thumbnail={course?.thumbnail}
                 percentage={course?.percentage}
+                key={index}
               />
             )
           )}

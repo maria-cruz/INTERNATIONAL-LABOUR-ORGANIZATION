@@ -18,6 +18,9 @@ const QandA = () => {
             Ask question
           </Button>
         </Form.Item>
+        <Button htmlType="submit" type="primary" className="submit-btn-mobile">
+          Ask question
+        </Button>
       </div>
       <div className="comment-display-container">
         <div className="name-container">Khashifa Omen</div>

@@ -7,6 +7,7 @@ import BackArrow from "@common/components/Icons/BackArrow";
 import ForwardArrow from "@common/components/Icons/ForwardArrow";
 import { useRouter } from "next/router";
 import classNames from "classnames";
+import MobileBanner from "@public/images/carousel-banner-mobile.jpg";
 interface CarouselBannerProps {
   unit?: number | string;
   title?: string;
@@ -36,15 +37,15 @@ const CarouselBanner = ({
   return (
     <div className="carousel-banner-container">
       <div className="banner-container">
+        <Image src={Unit1Banner} alt="unit1-banner.jpg" placeholder="blur" />
+      </div>
+      <div className="banner-mobile-container">
         <Image
-          src={Unit1Banner}
-          alt="unit1-banner.jpg"
+          src={MobileBanner}
+          alt="carousel-banner-mobile.jpg"
           placeholder="blur"
-          height={452}
-          width={1920}
         />
       </div>
-
       <div className="bg-filter" />
 
       <div className="bg-description-container">
