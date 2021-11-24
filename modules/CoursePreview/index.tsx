@@ -5,10 +5,15 @@ import CourseTabs from "@common/components/CourseTabs";
 
 interface CoursePreviewProps {
   coursePreviewData: any;
+  courseComments: any;
 }
 
-const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
+const CoursePreview = ({
+  coursePreviewData,
+  courseComments,
+}: CoursePreviewProps) => {
   const {
+    id,
     unit,
     title,
     description,
@@ -26,6 +31,11 @@ const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
     objectives,
   };
 
+  const unitQandAProps = {
+    courseId: id,
+    courseComments: courseComments,
+  };
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="course-preview-container">
@@ -37,7 +47,10 @@ const CoursePreview = ({ coursePreviewData }: CoursePreviewProps) => {
             nextSlug={nextSlug}
           />
 
-          <CourseTabs unitDetailsProps={unitDetailsProps} />
+          <CourseTabs
+            unitDetailsProps={unitDetailsProps}
+            unitQandAProps={unitQandAProps}
+          />
         </div>
       </div>
     </Layout>

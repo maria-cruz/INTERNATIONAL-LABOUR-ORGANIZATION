@@ -1,6 +1,6 @@
 import React from "react";
 import SelfPractice from "@common/components/CourseTabs/SelfPractice";
-import QandA from "@common/components/CourseTabs/Q&A";
+import QandA, { QandAProps } from "@common/components/CourseTabs/Q&A";
 import UnitDetails, {
   UnitDetailsProps,
 } from "@common/components/CourseTabs/UnitDetails";
@@ -10,9 +10,10 @@ const { TabPane } = Tabs;
 
 export interface CourseTabsProps {
   unitDetailsProps?: UnitDetailsProps;
+  unitQandAProps?: QandAProps;
 }
 
-const CourseTabs = ({ unitDetailsProps }: CourseTabsProps) => {
+const CourseTabs = ({ unitDetailsProps, unitQandAProps }: CourseTabsProps) => {
   return (
     <Tabs className="tab-container" defaultActiveKey="1">
       <TabPane className="tab-item" tab="Unit Details" key="1">
@@ -24,7 +25,7 @@ const CourseTabs = ({ unitDetailsProps }: CourseTabsProps) => {
         />
       </TabPane>
       <TabPane className="tab-item" tab={"Q & A"} key="2">
-        <QandA />
+        <QandA {...unitQandAProps} />
       </TabPane>
       <TabPane className="tab-item" tab="Self Practice" key="3">
         <SelfPractice />

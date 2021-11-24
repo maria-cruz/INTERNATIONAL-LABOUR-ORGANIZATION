@@ -1,6 +1,6 @@
 import nookies, { parseCookies } from "nookies";
 
-const getJWT = (context: any, isBearer = false) => {
+const getJWT = (context?: any, isBearer: boolean = false) => {
   const hasNoContext = !context;
   const jwt = hasNoContext ? parseCookies()?.jwt : nookies.get(context)?.jwt;
 
