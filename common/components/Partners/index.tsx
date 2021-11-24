@@ -13,8 +13,11 @@ const Partners = ({
   subheading = "This is a National Initiative with the Support of the Following Partners",
 }) => {
   const settings = {
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 2000,
+    pauseOnHover: true,
     dots: true,
-    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
