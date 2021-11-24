@@ -113,7 +113,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
         </Form>
       </div>
 
-      {courseComments?.map?.((comment) => {
+      {courseComments?.map?.((comment, idx) => {
         const commentId = comment?.id;
 
         const hasName =
@@ -134,7 +134,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
           : undefined;
 
         return (
-          <>
+          <div key={`comment-${idx}`}>
             <div className="comment-display-container">
               <div className="name-container">{fullName}</div>
               <div className="description-container">
@@ -143,7 +143,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
               <p className="question-display-container">{comment?.content}</p>
             </div>
             <div className="conversation-container">
-              {comment?.children?.map?.((reply) => {
+              {comment?.children?.map?.((reply, idx) => {
                 const hasName =
                   !!reply?.authorUser?.given_name &&
                   !!reply?.authorUser?.family_name;
@@ -161,7 +161,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                   ? `${reply?.authorUser?.given_name} ${reply?.authorUser?.family_name}`
                   : undefined;
                 return (
-                  <div className="item-wrapper">
+                  <div className="item-wrapper" key={`reply-${idx}`}>
                     <div className="name-container">{fullName}</div>
                     <div className="label-container">
                       {reply?.authorUser?.organization_type}
@@ -186,7 +186,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                 </div>
               </Form>
             </div>
-          </>
+          </div>
         );
       })}
     </section>
