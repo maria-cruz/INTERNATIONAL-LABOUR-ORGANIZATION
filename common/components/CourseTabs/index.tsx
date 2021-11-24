@@ -17,12 +17,7 @@ const CourseTabs = ({ unitDetailsProps, unitQandAProps }: CourseTabsProps) => {
   return (
     <Tabs className="tab-container" defaultActiveKey="1">
       <TabPane className="tab-item" tab="Unit Details" key="1">
-        <UnitDetails
-          topicsCount={unitDetailsProps?.topicsCount}
-          progress={unitDetailsProps?.progress}
-          description={unitDetailsProps?.description}
-          objectives={unitDetailsProps?.objectives}
-        />
+        <UnitDetails {...unitDetailsProps} />
       </TabPane>
       <TabPane className="tab-item" tab={"Q & A"} key="2">
         <QandA {...unitQandAProps} />

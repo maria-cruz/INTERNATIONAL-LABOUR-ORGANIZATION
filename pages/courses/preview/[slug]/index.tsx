@@ -16,6 +16,7 @@ interface CoursesDataType {
   progress: any;
   topics: any;
   learning_objectives: any;
+  instructor: any;
 }
 
 interface AllCoursesDataType {
@@ -81,6 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     topicsCount: topicsCount ?? 0,
     progress: percentage ?? 0,
     objectives: currentCourseData?.learning_objectives ?? [],
+    instructor: currentCourseData?.instructor,
     prevSlug: prevCourse?.slug ?? "",
     nextSlug: nextCourse?.slug ?? "",
   };

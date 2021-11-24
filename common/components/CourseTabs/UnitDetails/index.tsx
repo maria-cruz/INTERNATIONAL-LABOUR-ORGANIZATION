@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import InstructorProfile from "@public/images/girl-profile.jpeg";
+import DefaultInstructorProfile from "@public/images/girl-profile.jpeg";
 import Progress from "antd/lib/progress";
 import CheckCircleFilled from "@ant-design/icons/CheckCircleFilled";
 
@@ -9,8 +9,8 @@ type ObjectiveType = {
 };
 
 export interface UnitDetailsProps {
-  avatar?: any;
-  instructor?: string;
+  instructorAvatar?: any;
+  instructorName?: string;
   topicsCount?: number;
   progress?: number;
   description?: string;
@@ -18,30 +18,27 @@ export interface UnitDetailsProps {
 }
 
 const UnitDetails = ({
-  avatar,
-  instructor = "Reyhan Mahfouz",
+  instructorAvatar,
+  instructorName = "Reyhan Mahfouz",
   topicsCount = 0,
   progress = 0,
   description = "",
   objectives = [],
 }: UnitDetailsProps) => {
   const hasObjectives = objectives.length > 0;
+  const avatarSrc = !!instructorAvatar
+    ? instructorAvatar
+    : DefaultInstructorProfile;
 
   return (
     <section className="details-container">
       <div className="upper-details-wrapper">
         <div className="instructor-details-container">
           <div className="img-container">
-            <Image
-              src={InstructorProfile}
-              alt="girl-profile.jpg"
-              width={60}
-              height={60}
-              placeholder="blur"
-            />
+            <Image src={avatarSrc} alt="avatar image" width={60} height={60} />
           </div>
 
-          <div className="instructor-name">{instructor}</div>
+          <div className="instructor-name">{instructorName}</div>
         </div>
 
         <div className="topic-container">

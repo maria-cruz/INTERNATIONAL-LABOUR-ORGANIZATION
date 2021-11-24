@@ -90,7 +90,6 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
       .catch((err) => console.error(err));
   };
 
-  console.log(courseComments, "ccmsss");
   return (
     <section className="QandA-section">
       <div className="comment-form-wrapper">

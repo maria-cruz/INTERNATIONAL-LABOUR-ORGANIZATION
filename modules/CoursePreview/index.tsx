@@ -2,6 +2,7 @@ import Layout, { Header } from "@common/components/Layout";
 import React from "react";
 import CarouselBanner from "./components/CarouselBanner";
 import CourseTabs from "@common/components/CourseTabs";
+import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface CoursePreviewProps {
   coursePreviewData: any;
@@ -20,11 +21,14 @@ const CoursePreview = ({
     progress,
     objectives,
     topicsCount,
+    instructor,
     prevSlug,
     nextSlug,
   } = coursePreviewData;
 
   const unitDetailsProps = {
+    instructorAvatar: getStrapiFileUrl(instructor?.avatar?.url),
+    instructorName: instructor?.name,
     topicsCount,
     progress,
     description,
