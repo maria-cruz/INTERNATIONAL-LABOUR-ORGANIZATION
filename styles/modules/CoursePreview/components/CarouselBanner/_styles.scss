@@ -1,43 +1,68 @@
 .carousel-banner-container {
   position: relative;
-  height: 45.2rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
+  height: 83vw;
+  @include view-size(tab-port) {
+    height: 45.2rem;
+  }
   /* Background */
   .banner-container {
+    display: none;
+    @include view-size(tab-port) {
+      display: block;
+      position: absolute;
+      top: 0;
+      height: inherit;
+      width: 192rem;
+    }
+  }
+  .banner-mobile-container {
+    display: block;
     position: absolute;
     top: 0;
-    height: inherit;
-    width: 192rem;
+    @include view-size(tab-port) {
+      display: none;
+    }
   }
 
   /* Background Filter */
   .bg-filter {
     position: absolute;
     top: 0;
-    height: inherit;
     width: 100%;
+    height: 83vw;
     background: transparent linear-gradient(180deg, #000000 0%, #0000001f 100%)
       0% 0% no-repeat padding-box;
+    @include view-size(tab-port) {
+      height: 45rem;
+    }
   }
 
   /* Background Content */
   .bg-description-container {
     position: absolute;
     top: 0;
-    padding: 5rem;
-    height: inherit;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 83vw;
+    @include side-padding;
+    padding-bottom: 4rem;
+    @include view-size(500px) {
+      padding-bottom: 6rem;
+    }
+    @include view-size(tab-port) {
+      height: inherit;
+    }
+    @include view-size(desktop) {
+      padding: 5rem;
+    }
   }
 
   .bg-description-container .unit-label {
-    font-size: 4.2rem;
+    font-size: min(4.44444vw, 4.2rem);
     font-weight: 600;
     color: $tropical-rain-forest;
     margin-left: 4.7rem;
@@ -61,32 +86,46 @@
   .bg-description-container .title-container .title {
     display: flex;
     align-items: center;
-    font-size: 6.3rem;
+    font-size: min(5.55555vw, 6.3rem);
     color: $white;
     font-weight: 600;
     line-height: 1.2;
     max-width: 174rem;
-    width: 86vw;
     max-height: 14.2rem;
     height: 8vw;
+    @include view-size(tab-land) {
+      font-size: 5rem;
+    }
+    @include view-size(desktop) {
+      font-size: min(4.3vw, 6.3rem);
+      width: 86vw;
+    }
     @include view-size(big-desktop) {
       width: 90vw;
     }
   }
 
   .start-btn {
-    width: 20.6rem;
+    width: 100%;
     background-color: $faux-green;
+    @include view-size(tab-port) {
+      width: 20.6rem;
+    }
   }
   .start-btn,
   .locked-btn {
-    font-size: 2.4rem;
-    height: 7rem;
+    font-size: min(4.44444vw, 2.4rem);
+    height: 5rem;
+    @include view-size(tab-port) {
+      height: 7rem;
+    }
   }
 
   .start-btn,
   .locked-btn {
-    margin-left: 4.7rem;
+    @include view-size(tab-port) {
+      margin-left: 4.7rem;
+    }
   }
 
   // .locked-btn {

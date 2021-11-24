@@ -1,10 +1,21 @@
 .details-container {
   .upper-details-wrapper {
     display: flex;
-    align-items: center;
-    margin-bottom: 1.9rem;
-    font-size: 2.4rem;
-    gap: 10rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    @include view-size(1150px) {
+      flex-direction: row;
+      margin-bottom: 1.9rem;
+      align-items: center;
+    }
+    @include view-size(1300px) {
+      gap: 10rem;
+      font-size: 2.4rem;
+      gap: 5rem;
+    }
   }
 
   .upper-details-wrapper .instructor-details-container {
@@ -51,7 +62,10 @@
   font-size: 1.8rem;
   line-height: 2;
   color: $shuttle-gray;
-  margin-bottom: 9rem;
+  margin-bottom: 8rem;
+  @include view-size(tab-land) {
+    margin-bottom: 9rem;
+  }
 }
 .ant-progress-text {
   margin-right: 0;
@@ -65,12 +79,25 @@
 }
 
 ._subheading-label {
-  margin-bottom: 3.6rem;
+  margin-bottom: 3.3rem;
+  font-size: 2rem;
+  @include view-size(tab-land) {
+    margin-bottom: 3.6rem;
+    font-size: 2.8rem;
+  }
 }
 
 .list-item {
   margin-bottom: 2.3rem;
   display: flex;
-  align-items: center;
-  font-size: 1.8rem;
+  align-items: flex-start;
+  font-size: 1.6rem;
+  @include view-size(tab-land) {
+    font-size: 1.8rem;
+  }
+
+  //antd-tab
+  .ant-tabs-tab {
+    margin: 0 0 0 2rem !important;
+  }
 }

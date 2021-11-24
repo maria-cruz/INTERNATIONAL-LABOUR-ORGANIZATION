@@ -3,10 +3,11 @@
   @import "./SelfPractice/styles";
   @import "./UnitDetails/styles";
 
-  .tab-container {
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+  @include side-padding;
+  @include view-size(tab-land) {
     padding-top: 5rem;
-    padding-left: 8rem;
-    padding-right: 8rem;
-    padding-bottom: 5rem;
+    padding-bottom: 10rem;
   }
 }
