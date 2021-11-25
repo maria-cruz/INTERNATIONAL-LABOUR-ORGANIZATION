@@ -5,6 +5,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface CoursesDataType {
+  id: number;
   unit: string;
   title: string;
   slug: string;
@@ -15,6 +16,7 @@ interface CoursesDataType {
   progress: any;
   topics: any;
   learning_objectives: any;
+  instructor: any;
 }
 
 interface AllCoursesDataType {
@@ -37,6 +39,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const currentCourseData = allCoursesData.find((courseData) => {
     return courseData?.slug === slug;
   });
+
+  const { data: courseComments }: any = await axios.get(
+    `${process.env.API_URL}/comments/unit:${currentCourseData?.id}`,
+    {
+      headers: {
+        Authorization: jwt,
+      },
+    }
+  );
 
   const prevCourse = allCoursesData
     ?.slice?.()
@@ -62,6 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const topicsCount = topics.length;
 
   const coursePreviewData = {
+    id: currentCourseData?.id ?? 0,
     unit: currentCourseData?.unit ?? 0,
     title: currentCourseData?.title ?? "",
     slug: currentCourseData?.slug ?? "",
@@ -70,19 +82,26 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     topicsCount: topicsCount ?? 0,
     progress: percentage ?? 0,
     objectives: currentCourseData?.learning_objectives ?? [],
+    instructor: currentCourseData?.instructor,
     prevSlug: prevCourse?.slug ?? "",
     nextSlug: nextCourse?.slug ?? "",
   };
 
   return {
-    props: { coursePreviewData },
+    props: { coursePreviewData, courseComments },
   };
 };
 
 const CoursePreviewPage = ({
   coursePreviewData,
+  courseComments,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <CoursePreview coursePreviewData={coursePreviewData} />;
+  return (
+    <CoursePreview
+      coursePreviewData={coursePreviewData}
+      courseComments={courseComments}
+    />
+  );
 };
 
 export default CoursePreviewPage;

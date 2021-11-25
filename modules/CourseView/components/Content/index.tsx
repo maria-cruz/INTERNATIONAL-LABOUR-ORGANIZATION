@@ -1,5 +1,5 @@
 import React from "react";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import ParamLink from "@common/components/ParamLink";
 import BackArrow from "@common/components/Icons/BackArrow";
 import CheckCircle from "@common/components/Icons/CheckCircle";
@@ -7,8 +7,12 @@ import CheckCircle from "@common/components/Icons/CheckCircle";
 import CourseTabs from "@common/components/CourseTabs";
 
 const Content = ({ data }: { data: any }) => {
+  const router = useRouter();
+  const slug = router?.query?.slug;
+
   const handleBackClick = () => {
-    router.push("preview");
+    if (!slug) return;
+    router.push(`/courses/preview/${slug}`);
   };
 
   const videoHTML = data?.media_embed?.rawData?.html;
