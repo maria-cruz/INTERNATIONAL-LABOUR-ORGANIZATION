@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import MinistryOfLabourLogo from "@public/images/logo.png";
 import AgencyLogo from "@public/images/italian-agency-logo.png";
 import FenasolLogo from "@public/images/fenasol-logo.jpeg";
 import WiscLogo from "@public/images/wisc-international-logo.png";
@@ -52,6 +53,14 @@ const Partners = ({
       <span className="partners-section-title">{subheading}</span>
       <div className="partners-section-logos">
         <Carousel {...settings}>
+          <div className="carousel-image-container">
+            <Image
+              src={MinistryOfLabourLogo}
+              width={280}
+              height={100}
+              alt="logo.png"
+            />
+          </div>
           <div className="carousel-image-container">
             <Image
               src={Logo}
