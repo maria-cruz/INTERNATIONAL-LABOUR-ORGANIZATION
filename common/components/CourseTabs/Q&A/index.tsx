@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, ChangeEvent, MouseEventHandler } from "react";
 import Input from "antd/lib/input";
 import Form from "antd/lib/form";
 import Button from "antd/lib/button";
@@ -24,8 +24,10 @@ export interface QandAProps {
 
 const QandA = ({ courseId, courseComments }: QandAProps) => {
   const { TextArea } = Input;
+  const [comments, setComments] = useState(courseComments ?? []);
+  const [replyValues, setReplyValues] = useState([""]);
+
   const [qAndAForm] = Form.useForm();
-  const [replyForm] = Form.useForm();
   const jwt = getJWT(undefined, true);
 
   const handleQAndAFinish = (value: any) => {
@@ -51,44 +53,68 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
           },
         }
       )
-      .then((data) => console.log(data, "success"))
+      .then((data) => {
+        if (data?.data) {
+          setComments([...comments, { ...data?.data, children: [] }]);
+        }
+        console.log(data, "success");
+      })
       .then(() => {
         qAndAForm.resetFields();
       })
       .catch((err) => console.error(err));
   };
 
-  const handleReplyFinish = (commentId?: number) => (value: any) => {
-    if (!commentId) return console.log("No Comment ID Received");
-    if (!value?.reply) return console.log("No Reply Received");
-    if (!courseId) return console.log("No Course ID Received");
+  const handleReplyFinish =
+    (commentId?: number, replyIdx?: number) => (event: any) => {
+      if (!replyIdx) return console.log("No Reply Index Received");
+      if (!commentId) return console.log("No Comment ID Received");
+      if (!replyValues?.[replyIdx]) return console.log("No Reply Received");
+      if (!courseId) return console.log("No Course ID Received");
 
-    axios
-      .post(
-        `${process.env.API_URL}/comments/unit:${courseId}`,
-        {
-          content: value?.reply,
-          threadOf: commentId,
-          related: [
-            {
-              refId: "1",
-              ref: "unit",
-              field: "comments",
-            },
-          ],
-        },
-        {
-          headers: {
-            Authorization: jwt,
+      axios
+        .post(
+          `${process.env.API_URL}/comments/unit:${courseId}`,
+          {
+            content: replyValues?.[replyIdx],
+            threadOf: commentId,
+            related: [
+              {
+                refId: "1",
+                ref: "unit",
+                field: "comments",
+              },
+            ],
           },
-        }
-      )
-      .then((data) => console.log(data, "success"))
-      .then(() => {
-        replyForm.resetFields();
-      })
-      .catch((err) => console.error(err));
-  };
+          {
+            headers: {
+              Authorization: jwt,
+            },
+          }
+        )
+        .then((data) => {
+          if (data?.data) {
+            comments?.map((comment) => {
+              if (comment?.id === data?.data?.threadOf?.id) {
+                comment.children = [...comment.children, data?.data];
+              }
+              return comment;
+            });
+          }
+          console.log(data, "success");
+        })
+        .then(() => {
+          setReplyValues([""]);
+        })
+        .catch((err) => console.error(err));
+    };
+
+  const handleTextAreaChange =
+    (idx: number) => (event: ChangeEvent<HTMLTextAreaElement>) => {
+      let values = [...replyValues];
+      values[idx] = event?.target?.value;
+      setReplyValues(values);
+    };
 
   return (
     <section className="QandA-section">
@@ -113,7 +139,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
         </Form>
       </div>
 
-      {courseComments?.map?.((comment, idx) => {
+      {comments?.map?.((comment, idx) => {
         const commentId = comment?.id;
 
         const hasName =
@@ -172,19 +198,23 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                   </div>
                 );
               })}
-              <Form form={replyForm} onFinish={handleReplyFinish(commentId)}>
-                <div className="reply-container">
-                  <Form.Item name="reply" className="reply-container">
-                    <TextArea
-                      className="reply-input-container"
-                      placeholder="Comment"
-                    />
-                  </Form.Item>
-                  <Button htmlType="submit" className="reply-btn">
-                    Reply
-                  </Button>
-                </div>
-              </Form>
+
+              <div className="reply-container">
+                <Form.Item className="reply-container">
+                  <TextArea
+                    className="reply-input-container"
+                    placeholder="Comment"
+                    value={replyValues[idx]}
+                    onChange={handleTextAreaChange(idx)}
+                  />
+                </Form.Item>
+                <Button
+                  onClick={handleReplyFinish(commentId, idx)}
+                  className="reply-btn"
+                >
+                  Reply
+                </Button>
+              </div>
             </div>
           </div>
         );
