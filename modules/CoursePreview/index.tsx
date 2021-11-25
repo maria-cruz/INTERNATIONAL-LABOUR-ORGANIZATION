@@ -7,11 +7,13 @@ import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 interface CoursePreviewProps {
   coursePreviewData: any;
   courseComments: any;
+  courseDownloadableFiles: any;
 }
 
 const CoursePreview = ({
   coursePreviewData,
   courseComments,
+  courseDownloadableFiles,
 }: CoursePreviewProps) => {
   const {
     id,
@@ -39,7 +41,9 @@ const CoursePreview = ({
     courseId: id,
     courseComments: courseComments,
   };
-
+  const unitDownloadableFilesProps = {
+    courseDownloadableFiles: courseDownloadableFiles ?? [],
+  };
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="course-preview-container">
@@ -54,6 +58,7 @@ const CoursePreview = ({
           <CourseTabs
             unitDetailsProps={unitDetailsProps}
             unitQandAProps={unitQandAProps}
+            unitDownloadableFilesProps={unitDownloadableFilesProps}
           />
         </div>
       </div>

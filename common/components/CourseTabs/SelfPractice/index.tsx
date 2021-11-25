@@ -2,14 +2,18 @@ import React from "react";
 import Button from "antd/lib/button";
 import File from "@common/components/Icons/File";
 import DownloadOutlined from "@common/components/Icons/DownloadOutlined";
+import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
-const SAMPLE_MODULES = [
-  "Lorem_ipsum_dolor_sit_amet_exercise.zip",
-  "Lorem_ipsum_dolor_sit_amet_case_study.zip",
-  "Lorem_ipsum_dolor_sit_amet_powerpoint.zip",
-  "Lorem_ipsum_dolor_sit_amet_weblinks.zip",
-];
-const SelfPractice = () => {
+export interface Files {
+  url?: string;
+  name?: string;
+  size?: string;
+}
+export interface SelfPracticeProps {
+  courseDownloadableFiles?: Files[];
+}
+
+const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
   return (
     <section className="self-practice-section">
       <div className="self-practice-wrapper">
@@ -20,27 +24,35 @@ const SelfPractice = () => {
           Download exercises and other supporting documents here for this
           learning Unit.
         </div>
-        {SAMPLE_MODULES.map((item, index) => (
-          <div className="download-modules-wrapper" key={index}>
-            <div className="file-item-container">
-              <File fill="#007A50" width="4.1rem" height="4.1rem" />
-              <div className="file-details-wrapper">
-                <div className="file-name-contianer">{item}</div>
-                <div className="label-container">50 kb</div>
+        {courseDownloadableFiles.map((courseDownloadableFile, idx: number) => {
+          const filename = courseDownloadableFile?.name;
+          const fileUrl = courseDownloadableFile?.url ?? "";
+          const url = getStrapiFileUrl(fileUrl);
+          const fileSize = courseDownloadableFile?.size;
+          return (
+            <div className="download-modules-wrapper" key={idx}>
+              <div className="file-item-container">
+                <File fill="#007A50" width="4.1rem" height="4.1rem" />
+                <div className="file-details-wrapper">
+                  <div className="file-name-contianer">{filename}</div>
+                  <div className="label-container">{fileSize}</div>
+                </div>
+              </div>
+              <div className="download-button-container">
+                <a download={filename} href={url}>
+                  <Button
+                    className="download-btn"
+                    icon={
+                      <DownloadOutlined width="24" height="24" fill="#00B274" />
+                    }
+                  >
+                    Download
+                  </Button>
+                </a>
               </div>
             </div>
-            <div className="download-button-container">
-              <Button
-                className="download-btn"
-                icon={
-                  <DownloadOutlined width="24" height="24" fill="#00B274" />
-                }
-              >
-                Download
-              </Button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
