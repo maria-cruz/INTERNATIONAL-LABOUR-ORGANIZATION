@@ -30,7 +30,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
     }
   );
-  console.log(allCoursesData, "allcourses");
 
   const allCourseCardsData = allCoursesData.map((courseData) => {
     const completedTopics = courseData?.progress?.completed_topics_count ?? 0;
@@ -53,7 +52,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       status: getProgressStatus(),
     };
   });
-  console.log(allCourseCardsData, "course");
 
   return {
     props: { allCourseCardsData },

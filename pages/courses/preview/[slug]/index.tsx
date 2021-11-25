@@ -4,6 +4,11 @@ import getJWT from "@common/methods/getJWT";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
+interface Files {
+  url: string;
+  name: string;
+  size: string;
+}
 interface CoursesDataType {
   id: number;
   unit: string;
@@ -17,6 +22,9 @@ interface CoursesDataType {
   topics: any;
   learning_objectives: any;
   instructor: any;
+  self_practice: {
+    files: Files[];
+  };
 }
 
 interface AllCoursesDataType {
@@ -71,6 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const topics = !!currentCourseData?.topics ? currentCourseData.topics : [];
   const topicsCount = topics.length;
+  const courseDownloadableFiles = currentCourseData?.self_practice?.files ?? [];
 
   const coursePreviewData = {
     id: currentCourseData?.id ?? 0,
@@ -88,18 +97,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   };
 
   return {
-    props: { coursePreviewData, courseComments },
+    props: { coursePreviewData, courseComments, courseDownloadableFiles },
   };
 };
 
 const CoursePreviewPage = ({
   coursePreviewData,
   courseComments,
+  courseDownloadableFiles,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <CoursePreview
       coursePreviewData={coursePreviewData}
       courseComments={courseComments}
+      courseDownloadableFiles={courseDownloadableFiles}
     />
   );
 };
