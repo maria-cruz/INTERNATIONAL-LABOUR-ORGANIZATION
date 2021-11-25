@@ -1,9 +1,10 @@
-import React, { useState, ChangeEvent, MouseEventHandler } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import Input from "antd/lib/input";
 import Form from "antd/lib/form";
 import Button from "antd/lib/button";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
+import { useRouter } from "next/router";
 
 interface CommentAuthorType {
   family_name: string;
@@ -27,8 +28,15 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
   const [comments, setComments] = useState(courseComments ?? []);
   const [replyValues, setReplyValues] = useState([""]);
 
+  const router = useRouter();
+  const slug = router?.query?.slug;
+
   const [qAndAForm] = Form.useForm();
   const jwt = getJWT(undefined, true);
+
+  useEffect(() => {
+    setComments(courseComments ?? []);
+  }, [slug]);
 
   const handleQAndAFinish = (value: any) => {
     if (!value?.comment) return console.log("No Comment Received");
