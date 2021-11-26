@@ -21,7 +21,10 @@
 
   ._subheading-label,
   .dropdown-container {
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
+    @include view-size(tab-land) {
+      margin-bottom: 12rem;
+    }
   }
   .search-label,
   .select-label {

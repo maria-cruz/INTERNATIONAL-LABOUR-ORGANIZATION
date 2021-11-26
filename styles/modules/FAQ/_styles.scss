@@ -99,21 +99,24 @@
   }
 
   .unit-container {
-    @include side-padding;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    @include view-size(desktop) {
-      padding-top: 9rem;
-      padding-bottom: 6rem;
-    }
   }
   .unit-wrapper {
     max-width: 108.8rem;
     width: 90vw;
     @include view-size(tab-land) {
       width: 87vw;
+    }
+  }
+  .unit-wrapper .tab-container {
+    padding: 6rem 0 10rem;
+
+    @include view-size(tab-land) {
+      padding-top: 9rem;
+      padding-bottom: 12rem;
     }
   }
   @import "./components/QuestionForm/styles.scss";

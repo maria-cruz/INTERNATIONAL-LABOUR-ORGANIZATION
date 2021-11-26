@@ -29,22 +29,6 @@
     align-items: center;
     background-color: $whisper;
   }
-  .description-label-container {
-    @include side-padding;
-    font-size: 1.6rem;
-    color: $black03;
-    padding-bottom: 5rem;
-    max-width: 191.9rem;
-    line-height: 1.7;
-    @include view-size(tab-land) {
-      color: $shuttle-gray;
-    }
-    @include view-size(desktop) {
-      line-height: 2;
-      font-size: 1.8rem;
-      padding: 5rem 10rem;
-    }
-  }
 
   .image-container {
     padding: 0 10rem 12rem;
@@ -53,27 +37,24 @@
   .guide-container {
     @include side-padding;
     max-width: 192rem;
-    padding-top: 0;
+    padding-top: 6rem;
     padding-bottom: 8rem;
     @include view-size(tab-land) {
       width: 100%;
       display: flex;
     }
     @include view-size(big-desktop) {
-      padding: 0 10rem 12rem;
+      padding: 6rem 10rem 12rem;
     }
   }
 
   .download-wrapper {
-    display: grid;
-    grid-template-columns: repeat(1, auto);
-    row-gap: 3rem;
-    @include view-size(tab-land) {
-      column-gap: 3rem;
-      grid-template-columns: repeat(2, auto);
-    }
-    @include view-size(1400px) {
-      grid-template-columns: repeat(3, auto);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    @include view-size(desktop){
+      justify-content: flex-start;
     }
   }
 
