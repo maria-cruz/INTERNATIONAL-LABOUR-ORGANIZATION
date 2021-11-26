@@ -15,7 +15,6 @@ export interface GuideCardProps {
 const DownloadCard = ({
   unit = "",
   title = "",
-  description = "",
   thumbnail = CardSampleImage,
   url = "",
 }: GuideCardProps) => {
@@ -30,7 +29,6 @@ const DownloadCard = ({
         <div className="card-title">{title}</div>
         <div className="spacer" />
         <div className="card-hover-details">
-          <div className="card-description">{description}</div>
           <div className="spacer" />
           <div className="card-view-button">
             <a download={title} href={url}>
