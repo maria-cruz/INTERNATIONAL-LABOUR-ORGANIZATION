@@ -55,6 +55,14 @@ const Partners = ({
         <Carousel {...settings}>
           <div className="carousel-image-container">
             <Image
+              src={Logo}
+              width={189}
+              height={189}
+              alt="supporters-logo.svg"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
               src={MinistryOfLabourLogo}
               width={280}
               height={100}
@@ -63,10 +71,11 @@ const Partners = ({
           </div>
           <div className="carousel-image-container">
             <Image
-              src={Logo}
-              width={189}
-              height={189}
-              alt="supporters-logo.svg"
+              src={IloLogo}
+              width={326}
+              height={117}
+              placeholder="blur"
+              alt="@public/images/ilo-logo.png"
             />
           </div>
           <div className="carousel-image-container">
@@ -85,15 +94,6 @@ const Partners = ({
               height={189}
               placeholder="blur"
               alt="italian-agency-logo.png"
-            />
-          </div>
-          <div className="carousel-image-container">
-            <Image
-              src={IloLogo}
-              width={326}
-              height={117}
-              placeholder="blur"
-              alt="@public/images/ilo-logo.png"
             />
           </div>
           <div className="carousel-image-container">

@@ -4,6 +4,8 @@
   }
   .ant-select {
     margin-bottom: 5rem;
+    width: 100%;
+    max-width: 108.8rem;
   }
 
   .ant-input-affix-wrapper,
@@ -12,20 +14,17 @@
     border: 0.1rem solid $silver;
     border-right: 0.2rem solid $silver;
   }
-  .ant-select-selector {
-    width: 90vw;
-    max-width: 108.8rem;
-    @include view-size(tab-land) {
-      width: 87vw;
-    }
-  }
+
   .ant-input-prefix {
     margin-left: 1.9rem;
   }
 
   ._subheading-label,
   .dropdown-container {
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
+    @include view-size(tab-land) {
+      margin-bottom: 12rem;
+    }
   }
   .search-label,
   .select-label {
@@ -52,7 +51,6 @@
       display: flex;
       line-height: 1.4;
       height: auto;
-      width: 88vw;
       max-width: 108rem;
       align-items: flex-start;
       @include view-size(400px) {

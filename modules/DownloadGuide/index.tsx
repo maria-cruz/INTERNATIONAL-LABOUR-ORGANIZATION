@@ -28,27 +28,18 @@ const DownloadGuide = ({ allGuidesData }: any) => {
           </div>
           <div className="dl-guide-filter"></div>
           <div className="bg-description-container">
-            <div className="subheading-upper">Download</div>
-            <div className="subheading-lower">Training Guide</div>
+            <div className="subheading-upper">
+              Download <span className="subheading-lower">Guides</span>
+            </div>
           </div>
         </div>
         <div className="download-cards-container">
-          <div className="description-label-container">
-            <p>
-              The huqouqi fil 3amal guides are available for each of the three
-              units. Download the guides to support your learning as you
-              progress through each of the three units, and also to use as a
-              reference after completing the online course.
-            </p>
-          </div>
-
           <div className="guide-container">
             <div className="download-wrapper">
               {allGuidesData.map((guideData: GuideCardProps, index: number) => (
                 <GuideCard
                   unit={guideData?.unit}
                   title={guideData?.title}
-                  description={guideData?.description}
                   thumbnail={guideData?.thumbnail}
                   key={index}
                   url={guideData?.url}
