@@ -22,12 +22,14 @@ const AboutUs = () => {
             width={1920}
             alt="about-banner.jpg"
             placeholder="blur"
+            objectFit="cover"
           />
         </div>
         <div className="about-us-mobile">
           <Image
             className="banner-mobile"
             src={AboutMobile}
+            objectFit="cover"
             alt="about-mobile.jpg"
             placeholder="blur"
           />
