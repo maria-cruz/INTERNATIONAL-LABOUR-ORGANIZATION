@@ -1,7 +1,7 @@
 import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
-import SessionMobile from "@public/images/sessions-mobile.jpg";
+import SessionMobile from "@public/images/training-sessions-mobile.jpg";
 import ReferencesMobile from "@public/images/references-mobile.jpg";
 const GalleryMobile = () => {
   const { t } = useTranslation("about-us");
@@ -13,7 +13,8 @@ const GalleryMobile = () => {
           <Image
             className="session-mobile"
             src={SessionMobile}
-            alt="sessions-mobile.jpg"
+            objectFit="cover"
+            alt="training-sessions-mobile.jpg"
             placeholder="blur"
           />
         </div>
@@ -31,6 +32,7 @@ const GalleryMobile = () => {
           <Image
             className="reference-mobile"
             src={ReferencesMobile}
+            objectFit="cover"
             alt="references-mobile.jpg"
             placeholder="blur"
           />
