@@ -46,10 +46,10 @@ const SessionCollapse = ({ topics }: SessionCollapseProps) => {
               }
               key={`${idx + 1}`}
             >
-              <PreAssessment />
+              <PreAssessment isActive={true} isCompleted={true} />
               <Topic title={topic?.title || ""} id={topic?.id} />
 
-              <PostAssessment />
+              <PostAssessment isActive={false} isCompleted={true} />
             </Panel>
           );
         })}

@@ -6,7 +6,12 @@ import CheckCircle from "@common/components/Icons/CheckCircle";
 
 import CourseTabs from "@common/components/CourseTabs";
 
-const Content = ({ data }: { data: any }) => {
+interface ContentProps {
+  data: any;
+}
+
+const Content = ({ data }: ContentProps) => {
+  console.log(data, "ContentProps");
   const router = useRouter();
   const slug = router?.query?.slug;
 
