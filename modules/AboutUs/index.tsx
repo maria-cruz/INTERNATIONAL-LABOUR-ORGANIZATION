@@ -1,11 +1,11 @@
 import React from "react";
 import Layout, { Header } from "@common/components/Layout";
 import Image from "next/image";
-import Banner from "@public/images/about-us-banner.jpg";
+import Banner from "@public/images/about-banner.jpg";
 import useTranslation from "next-translate/useTranslation";
 import Partners from "@common/components/Partners";
 import Inquiry from "./Inquiry";
-import AboutMobile from "@public/images/about-us-mobile.jpg";
+import AboutMobile from "@public/images/about-mobile.jpg";
 import GalleryDesktop from "./GalleryDesktop";
 import GalleryMobile from "./GalleryMobile";
 
@@ -20,7 +20,7 @@ const AboutUs = () => {
             className="banner-desktop"
             src={Banner}
             width={1920}
-            alt="banner.jpg"
+            alt="about-banner.jpg"
             placeholder="blur"
           />
         </div>
@@ -28,7 +28,7 @@ const AboutUs = () => {
           <Image
             className="banner-mobile"
             src={AboutMobile}
-            alt="about-us-mobile.jpg"
+            alt="about-mobile.jpg"
             placeholder="blur"
           />
         </div>
