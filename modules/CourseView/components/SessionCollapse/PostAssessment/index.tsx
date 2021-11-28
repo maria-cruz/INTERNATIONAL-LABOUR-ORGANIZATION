@@ -1,28 +1,37 @@
 import React from "react";
 import classNames from "classnames";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
+import ParamLink from "@common/components/ParamLink";
+import { useRouter } from "next/router";
 
 interface PostAssessmentProps {
-  isActive?: boolean;
+  id: number;
   isCompleted?: boolean;
 }
 const PostAssessment = ({
-  isActive = false,
+  id = 0,
   isCompleted = false,
 }: PostAssessmentProps) => {
+  const router = useRouter();
+  const currentTopicId = router?.query?.topic;
+  const currentTabType = router?.query?.tab;
+  const isActive = currentTopicId === `${id}` && currentTabType === "post";
+
   return (
-    <div
-      className={classNames(
-        "session-panel-item",
-        { active: isActive },
-        { completed: isCompleted }
-      )}
-    >
-      <div className="icon">
-        <CheckCircleOutline />
+    <ParamLink query={{ topic: `${id}`, tab: "post" }} shallow>
+      <div
+        className={classNames(
+          "session-panel-item",
+          { active: isActive },
+          { completed: isCompleted }
+        )}
+      >
+        <div className="icon">
+          <CheckCircleOutline />
+        </div>
+        <div className="text">{"Post assessment"}</div>
       </div>
-      <div className="text">{"Pre assessment"}</div>
-    </div>
+    </ParamLink>
   );
 };
 

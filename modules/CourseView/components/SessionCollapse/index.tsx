@@ -2,6 +2,7 @@ import React from "react";
 import Collapse from "antd/lib/collapse";
 import ExpandMore from "@common/components/Icons/ExpandMore";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
+import { useRouter } from "next/router";
 
 import PostAssessment from "@modules/CourseView/components/SessionCollapse/PostAssessment";
 import PreAssessment from "@modules/CourseView/components/SessionCollapse/PreAssessment";
@@ -22,6 +23,9 @@ interface SessionCollapseProps {
 }
 
 const SessionCollapse = ({ topics }: SessionCollapseProps) => {
+  const router = useRouter();
+  const currentTopicId = router?.query?.topic;
+
   function callback(key: any) {
     // console.log(key);
   }
@@ -37,6 +41,8 @@ const SessionCollapse = ({ topics }: SessionCollapseProps) => {
         )}
       >
         {topics.map((topic, idx: number) => {
+          const isActive = currentTopicId === `${topic?.id}`;
+
           return (
             <Panel
               header={
@@ -46,81 +52,12 @@ const SessionCollapse = ({ topics }: SessionCollapseProps) => {
               }
               key={`${idx + 1}`}
             >
-              <PreAssessment isActive={true} isCompleted={true} />
+              <PreAssessment id={topic?.id} />
               <Topic title={topic?.title || ""} id={topic?.id} />
-
-              <PostAssessment isActive={false} isCompleted={true} />
+              <PostAssessment id={topic?.id} />
             </Panel>
           );
         })}
-        {/* <Panel
-          header={
-            <span className="session-panel-header">
-              Session 1: Work contract and regulating text
-            </span>
-          }
-          key="1"
-        >
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Pre assessment"}</div>
-          </div>
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">
-              {"General terms of the employment contract."}
-            </div>
-          </div>
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Elements of an employment contract."}</div>
-          </div>
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Post assessment"}</div>
-          </div>
-        </Panel>
-        <Panel
-          header={
-            <span className="session-panel-header">
-              Session 2: Execution of the work contract
-            </span>
-          }
-          key="2"
-        >
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Pre assessment"}</div>
-          </div>
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Place and forms of execution"}</div>
-          </div>
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Contract types"}</div>
-          </div>
-          <div className="session-panel-item">
-            <div className="icon">
-              <CheckCircleOutline />
-            </div>
-            <div className="text">{"Post assessment"}</div>
-          </div>
-        </Panel> */}
       </Collapse>
     </div>
   );
