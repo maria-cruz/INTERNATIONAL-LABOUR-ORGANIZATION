@@ -5,7 +5,7 @@
   min-height: 100vh;
   display: flex;
 
-  .content-container {
+  .left-column {
     width: 71.56%;
     padding-bottom: 24rem;
   }
@@ -151,6 +151,8 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    display: none; // Disable Close Button
   }
 
   .session-header .session-menu-icon {

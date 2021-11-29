@@ -2,13 +2,26 @@ import React, { useState } from "react";
 import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
 import Radio, { RadioChangeEvent } from "antd/lib/radio";
+import { DescriptionsProps } from "antd";
 
 interface ContentProps {
   isVisible?: boolean;
   onCancel: () => void;
+
+  title?: string;
+  description?: string;
+  question?: string;
 }
 
-const Content = ({ isVisible = false, onCancel }: ContentProps) => {
+const Content = ({
+  isVisible = false,
+  onCancel,
+  title = "Assessment",
+  description = `Answer a few questions to help us understand your current level of
+  knowledge. Don’t worry if you don’t know the answers, just answer as
+  best as you can.`,
+  question = `1. What Is Lorem Ipsum?`,
+}: ContentProps) => {
   const [answers, setAnswers] = useState<[] | string[]>([]);
 
   const handleAnswersRadio = (e: RadioChangeEvent) => {
@@ -23,14 +36,9 @@ const Content = ({ isVisible = false, onCancel }: ContentProps) => {
       footer={false}
       destroyOnClose={true}
     >
-      <p className="assessment-modal-title">Pre Assessment</p>
-      <p className="assessment-modal-description">
-        Answer a few questions to help us understand your current level of
-        knowledge. Don’t worry if you don’t know the answers, just answer as
-        best as you can.
-      </p>
-
-      <p className="assessment-modal-question">1. What Is Lorem Ipsum?</p>
+      <p className="assessment-modal-title">{title}</p>
+      <p className="assessment-modal-description">{description}</p>
+      <p className="assessment-modal-question">{question}</p>
 
       <div className="assessment-modal-radio-group">
         <Radio.Group onChange={handleAnswersRadio} value={answers[0]}>

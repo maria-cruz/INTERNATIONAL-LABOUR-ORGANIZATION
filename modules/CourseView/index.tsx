@@ -3,6 +3,7 @@ import React from "react";
 import Menu from "@common/components/Icons/Menu";
 import Close from "@common/components/Icons/Close";
 import Content from "@modules/CourseView/components/Content";
+import BackArrow from "@common/components/Icons/BackArrow";
 
 import ProgressTracker from "./components/ProgressTracker";
 import SessionCollapse from "./components/SessionCollapse";
@@ -39,14 +40,31 @@ interface CourseDataProps {
 }
 
 const CourseView = ({ data }: CourseDataProps) => {
-  const { query } = useRouter();
+  console.log(data);
+  const router = useRouter();
+  const slug = router?.query?.slug;
+
   const currentContentData = data.topics.find(
-    (topic) => query.topic == `${topic.id}`
+    (topic) => router?.query?.topic == `${topic?.id}`
   );
+
+  const handleBackClick = () => {
+    if (!slug) return;
+    router.push(`/courses/preview/${slug}`);
+  };
 
   return (
     <div className="courses-view">
-      <Content data={currentContentData} />
+      <div className="left-column">
+        <header className="unit-header">
+          <div className="back-button" onClick={handleBackClick}>
+            <div className="back-icon"> {<BackArrow />}</div>
+            <div className="back-text">Back</div>
+          </div>
+          <div className="title">{`Unit ${data?.unit}: ${data?.title}`}</div>
+        </header>
+        <Content data={currentContentData} />
+      </div>
       <div className="right-column">
         <header className="session-header">
           <div className="session-menu-left-container">
