@@ -14,6 +14,7 @@ const GalleryDesktop = () => {
           <Image
             src={AboutUsImage1}
             alt="background-scope.jpg"
+            objectFit="cover"
             placeholder="blur"
             width={960}
             height={500}
@@ -44,6 +45,7 @@ const GalleryDesktop = () => {
           <Image
             src={TrainingReferencesImage}
             alt="training-references.jpg"
+            objectFit="cover"
             placeholder="blur"
             width={960}
             height={500}
