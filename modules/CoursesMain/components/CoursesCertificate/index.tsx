@@ -12,7 +12,6 @@ const CoursesCertificate = () => {
           src={HandWritingImage}
           width={553}
           height={303}
-          layout="fixed"
           placeholder="blur"
           alt="courses-image"
         />

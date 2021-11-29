@@ -4,9 +4,19 @@
   box-shadow: 0 0.3rem 0.6rem #00000029;
   width: 100%;
   max-width: 55.3rem;
-  height: 54.5rem;
+  max-height: 54.5rem;
+  overflow: hidden;
+
+  @include view-size(tab-port) {
+    height: 54.5rem;
+  }
+
+  .certificate-card-image-container {
+    padding-bottom: 24rem;
+  }
 
   .card-details-container {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -14,35 +24,42 @@
     position: absolute;
     left: -0.1rem;
     bottom: 0.1rem;
-    padding: 4rem;
-    background: white;
+    background: $white;
     width: 101%;
     max-width: 55.4rem;
-
     height: 24rem;
     transition: 0.25s;
 
-    .card-hover-details {
-      opacity: 0%;
-      height: 0;
-      margin-bottom: 0;
-      pointer-events: none;
-      overflow: hidden;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @include view-size(tab-port) {
+      padding: 4rem;
     }
 
     &:hover {
       height: 100%;
       transition: 0.25s;
+    }
 
-      .card-hover-details {
-        transition: 0.3s;
-        opacity: 100%;
-        height: 100%;
-        pointer-events: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
+    &:hover .card-description {
+      transition: 0.5s;
+      opacity: 100%;
+      height: fit-content;
+      pointer-events: auto;
+    }
+
+    &:hover .card-view-button {
+      transition: 0.5s;
+      opacity: 100%;
+      height: fit-content;
+      pointer-events: auto;
+    }
+
+    &:hover + .locked-icon-container {
+      transition: 0.5s;
+      fill: $black;
     }
   }
 
@@ -51,20 +68,65 @@
   }
 
   .card-certificate {
-    font-size: 2.8rem;
     font-weight: bold;
     color: $tropical-rain-forest;
     margin-bottom: 2rem;
+
+    font-size: 1.8rem;
+    @include view-size(tab-port) {
+      font-size: 2.8rem;
+    }
   }
 
   .card-title {
-    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
     font-weight: bold;
+
+    font-size: 2rem;
+    @include view-size(tab-port) {
+      font-size: 2.4rem;
+    }
   }
 
   .card-description {
-    font-size: 1.6rem;
-    line-height: 3rem;
+    opacity: 0%;
+    height: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-line-clamp: 5; /* number of lines to show */
+    line-clamp: 5;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    @include view-size(340px) {
+      -webkit-line-clamp: 6; /* number of lines to show */
+      line-clamp: 6;
+    }
+    @include view-size(tab-port) {
+      font-size: 1.6rem;
+      line-height: 3rem;
+    }
+  }
+
+  .card-view-button {
+    opacity: 0%;
+    height: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+
+    margin-bottom: 2rem;
   }
 
   .download-btn {
