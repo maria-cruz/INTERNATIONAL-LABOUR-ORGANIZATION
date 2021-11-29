@@ -1,0 +1,64 @@
+.assessment-modal {
+  width: 100% !important;
+  max-width: 92.6rem;
+
+  .assessment-modal-title {
+    font-size: 2.8rem;
+    color: $tropical-rain-forest;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .assessment-modal-description {
+    font-size: 1.8rem;
+    color: $shuttle-gray;
+    line-height: 2.3rem;
+    margin-bottom: 4rem;
+  }
+
+  .assessment-modal-question {
+    font-size: 2.4rem;
+    color: $black;
+    font-weight: 600;
+    margin-bottom: 3rem;
+  }
+
+  .assessment-modal-radio-group {
+    margin-bottom: 10rem;
+  }
+
+  .assessment-modal-radio-group .ant-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .ant-radio-wrapper {
+      font-size: 1.8rem;
+    }
+  }
+
+  .assessment-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .assessment-modal-footer-left-panel {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .assessment-modal-footer-question-count {
+    font-size: 1.8rem;
+    color: $black;
+  }
+
+  .assessment-modal-footer-question-timer {
+    font-size: 1.8rem;
+    color: $tropical-rain-forest;
+  }
+
+  .ant-modal-body {
+    padding: 5rem;
+  }
+}

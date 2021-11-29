@@ -1,23 +1,24 @@
 import React from "react";
+import classNames from "classnames";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
 import ParamLink from "@common/components/ParamLink";
-import classNames from "classnames";
 import { useRouter } from "next/router";
 
-interface TopicProps {
+interface PostAssessmentProps {
   id: number;
-  title: string;
   isCompleted?: boolean;
 }
-
-const Topic = ({ title, id, isCompleted = false }: TopicProps) => {
+const PostAssessment = ({
+  id = 0,
+  isCompleted = false,
+}: PostAssessmentProps) => {
   const router = useRouter();
   const currentTopicId = router?.query?.topic;
   const currentTabType = router?.query?.tab;
-  const isActive = currentTopicId === `${id}` && currentTabType === "topic";
+  const isActive = currentTopicId === `${id}` && currentTabType === "post";
 
   return (
-    <ParamLink query={{ topic: `${id}`, tab: "topic" }} shallow>
+    <ParamLink query={{ topic: `${id}`, tab: "post" }} shallow>
       <div
         className={classNames(
           "session-panel-item",
@@ -28,10 +29,10 @@ const Topic = ({ title, id, isCompleted = false }: TopicProps) => {
         <div className="icon">
           <CheckCircleOutline />
         </div>
-        <div className="text">{`${title}`}</div>
+        <div className="text">{"Post assessment"}</div>
       </div>
     </ParamLink>
   );
 };
 
-export default Topic;
+export default PostAssessment;

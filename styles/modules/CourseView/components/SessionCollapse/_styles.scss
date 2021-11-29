@@ -82,6 +82,14 @@
     &:target {
       background: $frosted-mint;
     }
+
+    &.active {
+      background: $frosted-mint;
+    }
+
+    &.completed .icon svg {
+      fill: $tropical-rain-forest;
+    }
   }
 
   .session-panel-item > .text {
