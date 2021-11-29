@@ -3,6 +3,7 @@ import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import parseMediaEmbed from "@common/methods/parseMediaEmbed";
+import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface ProgressType {
   unit: number;
@@ -27,6 +28,9 @@ interface CourseDataType {
   description?: string;
   topics: TopicsType[];
   progress?: ProgressType;
+  learning_objectives: any;
+  self_practice: any;
+  instructor: any;
 }
 
 interface CourseDataProps {
@@ -39,6 +43,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const { data: courseData }: CourseDataProps = await axios.get(
     `${process.env.API_URL}/units/me/${slug}`,
+    {
+      headers: {
+        Authorization: jwt,
+      },
+    }
+  );
+
+  const { data: courseComments }: any = await axios.get(
+    `${process.env.API_URL}/comments/unit:${courseData?.id}`,
     {
       headers: {
         Authorization: jwt,
@@ -65,25 +78,50 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const courseViewData: any = {
     ...courseData,
     topics: modifiedTopics,
-    // unit: courseData?.unit ?? 0,
-    // title: courseData?.title,
-    // slug: courseData?.slug,
-    // description: courseData?.description,
-    // thumbnail: getStrapiFileUrl(courseData?.thumbnail),
-    // topicsCount: topicsCount,
-    // percentage: percentage,
-    // objectives: courseData?.learning_objectives,
+  };
+
+  const unitDetailsProps = {
+    instructorAvatar: getStrapiFileUrl(courseData?.instructor?.avatar?.url),
+    instructorName: courseData?.instructor?.name,
+    topicsCount: topicsCount,
+    progress: percentage,
+    description: courseData?.description,
+    objectives: courseData?.learning_objectives ?? [],
+  };
+
+  const unitQandAProps = {
+    courseId: courseData?.id,
+    courseComments: courseComments,
+  };
+
+  const unitDownloadableFilesProps = {
+    courseDownloadableFiles: courseData?.self_practice?.files ?? [],
   };
 
   return {
-    props: { courseViewData },
+    props: {
+      courseViewData,
+      unitDetailsProps,
+      unitQandAProps,
+      unitDownloadableFilesProps,
+    },
   };
 };
 
 const CourseViewPage = ({
   courseViewData,
+  unitDetailsProps,
+  unitQandAProps,
+  unitDownloadableFilesProps,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <CourseView data={courseViewData} />;
+  return (
+    <CourseView
+      data={courseViewData}
+      unitDetailsProps={unitDetailsProps}
+      unitQandAProps={unitQandAProps}
+      unitDownloadableFilesProps={unitDownloadableFilesProps}
+    />
+  );
 };
 
 export default CourseViewPage;

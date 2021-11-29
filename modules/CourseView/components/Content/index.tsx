@@ -8,8 +8,6 @@ import Modal from "antd/lib/modal";
 import Radio, { RadioChangeEvent } from "antd/lib/radio";
 import AssessmentModal from "../AssessmentModal";
 
-import CourseTabs from "@common/components/CourseTabs";
-
 interface ContentProps {
   data: any;
 }
@@ -79,10 +77,6 @@ const Content = ({ data }: ContentProps) => {
             </div>
           </>
         ) : null}
-      </section>
-
-      <section className="unit-info">
-        <CourseTabs />
       </section>
 
       <AssessmentModal
