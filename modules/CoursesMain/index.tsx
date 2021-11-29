@@ -49,7 +49,7 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
         return allCourseCardsData;
       }
       case "certificate": {
-        return allCourseCardsData;
+        return filteredCourseCardsData;
       }
       default:
         return filteredCourseCardsData;
