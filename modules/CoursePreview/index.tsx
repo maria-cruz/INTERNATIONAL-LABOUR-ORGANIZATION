@@ -47,14 +47,14 @@ const CoursePreview = ({
   return (
     <Layout header={<Header title={"Header"} />}>
       <div className="course-preview-container">
-        <div className="course-details-container">
-          <CarouselBanner
-            unit={unit}
-            title={title}
-            prevSlug={prevSlug}
-            nextSlug={nextSlug}
-          />
+        <CarouselBanner
+          unit={unit}
+          title={title}
+          prevSlug={prevSlug}
+          nextSlug={nextSlug}
+        />
 
+        <div className={"course-tabs-container"}>
           <CourseTabs
             unitDetailsProps={unitDetailsProps}
             unitQandAProps={unitQandAProps}
