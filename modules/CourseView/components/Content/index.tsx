@@ -13,15 +13,20 @@ interface ContentProps {
 
 const Content = ({ data }: ContentProps) => {
   const [answers, setAnswers] = useState<[] | string[]>([]);
-
-  const [questionModalProps, setQuestionModalProps] = useState({
+  const [quizValues, setQuizValues] = useState({
     isModalVisible: false,
+    isSubmitAnswersVisible: false,
     currentQuestion: 0,
     totalQuestions: 0,
     title: "",
     description: "",
     question: "",
     choices: [{ id: 0, choice: "", is_correct: false }],
+
+    scoreBoard: {
+      isVisible: false,
+      correctAnswers: 0,
+    },
   });
 
   const router = useRouter();
@@ -40,15 +45,21 @@ const Content = ({ data }: ContentProps) => {
       const questionNum = questionsLength ? 1 : 0;
       const questionIndex = questionNum - 1;
 
-      setQuestionModalProps({
-        ...questionModalProps,
-        isModalVisible: !questionModalProps?.isModalVisible,
+      setQuizValues({
+        ...quizValues,
         currentQuestion: questionNum,
         totalQuestions: questionsLength,
+        isModalVisible: !quizValues?.isModalVisible,
+        isSubmitAnswersVisible: false,
         title: "Pre Assessment",
         description: questionDesc,
         question: data?.pre_assessment?.[questionIndex]?.question,
         choices: data?.pre_assessment?.[questionIndex]?.choices,
+
+        scoreBoard: {
+          isVisible: false,
+          correctAnswers: 0,
+        },
       });
     }
 
@@ -57,9 +68,10 @@ const Content = ({ data }: ContentProps) => {
       const questionNum = questionsLength ? 1 : 0;
       const questionIndex = questionNum - 1;
 
-      setQuestionModalProps({
-        ...questionModalProps,
-        isModalVisible: !questionModalProps?.isModalVisible,
+      setQuizValues({
+        ...quizValues,
+        isModalVisible: !quizValues?.isModalVisible,
+        isSubmitAnswersVisible: false,
         currentQuestion: questionNum,
         totalQuestions: questionsLength,
         title: "Post Assessment",
@@ -72,25 +84,87 @@ const Content = ({ data }: ContentProps) => {
 
   const handleNextButtonClick = () => {
     if (isPreAssessmentTab) {
-      const totalQuestions = questionModalProps?.totalQuestions;
-      const nextQuestionNum = questionModalProps?.currentQuestion + 1;
+      const totalQuestions = quizValues?.totalQuestions;
+      const nextQuestionNum = quizValues?.currentQuestion + 1;
+      const nextQuestionIndex = nextQuestionNum - 1;
+
+      const shouldProceedToNextQuestion = totalQuestions >= nextQuestionNum;
+      const isFinalQuestion = totalQuestions == nextQuestionNum;
+
+      if (shouldProceedToNextQuestion) {
+        setQuizValues({
+          ...quizValues,
+          currentQuestion: nextQuestionNum,
+          isSubmitAnswersVisible: isFinalQuestion,
+          question: data?.pre_assessment?.[nextQuestionIndex]?.question,
+          choices: data?.pre_assessment?.[nextQuestionIndex]?.choices,
+        });
+      }
+    }
+
+    if (isPostAssessmentTab) {
+      const totalQuestions = quizValues?.totalQuestions;
+      const nextQuestionNum = quizValues?.currentQuestion + 1;
       const nextQuestionIndex = nextQuestionNum - 1;
 
       const shouldProceedToNextQuestion = totalQuestions >= nextQuestionNum;
 
       if (shouldProceedToNextQuestion) {
-        setQuestionModalProps({
-          ...questionModalProps,
+        setQuizValues({
+          ...quizValues,
           currentQuestion: nextQuestionNum,
-          question: data?.pre_assessment?.[nextQuestionIndex]?.question,
-          choices: data?.pre_assessment?.[nextQuestionIndex]?.choices,
+          question: data?.post_assessment?.[nextQuestionIndex]?.question,
+          choices: data?.post_assessment?.[nextQuestionIndex]?.choices,
         });
       }
     }
   };
 
   const handleAnswersRadio = (e: RadioChangeEvent) => {
-    setAnswers([e.target.value]);
+    const currentIndex = quizValues?.currentQuestion - 1;
+    let newAnswers = [...answers];
+    newAnswers[currentIndex] = e.target.value;
+    setAnswers(newAnswers);
+  };
+
+  const handleSubmitAnswerClick = () => {
+    let assessmentData = [];
+    if (isPreAssessmentTab) assessmentData = data?.pre_assessment;
+    if (isPostAssessmentTab) assessmentData = data?.post_assessment;
+
+    const answerKeys = assessmentData?.map?.((assessment: any) => {
+      let answers;
+      answers = assessment?.choices?.filter?.((choice: any) => {
+        return choice?.is_correct;
+      });
+      answers = answers?.map((choice: any) => {
+        return choice?.choice;
+      });
+      return answers;
+    });
+
+    const correctAnswersCheck = answers?.map?.(
+      (answer: string, idx: number) => {
+        const isAnswerCorrect = answerKeys?.[idx]?.includes?.(answer);
+        return !!isAnswerCorrect;
+      }
+    );
+
+    const correctAnswers = correctAnswersCheck?.filter?.(
+      (isCorrect: boolean) => {
+        return isCorrect;
+      }
+    )?.length;
+
+    const scoreBoard = {
+      isVisible: true,
+      correctAnswers: correctAnswers,
+    };
+
+    setQuizValues({
+      ...quizValues,
+      scoreBoard,
+    });
   };
 
   const videoHTML = data?.media_embed?.rawData?.html;
@@ -148,38 +222,63 @@ const Content = ({ data }: ContentProps) => {
 
       <Modal
         className="assessment-modal"
-        visible={questionModalProps?.isModalVisible}
+        visible={quizValues?.isModalVisible}
         onCancel={handleAssessmentButtonClick}
         footer={false}
         destroyOnClose={true}
       >
-        <p className="assessment-modal-title">{questionModalProps?.title}</p>
-        <p className="assessment-modal-description">
-          {questionModalProps?.description}
-        </p>
-        <p className="assessment-modal-question">
-          {questionModalProps?.question}
-        </p>
+        {!quizValues?.scoreBoard?.isVisible ? (
+          <>
+            <p className="assessment-modal-title">{quizValues?.title}</p>
+            <p className="assessment-modal-description">
+              {quizValues?.description}
+            </p>
+            <p className="assessment-modal-question">{quizValues?.question}</p>
 
-        <div className="assessment-modal-radio-group">
-          <Radio.Group onChange={handleAnswersRadio} value={answers[0]}>
-            {questionModalProps?.choices?.map?.(({ choice }) => {
-              return <Radio value={choice}>{choice}</Radio>;
-            })}
-          </Radio.Group>
-        </div>
+            <div className="assessment-modal-radio-group">
+              <Radio.Group
+                onChange={handleAnswersRadio}
+                value={answers?.[quizValues?.currentQuestion - 1]}
+              >
+                {quizValues?.choices?.map?.(({ choice }) => {
+                  return <Radio value={choice}>{choice}</Radio>;
+                })}
+              </Radio.Group>
+            </div>
 
-        <div className="assessment-modal-footer">
-          <div className="assessment-modal-footer-left-panel">
-            <p className="assessment-modal-footer-question-count">{`Q ${questionModalProps?.currentQuestion}/${questionModalProps?.totalQuestions}`}</p>
-            {/* <p className="assessment-modal-footer-question-timer">1:28</p> */}
-          </div>
-          <div className="assessment-modal-footer-right-panel">
-            <Button onClick={handleNextButtonClick} type="primary">
-              Next
+            <div className="assessment-modal-footer">
+              <div className="assessment-modal-footer-left-panel">
+                <p className="assessment-modal-footer-question-count">{`Q ${quizValues?.currentQuestion}/${quizValues?.totalQuestions}`}</p>
+                {/* <p className="assessment-modal-footer-question-timer">1:28</p> */}
+              </div>
+              <div className="assessment-modal-footer-right-panel">
+                {quizValues?.isSubmitAnswersVisible ? (
+                  <Button onClick={handleSubmitAnswerClick} type="primary">
+                    Submit
+                  </Button>
+                ) : (
+                  <Button onClick={handleNextButtonClick} type="primary">
+                    Next
+                  </Button>
+                )}
+              </div>
+            </div>
+          </>
+        ) : null}
+
+        {quizValues?.scoreBoard?.isVisible ? (
+          <div className="assessment-modal-result">
+            <p className="assessment-modal-score-text">You've scored</p>
+            <p className="assessment-modal-score-number">{`${quizValues?.scoreBoard?.correctAnswers}/${quizValues?.totalQuestions}`}</p>
+            {/* <p className="assessment-modal-result-mark">Passed!</p> */}
+            <p className="assessment-modal-result-thanks">
+              Thank you for completing this pre-assessment.
+            </p>
+            <Button className="assessment-modal-result-button" type="primary">
+              Continue session
             </Button>
           </div>
-        </div>
+        ) : null}
       </Modal>
     </div>
   );

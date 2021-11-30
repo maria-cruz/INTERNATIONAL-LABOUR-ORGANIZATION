@@ -61,4 +61,41 @@
   .ant-modal-body {
     padding: 5rem;
   }
+
+  .assessment-modal-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .assessment-modal-score-text {
+      font-size: 1.8rem;
+      color: $mine-shaft;
+      font-weight: 600;
+    }
+    .assessment-modal-score-number {
+      font-size: 8rem;
+      color: $tropical-rain-forest;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .assessment-modal-result-mark {
+      font-size: 2.8rem;
+      color: $tropical-rain-forest;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .assessment-modal-result-thanks {
+      font-size: 1.8rem;
+      color: $shuttle-gray;
+      margin-bottom: 5rem;
+    }
+
+    .assessment-modal-result-button {
+      font-size: 1.6rem;
+      color: $white;
+    }
+  }
 }
