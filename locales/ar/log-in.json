@@ -1,3 +1,13 @@
 {
-  "login": "تحميل الدليل"
+  "rights": "حقوقي",
+  "and": "و",
+  "responsibilities": "واجباتي",
+  "at": "في",
+  "work": "العمل",
+  "log-in": "تحميل الدليل",
+  "signUpSubText": "ليس لديك حساب؟",
+  "signUp": "اشتراك",
+  "emailAddress": "عنوان البريد الإلكتروني",
+  "password": "كلمه السر",
+  "forgotPassword": "نسيت كلمة المرور؟"
 }

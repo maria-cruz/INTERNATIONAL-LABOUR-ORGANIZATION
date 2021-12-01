@@ -1,3 +1,13 @@
 {
-  "signUp": "تحميل الدليل"
+  "description": "هذه",
+  "descriptionEmphasis": "رحلتك",
+  "signUp": "تحميل الدليل",
+  "signUpTitle": "تسجيل الدخول",
+  "loginSubText": "هل لديك حساب؟",
+  "termsAndCondition": "الشروط والأحكام",
+  "accept": "قبول",
+  "emailAddress": "عنوان البريد الإلكتروني",
+  "password": "اخلق كلمة مرور",
+  "login": "يسجل دخول",
+  "newAndUpdate": "نعم، أود  أن أتلقّى آخر الأخبار و  مستجدات"
 }

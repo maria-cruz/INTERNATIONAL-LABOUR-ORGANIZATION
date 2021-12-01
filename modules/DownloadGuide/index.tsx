@@ -4,8 +4,11 @@ import Image from "next/image";
 import DownloadGuideBackground from "@public/images/download-guide-banner.jpg";
 import GuideCard, { GuideCardProps } from "./components/card";
 import DowloadBannerMobile from "@public/images/download-guide-mobile.jpg";
+import useTranslation from "next-translate/useTranslation";
 
 const DownloadGuide = ({ allGuidesData }: any) => {
+  const { t } = useTranslation("download-guide");
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="download-guide-section">
@@ -29,7 +32,8 @@ const DownloadGuide = ({ allGuidesData }: any) => {
           <div className="dl-guide-filter"></div>
           <div className="bg-description-container">
             <div className="subheading-upper">
-              Download <span className="subheading-lower">Guides</span>
+              {t("download")}{" "}
+              <span className="subheading-lower">{t("guide")}</span>
             </div>
           </div>
         </div>

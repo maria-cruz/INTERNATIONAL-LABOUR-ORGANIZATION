@@ -7,6 +7,7 @@ import Tabs from "antd/lib/tabs";
 import FAQBackgroundMobile from "@public/images/FAQ-mobile-banner.jpg";
 import { FaqsProps, AllFaqDataType } from "./types";
 import FaqUnit from "./FaqUnit";
+import useTranslation from "next-translate/useTranslation";
 
 const { TabPane } = Tabs;
 const callback = (key: any) => {
@@ -14,6 +15,8 @@ const callback = (key: any) => {
 };
 
 const FAQ = ({ allFaqsData }: AllFaqDataType) => {
+  const { t } = useTranslation("faq");
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="FAQ-section">
@@ -35,8 +38,10 @@ const FAQ = ({ allFaqsData }: AllFaqDataType) => {
         </div>
         <div className="faq-bg-filter"></div>
         <div className="bg-description-container ">
-          <div className="subheading-upper">Have a Question?</div>
-          <div className="subheading-lower">Frequently Asked Questions</div>
+          <div className="subheading-upper">{t("haveAQuestion")}</div>
+          <div className="subheading-lower">
+            {t("frequentlyAskedQuestions")}
+          </div>
         </div>
         <div className="unit-container">
           <div className="unit-wrapper">

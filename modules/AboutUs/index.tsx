@@ -38,7 +38,15 @@ const AboutUs = () => {
         <div className="about-us-info">
           <div className="info-wrapper">
             <h1 className="about-us-label _section-label">{t("aboutUs")}</h1>
-            <div className="about-us-description">{t("description")}</div>
+            <div className="about-us-description">
+              <p>{t("firstDescription")}</p>
+              <br />
+              <p>{t("secondDescription")}</p>
+              <br />
+              <p>{t("thirdDescription")}</p>
+              <br />
+              <p>{t("lastDescription")}</p>
+            </div>
           </div>
         </div>
 

@@ -6,6 +6,8 @@ import Select from "antd/lib/select";
 import axios from "axios";
 import SuccessMessage from "@common/components/SuccessMessage";
 import { FaqsProps } from "modules/FAQ/types";
+import useTranslation from "next-translate/useTranslation";
+
 interface QuestionProps {
   email: string;
   topic: string;
@@ -50,12 +52,13 @@ const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
       })
       .catch((err) => console.error(err));
   };
+  const { t } = useTranslation("faq");
 
   return (
     <section className="form-section-container">
       <div className="form-wrapper">
         <div className="text-container">
-          <div className="_subheading-label">Have a Question?</div>
+          <div className="_subheading-label">{t("haveAQuestion")}</div>
           <div className="form-description">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et
@@ -77,13 +80,19 @@ const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
                 className="email-container"
                 rules={[{ type: "email", required: true }]}
                 name="email"
-                label="Email"
+                label={t("email")}
               >
                 <Input className="form-input" />
               </Form.Item>
-              <Form.Item label="Topic" name="topic" className="dropdown-menu">
+              <Form.Item
+                label={t("topic")}
+                name="topic"
+                className="dropdown-menu"
+              >
                 <Select className="form-select">
-                  <Select.Option value="All Topics">All Topics</Select.Option>
+                  <Select.Option value="All Topics">
+                    {t("allTopics")}
+                  </Select.Option>
                   {topics.map((topic, index: number) => {
                     const topicTitle = topic.title ?? "";
                     return (
@@ -98,13 +107,13 @@ const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
             <Form.Item
               name="sampleQuestion"
               className="question-container"
-              label="Question"
+              label={t("question")}
             >
               <Input.TextArea className="question-input" />
             </Form.Item>
             <Form.Item noStyle>
               <Button type="primary" htmlType="submit" className="form-btn">
-                Submit question
+                {t("submitQuestion")}
               </Button>
             </Form.Item>
           </Form>
