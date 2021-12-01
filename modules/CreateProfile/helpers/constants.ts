@@ -1,31 +1,51 @@
 export const SAMPLE_DATA_ORGANIZATION_TYPE = [
   {
-    label: "Training/academic institution – Staff",
+    key: "institutionStaff",
     value: "Training/academic institution – Staff",
   },
   {
-    label: "Training/academic institution – Student/Trainee",
+    key: "institutionStudent",
     value: "Training/academic institution – Student/Trainee",
   },
   {
-    label: "Private Enterprise - Employer",
+    key: "privateEnterpriseEmployer",
     value: "Private Enterprise - Employer",
   },
   {
-    label: "Private Enterprise - Worker",
+    key: "privateEnterpriseWorker",
     value: "Private Enterprise - Worker",
   },
   {
-    label: "Trade union organization",
+    key: "tradeUnionOrganization",
     value: "Trade union organization",
   },
   {
-    label: "Employer organization",
+    key: "employerOrganization",
     value: "Employer organization",
   },
   {
-    label: "Non-governmental Organization",
+    key: "nonGovernmentalOrganization",
     value: "Non-governmental Organization",
+  },
+  {
+    key: "internationalNonGovernmentalOrganization",
+    value: "International non-governmental Organization",
+  },
+  {
+    key: "governmentInstitution",
+    value: "Government institution",
+  },
+  {
+    key: "unitedNations",
+    value: "United Nations",
+  },
+  {
+    key: "currentlyUnemployed",
+    value: "Currently unemployed",
+  },
+  {
+    key: "other",
+    value: "Other",
   },
 ];
 
@@ -209,11 +229,11 @@ export const DAYS = [
 
 export const GENDER = [
   {
-    label: "Female",
+    key: "female",
     value: "Female",
   },
   {
-    label: "Male",
+    key: "male",
     value: "Male",
   },
 ];

@@ -11,6 +11,7 @@ import {
 } from "@modules/CreateProfile/helpers/constants";
 import BirthDate from "@common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
+import useTranslation from "next-translate/useTranslation";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
@@ -24,6 +25,8 @@ const CreateProfileForm = ({
   form,
   isActiveSubmit,
 }: CreateProfileFormProps) => {
+  const { t } = useTranslation("create-profile");
+
   const email = form.getFieldValue("emailAddress");
   const isDisabledEmailAddress = email !== "";
 
@@ -46,7 +49,7 @@ const CreateProfileForm = ({
     <div className="create-profile-form-container">
       <div className="form-column-container">
         <Form.Item
-          label="First name*"
+          label={t("firstName")}
           name="firstName"
           className="form-width"
           rules={[
@@ -59,7 +62,7 @@ const CreateProfileForm = ({
           <Input className="form-input" />
         </Form.Item>
         <Form.Item
-          label="Last name*"
+          label={t("lastName")}
           name="lastName"
           className="form-width"
           rules={[
@@ -74,7 +77,7 @@ const CreateProfileForm = ({
       </div>
       <div className="form-column-container">
         <Form.Item
-          label="Organization type*"
+          label={t("organizationType")}
           name="organizationType"
           className="form-width"
           rules={[
@@ -90,27 +93,27 @@ const CreateProfileForm = ({
           >
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
               <Select.Option value={item.value} key={item.value}>
-                {item.label}
+                {t(item.key)}
               </Select.Option>
             ))}
           </Select>
         </Form.Item>
 
         <Form.Item
-          label="Organization name"
+          label={t("organizationName")}
           name="organizationName"
           className="form-width"
         >
           <Input className="form-input" />
         </Form.Item>
       </div>
-      <Form.Item label="Email address*" name="emailAddress">
+      <Form.Item label={t("email")} name="emailAddress">
         <Input className="form-input" disabled={isDisabledEmailAddress} />
       </Form.Item>
       <div className="form-column-container">
         <div className="country-and-phone-number-container">
           <Form.Item
-            label="Country"
+            label={t("country")}
             name="country"
             className="form-width-country"
           >
@@ -127,7 +130,7 @@ const CreateProfileForm = ({
           </Form.Item>
 
           <Form.Item
-            label="Your phone number"
+            label={t("phoneNumber")}
             name="phoneNumber"
             className="form-width-phone-number"
           >
@@ -135,7 +138,7 @@ const CreateProfileForm = ({
           </Form.Item>
         </div>
         <Form.Item
-          label="Date of birthday*"
+          label={t("dateOfBirth")}
           name="birthDate"
           className="form-width-birthdate"
           rules={[{ validator: checkBirthDate }]}
@@ -145,7 +148,7 @@ const CreateProfileForm = ({
       </div>
       <div className="form-column-container">
         <Form.Item
-          label="Gender*"
+          label={t("sex")}
           name="gender"
           className="form-width"
           rules={[
@@ -157,19 +160,19 @@ const CreateProfileForm = ({
         >
           <Select
             className="form-select-organization-type"
-            placeholder="Please Select"
+            placeholder={t("pleaseSelect")}
             suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
           >
             {GENDER.map((gender) => (
               <Select.Option value={gender.value} key={gender.value}>
-                {gender.label}
+                {t(gender.key)}
               </Select.Option>
             ))}
           </Select>
         </Form.Item>
 
         <Form.Item
-          label="Nationality*"
+          label={t("nationality")}
           name="nationality"
           className="form-width"
           rules={[
@@ -181,7 +184,7 @@ const CreateProfileForm = ({
         >
           <NationalitiesSelect
             className="form-select-organization-type"
-            placeholder="Please Select"
+            placeholder={t("pleaseSelect")}
           />
         </Form.Item>
       </div>

@@ -4,6 +4,7 @@ import { DAYS, MONTHS } from "@modules/CreateProfile/helpers/constants";
 import DatePicker from "antd/lib/date-picker";
 import DownArrow from "@common/components/Icons/DownArrow";
 import { Moment } from "moment";
+import useTranslation from "next-translate/useTranslation";
 
 interface BirthDateProps {
   value?: any;
@@ -11,6 +12,8 @@ interface BirthDateProps {
 }
 
 const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
+  const { t } = useTranslation("create-profile");
+
   const [month, setMonth] = useState();
   const [day, setDay] = useState();
   const [year, setYear] = useState<Moment | null>();
@@ -58,9 +61,9 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
     <div className="birth-date-container">
       <Select
         className="month-select"
-        placeholder="Month"
+        placeholder={t("month")}
         onChange={handleMonthChange}
-        value={month || value.month}
+        value={month || (value?.month ? value?.month : undefined)}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
         {MONTHS?.map((month) => (
@@ -72,7 +75,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
 
       <Select
         className="width-day"
-        placeholder="Day"
+        placeholder={t("day")}
         onChange={handleDayChange}
         value={value.day || day}
         suffixIcon={<DownArrow width={"1.5rem"} height={"1.5rem"} />}
@@ -87,7 +90,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
       <DatePicker
         className="date-picker-year"
         picker="year"
-        placeholder="Year"
+        placeholder={t("year")}
         onChange={handleYearChange}
         value={value.year || year}
         suffixIcon={<DownArrow width={"1.5rem"} height={"1.5rem"} />}
