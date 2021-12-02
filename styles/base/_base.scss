@@ -166,6 +166,8 @@ html {
   height: 100%;
   box-sizing: border-box;
   font-size: 62.5%; //1rem = 10px
+  --antd-wave-shadow-color: transparent;
+  --scroll-bar: 0;
 }
 
 body {
