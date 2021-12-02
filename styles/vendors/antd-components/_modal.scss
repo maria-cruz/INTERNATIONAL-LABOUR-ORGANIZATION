@@ -32,8 +32,11 @@
     flex-direction: column;
     gap: 3rem;
 
+    // Antd Radio Button Override
     .ant-radio-wrapper {
       font-size: 1.8rem;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -61,6 +64,44 @@
   .ant-modal-body {
     padding: 5rem;
   }
+
+  /* <Antd Radio Button Override> */
+
+  .ant-radio-inner {
+    border-color: $shuttle-gray;
+    border-width: 0.2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .ant-radio-input:focus + .ant-radio-inner {
+    box-shadow: none;
+  }
+
+  .ant-radio-checked .ant-radio-inner {
+    border-color: $tropical-rain-forest;
+  }
+  .ant-radio-inner::after {
+    background-color: $tropical-rain-forest;
+    transform: scale(3);
+    top: 6px;
+    left: 6px;
+  }
+
+  .ant-radio-checked::after {
+    display: none;
+  }
+
+  .ant-radio {
+    top: 0;
+  }
+
+  .ant-radio + span {
+    padding-left: 2rem;
+    padding-top: 0.1rem;
+  }
+
+  /* </ Antd Radio Button Override> */
 
   .assessment-modal-result {
     display: flex;
