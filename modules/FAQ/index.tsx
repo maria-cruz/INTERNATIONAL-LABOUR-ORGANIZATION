@@ -10,9 +10,6 @@ import FaqUnit from "./FaqUnit";
 import useTranslation from "next-translate/useTranslation";
 
 const { TabPane } = Tabs;
-const callback = (key: any) => {
-  console.log(key);
-};
 
 const FAQ = ({ allFaqsData }: AllFaqDataType) => {
   const { t } = useTranslation("faq");
@@ -45,11 +42,7 @@ const FAQ = ({ allFaqsData }: AllFaqDataType) => {
         </div>
         <div className="unit-container">
           <div className="unit-wrapper">
-            <Tabs
-              className="tab-container"
-              defaultActiveKey="1"
-              onChange={callback}
-            >
+            <Tabs className="tab-container" defaultActiveKey="1">
               {allFaqsData.map((faqData: FaqsProps) => {
                 const faqUnit = faqData?.unit;
                 return (
