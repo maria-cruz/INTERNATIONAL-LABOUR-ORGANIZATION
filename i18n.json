@@ -2,11 +2,14 @@
   "locales": ["en", "ar"],
   "defaultLocale": "en",
   "pages": {
+    "*": ["common"],
     "/": ["home"],
     "/sign-up": ["sign-up"],
     "/reset-password": ["sign-up"],
     "/about-us": ["about-us"],
     "/log-in": ["log-in"],
-    "/forgot-password": ["log-in"]
+    "/forgot-password": ["log-in"],
+    "/download-guide": ["download-guide"],
+    "/faq": ["faq"]
   }
 }

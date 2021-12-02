@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Logo from "@public/images/logo.svg";
 import LogoMobile from "@public/images/logo-footer.svg";
 import HamburgerMenu from "@common/components/HamburgerMenu";
+import useTranslation from "next-translate/useTranslation";
 
 const { Option } = Select;
 interface HeaderProps {
@@ -26,6 +27,7 @@ const PublicHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
   const handleArabicClick = () => {
     router.push(`${pathname}`, "", { locale: "ar" });
   };
+  const { t } = useTranslation("common");
 
   return (
     <header className={`header ${className}`} style={{ marginBottom: gap }}>
@@ -46,15 +48,15 @@ const PublicHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
       <div className={"right-container"}>
         <div className={"menu"}>
-          <NavLink href="/download-guide">Download Guide</NavLink>
-          <NavLink href="/faq">FAQ</NavLink>
-          <NavLink href="/about-us">About Us</NavLink>
+          <NavLink href="/download-guide">{t("downloadGuide")}</NavLink>
+          <NavLink href="/faq">{t("faq")}</NavLink>
+          <NavLink href="/about-us">{t("aboutUs")}</NavLink>
           <NavLink className={"log-in-link"} href="/log-in">
-            Log In
+            {t("logIn")}
           </NavLink>
           <NavLink href="/sign-up">
             <Button type="primary" size="large">
-              Sign up
+              {t("signUp")}
             </Button>
           </NavLink>
         </div>

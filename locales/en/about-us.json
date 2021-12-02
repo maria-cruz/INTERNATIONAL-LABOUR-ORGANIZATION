@@ -1,8 +1,18 @@
 {
   "aboutUs": "About us",
-  "description": "This app aims to build capacity, knowledge and awareness regarding rights and obligations at the workplace. The training program is intended to empower trainees by providing them with basic knowledge on the foundations, rights and fundamental mutual obligations upon signing an employment contract.",
+  "firstDescription": "The Houkouki fi al 3amal application was developed by ILO with support from UNICEF under the project “Towards improved formal and non-formal Technical Vocational & Education Training in Lebanon” and the Italian Agency for Cooperation Development under the project “Improved access to employment opportunities for Lebanese and refugee graduates from skills training”. The objective under these projects was to raise awareness of training graduates and new entrants to the labour market on their rights and obligations at the workplace as well as to enhance the knowledge and capacity of NGOs providing vocational training and post-training support towards better employment outcomes and access to decent work for graduates.",
+  "secondDescription": "This initiative benefited from close partnership with Lebanon’s Ministry of Labour, Association of Lebanese Industrialists, National Federation of Employees’ and Workers’ Union (FENASOL) and other key stakeholders in the country.",
+  "thirdDescription": "The App includes a user-friendly guide, a self-paced online training and frequently asked questions related to the Lebanese labour law and other employment issues. It aims to build capacity, knowledge and awareness regarding rights and obligations at the workplace. The training programme is intended to empower trainees by providing them with basic knowledge on the rights and fundamental mutual obligations upon signing an employment contract.",
+  "lastDescription": "The app is addressed to public at large including employers, graduates of education and vocational training, employees or workers, and anyone interested to deepen knowledge about the Labour laws in Lebanon.",
   "scopeLabel": "The training sessions",
-  "scopeDescription": "The training sessions are available as live sessions with trainers, or they can be completed independently at the user’s own pace. This is so that everyone can have access to labour law training materials in a way that suits their cultural, educational, and professional backgrounds.",
+  "scopeDescription": "The training material is available in this application and can be completed independently at the user’s own pace.",
   "referencesLabel": "Training references",
-  "referencesDescription": "The training uses the Lebanese Labor Law, its amendments, related decrees and ministerial decisions as sole references for curriculum content. However, training activities and assessments are conducted based on research, academic resources and trainer’s experiences."
+  "referencesDescription": "The training sessions use the Lebanese Labor Law, its amendments, related decrees and ministerial decisions as sole references for curriculum content. However, training activities and assessments are conducted based on research, academic resources and the trainer’s experiences.",
+  "contactUs": "Contact us",
+  "contactUsSubheading": "We’d love to hear from you",
+  "sendMessage": "Send message",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "Email",
+  "message": "Message"
 }

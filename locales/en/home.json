@@ -9,8 +9,13 @@
   "thisWeek": "This week",
   "thisMonth": "This month",
   "total": "Total",
-  "assessmentsTitle": "Learn and fill up assessments",
-  "assessmentsDescription": "Complete each topic in unit to progress. Each topic includes a pre-assessment, video instruction, exercises, and a final assessment of your learning to advance.",
+  "assessmentsTitle": "Learn and complete assessments",
+  "assessmentsDescription": "Complete each topic in unit to progress. Each topic includes a pre-assessment, a training video, exercises, and a final assessment of your learning to advance.",
   "certifiedTitle": "Get certified!",
-  "certifiedDescription": "Once you complete all topics within the three units with an assessment of 70% or higher, you will complete the course and unlock your huqouqi fil 3amal certificate!"
+  "certifiedDescription": "Once you complete all topics within the three units with an assessment of 70% or higher, you will complete the course and unlock your huqouqi fil 3amal certificate!",
+  "rights": "Rights",
+  "and": "&",
+  "responsibilities": "Responsibilities",
+  "at": "at",
+  "work": "Work"
 }
