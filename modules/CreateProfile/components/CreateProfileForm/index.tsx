@@ -5,13 +5,11 @@ import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
 import ReactFlagsSelect from "react-flags-select";
-import {
-  GENDER,
-  SAMPLE_DATA_ORGANIZATION_TYPE,
-} from "@modules/CreateProfile/helpers/constants";
+import { GENDER } from "@modules/CreateProfile/helpers/constants";
 import BirthDate from "@common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
 import useTranslation from "next-translate/useTranslation";
+import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;

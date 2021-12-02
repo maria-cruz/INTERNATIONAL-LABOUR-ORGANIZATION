@@ -49,7 +49,7 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
         </div>
         <div className="create-profile-preview-column">
           <div className="email-container">
-            <div className="text">{t("email")}</div>
+            <div className="text">{t("emailNotRequired")}</div>
             <div className="sub-text email-space-bottom">
               {storeData.emailAddress}
             </div>

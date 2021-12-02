@@ -63,7 +63,7 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         className="month-select"
         placeholder={t("month")}
         onChange={handleMonthChange}
-        value={month || (value?.month ? value?.month : undefined)}
+        value={month ?? value?.month ?? undefined}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
       >
         {MONTHS?.map((month) => (

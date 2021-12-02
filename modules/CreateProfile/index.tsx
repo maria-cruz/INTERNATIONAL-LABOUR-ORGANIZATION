@@ -17,7 +17,7 @@ import useTranslation from "next-translate/useTranslation";
 
 const CreateProfile = () => {
   const { t } = useTranslation("create-profile");
-  console.log(t);
+
   const [country, setCountry] = useState("LB");
   const [isActive, setIsActive] = useState(false);
   const [storeData, setStoreData] = usePersistentState(

@@ -7,7 +7,8 @@
   "lastName": "اسم العائلة*",
   "organizationType": "نوع المؤسسة*",
   "organizationName": "اسم المؤسسة*",
-  "email": "عنوان البريد الإلكتروني",
+  "email": "عنوان البريد الإلكتروني*",
+  "emailNotRequired": "عنوان البريد الإلكتروني",
   "country": "البلد",
   "phoneNumber": "رقم الهاتف",
   "sex": "الجنس*",
@@ -32,5 +33,7 @@
   "dateOfBirthNotRequired": "تاريخ الميلاد",
   "month": "شهر،",
   "day": "يوم،",
-  "year": "سنة"
+  "year": "سنة",
+  "profilePreviewDescription": "يرجى التأكد من تحديث تفاصيل ملفك الشخصي.",
+  "editProfileDescription": "تعديل ملفك الشخصي. لن يظهر إلا اسمك وعنوان بريدك الإلكتروني للمستخدمين الآخرين"
 }
