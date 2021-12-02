@@ -55,7 +55,7 @@ const AboutUs = () => {
           <GalleryMobile />
         </div>
 
-        <Partners subheading="Supported by" />
+        <Partners />
         <Inquiry />
       </section>
     </Layout>

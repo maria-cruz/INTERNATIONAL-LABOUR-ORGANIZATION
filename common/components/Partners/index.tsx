@@ -9,10 +9,9 @@ import UnicefLogo from "@public/images/unicef-logo.png";
 import Logo from "@public/images/supporters-logo.svg";
 import Carousel from "antd/lib/carousel";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import useTranslation from "next-translate/useTranslation";
 
-const Partners = ({
-  subheading = "This is a National Initiative with the Support of the Following Partners",
-}) => {
+const Partners = () => {
   const settings = {
     autoplay: true,
     autoplaySpeed: 4000,
@@ -47,10 +46,11 @@ const Partners = ({
       },
     ],
   };
+  const { t } = useTranslation("common");
 
   return (
     <section className="partners-section">
-      <span className="partners-section-title">{subheading}</span>
+      <span className="partners-section-title">{t("title")}</span>
       <div className="partners-section-logos">
         <Carousel {...settings}>
           <div className="carousel-image-container">
