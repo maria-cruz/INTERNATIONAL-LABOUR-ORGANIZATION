@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import MinistryOfLabourLogo from "@public/images/logo.png";
 import AgencyLogo from "@public/images/italian-agency-logo.png";
+import AliLogo from "@public/images/sponsors/ali-logo.png";
 import FenasolLogo from "@public/images/fenasol-logo.jpeg";
 import WiscLogo from "@public/images/wisc-international-logo.png";
 import IloLogo from "@public/images/ilo-logo.png";
@@ -64,7 +65,7 @@ const Partners = ({
           <div className="carousel-image-container">
             <Image
               src={MinistryOfLabourLogo}
-              width={280}
+              width={258}
               height={100}
               alt="logo.png"
             />
@@ -94,6 +95,15 @@ const Partners = ({
               height={189}
               placeholder="blur"
               alt="italian-agency-logo.png"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
+              src={AliLogo}
+              width={291}
+              height={176}
+              placeholder="blur"
+              alt="ali-logo.png"
             />
           </div>
           <div className="carousel-image-container">
