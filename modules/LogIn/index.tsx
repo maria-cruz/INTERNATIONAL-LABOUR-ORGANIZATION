@@ -115,8 +115,9 @@ const LogIn = () => {
         <div className="banner-container">
           <div className="banner-description-container">
             <div className="banner-description-text">
-              <span className="emphasis-text">{t("rights")}</span> &{" "}
-              <span className="emphasis-text"> {t("responsibilities")}</span> at
+              <span className="emphasis-text">{t("rights")}</span> {t("and")}{" "}
+              <span className="emphasis-text"> {t("responsibilities")}</span>{" "}
+              {t("at")}
               <span className="emphasis-text"> {t("work")} </span>
             </div>
           </div>
@@ -125,7 +126,7 @@ const LogIn = () => {
             <div className="log-in-title">{t("log-in")}</div>
             <div className="sign-up-container">
               <div className="login-sub-text">{t("signUpSubText")}</div>
-              <div className="login-text">{t("sign-up")}</div>
+              <div className="login-text">{t("signUp")}</div>
             </div>
             <Form
               form={loginForm}

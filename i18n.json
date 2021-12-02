@@ -2,6 +2,7 @@
   "locales": ["en", "ar"],
   "defaultLocale": "en",
   "pages": {
+    "*": ["common"],
     "/": ["home"],
     "/sign-up": ["sign-up"],
     "/reset-password": ["sign-up"],
@@ -13,6 +14,8 @@
     "/courses": ["courses"],
     "/courses/preview/[slug]": ["courses-preview"],
     "/profile": ["create-profile"],
-    "/profile/edit": ["create-profile"]
+    "/profile/edit": ["create-profile"],
+    "/download-guide": ["download-guide"],
+    "/faq": ["faq"]
   }
 }

@@ -4,6 +4,7 @@ import NavLink from "@common/components/NavLink";
 import Select from "antd/lib/select";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 const { Option } = Select;
 
@@ -24,6 +25,7 @@ const HamburgerMenu = () => {
   const handleArabicClick = () => {
     router.push(`${pathname}`, "", { locale: "ar" });
   };
+  const { t } = useTranslation("common");
 
   return (
     <>
@@ -43,12 +45,12 @@ const HamburgerMenu = () => {
         visible={isDrawerOpen}
       >
         <NavLink href="/sign-up" exact={true}>
-          Sign up
+          {t("signUp")}
         </NavLink>
-        <NavLink href="/log-in">Log in</NavLink>
-        <NavLink href="/download-guide">Download Guide</NavLink>
-        <NavLink href="/faq">FAQ</NavLink>
-        <NavLink href="/about-us">About Us</NavLink>
+        <NavLink href="/log-in"> {t("logIn")}</NavLink>
+        <NavLink href="/download-guide">{t("downloadGuide")}</NavLink>
+        <NavLink href="/faq">{t("faq")}</NavLink>
+        <NavLink href="/about-us">{t("aboutUs")}</NavLink>
 
         <div className="lang-select-container">
           <Select
