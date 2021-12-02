@@ -7,8 +7,14 @@ import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
 import Radio, { RadioChangeEvent } from "antd/lib/radio";
 
+import axios from "axios";
+import getJWT from "@common/methods/getJWT";
+import getUserId from "@common/methods/getUserId";
+
 interface ContentProps {
-  data: any;
+  currentContentData: any;
+  currentUnitId: number | null;
+  currentProgress: any;
 }
 
 const DEFAULT_QUIZ_VALUES = {
@@ -27,9 +33,15 @@ const DEFAULT_QUIZ_VALUES = {
   },
 };
 
-const Content = ({ data }: ContentProps) => {
+const Content = ({
+  currentContentData,
+  currentUnitId,
+  currentProgress,
+}: ContentProps) => {
   const [answers, setAnswers] = useState<[] | string[]>([]);
   const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
+  const jwt = getJWT(undefined, true);
+  const userId = getUserId();
 
   const router = useRouter();
   const tab = router?.query?.tab;
@@ -39,11 +51,21 @@ const Content = ({ data }: ContentProps) => {
   const isPostAssessmentTab = tab === "post";
 
   const handleAssessmentButtonClick = () => {
+    let assessmentData = [];
+    let title = "Assessment";
+    if (isPreAssessmentTab) {
+      assessmentData = currentContentData?.pre_assessment;
+      title = "Pre Assessment";
+    }
+    if (isPostAssessmentTab) {
+      assessmentData = currentContentData?.post_assessment;
+      title = "Post Assessment";
+    }
     const questionDesc =
       "Answer a few questions to help us understand your current level of knowledge. Don’t worry if you don’t know the answers, just answer as best as you can.";
 
     if (isPreAssessmentTab) {
-      const questionsLength = data?.pre_assessment?.length;
+      const questionsLength = assessmentData?.length;
       const questionNum = questionsLength ? 1 : 0;
       const questionIndex = questionNum - 1;
 
@@ -55,8 +77,8 @@ const Content = ({ data }: ContentProps) => {
         isSubmitAnswersVisible: false,
         title: "Pre Assessment",
         description: questionDesc,
-        question: data?.pre_assessment?.[questionIndex]?.question,
-        choices: data?.pre_assessment?.[questionIndex]?.choices,
+        question: assessmentData?.[questionIndex]?.question,
+        choices: assessmentData?.[questionIndex]?.choices,
 
         scoreBoard: {
           isVisible: false,
@@ -64,75 +86,37 @@ const Content = ({ data }: ContentProps) => {
         },
       });
     }
+  };
 
-    if (isPostAssessmentTab) {
-      const questionsLength = data?.post_assessment?.length;
-      const questionNum = questionsLength ? 1 : 0;
-      const questionIndex = questionNum - 1;
+  const handleNextButtonClick = () => {
+    let assessmentData = [];
+    if (isPreAssessmentTab) assessmentData = currentContentData?.pre_assessment;
+    if (isPostAssessmentTab)
+      assessmentData = currentContentData?.post_assessment;
 
+    const totalQuestions = quizValues?.totalQuestions;
+    const nextQuestionNum = quizValues?.currentQuestion + 1;
+    const nextQuestionIndex = nextQuestionNum - 1;
+
+    const shouldProceedToNextQuestion = totalQuestions >= nextQuestionNum;
+    const isFinalQuestion = totalQuestions == nextQuestionNum;
+
+    if (shouldProceedToNextQuestion) {
       setQuizValues({
         ...quizValues,
-        isModalVisible: !quizValues?.isModalVisible,
-        isSubmitAnswersVisible: false,
-        currentQuestion: questionNum,
-        totalQuestions: questionsLength,
-        title: "Post Assessment",
-        description: questionDesc,
-        question: data?.post_assessment?.[questionIndex]?.question,
-        choices: data?.post_assessment?.[questionIndex]?.choices,
+        currentQuestion: nextQuestionNum,
+        isSubmitAnswersVisible: isFinalQuestion,
+        question: assessmentData?.[nextQuestionIndex]?.question,
+        choices: assessmentData?.[nextQuestionIndex]?.choices,
       });
     }
   };
 
-  const handleNextButtonClick = () => {
-    if (isPreAssessmentTab) {
-      const totalQuestions = quizValues?.totalQuestions;
-      const nextQuestionNum = quizValues?.currentQuestion + 1;
-      const nextQuestionIndex = nextQuestionNum - 1;
-
-      const shouldProceedToNextQuestion = totalQuestions >= nextQuestionNum;
-      const isFinalQuestion = totalQuestions == nextQuestionNum;
-
-      if (shouldProceedToNextQuestion) {
-        setQuizValues({
-          ...quizValues,
-          currentQuestion: nextQuestionNum,
-          isSubmitAnswersVisible: isFinalQuestion,
-          question: data?.pre_assessment?.[nextQuestionIndex]?.question,
-          choices: data?.pre_assessment?.[nextQuestionIndex]?.choices,
-        });
-      }
-    }
-
-    if (isPostAssessmentTab) {
-      const totalQuestions = quizValues?.totalQuestions;
-      const nextQuestionNum = quizValues?.currentQuestion + 1;
-      const nextQuestionIndex = nextQuestionNum - 1;
-
-      const shouldProceedToNextQuestion = totalQuestions >= nextQuestionNum;
-
-      if (shouldProceedToNextQuestion) {
-        setQuizValues({
-          ...quizValues,
-          currentQuestion: nextQuestionNum,
-          question: data?.post_assessment?.[nextQuestionIndex]?.question,
-          choices: data?.post_assessment?.[nextQuestionIndex]?.choices,
-        });
-      }
-    }
-  };
-
-  const handleAnswersRadio = (e: RadioChangeEvent) => {
-    const currentIndex = quizValues?.currentQuestion - 1;
-    let newAnswers = [...answers];
-    newAnswers[currentIndex] = e.target.value;
-    setAnswers(newAnswers);
-  };
-
   const handleSubmitAnswerClick = () => {
     let assessmentData = [];
-    if (isPreAssessmentTab) assessmentData = data?.pre_assessment;
-    if (isPostAssessmentTab) assessmentData = data?.post_assessment;
+    if (isPreAssessmentTab) assessmentData = currentContentData?.pre_assessment;
+    if (isPostAssessmentTab)
+      assessmentData = currentContentData?.post_assessment;
 
     const answerKeys = assessmentData?.map?.((assessment: any) => {
       let answers;
@@ -167,13 +151,51 @@ const Content = ({ data }: ContentProps) => {
       ...quizValues,
       scoreBoard,
     });
+
+    /* Payload */
+
+    const topic_id = currentContentData?.id
+      ? `${currentContentData?.id}`
+      : null;
+    const unit = currentUnitId;
+    const user = userId;
+
+    // axios
+    //   .post(
+    //     `${process.env.API_URL}/progresses`,
+    //     {
+    //       unit,
+    //       user,
+    //       topics: [
+    //         {
+    //           topic_id,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: jwt,
+    //       },
+    //     }
+    //   )
+    //   .then((currentContentData) => {
+    //     console.log(currentContentData);
+    //   })
+    //   .catch((err) => console.error(err));
+  };
+
+  const handleAnswersRadio = (e: RadioChangeEvent) => {
+    const currentIndex = quizValues?.currentQuestion - 1;
+    let newAnswers = [...answers];
+    newAnswers[currentIndex] = e.target.value;
+    setAnswers(newAnswers);
   };
 
   const handleContinueSessionClick = () => {
     setQuizValues(DEFAULT_QUIZ_VALUES);
   };
 
-  const videoHTML = data?.media_embed?.rawData?.html;
+  const videoHTML = currentContentData?.media_embed?.rawData?.html;
   return (
     <div className="content-container">
       <section className="unit-content">
@@ -198,7 +220,7 @@ const Content = ({ data }: ContentProps) => {
         ) : null}
         {isTopicTab ? (
           <>
-            <div className="title">{data?.title}</div>
+            <div className="title">{currentContentData?.title}</div>
             <div
               className="video-container"
               dangerouslySetInnerHTML={{ __html: videoHTML }}

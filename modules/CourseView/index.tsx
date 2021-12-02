@@ -53,6 +53,7 @@ const CourseView = ({
 }: CourseDataProps) => {
   const router = useRouter();
   const slug = router?.query?.slug;
+  const currentUnitId = data?.id ?? null;
 
   const currentContentData = data.topics.find(
     (topic) => router?.query?.topic == `${topic?.id}`
@@ -73,7 +74,11 @@ const CourseView = ({
           </div>
           <div className="title">{`Unit ${data?.unit}: ${data?.title}`}</div>
         </header>
-        <Content data={currentContentData} />
+        <Content
+          currentContentData={currentContentData}
+          currentUnitId={currentUnitId}
+          currentProgress={""}
+        />
         <section className="unit-info">
           <CourseTabs
             unitDetailsProps={unitDetailsProps}

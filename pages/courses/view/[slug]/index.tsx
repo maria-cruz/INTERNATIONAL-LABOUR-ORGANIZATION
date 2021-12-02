@@ -7,8 +7,8 @@ import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface ProgressType {
   unit: number;
-  completed_topics_count: number;
-  total_topics_count: number;
+  completed_topics: number;
+  total_topics: number;
   is_unit_completed: boolean;
 }
 
@@ -59,8 +59,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  const completedTopics = courseData?.progress?.completed_topics_count ?? 0;
-  const totalTopics = courseData?.progress?.total_topics_count ?? 1;
+  // To Do: Create a save entry (post) if progress received from courseData is null
+
+  const completedTopics = courseData?.progress?.completed_topics ?? 0;
+  const totalTopics = courseData?.progress?.total_topics ?? 1;
   const percentage = Math.floor((completedTopics / totalTopics) * 100);
 
   const topics = !!courseData?.topics ? courseData.topics : [];
@@ -82,10 +84,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const unitDetailsProps = {
     instructorAvatar: getStrapiFileUrl(courseData?.instructor?.avatar?.url),
-    instructorName: courseData?.instructor?.name,
+    instructorName: courseData?.instructor?.name ?? null,
     topicsCount: topicsCount,
     progress: percentage,
-    description: courseData?.description,
+    description: courseData?.description ?? null,
     objectives: courseData?.learning_objectives ?? [],
   };
 
