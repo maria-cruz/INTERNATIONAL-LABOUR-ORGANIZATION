@@ -11,23 +11,25 @@ interface ContentProps {
   data: any;
 }
 
+const DEFAULT_QUIZ_VALUES = {
+  isModalVisible: false,
+  isSubmitAnswersVisible: false,
+  currentQuestion: 0,
+  totalQuestions: 0,
+  title: "",
+  description: "",
+  question: "",
+  choices: [{ id: 0, choice: "", is_correct: false }],
+
+  scoreBoard: {
+    isVisible: false,
+    correctAnswers: 0,
+  },
+};
+
 const Content = ({ data }: ContentProps) => {
   const [answers, setAnswers] = useState<[] | string[]>([]);
-  const [quizValues, setQuizValues] = useState({
-    isModalVisible: false,
-    isSubmitAnswersVisible: false,
-    currentQuestion: 0,
-    totalQuestions: 0,
-    title: "",
-    description: "",
-    question: "",
-    choices: [{ id: 0, choice: "", is_correct: false }],
-
-    scoreBoard: {
-      isVisible: false,
-      correctAnswers: 0,
-    },
-  });
+  const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
 
   const router = useRouter();
   const tab = router?.query?.tab;
@@ -167,6 +169,10 @@ const Content = ({ data }: ContentProps) => {
     });
   };
 
+  const handleContinueSessionClick = () => {
+    setQuizValues(DEFAULT_QUIZ_VALUES);
+  };
+
   const videoHTML = data?.media_embed?.rawData?.html;
   return (
     <div className="content-container">
@@ -274,7 +280,11 @@ const Content = ({ data }: ContentProps) => {
             <p className="assessment-modal-result-thanks">
               Thank you for completing this pre-assessment.
             </p>
-            <Button className="assessment-modal-result-button" type="primary">
+            <Button
+              onClick={handleContinueSessionClick}
+              className="assessment-modal-result-button"
+              type="primary"
+            >
               Continue session
             </Button>
           </div>
