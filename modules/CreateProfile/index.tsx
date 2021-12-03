@@ -13,8 +13,11 @@ import {
   CREATE_PROFILE_FORM_VALUES,
   defaultFormValues,
 } from "./helpers/interface";
+import useTranslation from "next-translate/useTranslation";
 
 const CreateProfile = () => {
+  const { t } = useTranslation("create-profile");
+
   const [country, setCountry] = useState("LB");
   const [isActive, setIsActive] = useState(false);
   const [storeData, setStoreData] = usePersistentState(
@@ -152,8 +155,8 @@ const CreateProfile = () => {
     emailAddress: data?.email ?? storeData.emailAddress,
     country: storeData.country,
     phoneNumber: storeData.phoneNumber,
-    gender: storeData.gender,
-    nationality: storeData.nationality,
+    gender: storeData?.gender ? storeData?.gender : undefined,
+    nationality: storeData?.nationality ? storeData.nationality : undefined,
     birthDate: {
       month: storeData.month,
       day: storeData.day,
@@ -169,10 +172,9 @@ const CreateProfile = () => {
         <div className="form-create-profile-container">
           <div className="form-container">
             <div className="form-title-container">
-              <div className="title-container">Create profile</div>
+              <div className="title-container">{t("createProfile")}</div>
               <div className="description-container">
-                Fill in your personal info and create your account to begin the
-                course.
+                {t("createProfileDescription")}
               </div>
             </div>
             <Form

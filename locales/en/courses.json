@@ -1,0 +1,10 @@
+{
+  "allUnits": "All Units",
+  "allUnitsDescription": "Complete each unit in order. As you complete a unit the following unit will be unlocked. Once all three units are complete, you will receive your certificate.",
+  "inProgress": "In Progress",
+  "inProgressDescription": "You are currently working on the following unit",
+  "completed": "Completed",
+  "completedDescription": "You have completed the following units.",
+  "certificate": "Certificate",
+  "certificateDescription": "Congratulations! Download your certificate of completion of the houkouki fi al 3amal course here."
+}

@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 const LeftSideMenu = () => {
+  const { t } = useTranslation("create-profile");
+
   const router = useRouter();
 
   const isActiveStepOne = router.query.steps === "1";
@@ -27,7 +29,7 @@ const LeftSideMenu = () => {
             <div
               className={`step-text ${isActiveStepOne ? "-active-text" : ""}`}
             >
-              Create your profile
+              {t("createYourProfile")}
             </div>
           </div>
           <div className="step-container">
@@ -41,13 +43,13 @@ const LeftSideMenu = () => {
             <div
               className={`step-text ${isActiveStepTwo ? "-active-text" : ""}`}
             >
-              Profile preview
+              {t("profilePreview")}
             </div>
           </div>
         </div>
 
         <div className="menu-title-container">
-          Rights & Responsibilities at Work
+          {t("rightsAndResponsibilities")}
         </div>
       </div>
     </div>
