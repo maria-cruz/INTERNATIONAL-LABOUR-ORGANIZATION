@@ -9,7 +9,6 @@ import IloLogo from "@public/images/ilo-logo.png";
 import UnicefLogo from "@public/images/unicef-logo.png";
 import Logo from "@public/images/supporters-logo.svg";
 import Carousel from "antd/lib/carousel";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const Partners = ({
   subheading = "This is a National Initiative with the Support of the Following Partners",

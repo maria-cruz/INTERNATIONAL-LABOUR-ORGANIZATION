@@ -1,6 +1,7 @@
 import CourseView from "@modules/CourseView";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
+import getUserId from "@common/methods/getUserId";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import parseMediaEmbed from "@common/methods/parseMediaEmbed";
 import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
@@ -39,6 +40,7 @@ interface CourseDataProps {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const jwt = await getJWT(ctx, true);
+  const userId = await getUserId(ctx);
   const slug = ctx?.query?.slug;
 
   const { data: courseData }: CourseDataProps = await axios.get(
@@ -50,6 +52,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
+  const unitId = courseData?.id;
+
   const { data: courseComments }: any = await axios.get(
     `${process.env.API_URL}/comments/unit:${courseData?.id}`,
     {
@@ -59,7 +63,26 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  // To Do: Create a save entry (post) if progress received from courseData is null
+  // Create a progress entry (post) if progress received from courseData is missing
+  if (!courseData?.progress) {
+    axios
+      .post(
+        `${process.env.API_URL}/progresses`,
+        {
+          unit: unitId,
+          user: userId,
+        },
+        {
+          headers: {
+            Authorization: jwt,
+          },
+        }
+      )
+      .then(() => {
+        console.log("Progress data has been created.");
+      })
+      .catch((err) => console.error(err));
+  }
 
   const completedTopics = courseData?.progress?.completed_topics ?? 0;
   const totalTopics = courseData?.progress?.total_topics ?? 1;
