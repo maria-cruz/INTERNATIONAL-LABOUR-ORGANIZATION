@@ -43,6 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const userId = await getUserId(ctx);
   const slug = ctx?.query?.slug;
 
+  let courseViewData;
   const { data: courseData }: CourseDataProps = await axios.get(
     `${process.env.API_URL}/units/me/${slug}`,
     {
@@ -52,7 +53,37 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  const unitId = courseData?.id;
+  courseViewData = courseData;
+
+  // Create a progress entry (post) if progress received from courseData is missing
+  if (!courseData?.progress) {
+    const unitId = courseData?.id;
+    const { data: courseProgress }: any = await axios.post(
+      `${process.env.API_URL}/progresses`,
+      {
+        unit: unitId,
+        user: userId,
+      },
+      {
+        headers: {
+          Authorization: jwt,
+        },
+      }
+    );
+
+    const progress = {
+      id: courseProgress?.id,
+      completed_topics: courseProgress?.topics?.length ?? 0,
+      total_topics: courseProgress?.unit?.topics?.length ?? 0,
+      topics: courseProgress?.topics ?? [],
+      unit: courseProgress?.unit?.id,
+    };
+
+    courseViewData = {
+      ...courseViewData,
+      progress,
+    };
+  }
 
   const { data: courseComments }: any = await axios.get(
     `${process.env.API_URL}/comments/unit:${courseData?.id}`,
@@ -62,27 +93,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
     }
   );
-
-  // Create a progress entry (post) if progress received from courseData is missing
-  if (!courseData?.progress) {
-    axios
-      .post(
-        `${process.env.API_URL}/progresses`,
-        {
-          unit: unitId,
-          user: userId,
-        },
-        {
-          headers: {
-            Authorization: jwt,
-          },
-        }
-      )
-      .then(() => {
-        console.log("Progress data has been created.");
-      })
-      .catch((err) => console.error(err));
-  }
 
   const completedTopics = courseData?.progress?.completed_topics ?? 0;
   const totalTopics = courseData?.progress?.total_topics ?? 1;
@@ -100,8 +110,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  const courseViewData: any = {
-    ...courseData,
+  courseViewData = {
+    ...courseViewData,
     topics: modifiedTopics,
   };
 
