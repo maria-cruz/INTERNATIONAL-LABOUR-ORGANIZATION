@@ -124,6 +124,7 @@ const CreateProfileForm = ({
               placeholder={" "}
               selectedSize={35.8}
               optionsSize={35.8}
+              blacklistCountries={true}
             />
           </Form.Item>
 
