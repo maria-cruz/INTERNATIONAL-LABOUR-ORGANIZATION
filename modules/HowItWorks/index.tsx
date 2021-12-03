@@ -4,7 +4,10 @@ import OpenBook from "@common/components/Icons/OpenBook";
 import Trophy from "@common/components/Icons/Trophy";
 import Button from "antd/lib/button";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 const HowItWorks = () => {
+  const { t } = useTranslation("how-it-works");
+
   return (
     <div className="how-it-works-container">
       <div className="how-it-works">
@@ -30,11 +33,11 @@ const HowItWorks = () => {
                 <Flag fill="#EE161F" className="flag-icon" />
               </div>
               <div className="start-unit">
-                <div className="description-title-container">Start unit</div>
+                <div className="description-title-container">
+                  {t("startUnit")}
+                </div>
                 <div className="description-container">
-                  The huqouqi fil 3amal course is organized into 3 units. As you
-                  complete a unit, the next unit will unlock. Each unit includes
-                  learning objectives, topics, Q&A and self practice resources.
+                  {t("startUnitDescription")}
                 </div>
               </div>
             </div>
@@ -44,12 +47,10 @@ const HowItWorks = () => {
               </div>
               <div className="assessments">
                 <div className="description-title-container">
-                  Learn and complete assessments
+                  {t("learnAndCompleteAssessments")}
                 </div>
                 <div className="description-container">
-                  Complete each topic in unit to progress. Each topic includes a
-                  pre-assessment, video instruction, exercises, and a final
-                  assessment of your learning to advance.
+                  {t("learnAndCompleteAssessmentsDescription")}
                 </div>
               </div>
             </div>
@@ -59,12 +60,10 @@ const HowItWorks = () => {
               </div>
               <div className="get-certified">
                 <div className="description-title-container">
-                  Get certified!
+                  {t("getCertified")}
                 </div>
                 <div className="description-container">
-                  Once you complete all topics within the three units with an
-                  assessment of 70% or higher, you will complete the course and
-                  unlock your huqouqi fil 3amal certificate!
+                  {t("getCertifiedDescription")}
                 </div>
               </div>
             </div>

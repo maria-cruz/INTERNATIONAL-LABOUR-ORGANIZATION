@@ -5,6 +5,7 @@ import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 import RightButton from "./ScrollRightButton";
 import ScrollLeftButton from "./ScrollLeftButton";
+import useTranslation from "next-translate/useTranslation";
 
 const CategorySlide = ({
   className = "",
@@ -12,6 +13,7 @@ const CategorySlide = ({
   currentCategory,
   categories,
 }) => {
+  const { t } = useTranslation("courses");
   const [activeCategory, setActiveCategory] = useState("");
   const [scrollStatus, setScrollStatus] = useState({
     isStartScroll: true,
@@ -77,7 +79,7 @@ const CategorySlide = ({
     <div className={`result-category-container ${className}`}>
       <SimpleBar className="result-category" ref={scrollElementRef}>
         {categories.map((category, index) => {
-          const categoryLabel = category?.label || "";
+          const categoryLabel = t(category?.key) || "";
           const categoryValue = category?.value || "";
           const isCategoryActive = categoryValue === activeCategory;
           return (

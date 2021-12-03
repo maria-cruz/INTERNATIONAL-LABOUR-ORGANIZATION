@@ -5,10 +5,10 @@ import CategorySlide from "@common/components/CategorySlide";
 const PATHNAME = "/courses";
 const QUERY_KEY = "category";
 const CATEGORIES = [
-  { label: "All Units", value: "all" },
-  { label: "In Progress", value: "in-progress" },
-  { label: "Completed", value: "completed" },
-  { label: "Certificate", value: "certificate" },
+  { key: "allUnits", value: "all" },
+  { key: "inProgress", value: "in-progress" },
+  { key: "completed", value: "completed" },
+  { key: "certificate", value: "certificate" },
 ];
 
 const CoursesFilter = () => {

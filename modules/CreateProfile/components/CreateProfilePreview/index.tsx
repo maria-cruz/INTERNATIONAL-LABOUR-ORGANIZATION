@@ -6,12 +6,15 @@ import { MONTHS } from "@modules/CreateProfile/helpers/constants";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { defaultFormValues } from "@modules/CreateProfile/helpers/interface";
+import useTranslation from "next-translate/useTranslation";
 
 interface CreateProfilePreviewProps {
   onSubmitClick: ButtonProps["onClick"];
 }
 
 const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
+  const { t } = useTranslation("create-profile");
+
   const [storeData] = usePersistentState("create-profile", defaultFormValues);
 
   const router = useRouter();
@@ -35,10 +38,9 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
     <div className="create-profile-preview-container">
       <div className="create-profile-preview">
         <div className="create-profile-title">
-          <div className="title-container">Profile preview</div>
+          <div className="title-container">{t("profilePreview")}</div>
           <div className="description-container">
-            Fill in your personal info and create your account to begin the
-            course.
+            {t("createProfileDescription")}
           </div>
         </div>
         <div className="name-text">{`${storeData.firstName} ${storeData.lastName}`}</div>
@@ -47,7 +49,7 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
         </div>
         <div className="create-profile-preview-column">
           <div className="email-container">
-            <div className="text">Email</div>
+            <div className="text">{t("emailNotRequired")}</div>
             <div className="sub-text email-space-bottom">
               {storeData.emailAddress}
             </div>
@@ -56,27 +58,27 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
             </div>
           </div>
           <div className="organization-name-container">
-            <div className="text">Organization name</div>
+            <div className="text">{t("organizationName")}</div>
             <div className="sub-text">{storeData.organizationName}</div>
           </div>
         </div>
         <div className="create-profile-preview-column preview-space-bottom">
           <div className="phone-number-container">
-            <div className="text">Your phone number</div>
+            <div className="text">{t("phoneNumber")}</div>
             <div className="sub-text">{storeData.phoneNumber}</div>
           </div>
           <div className="birthday-container">
-            <div className="text">Date of birth</div>
+            <div className="text">{t("dateOfBirthNotRequired")}</div>
             <div className="sub-text">{`${month} ${storeData.day} ${storeData.year}`}</div>
           </div>
         </div>
         <div className="create-profile-preview-column space-bottom">
           <div className="gender-container">
-            <div className="text">Sex</div>
+            <div className="text">{t("sex")}</div>
             <div className="sub-text">{storeData.gender}</div>
           </div>
           <div className="nationality-container">
-            <div className="text">Nationality</div>
+            <div className="text">{t("nationality")}</div>
             <div className="sub-text">{nationality}</div>
           </div>
         </div>

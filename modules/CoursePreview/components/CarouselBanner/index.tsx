@@ -8,6 +8,7 @@ import ForwardArrow from "@common/components/Icons/ForwardArrow";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import MobileBanner from "@public/images/carousel-banner-mobile.jpg";
+import useTranslation from "next-translate/useTranslation";
 interface CarouselBannerProps {
   unit?: number | string;
   title?: string;
@@ -21,6 +22,7 @@ const CarouselBanner = ({
   prevSlug,
   nextSlug,
 }: CarouselBannerProps) => {
+  const { t } = useTranslation("courses-preview");
   const router = useRouter();
   const slug = router?.query?.slug;
 
@@ -74,7 +76,7 @@ const CarouselBanner = ({
           type="primary"
           className="start-btn"
         >
-          Start Lesson
+          {t("startLesson")}
         </Button>
       </div>
     </div>

@@ -4,7 +4,6 @@ import Input from "antd/lib/input";
 import Select from "antd/lib/select";
 import Button from "antd/lib/button";
 import Layout, { Header } from "@common/components/Layout";
-import { SAMPLE_DATA_ORGANIZATION_TYPE } from "./helpers/constants";
 import ReactFlagsSelect from "react-flags-select";
 import NationalitiesSelect from "@common/components/NationalitiesSelect";
 import { GENDER } from "@modules/CreateProfile/helpers/constants";
@@ -15,6 +14,8 @@ import axios from "axios";
 import router from "next/router";
 import { parseCookies } from "nookies";
 import { EDIT_PROFILE_FORM_VALUES } from "./helpers/interface";
+import useTranslation from "next-translate/useTranslation";
+import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
 
 interface EditProfileData {
   nationality: string;
@@ -33,6 +34,8 @@ interface EditProfileProps {
 }
 
 const EditProfile = ({ editProfileData }: EditProfileProps) => {
+  const { t } = useTranslation("create-profile");
+
   const cookies = parseCookies();
 
   const [country, setCountry] = useState("LB");
@@ -135,8 +138,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
             <div className="form-title-container">
               <div className="title-container">Edit profile</div>
               <div className="description-container">
-                Edit your profile here. This is how other users see you across
-                the site.
+                {t("editProfileDescription")}
               </div>
             </div>
             <Form
@@ -144,11 +146,12 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
               layout="vertical"
               initialValues={intialValues}
               onFinish={handleSaveChangesFinish}
+              hideRequiredMark={true}
             >
               <div className="edit-profile-form-container">
                 <div className="form-column-container">
                   <Form.Item
-                    label="First name*"
+                    label={t("firstName")}
                     name="firstName"
                     className="form-width"
                     rules={[
@@ -161,7 +164,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     <Input className="form-input" />
                   </Form.Item>
                   <Form.Item
-                    label="Last name*"
+                    label={t("firstName")}
                     name="lastName"
                     className="form-width"
                     rules={[
@@ -176,7 +179,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                 </div>
                 <div className="form-column-container">
                   <Form.Item
-                    label="Organization type*"
+                    label={t("organizationType")}
                     name="organizationType"
                     className="form-width"
                     rules={[
@@ -194,14 +197,14 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     >
                       {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
                         <Select.Option value={item.value} key={item.value}>
-                          {item.label}
+                          {item.key}
                         </Select.Option>
                       ))}
                     </Select>
                   </Form.Item>
 
                   <Form.Item
-                    label="Organization name"
+                    label={t("organizationName")}
                     name="organizationName"
                     className="form-width"
                   >
@@ -209,7 +212,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                   </Form.Item>
                 </div>
                 <Form.Item
-                  label="Email address*"
+                  label={t("email")}
                   name="emailAddress"
                   rules={[
                     {
@@ -224,7 +227,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                 <div className="form-column-container">
                   <div className="country-and-phone-number-container">
                     <Form.Item
-                      label="Country"
+                      label={t("country")}
                       name="country"
                       className="form-width-country"
                     >
@@ -241,7 +244,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     </Form.Item>
 
                     <Form.Item
-                      label="Your phone number"
+                      label={t("phoneNumber")}
                       name="phoneNumber"
                       className="form-width-phone-number"
                     >
@@ -249,7 +252,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     </Form.Item>
                   </div>
                   <Form.Item
-                    label="Date of birthday*"
+                    label={t("dateOfBirth")}
                     name="birthDate"
                     className="form-width-birthdate"
                     rules={[{ validator: validationOnBirthDate }]}
@@ -259,7 +262,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                 </div>
                 <div className="form-column-container">
                   <Form.Item
-                    label="Gender*"
+                    label={t("sex")}
                     name="gender"
                     className="form-width"
                     rules={[
@@ -278,14 +281,14 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     >
                       {GENDER.map((gender) => (
                         <Select.Option value={gender.value} key={gender.value}>
-                          {gender.label}
+                          {t(gender.key)}
                         </Select.Option>
                       ))}
                     </Select>
                   </Form.Item>
 
                   <Form.Item
-                    label="Nationality*"
+                    label={t("nationality")}
                     name="nationality"
                     className="form-width"
                     rules={[
