@@ -10,6 +10,7 @@ import BirthDate from "@common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
 import useTranslation from "next-translate/useTranslation";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
+import { customLabels } from "@modules/CreateProfile/helpers/countryCustomLabel";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
@@ -120,11 +121,13 @@ const CreateProfileForm = ({
               selected={flagCode}
               onSelect={onFlagSelect}
               showSelectedLabel={false}
-              showOptionLabel={false}
               placeholder={" "}
               selectedSize={35.8}
-              optionsSize={35.8}
-              blacklistCountries={true}
+              optionsSize={16}
+              customLabels={customLabels}
+              countries={["IL"]}
+              blacklistCountries
+              searchable={true}
             />
           </Form.Item>
 
