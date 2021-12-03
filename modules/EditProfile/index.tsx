@@ -50,7 +50,6 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
 
   const year = moment(editProfileData?.birth_date).year();
 
-  console.log(month);
   const intialValues = {
     firstName: editProfileData?.given_name,
     lastName: editProfileData?.family_name,
