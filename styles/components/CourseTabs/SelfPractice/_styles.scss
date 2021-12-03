@@ -23,27 +23,55 @@
     align-items: center;
     justify-content: center;
     color: $faux-green;
+    border: none;
+    box-shadow: none;
+    min-width: 6rem;
+
     &.active,
     &:hover,
     &:focus {
       border-color: $white;
     }
-  }
 
-  .download-btn {
-    border: none;
-    box-shadow: none;
+    @include view-size(tab-port) {
+      min-width: 10.8rem;
+    }
   }
 
   .download-btn svg {
-    margin-right: 1.5rem;
+    margin-right: 0;
+    @include view-size(tab-port) {
+      margin-right: 1.5rem;
+    }
   }
-
+  .download-btn p {
+    display: none;
+    @include view-size(tab-port) {
+      display: block;
+    }
+  }
   .file-name-contianer {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 0.4rem;
+    line-height: 1.3;
+    max-width: 90rem;
+    overflow: hidden;
+    width: 45vw;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    @include view-size(450px) {
+      width: 55vw;
+    }
+    @include view-size(tab-port) {
+      width: 48vw;
+    }
     @include view-size(tab-land) {
+      max-height: 5rem;
+      width: 55vw;
       font-size: 1.8rem;
     }
   }
@@ -60,14 +88,17 @@
     justify-content: space-between;
     max-width: 123.3rem;
     width: 100%;
-    height: 8.5rem;
+    height: auto;
     align-items: center;
     border: 0.1rem solid $silver;
     align-items: center;
     border-radius: 0.4rem;
-    padding: 2.5rem 3.5rem 2.5rem 2.7rem;
     background: $white;
     margin-bottom: 1rem;
+    padding: 1.5rem;
+    @include view-size(tab-port) {
+      padding: 2.5rem 3.5rem 2.5rem 2.7rem;
+    }
   }
 
   .file-item-container {

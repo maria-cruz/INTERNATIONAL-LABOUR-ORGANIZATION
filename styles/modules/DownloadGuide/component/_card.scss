@@ -74,9 +74,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    height: -webkit-fill-available;
-    line-clamp: 3;
+    -webkit-line-clamp: 2;
+    height: 12rem;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
     @include view-size(tab-port) {
       font-size: 3.4rem;
       margin-bottom: 2rem;
