@@ -6,6 +6,7 @@ import LogoFooter from "@public/images/logo-footer.svg";
 import useTranslation from "next-translate/useTranslation";
 import Facebook from "@common/components/Icons/Facebook";
 import Twitter from "@common/components/Icons/Twitter";
+import LinkedIn from "@common/components/Icons/LinkedIn";
 
 const Footer = () => {
   const { t } = useTranslation("common");
@@ -34,21 +35,27 @@ const Footer = () => {
           </div>
           <div className={styles["menu"]}>
             <span className={styles["menu-title"]}>{t("aboutUs")}</span>
-            <Link href={"/contact-us"}>{t("contactUs")}</Link>
+            <a className={styles["disable-link"]}>{t("contactUs")}</a>
           </div>
         </div>
 
         <div className={styles["menu"]}>
           <span className={styles["menu-title"]}>{t("follow")}</span>
           <div className={styles["link-container"]}>
-            <Link href={"/sign-up"} passHref>
-              <Facebook fill="#ffffff" width="18" height="18" />
+            <Link href={"/sign-up"}>
+              <a>
+                <Facebook fill="#ffffff" width="18" height="18" />
+              </a>
             </Link>
-            <Link href={"/log-in"} passHref>
-              <Twitter fill="#ffffff" width="18" height="18" />
+            <Link href={"/log-in"}>
+              <a>
+                <Twitter fill="#ffffff" width="18" height="18" />
+              </a>
             </Link>
-            <Link href={"/download-guide"} passHref>
-              <Twitter fill="#ffffff" width="18" height="18" />
+            <Link href={"/download-guide"}>
+              <a>
+                <LinkedIn fill="#ffffff" width="18" height="18" />
+              </a>
             </Link>
           </div>
         </div>
