@@ -11,6 +11,7 @@ import DownArrow from "@common/components/Icons/DownArrow";
 import useTranslation from "next-translate/useTranslation";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
 import { customLabels } from "@common/constants/countryCustomLabel";
+import router from "next/router";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
@@ -44,9 +45,11 @@ const CreateProfileForm = ({
     return Promise.resolve();
   };
 
+  const language = router.locale;
+
   return (
     <div className="create-profile-form-container">
-      <div className="form-column-container">
+      <div className="form-column-container" lang={language}>
         <Form.Item
           label={t("firstName")}
           name="firstName"
@@ -196,7 +199,7 @@ const CreateProfileForm = ({
           htmlType="submit"
           type="primary"
         >
-          Continue
+          {t("continue")}
         </Button>
       </div>
     </div>

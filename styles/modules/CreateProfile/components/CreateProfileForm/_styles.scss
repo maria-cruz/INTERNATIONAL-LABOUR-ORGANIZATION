@@ -3,6 +3,20 @@
     display: flex;
     column-gap: 3rem;
     flex-wrap: wrap;
+
+    &:lang(ar) {
+      & > .ant-form-item-label {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+
+    &:lang(en) {
+      & > .ant-form-item-label {
+        display: flex;
+        flex-direction: row;
+      }
+    }
   }
 
   .form-width {
