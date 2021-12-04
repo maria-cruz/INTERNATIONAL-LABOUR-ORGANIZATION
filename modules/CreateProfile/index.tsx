@@ -108,6 +108,7 @@ const CreateProfile = () => {
         }
       )
       .then(function () {
+        sessionStorage.clear();
         router?.push("/how-it-works");
       })
       .catch(function (error) {

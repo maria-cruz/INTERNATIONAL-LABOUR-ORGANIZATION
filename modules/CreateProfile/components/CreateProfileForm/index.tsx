@@ -10,7 +10,7 @@ import BirthDate from "@common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
 import useTranslation from "next-translate/useTranslation";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
-import { customLabels } from "@modules/CreateProfile/helpers/countryCustomLabel";
+import { customLabels } from "@common/constants/countryCustomLabel";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
