@@ -11,6 +11,10 @@ const updateProgress = (
   jwt: string,
   callback?: () => void
 ) => {
+  if (!currentProgressData || !newProgressData) {
+    console.error("Invalid props in updateProgress");
+  }
+
   const progressId = currentProgressData?.id ?? 0;
   const currentTopics = currentProgressData?.topics ?? [];
 

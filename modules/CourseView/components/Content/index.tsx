@@ -34,11 +34,7 @@ const DEFAULT_QUIZ_VALUES = {
   },
 };
 
-const Content = ({
-  currentContentData,
-  currentUnitId,
-  currentProgressData,
-}: ContentProps) => {
+const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
   const [answers, setAnswers] = useState<[] | string[]>([]);
   const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
   const jwt = getJWT(undefined, true);

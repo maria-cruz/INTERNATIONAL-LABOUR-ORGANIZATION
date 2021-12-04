@@ -68,6 +68,7 @@ const SessionCollapse = ({
                 title={topic?.title || ""}
                 id={topic?.id}
                 isCompleted={isVideoCompleted}
+                currentProgressData={currentProgressData}
               />
               <PostAssessment
                 id={topic?.id}

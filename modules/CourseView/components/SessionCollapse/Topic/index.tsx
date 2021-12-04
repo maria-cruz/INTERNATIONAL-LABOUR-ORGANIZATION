@@ -4,13 +4,23 @@ import ParamLink from "@common/components/ParamLink";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
+import updateProgress from "@common/methods/updateProgress";
+import getJWT from "@common/methods/getJWT";
+
 interface TopicProps {
   id: number;
   title: string;
   isCompleted?: boolean;
+  currentProgressData: any;
 }
 
-const Topic = ({ title, id, isCompleted = false }: TopicProps) => {
+const Topic = ({
+  title,
+  id,
+  isCompleted = false,
+  currentProgressData,
+}: TopicProps) => {
+  const jwt = getJWT(undefined, true);
   const initialViewed = isCompleted;
   const [isViewed, setIsViewed] = useState(initialViewed);
 
@@ -21,6 +31,17 @@ const Topic = ({ title, id, isCompleted = false }: TopicProps) => {
 
   const handleLinkClick = () => {
     setIsViewed(true);
+    const newProgressData = {
+      topic_id: id,
+      videos: [
+        {
+          video_id: "1",
+          is_seen: true,
+        },
+      ],
+    };
+
+    updateProgress(newProgressData, currentProgressData, jwt);
   };
 
   return (
