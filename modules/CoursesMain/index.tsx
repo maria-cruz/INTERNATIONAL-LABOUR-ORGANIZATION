@@ -6,29 +6,31 @@ import CardSampleImage from "@public/images/card-sample-3.jpg";
 import CoursesFilter from "./components/CoursesFilter";
 import { useRouter } from "next/router";
 import CoursesCertificate from "./components/CoursesCertificate";
+import useTranslation from "next-translate/useTranslation";
 
 const TITLE_DESCRIPTION = [
   {
-    subheading:
-      "Complete each unit in order. As you complete a unit the following unit will be unlocked. Once all three units are complete, you will receive your certificate.",
+    key: "allUnitsDescription",
     route: "all",
   },
   {
-    subheading: "You are currently working on the following unit",
+    key: "inProgressDescription",
     route: "in-progress",
   },
   {
-    subheading: "You have competed the following units.",
+    key: "completedDescription",
     route: "completed",
   },
   {
-    subheading:
-      "Congratulations! Download your certificate of completion of the huqouqi fil 3amal course here.",
+    key: "certificateDescription",
     route: "certificate",
   },
 ];
 
 const CoursesMain = ({ allCourseCardsData }: any) => {
+  const { t, lang } = useTranslation("courses");
+
+  console.log(lang);
   const router = useRouter();
 
   const filteredTitleDescriptions = TITLE_DESCRIPTION.filter(
@@ -62,7 +64,7 @@ const CoursesMain = ({ allCourseCardsData }: any) => {
         <CoursesFilter />
         {filteredTitleDescriptions.map((titleDescription, idx) => (
           <div className="courses-description" key={idx}>
-            {titleDescription.subheading}
+            {t(titleDescription.key)}
           </div>
         ))}
 

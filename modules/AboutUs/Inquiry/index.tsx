@@ -7,6 +7,7 @@ import Input from "antd/lib/input";
 import Button from "antd/lib/button";
 import SuccessMessage from "@common/components/SuccessMessage";
 import axios from "axios";
+import useTranslation from "next-translate/useTranslation";
 
 interface HandleContactsProps {
   firstName: string;
@@ -54,6 +55,7 @@ const Inquiry = () => {
       })
       .catch((err) => console.error(err));
   };
+  const { t } = useTranslation("about-us");
 
   return (
     <div className="inquiry-container">
@@ -74,7 +76,7 @@ const Inquiry = () => {
                 <Form.Item
                   className="first-name-container"
                   name="firstName"
-                  label="First name"
+                  label={t("firstName")}
                   rules={[{ required: true }]}
                 >
                   <Input className="inquiry-input" />
@@ -83,7 +85,7 @@ const Inquiry = () => {
                 <Form.Item
                   className="last-name-container"
                   name="lastName"
-                  label="Last name"
+                  label={t("lastName")}
                   rules={[{ required: true }]}
                 >
                   <Input className="inquiry-input" />
@@ -93,7 +95,7 @@ const Inquiry = () => {
               <Form.Item
                 className="email-container"
                 name="email"
-                label="Email"
+                label={t("email")}
                 rules={[{ type: "email" }]}
               >
                 <Input className="inquiry-input" />
@@ -102,7 +104,7 @@ const Inquiry = () => {
               <Form.Item
                 name="message"
                 className="message-container"
-                label="Message"
+                label={t("message")}
               >
                 <Input.TextArea className="message-input" />
               </Form.Item>
@@ -112,7 +114,7 @@ const Inquiry = () => {
                   htmlType="submit"
                   className="inquire-btn"
                 >
-                  Send message
+                  {t("sendMessage")}
                 </Button>
               </Form.Item>
             </Form>
@@ -121,9 +123,9 @@ const Inquiry = () => {
 
         <div className="info-container">
           <div className="contact-us-wrapper">
-            <div className="label _section-label">Contact us</div>
+            <div className="label _section-label">{t("contactUs")}</div>
             <div className="secondary-label _subheading-label">
-              We’d love to hear from you
+              {t("contactUsSubheading")}
             </div>
 
             <div className="details-wrappper">

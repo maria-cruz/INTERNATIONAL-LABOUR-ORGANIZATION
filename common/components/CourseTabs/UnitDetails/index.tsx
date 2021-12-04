@@ -3,6 +3,7 @@ import Image from "next/image";
 import DefaultInstructorProfile from "@public/images/girl-profile.jpeg";
 import Progress from "antd/lib/progress";
 import CheckCircleFilled from "@ant-design/icons/CheckCircleFilled";
+import useTranslation from "next-translate/useTranslation";
 
 type ObjectiveType = {
   objective: string;
@@ -25,6 +26,7 @@ const UnitDetails = ({
   description = "",
   objectives = [],
 }: UnitDetailsProps) => {
+  const { t } = useTranslation("courses-preview");
   const hasObjectives = objectives.length > 0;
   const avatarSrc = !!instructorAvatar
     ? instructorAvatar
@@ -42,10 +44,11 @@ const UnitDetails = ({
         </div>
 
         <div className="topic-container">
-          Unit topics: <span className="digit-wrapper">{topicsCount}</span>
+          {t("unitTopics")}:{" "}
+          <span className="digit-wrapper">{topicsCount}</span>
         </div>
         <div className="progress-wrapper">
-          Progress:
+          {t("progress")}:
           <Progress
             percent={progress}
             strokeColor="#E3FFF5"
@@ -57,7 +60,7 @@ const UnitDetails = ({
 
       {hasObjectives ? (
         <div className="learning-objectives-container">
-          <div className="_subheading-label">Learning objectives</div>
+          <div className="_subheading-label">{t("learningObjectives")}</div>
           {objectives.map((objective, index) => (
             <div className="list-item" key={index}>
               <CheckCircleFilled

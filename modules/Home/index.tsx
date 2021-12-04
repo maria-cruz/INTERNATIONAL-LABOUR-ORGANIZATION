@@ -56,7 +56,12 @@ const Home = () => {
         <div className={styles["steps-container"]}>
           <div className={styles["step-container"]}>
             <div className={styles["logo"]}>
-              <Image src="/images/flag.svg" width={33} height={35} />
+              <Image
+                src="/images/flag.svg"
+                width={33}
+                height={35}
+                alt={"flag.svg"}
+              />
             </div>
             <div className={styles["text-group"]}>
               <div className={styles["title"]}>{t("title")}</div>
@@ -66,7 +71,12 @@ const Home = () => {
 
           <div className={styles["step-container"]}>
             <div className={styles["logo"]}>
-              <Image src="/images/open-book.svg" width={33} height={35} />
+              <Image
+                src="/images/open-book.svg"
+                width={33}
+                height={35}
+                alt={"open-book.svg"}
+              />
             </div>
             <div className={styles["text-group"]}>
               <div className={styles["title"]}>{t("assessmentsTitle")}</div>
@@ -78,7 +88,12 @@ const Home = () => {
 
           <div className={styles["step-container"]}>
             <div className={styles["logo"]}>
-              <Image src="/images/trophy.svg" width={33} height={35} />
+              <Image
+                src="/images/trophy.svg"
+                width={33}
+                height={35}
+                alt={"trophy.svg"}
+              />
             </div>
             <div className={styles["text-group"]}>
               <div className={styles["title"]}>{t("certifiedTitle")}</div>

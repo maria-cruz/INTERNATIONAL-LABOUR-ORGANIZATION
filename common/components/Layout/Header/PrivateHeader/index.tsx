@@ -105,7 +105,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       style={{ marginBottom: gap }}
     >
       <div className={"left-container"}>
-        <NavLink href="/">
+        <NavLink href="/courses?category=all">
           <div className={"logo-container"}>
             <Image src={Logo} height={79} alt="logo.svg" />
           </div>

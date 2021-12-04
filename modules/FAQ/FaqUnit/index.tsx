@@ -4,6 +4,7 @@ import SearchOutlined from "@ant-design/icons/SearchOutlined";
 import Select from "antd/lib/select";
 import CollapseSection from "../components/CollapseSection";
 import { FaqsProps, Faq } from "../types/index";
+import useTranslation from "next-translate/useTranslation";
 
 interface FaqUnitProps {
   faqData: FaqsProps;
@@ -29,6 +30,7 @@ const FaqUnit: VFC<FaqUnitProps> = ({ faqData }) => {
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value.toLowerCase());
   };
+  const { t } = useTranslation("faq");
 
   return (
     <div className="faq-unit-container">
@@ -36,7 +38,7 @@ const FaqUnit: VFC<FaqUnitProps> = ({ faqData }) => {
 
       <section className="unit-body-container">
         <div className="search-question-container">
-          <div className="search-label">Search questions</div>
+          <div className="search-label">{t("searchQuestions")}</div>
           <Input.Search
             className="input-search"
             prefix={<SearchOutlined />}
@@ -44,13 +46,13 @@ const FaqUnit: VFC<FaqUnitProps> = ({ faqData }) => {
           />
         </div>
         <div className="dropdown-container">
-          <div className="select-label">Topic</div>
+          <div className="select-label">{t("topic")}</div>
           <Select
             className="form-select"
             onChange={handleTopicChange}
             value={topicId}
           >
-            <Select.Option value={0}>All Topics</Select.Option>
+            <Select.Option value={0}>{t("allTopics")}</Select.Option>
             {topics.map((topic, idx: number) => {
               const topicTitle = topic?.title ?? "";
               return (

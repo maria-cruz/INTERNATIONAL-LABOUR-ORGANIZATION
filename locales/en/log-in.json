@@ -1,10 +1,12 @@
 {
   "rights": "Rights",
+  "and": "&",
   "responsibilities": "Responsibilities",
+  "at": "at",
   "work": "Work",
   "log-in": "Log in",
   "signUpSubText": "Don't have an account?",
-  "sign-up": "Sign up",
+  "signUp": "Sign up",
   "emailAddress": "Email Address",
   "password": "Password",
   "forgotPassword": "Forgot password?"

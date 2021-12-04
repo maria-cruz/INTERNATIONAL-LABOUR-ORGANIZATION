@@ -3,7 +3,7 @@ import Button from "antd/lib/button";
 import File from "@common/components/Icons/File";
 import DownloadOutlined from "@common/components/Icons/DownloadOutlined";
 import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
-
+import Tooltip from "antd/lib/tooltip";
 export interface Files {
   url?: string;
   name?: string;
@@ -34,7 +34,9 @@ const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
               <div className="file-item-container">
                 <File fill="#007A50" width="4.1rem" height="4.1rem" />
                 <div className="file-details-wrapper">
-                  <div className="file-name-contianer">{filename}</div>
+                  <Tooltip placement="topLeft" title={filename}>
+                    <div className="file-name-contianer">{filename}</div>
+                  </Tooltip>
                   <div className="label-container">{fileSize}</div>
                 </div>
               </div>
@@ -46,7 +48,7 @@ const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
                       <DownloadOutlined width="24" height="24" fill="#00B274" />
                     }
                   >
-                    Download
+                    <p>Download</p>
                   </Button>
                 </a>
               </div>
