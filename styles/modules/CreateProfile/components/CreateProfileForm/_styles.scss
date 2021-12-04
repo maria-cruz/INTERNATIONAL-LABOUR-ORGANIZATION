@@ -3,20 +3,6 @@
     display: flex;
     column-gap: 3rem;
     flex-wrap: wrap;
-
-    &:lang(ar) {
-      & > .ant-form-item-label {
-        display: flex;
-        flex-direction: row-reverse;
-      }
-    }
-
-    &:lang(en) {
-      & > .ant-form-item-label {
-        display: flex;
-        flex-direction: row;
-      }
-    }
   }
 
   .form-width {
@@ -24,6 +10,18 @@
     min-width: 28rem;
 
     @include view-size(tab-port) {
+    }
+  }
+
+  &:lang(ar) {
+    .ant-form-item-label {
+      text-align: end;
+    }
+  }
+
+  &:lang(en) {
+    .ant-form-item-label {
+      text-align: start;
     }
   }
 
@@ -44,6 +42,14 @@
 
   .form-input {
     height: 5rem;
+
+    &:lang(ar) {
+      direction: rtl;
+    }
+
+    &:lang(en) {
+      direction: ltr;
+    }
   }
 
   /* Column */
@@ -73,6 +79,12 @@
     justify-content: flex-end;
     margin-top: 1rem;
 
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+    &:lang(en) {
+      flex-direction: row;
+    }
     @include view-size(tab-land) {
       margin-top: 5rem;
     }
@@ -91,6 +103,10 @@
 
   .form-select-organization-type {
     height: 5rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .ant-select-selector {
@@ -109,8 +125,54 @@
 
   //ANTD
 
+  .ant-select-selection-item {
+    &:lang(ar) {
+      direction: rtl;
+    }
+
+    &:lang(en) {
+      direction: ltr;
+    }
+  }
   .ant-select-arrow {
     right: 1.6rem;
+
+    &:lang(ar) {
+      left: 1.1rem;
+    }
+
+    &:lang(en) {
+      left: auto;
+    }
+  }
+
+  .ant-select-selection-placeholder {
+    &:lang(ar) {
+      direction: rtl;
+    }
+
+    &:lang(en) {
+      direction: ltr;
+    }
+  }
+
+  .ant-picker-input {
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+
+    &:lang(en) {
+      flex-direction: row;
+    }
+    > input {
+      &:lang(ar) {
+        direction: rtl;
+      }
+
+      &:lang(en) {
+        direction: ltr;
+      }
+    }
   }
   .ant-form-item-explain-error > div {
     height: 1rem;

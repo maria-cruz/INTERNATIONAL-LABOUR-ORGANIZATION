@@ -49,7 +49,7 @@ const CreateProfileForm = ({
 
   return (
     <div className="create-profile-form-container">
-      <div className="form-column-container" lang={language}>
+      <div className="form-column-container">
         <Form.Item
           label={t("firstName")}
           name="firstName"
@@ -91,6 +91,9 @@ const CreateProfileForm = ({
         >
           <Select
             className="form-select-organization-type"
+            dropdownClassName={
+              language === "ar" ? "create-profile-dropdown" : ""
+            }
             suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
           >
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
@@ -167,7 +170,12 @@ const CreateProfileForm = ({
             className="form-select-organization-type"
             placeholder={t("pleaseSelect")}
             suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
+            dropdownClassName={
+              language === "ar" ? "create-profile-dropdown" : ""
+            }
           >
+            <DownArrow width={"1.3rem"} height={"1.3rem"} />
+
             {GENDER.map((gender) => (
               <Select.Option value={gender.value} key={gender.value}>
                 {t(gender.key)}

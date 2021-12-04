@@ -44,8 +44,10 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
           </div>
         </div>
         <div className="name-text">{`${storeData.firstName} ${storeData.lastName}`}</div>
-        <div className="organization-type-text">
-          {storeData.organizationType}
+        <div className="organization-type-container">
+          <div className="organization-type-text">
+            {storeData.organizationType}
+          </div>
         </div>
         <div className="create-profile-preview-column">
           <div className="email-container">
@@ -88,14 +90,14 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
             type="link"
             onClick={handleBackClick}
           >
-            Back
+            {t("back")}
           </Button>
           <Button
             className="preview-button"
             type="primary"
             onClick={onSubmitClick}
           >
-            Submit
+            {t("submit")}
           </Button>
         </div>
       </div>
