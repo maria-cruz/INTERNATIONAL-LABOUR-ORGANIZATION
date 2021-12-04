@@ -103,7 +103,10 @@ const CourseView = ({
         </header>
 
         <ProgressTracker percentage={26} />
-        <SessionCollapse topics={data?.topics} />
+        <SessionCollapse
+          topics={data?.topics}
+          currentProgressData={currentProgressData}
+        />
       </div>
     </div>
   );

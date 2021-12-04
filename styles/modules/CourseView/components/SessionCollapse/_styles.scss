@@ -87,6 +87,10 @@
       background: $frosted-mint;
     }
 
+    .icon svg {
+      fill: $manatee;
+    }
+
     &.completed .icon svg {
       fill: $tropical-rain-forest;
     }
@@ -99,12 +103,8 @@
     text-overflow: ellipsis;
   }
 
-  .session-panel-item > .icon {
+  .session-panel-item .icon {
     display: flex;
     align-items: center;
-
-    > svg {
-      fill: $manatee;
-    }
   }
 }
