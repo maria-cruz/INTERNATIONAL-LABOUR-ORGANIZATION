@@ -22,7 +22,7 @@ const CourseTabs = ({
   unitQandAProps,
   unitDownloadableFilesProps,
 }: CourseTabsProps) => {
-  const { t } = useTranslation("courses-preview");
+  const { t } = useTranslation("common");
 
   return (
     <Tabs className="tab-container" defaultActiveKey="1">
