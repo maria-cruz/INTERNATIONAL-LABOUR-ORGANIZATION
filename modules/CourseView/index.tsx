@@ -54,7 +54,7 @@ const CourseView = ({
   const router = useRouter();
   const slug = router?.query?.slug;
   const currentUnitId = data?.id ?? null;
-
+  const currentProgressData = data?.progress;
   const currentContentData = data.topics.find(
     (topic) => router?.query?.topic == `${topic?.id}`
   );
@@ -77,7 +77,7 @@ const CourseView = ({
         <Content
           currentContentData={currentContentData}
           currentUnitId={currentUnitId}
-          currentProgress={""}
+          currentProgressData={currentProgressData}
         />
         <section className="unit-info">
           <CourseTabs

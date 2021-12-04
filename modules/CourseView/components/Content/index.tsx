@@ -10,11 +10,12 @@ import Radio, { RadioChangeEvent } from "antd/lib/radio";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import getUserId from "@common/methods/getUserId";
+import updateProgress from "@common/methods/updateProgress";
 
 interface ContentProps {
   currentContentData: any;
   currentUnitId: number | null;
-  currentProgress: any;
+  currentProgressData: any;
 }
 
 const DEFAULT_QUIZ_VALUES = {
@@ -36,7 +37,7 @@ const DEFAULT_QUIZ_VALUES = {
 const Content = ({
   currentContentData,
   currentUnitId,
-  currentProgress,
+  currentProgressData,
 }: ContentProps) => {
   const [answers, setAnswers] = useState<[] | string[]>([]);
   const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
@@ -50,9 +51,14 @@ const Content = ({
   const isTopicTab = tab === "topic";
   const isPostAssessmentTab = tab === "post";
 
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   const handleAssessmentButtonClick = () => {
     let assessmentData = [];
     let title = "Assessment";
+
     if (isPreAssessmentTab) {
       assessmentData = currentContentData?.pre_assessment;
       title = "Pre Assessment";
@@ -64,28 +70,26 @@ const Content = ({
     const questionDesc =
       "Answer a few questions to help us understand your current level of knowledge. Don’t worry if you don’t know the answers, just answer as best as you can.";
 
-    if (isPreAssessmentTab) {
-      const questionsLength = assessmentData?.length;
-      const questionNum = questionsLength ? 1 : 0;
-      const questionIndex = questionNum - 1;
+    const questionsLength = assessmentData?.length;
+    const questionNum = questionsLength ? 1 : 0;
+    const questionIndex = questionNum - 1;
 
-      setQuizValues({
-        ...quizValues,
-        currentQuestion: questionNum,
-        totalQuestions: questionsLength,
-        isModalVisible: !quizValues?.isModalVisible,
-        isSubmitAnswersVisible: false,
-        title: "Pre Assessment",
-        description: questionDesc,
-        question: assessmentData?.[questionIndex]?.question,
-        choices: assessmentData?.[questionIndex]?.choices,
+    setQuizValues({
+      ...quizValues,
+      currentQuestion: questionNum,
+      totalQuestions: questionsLength,
+      isModalVisible: !quizValues?.isModalVisible,
+      isSubmitAnswersVisible: false,
+      title: title,
+      description: questionDesc,
+      question: assessmentData?.[questionIndex]?.question,
+      choices: assessmentData?.[questionIndex]?.choices,
 
-        scoreBoard: {
-          isVisible: false,
-          correctAnswers: 0,
-        },
-      });
-    }
+      scoreBoard: {
+        isVisible: false,
+        correctAnswers: 0,
+      },
+    });
   };
 
   const handleNextButtonClick = () => {
@@ -136,6 +140,7 @@ const Content = ({
       }
     );
 
+    const totalQuestions = quizValues?.totalQuestions ?? 0;
     const correctAnswers = correctAnswersCheck?.filter?.(
       (isCorrect: boolean) => {
         return isCorrect;
@@ -147,6 +152,10 @@ const Content = ({
       correctAnswers: correctAnswers,
     };
 
+    const passingPercentage = 70;
+    const scorePercentage = (correctAnswers / totalQuestions) * 100;
+    const isPassed = scorePercentage >= passingPercentage;
+
     setQuizValues({
       ...quizValues,
       scoreBoard,
@@ -154,36 +163,35 @@ const Content = ({
 
     /* Payload */
 
-    const topic_id = currentContentData?.id
-      ? `${currentContentData?.id}`
-      : null;
-    const unit = currentUnitId;
-    const user = userId;
+    let newProgressData: any = {
+      topic_id: currentContentData?.id,
+    };
 
-    // To Do: Update the save entry (put) with data from state
+    if (isPreAssessmentTab) {
+      newProgressData = {
+        ...newProgressData,
 
-    // axios
-    //   .post(
-    //     `${process.env.API_URL}/progresses`,
-    //     {
-    //       unit,
-    //       user,
-    //       topics: [
-    //         {
-    //           topic_id,
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: jwt,
-    //       },
-    //     }
-    //   )
-    //   .then((currentContentData) => {
-    //     console.log(currentContentData);
-    //   })
-    //   .catch((err) => console.error(err));
+        pre_assessment: {
+          correct_answers: correctAnswers,
+          total_questions: totalQuestions,
+          is_passed: isPassed,
+        },
+      };
+    }
+
+    if (isPostAssessmentTab) {
+      newProgressData = {
+        ...newProgressData,
+
+        post_assessment: {
+          correct_answers: correctAnswers,
+          total_questions: totalQuestions,
+          is_passed: isPassed,
+        },
+      };
+    }
+
+    updateProgress(newProgressData, currentProgressData, jwt, refreshData);
   };
 
   const handleAnswersRadio = (e: RadioChangeEvent) => {
@@ -195,6 +203,7 @@ const Content = ({
 
   const handleContinueSessionClick = () => {
     setQuizValues(DEFAULT_QUIZ_VALUES);
+    setAnswers([]);
   };
 
   const videoHTML = currentContentData?.media_embed?.rawData?.html;
