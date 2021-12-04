@@ -239,7 +239,7 @@ const SignUp = () => {
                   className="sign-up-checkbox-container"
                 >
                   <Checkbox className="sign-up-checkbox">
-                    {t("newAndUpdate")}
+                    {t("newsAndUpdate")}
                   </Checkbox>
                 </Form.Item>
                 <Form.Item noStyle>

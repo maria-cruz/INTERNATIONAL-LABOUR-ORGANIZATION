@@ -4,6 +4,11 @@
     justify-content: center;
     align-items: center;
   }
+  .bg-description-container:lang(ar) {
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
   .bg-description-container {
     @include side-padding;
     position: absolute;
@@ -53,7 +58,7 @@
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
-    @include view-size(desktop){
+    @include view-size(desktop) {
       justify-content: flex-start;
     }
   }

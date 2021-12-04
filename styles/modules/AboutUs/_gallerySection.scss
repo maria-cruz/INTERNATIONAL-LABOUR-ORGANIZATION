@@ -38,7 +38,10 @@
       padding: 10rem;
     }
   }
-
+  .content-item-info .item-label:lang(ar),
+  .description-container:lang(ar) {
+    text-align: end;
+  }
   .content-item-wrapper .description-container {
     font-size: 1.6rem;
     color: $black;
