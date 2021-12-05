@@ -9,5 +9,7 @@
   "signUp": "Sign up",
   "emailAddress": "Email Address",
   "password": "Password",
-  "forgotPassword": "Forgot password?"
+  "forgotPassword": "Forgot password?",
+  "emailValidation": "Please input your email.",
+  "enterPassword": "Please enter a password"
 }

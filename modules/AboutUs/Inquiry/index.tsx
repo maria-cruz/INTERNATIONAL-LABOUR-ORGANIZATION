@@ -16,15 +16,6 @@ interface HandleContactsProps {
   message: string;
 }
 
-const validateMessages = {
-  required: "${label} is required!",
-  types: {
-    email: "${label} is not a valid email!",
-  },
-};
-{
-}
-
 const Inquiry = () => {
   const successMesssageProps = {
     subDescription: "Otherwise, we will reply by email as soon as possible.",
@@ -70,14 +61,18 @@ const Inquiry = () => {
               form={inquiryForm}
               name="nest-messages"
               onFinish={handleInquiryFinish}
-              validateMessages={validateMessages}
             >
               <div className="name-container">
                 <Form.Item
                   className="first-name-container"
                   name="firstName"
                   label={t("firstName")}
-                  rules={[{ required: true }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: `${t("firstNameInput")}`,
+                    },
+                  ]}
                 >
                   <Input className="inquiry-input" />
                 </Form.Item>
@@ -86,7 +81,12 @@ const Inquiry = () => {
                   className="last-name-container"
                   name="lastName"
                   label={t("lastName")}
-                  rules={[{ required: true }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: `${t("lastNameInput")}`,
+                    },
+                  ]}
                 >
                   <Input className="inquiry-input" />
                 </Form.Item>
@@ -96,7 +96,16 @@ const Inquiry = () => {
                 className="email-container"
                 name="email"
                 label={t("email")}
-                rules={[{ type: "email" }]}
+                rules={[
+                  {
+                    required: true,
+                    message: `${t("emailValidation")}`,
+                  },
+                  {
+                    type: "email",
+                    message: `${t("notValidEmail")}`,
+                  },
+                ]}
               >
                 <Input className="inquiry-input" />
               </Form.Item>
