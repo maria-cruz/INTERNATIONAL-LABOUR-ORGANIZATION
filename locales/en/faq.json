@@ -8,5 +8,6 @@
   "allTopics": "All topics",
   "submitQuestion": "Submit question",
   "emailValidation": "Please input your email.",
-  "notValidEmail": "The input is not valid E-mail!"
+  "notValidEmail": "The input is not valid E-mail!",
+  "unit": "Unit"
 }

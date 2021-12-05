@@ -40,15 +40,18 @@ const DownloadGuide = ({ allGuidesData }: any) => {
         <div className="download-cards-container">
           <div className="guide-container">
             <div className="download-wrapper">
-              {allGuidesData.map((guideData: GuideCardProps, index: number) => (
-                <GuideCard
-                  unit={guideData?.unit}
-                  title={guideData?.title}
-                  thumbnail={guideData?.thumbnail}
-                  key={index}
-                  url={guideData?.url}
-                />
-              ))}
+              {allGuidesData.map((guideData: GuideCardProps, index: number) => {
+                const unitGuide = `${t("unit")} ${guideData?.unit}`;
+                return (
+                  <GuideCard
+                    unit={unitGuide}
+                    title={guideData?.title}
+                    thumbnail={guideData?.thumbnail}
+                    key={index}
+                    url={guideData?.url}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

@@ -75,6 +75,7 @@
       }
     }
     .ant-collapse-content-box:lang(ar) {
+      text-align: right;
       margin-left: 0;
       margin-right: 5rem;
       @include view-size(1000px) {

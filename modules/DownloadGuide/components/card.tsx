@@ -3,6 +3,7 @@ import Image from "next/image";
 import Button from "antd/lib/button";
 import Download from "@common/components/Icons/Download";
 import CardSampleImage from "@public/images/card-sample-3.jpg";
+import useTranslation from "next-translate/useTranslation";
 
 export interface GuideCardProps {
   unit?: string;
@@ -19,10 +20,18 @@ const DownloadCard = ({
   url = "",
 }: GuideCardProps) => {
   const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
+  const { t } = useTranslation("download-guide");
+
   return (
     <div className="course-card">
       <div className="card-image-container">
-        <Image src={CardSampleImage} placeholder="blur" alt="courses-image" />
+        <Image
+          src={imageSrc}
+          width={553}
+          height={303}
+          objectFit="cover"
+          alt="courses-image"
+        />
       </div>
       <div className="card-details-container">
         <div className="card-unit">{unit}</div>
@@ -34,7 +43,7 @@ const DownloadCard = ({
             <a download={title} href={url}>
               <Button type="primary" className="download-btn">
                 <Download fill="#ffffff" width="1.4rem" height="1.7rem" />
-                Download
+                {t("downloadBtn")}
               </Button>
             </a>
           </div>
