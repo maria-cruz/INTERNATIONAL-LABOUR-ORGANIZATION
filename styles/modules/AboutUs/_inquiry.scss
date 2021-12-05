@@ -6,7 +6,11 @@
   @include view-size(desktop) {
     padding-bottom: 10rem;
   }
-
+  .inquiry-wrapper:lang(ar) {
+    @include view-size(tab-land) {
+      flex-direction: row-reverse;
+    }
+  }
   .inquiry-wrapper {
     display: flex;
     flex-direction: column-reverse;
@@ -55,13 +59,21 @@
   .message-container {
     margin-bottom: 3rem;
   }
+  .ant-form-item-label:lang(ar) {
+    text-align: right;
+  }
   .ant-form-item-label {
     padding: 0 0 1rem;
     @include view-size(tab-port) {
       padding: 0 0 1.2rem;
     }
   }
-
+  .inquiry-input:lang(ar) {
+    text-align: right;
+  }
+  .message-input:lang(ar) {
+    text-align: right;
+  }
   .inquiry-input,
   .message-input {
     border: 0.1rem solid $manatee;
@@ -86,7 +98,11 @@
   .inquire-btn {
     width: 100%;
   }
-
+  .info-container:lang(ar) {
+    @include view-size(tab-land) {
+      padding: 5.7rem 10rem 0 0;
+    }
+  }
   .info-container {
     max-width: 100%;
     height: none;
@@ -101,7 +117,9 @@
       padding: 5.7rem 10rem;
     }
   }
-
+  .ant-form-item-explain.ant-form-item-explain-error:lang(ar) {
+    text-align: right;
+  }
   .label {
     font-size: 3.2rem;
     margin-bottom: 1rem;
@@ -110,7 +128,10 @@
       font-size: 6.3rem;
     }
   }
-
+  .secondary-label:lang(ar),
+  .label:lang(ar) {
+    text-align: end;
+  }
   .secondary-label {
     font-size: 2.4rem;
     margin-bottom: 3rem;
@@ -119,7 +140,10 @@
       font-size: 2.8rem;
     }
   }
-
+  .details-wrappper .details-item:lang(ar) {
+    flex-direction: row-reverse;
+    text-align: end;
+  }
   .details-wrappper .details-item {
     display: flex;
     align-items: center;

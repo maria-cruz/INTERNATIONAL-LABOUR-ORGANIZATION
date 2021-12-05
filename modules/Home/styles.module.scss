@@ -28,6 +28,9 @@
     height: 95.9rem;
   }
 }
+.steps-section:lang(ar) {
+  text-align: end;
+}
 .steps-section {
   width: 100%;
   min-height: 49.8rem;
@@ -48,9 +51,6 @@
     @include view-size(tab-port) {
       gap: 5rem;
     }
-    @include view-size(1600px) {
-      justify-content: space-between;
-    }
   }
 
   .step-container {
@@ -61,6 +61,9 @@
       gap: 3.5rem;
       flex-direction: row;
     }
+  }
+  .step-container:lang(ar) {
+    flex-direction: row-reverse;
   }
 
   .step-container .logo {

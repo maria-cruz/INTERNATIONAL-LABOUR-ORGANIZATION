@@ -33,7 +33,10 @@
       font-size: 6.3rem;
     }
   }
-
+  .info-wrapper .about-us-label:lang(ar),
+  .about-us-description p:lang(ar) {
+    text-align: end;
+  }
   .about-us-description {
     color: $shuttle-gray;
     max-width: 172rem;

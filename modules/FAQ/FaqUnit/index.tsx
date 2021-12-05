@@ -34,7 +34,7 @@ const FaqUnit: VFC<FaqUnitProps> = ({ faqData }) => {
 
   return (
     <div className="faq-unit-container">
-      <div className="_subheading-label">{faqData?.title}</div>
+      <div className="title _subheading-label">{faqData?.title}</div>
 
       <section className="unit-body-container">
         <div className="search-question-container">

@@ -22,7 +22,7 @@ const CarouselBanner = ({
   prevSlug,
   nextSlug,
 }: CarouselBannerProps) => {
-  const { t } = useTranslation("courses-preview");
+  const { t } = useTranslation("common");
   const router = useRouter();
   const slug = router?.query?.slug;
 

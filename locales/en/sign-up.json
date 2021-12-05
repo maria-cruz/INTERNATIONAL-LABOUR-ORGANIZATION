@@ -8,6 +8,11 @@
   "password": "Password",
   "accept": "Accept",
   "termsAndCondition": "Terms and Condition",
-  "newAndUpdate": "Yes, I’d like to receive emails with news and updates.",
-  "signUp": "Sign up"
+  "newsAndUpdate": "Yes, I’d like to receive emails with news and updates.",
+  "signUp": "Sign up",
+  "passwordRequirements": "Passwords must meet the following requirements:",
+  "minimumCharacters": "Be a minimum of 8 characters",
+  "lowercaseLetter": "Include at least one lowercase letter (a-z)",
+  "uppercaseLetter": "Include at least one uppercase letter (A-Z)",
+  "atleastNumber": "Include at least one number (0-9)"
 }
