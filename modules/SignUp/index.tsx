@@ -133,6 +133,12 @@ const SignUp = () => {
     setIsPasswordShown(isPasswordShown ? false : true);
   };
 
+  const handleLogInRedirectionClick = () => {
+    Router.push(`/log-in`, undefined, {
+      scroll: false,
+    });
+  };
+
   return (
     <div className="sign-up-container">
       <Layout header={<Header title={"Header"} />}>
@@ -162,7 +168,12 @@ const SignUp = () => {
               <div className="sign-up-title">{t("signUpTitle")}</div>
               <div className="login-container">
                 <div className="login-sub-text">{t("loginSubText")}</div>
-                <div className="login-text">{t("login")}</div>
+                <div
+                  className="login-text"
+                  onClick={handleLogInRedirectionClick}
+                >
+                  {t("login")}
+                </div>
               </div>
               <Form
                 form={signUpForm}
