@@ -1,5 +1,3 @@
-import axios from "axios";
-
 interface ProgressData {
   id: number | string;
   topics: any;
