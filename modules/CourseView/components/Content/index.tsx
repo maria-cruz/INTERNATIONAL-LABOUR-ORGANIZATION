@@ -48,7 +48,9 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
   const isPostAssessmentTab = tab === "post";
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    router.replace(router.asPath, undefined, {
+      scroll: false,
+    });
   };
 
   const handleAssessmentButtonClick = () => {
