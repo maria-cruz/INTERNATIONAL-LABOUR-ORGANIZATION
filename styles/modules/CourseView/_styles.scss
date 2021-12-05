@@ -24,12 +24,70 @@
 
   .session-column {
     display: block;
-    margin-bottom: 6rem;
     @include view-size(desktop) {
       display: none;
       margin-bottom: 0;
     }
   }
+
+  /* <Session Column Collapse - Mobile> */
+
+  .session-column-collapse {
+    background: $transparent;
+    border-bottom: 0;
+    margin-bottom: 5rem;
+
+    @include view-size(desktop) {
+      display: none;
+    }
+  }
+
+  .session-column-collapse > .ant-collapse-item > .ant-collapse-header {
+    @include side-padding-only;
+    width: 100%;
+    background: $tropical-rain-forest;
+    color: $white;
+    font-size: 2.4rem;
+    font-weight: 600;
+    padding-left: 2rem;
+    padding-right: 4rem;
+    border-left: 0.1rem solid $silver-60;
+    border-right: 0.1rem solid $silver-60;
+    border-bottom: 0.1rem solid $silver-60;
+    display: flex;
+    gap: 1rem;
+
+    height: 7rem;
+    @include view-size(desktop) {
+      height: 14rem;
+    }
+
+    > .ant-collapse-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .session-column-collapse svg {
+    fill: $white;
+  }
+
+  .session-column-collapse .ant-collapse-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .session-column-collapse .ant-collapse-content-box {
+    padding: 0;
+  }
+
+  /* </Session Column Collapse - Mobile> */
 
   /* <Header /> */
 

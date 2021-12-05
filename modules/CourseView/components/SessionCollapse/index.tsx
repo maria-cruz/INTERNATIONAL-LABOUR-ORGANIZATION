@@ -21,11 +21,13 @@ interface TopicType {
 interface SessionCollapseProps {
   topics: TopicType[];
   currentProgressData: any;
+  onClick?: () => void;
 }
 
 const SessionCollapse = ({
   topics,
   currentProgressData,
+  onClick,
 }: SessionCollapseProps) => {
   const router = useRouter();
   const currentTopicId = router?.query?.topic;
@@ -51,6 +53,10 @@ const SessionCollapse = ({
             !!targetTopic?.post_assessment?.is_passed;
           const isVideoCompleted = targetTopic?.videos?.length > 0;
 
+          const handlePanelItemClick = () => {
+            if (!!onClick) onClick();
+          };
+
           return (
             <Panel
               header={
@@ -60,20 +66,27 @@ const SessionCollapse = ({
               }
               key={`${idx + 1}`}
             >
-              <PreAssessment
-                id={topic?.id}
-                isCompleted={isPreAssessmentCompleted}
-              />
-              <Topic
-                title={topic?.title || ""}
-                id={topic?.id}
-                isCompleted={isVideoCompleted}
-                currentProgressData={currentProgressData}
-              />
-              <PostAssessment
-                id={topic?.id}
-                isCompleted={isPostAssessmentCompleted}
-              />
+              <div onClick={handlePanelItemClick}>
+                <PreAssessment
+                  id={topic?.id}
+                  isCompleted={isPreAssessmentCompleted}
+                />
+              </div>
+
+              <div onClick={handlePanelItemClick}>
+                <Topic
+                  title={topic?.title || ""}
+                  id={topic?.id}
+                  isCompleted={isVideoCompleted}
+                  currentProgressData={currentProgressData}
+                />
+              </div>
+              <div onClick={handlePanelItemClick}>
+                <PostAssessment
+                  id={topic?.id}
+                  isCompleted={isPostAssessmentCompleted}
+                />
+              </div>
             </Panel>
           );
         })}
