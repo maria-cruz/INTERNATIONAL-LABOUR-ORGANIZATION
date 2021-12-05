@@ -119,11 +119,15 @@
       color: $tropical-rain-forest;
       font-weight: 600;
       margin-bottom: 2rem;
+
+      &.failed {
+        color: $cardinal;
+      }
     }
 
     .assessment-modal-result-mark {
       font-size: 2.8rem;
-      color: $tropical-rain-forest;
+      color: $cardinal;
       font-weight: 600;
       margin-bottom: 1rem;
     }
@@ -137,6 +141,12 @@
     .assessment-modal-result-button {
       font-size: 1.6rem;
       color: $white;
+
+      &.failed {
+        background: transparent;
+        box-shadow: none;
+        color: $cardinal;
+      }
     }
   }
 }

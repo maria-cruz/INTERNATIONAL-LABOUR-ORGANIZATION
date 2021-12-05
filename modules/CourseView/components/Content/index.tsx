@@ -30,6 +30,7 @@ const DEFAULT_QUIZ_VALUES = {
   scoreBoard: {
     isVisible: false,
     correctAnswers: 0,
+    isPassed: false,
   },
 };
 
@@ -105,6 +106,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
       scoreBoard: {
         isVisible: false,
         correctAnswers: 0,
+        isPassed: false,
       },
     });
   };
@@ -164,14 +166,15 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
       }
     )?.length;
 
-    const scoreBoard = {
-      isVisible: true,
-      correctAnswers: correctAnswers,
-    };
-
     const passingPercentage = 70;
     const scorePercentage = (correctAnswers / totalQuestions) * 100;
     const isPassed = scorePercentage >= passingPercentage;
+
+    const scoreBoard = {
+      isVisible: true,
+      correctAnswers: correctAnswers,
+      isPassed: isPassed,
+    };
 
     setQuizValues({
       ...quizValues,
@@ -383,17 +386,23 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
           <div className="assessment-modal-result">
             <p className="assessment-modal-score-text">You've scored</p>
             <p
-              className={classNames("assessment-result-score-number", {
-                passed: currentTopicProgress?.post_assessment?.is_passed,
+              className={classNames("assessment-modal-score-number", {
+                failed: !quizValues?.scoreBoard?.isPassed,
               })}
             >{`${quizValues?.scoreBoard?.correctAnswers}/${quizValues?.totalQuestions}`}</p>
-            {/* <p className="assessment-modal-result-mark">Passed!</p> */}
+
+            {!quizValues?.scoreBoard?.isPassed ? (
+              <p className="assessment-modal-result-mark">Failed</p>
+            ) : null}
+
             <p className="assessment-modal-result-thanks">
-              Thank you for completing this pre-assessment.
+              Thank you for completing this assessment.
             </p>
             <Button
               onClick={handleContinueSessionClick}
-              className="assessment-modal-result-button"
+              className={classNames("assessment-modal-result-button", {
+                failed: !quizValues?.scoreBoard?.isPassed,
+              })}
               type="primary"
             >
               Continue session
