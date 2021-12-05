@@ -73,6 +73,13 @@
     max-width: 102rem;
     display: flex;
     margin-bottom: 0.9rem;
+
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+    &:lang(en) {
+      flex-direction: row-reverse;
+    }
   }
 
   .start-unit-container,
@@ -80,6 +87,13 @@
   .get-certified-container {
     display: flex;
     gap: 1.5rem;
+
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+    &:lang(en) {
+      flex-direction: row-reverse;
+    }
   }
 
   .divider-container {
@@ -116,6 +130,13 @@
     @include view-size(desktop) {
       font-size: 2.4rem;
     }
+
+    &:lang(ar) {
+      text-align: right;
+    }
+    &:lang(en) {
+      text-align: start;
+    }
   }
 
   .description-container {
@@ -125,10 +146,25 @@
     margin-left: 0.5rem;
     margin-bottom: 4rem;
 
+    &:lang(ar) {
+      text-align: right;
+    }
+    &:lang(en) {
+      text-align: start;
+    }
+
     @include view-size(desktop) {
       font-size: 1.8rem;
       line-height: 4rem;
       margin-bottom: 9rem;
+
+      &:lang(ar) {
+        margin-bottom: 14rem;
+      }
+
+      &:lang(en) {
+        margin-bottom: 9rem;
+      }
     }
   }
 

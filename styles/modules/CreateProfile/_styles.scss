@@ -7,7 +7,96 @@
   flex-direction: column;
 
   @include view-size(tab-land) {
-    flex-direction: row;
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+    &:lang(en) {
+      flex-direction: row;
+    }
+  }
+
+  .form-create-profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    @include view-size(tab-land) {
+      padding: 5rem;
+    }
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 92.6rem;
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 0 0.3rem 1.6rem $black-29;
+    border-radius: 0.4rem;
+    opacity: 1;
+
+    padding-left: min(4.45vw, 5rem);
+    padding-right: min(4.45vw, 5rem);
+    padding-top: 3.3rem;
+    padding-bottom: 10rem;
+  }
+
+  .form-title-container {
+    margin-bottom: 2rem;
+
+    @include view-size(tab-land) {
+      margin-bottom: 6rem;
+    }
+  }
+
+  .title-container {
+    font-weight: bold;
+    color: $tropical-rain-forest;
+    margin-bottom: 1.1rem;
+
+    font-size: 2.4rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
+
+    &:lang(en) {
+      text-align: left;
+    }
+    @include view-size(tab-land) {
+      font-size: 2.8rem;
+    }
+  }
+
+  .description-container {
+    color: $shuttle-gray;
+    line-height: 2rem;
+    font-size: 1.6rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
+
+    &:lang(en) {
+      text-align: left;
+    }
+
+    @include view-size(tab-land) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.create-profile-container-ar {
+  @import "./components/CreateProfilePreview/styles";
+  @import "./components/CreateProfileForm/styles";
+  @import "./components/LeftSideMenu/styles";
+
+  display: flex;
+  flex-direction: column;
+
+  @include view-size(tab-land) {
+    flex-direction: row-reverse;
   }
 
   .form-create-profile-container {
@@ -62,5 +151,11 @@
     @include view-size(tab-land) {
       font-size: 1.8rem;
     }
+  }
+}
+
+.create-profile-dropdown {
+  .ant-select-item-option {
+    text-align: right;
   }
 }

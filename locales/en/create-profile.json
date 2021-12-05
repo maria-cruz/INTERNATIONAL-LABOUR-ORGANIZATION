@@ -35,5 +35,11 @@
   "day": "Day",
   "year": "Year",
   "profilePreviewDescription": "Please ensure your profile details are up to date.",
-  "editProfileDescription": "Edit your profile here. Only your Name and email address will be visible to others."
+  "editProfileDescription": "Edit your profile here. Only your Name and email address will be visible to others.",
+  "cancel": "Cancel",
+  "saveChanges": "Save Changes",
+  "editProfile": "Edit profile",
+  "continue": "Continue",
+  "back": "Back",
+  "submit": "Submit"
 }
