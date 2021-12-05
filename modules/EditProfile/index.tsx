@@ -16,6 +16,7 @@ import { parseCookies } from "nookies";
 import { EDIT_PROFILE_FORM_VALUES } from "./helpers/interface";
 import useTranslation from "next-translate/useTranslation";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
+import { customLabels } from "@common/constants/countryCustomLabel";
 
 interface EditProfileData {
   nationality: string;
@@ -136,7 +137,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
         <div className="form-create-profile-container">
           <div className="form-container">
             <div className="form-title-container">
-              <div className="title-container">Edit profile</div>
+              <div className="title-container">{t("editProfile")}</div>
               <div className="description-container">
                 {t("editProfileDescription")}
               </div>
@@ -236,10 +237,13 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                         selected={country}
                         onSelect={handleFlagSelect}
                         showSelectedLabel={false}
-                        showOptionLabel={false}
                         placeholder={" "}
                         selectedSize={35.8}
-                        optionsSize={35.8}
+                        optionsSize={16}
+                        customLabels={customLabels}
+                        countries={["IL"]}
+                        blacklistCountries
+                        searchable={true}
                       />
                     </Form.Item>
 
@@ -310,14 +314,14 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     type="link"
                     onClick={handleCancelClick}
                   >
-                    Cancel
+                    {t("cancel")}
                   </Button>
                   <Button
                     className="btn-continue"
                     htmlType="submit"
                     type="primary"
                   >
-                    Save Changes
+                    {t("saveChanges")}
                   </Button>
                 </div>
               </div>

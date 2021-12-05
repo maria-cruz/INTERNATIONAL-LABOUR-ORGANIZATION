@@ -11,7 +11,7 @@ const HowItWorks = () => {
   return (
     <div className="how-it-works-container">
       <div className="how-it-works">
-        <div className="how-it-works-title-container">How It Works?</div>
+        <div className="how-it-works-title-container">{t("howItWorks")}</div>
         <div className="how-it-works-icon-and-description-container">
           <div className="icon-container">
             <div className="icon-wrapper">

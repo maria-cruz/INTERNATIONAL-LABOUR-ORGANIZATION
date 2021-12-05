@@ -108,6 +108,7 @@ const CreateProfile = () => {
         }
       )
       .then(function () {
+        sessionStorage.clear();
         router?.push("/how-it-works");
       })
       .catch(function (error) {
@@ -164,15 +165,19 @@ const CreateProfile = () => {
     },
   };
 
+  const language = router.locale;
+
   if (!data) return <div>loading</div>;
   return (
-    <div className="create-profile-container">
+    <div className={"create-profile-container"} lang={language}>
       <LeftSideMenu />
       {router.query.steps === "1" && (
         <div className="form-create-profile-container">
           <div className="form-container">
             <div className="form-title-container">
-              <div className="title-container">{t("createProfile")}</div>
+              <div className="title-container" lang={language}>
+                {t("createProfile")}
+              </div>
               <div className="description-container">
                 {t("createProfileDescription")}
               </div>

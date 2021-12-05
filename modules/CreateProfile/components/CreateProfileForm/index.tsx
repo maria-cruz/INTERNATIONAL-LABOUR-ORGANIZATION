@@ -10,7 +10,8 @@ import BirthDate from "@common/components/BirthDate";
 import DownArrow from "@common/components/Icons/DownArrow";
 import useTranslation from "next-translate/useTranslation";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
-import { customLabels } from "@modules/CreateProfile/helpers/countryCustomLabel";
+import { customLabels } from "@common/constants/countryCustomLabel";
+import router from "next/router";
 interface CreateProfileFormProps {
   onFlagSelect: (code: string) => void;
   flagCode: string;
@@ -43,6 +44,8 @@ const CreateProfileForm = ({
 
     return Promise.resolve();
   };
+
+  const language = router.locale;
 
   return (
     <div className="create-profile-form-container">
@@ -88,6 +91,9 @@ const CreateProfileForm = ({
         >
           <Select
             className="form-select-organization-type"
+            dropdownClassName={
+              language === "ar" ? "create-profile-dropdown" : ""
+            }
             suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
           >
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
@@ -164,7 +170,12 @@ const CreateProfileForm = ({
             className="form-select-organization-type"
             placeholder={t("pleaseSelect")}
             suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
+            dropdownClassName={
+              language === "ar" ? "create-profile-dropdown" : ""
+            }
           >
+            <DownArrow width={"1.3rem"} height={"1.3rem"} />
+
             {GENDER.map((gender) => (
               <Select.Option value={gender.value} key={gender.value}>
                 {t(gender.key)}
@@ -196,7 +207,7 @@ const CreateProfileForm = ({
           htmlType="submit"
           type="primary"
         >
-          Continue
+          {t("continue")}
         </Button>
       </div>
     </div>
