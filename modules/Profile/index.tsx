@@ -48,8 +48,10 @@ const Profile = ({ profileData }: ProfileProps) => {
               </div>
             </div>
             <div className="name-text">{`${profileData.given_name} ${profileData.family_name}`}</div>
-            <div className="organization-type-text">
-              {profileData.organization_type}
+            <div className="organization-type-container">
+              <div className="organization-type-text">
+                {profileData.organization_type}
+              </div>
             </div>
             <div className="profile-preview-column">
               <div className="email-container">
@@ -94,7 +96,7 @@ const Profile = ({ profileData }: ProfileProps) => {
                 type="primary"
                 onClick={handleEditProfileClick}
               >
-                Edit profile
+                {t("editProfile")}
               </Button>
             </div>
           </div>

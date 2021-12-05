@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const slug = ctx?.query?.slug;
 
   const { data: allCoursesData }: AllCoursesDataType = await axios.get(
-    `${process.env.API_URL}/units/me?_locale=en`,
+    `${process.env.API_URL}/units/me?_locale=${ctx.locale}`,
     {
       headers: {
         Authorization: jwt,
@@ -91,7 +91,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     topicsCount: topicsCount ?? 0,
     progress: percentage ?? 0,
     objectives: currentCourseData?.learning_objectives ?? [],
-    instructor: currentCourseData?.instructor,
+    instructor: currentCourseData?.instructor ?? "",
     prevSlug: prevCourse?.slug ?? "",
     nextSlug: nextCourse?.slug ?? "",
   };

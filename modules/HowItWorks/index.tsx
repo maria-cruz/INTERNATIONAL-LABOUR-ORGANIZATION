@@ -72,7 +72,7 @@ const HowItWorks = () => {
         <div className="done-button-container">
           <Link href="/courses?category=all">
             <Button className="done-btn" type="primary">
-              Done
+              {t("done")}
             </Button>
           </Link>
         </div>
