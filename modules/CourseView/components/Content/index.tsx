@@ -240,7 +240,6 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
               <div className="assessment-result content-box-container">
                 <p className="assessment-score-text">You've scored</p>
                 <p className="assessment-score-number">{`${currentTopicProgress?.pre_assessment?.correct_answers}/${currentTopicProgress?.pre_assessment?.total_questions}`}</p>
-                {/* <p className="assessment-result-mark">Passed!</p> */}
                 <p className="assessment-result-thanks">
                   Thank you for completing this pre-assessment.
                 </p>
