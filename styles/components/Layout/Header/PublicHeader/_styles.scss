@@ -1,3 +1,6 @@
+.header:lang(ar) {
+  flex-direction: row-reverse;
+}
 .header {
   position: sticky;
   top: 0;
@@ -45,13 +48,17 @@
       min-width: 18rem;
     }
   }
-
+  .right-container:lang(ar) {
+    flex-direction: row-reverse;
+  }
   .right-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
+  .right-container .menu:lang(ar) {
+    flex-direction: row-reverse;
+  }
   .right-container .menu {
     display: none;
 

@@ -16,7 +16,9 @@
       display: none;
     }
   }
-
+  .banner-container:lang(ar) {
+    flex-direction: row-reverse;
+  }
   .banner-container {
     display: flex;
     justify-content: center;
@@ -53,7 +55,9 @@
       display: none;
     }
   }
-
+  .banner-description-text:lang(ar) {
+    text-align: right;
+  }
   .banner-description-text {
     color: $tropical-rain-forest;
     position: absolute;
@@ -95,7 +99,15 @@
       width: 62.5rem;
     }
   }
-
+  .log-in-title:lang(ar) {
+    text-align: right;
+    @include view-size(tab-port) {
+      text-align: center;
+    }
+    @include view-size(desktop) {
+      text-align: right;
+    }
+  }
   .log-in-title {
     font-size: 2.6rem;
     font-weight: bold;
@@ -109,7 +121,15 @@
       text-align: start;
     }
   }
-
+  .sign-up-container:lang(ar) {
+    justify-content: flex-end;
+    @include view-size(tab-port) {
+      justify-content: center;
+    }
+    @include view-size(desktop) {
+      justify-content: flex-end;
+    }
+  }
   .sign-up-container {
     display: flex;
     align-items: center;
@@ -122,7 +142,12 @@
       justify-content: flex-start;
     }
   }
-
+  .ant-form-vertical .ant-form-item-label:lang(ar) {
+    text-align: right;
+  }
+  .ant-form-item-explain.ant-form-item-explain-error:lang(ar) {
+    text-align: right;
+  }
   .login-sub-text {
     font-size: 1.6rem;
   }
@@ -140,7 +165,11 @@
       color: $manatee;
     }
   }
-
+  .log-in-input:lang(ar) {
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+  }
   .log-in-input {
     height: 5rem;
   }
@@ -182,7 +211,9 @@
   .password-container {
     margin-bottom: 2rem;
   }
-
+  .forgot-password-btn-container:lang(ar) {
+    justify-content: flex-start;
+  }
   .forgot-password-btn-container {
     display: flex;
     justify-content: flex-end;
@@ -202,7 +233,9 @@
       font-size: 1.6rem;
     }
   }
-
+  .ant-input-affix-wrapper > input.ant-input:lang(ar) {
+    text-align: right;
+  }
   .password-shown-btn {
     width: fit-content;
     min-width: 2.2rem;

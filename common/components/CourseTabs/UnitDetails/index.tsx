@@ -26,7 +26,7 @@ const UnitDetails = ({
   description = "",
   objectives = [],
 }: UnitDetailsProps) => {
-  const { t } = useTranslation("courses-preview");
+  const { t } = useTranslation("common");
   const hasObjectives = objectives.length > 0;
   const avatarSrc = !!instructorAvatar
     ? instructorAvatar

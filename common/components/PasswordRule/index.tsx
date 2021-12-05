@@ -1,6 +1,7 @@
 import Bullet from "@common/components/Icons/Bullet";
 import Check from "@common/components/Icons/Check";
 import React from "react";
+import useTranslation from "next-translate/useTranslation";
 
 interface PasswordRuleProps {
   isLongerThanSevenChars?: boolean;
@@ -15,12 +16,12 @@ const PasswordRule: React.FC<PasswordRuleProps> = ({
   hasUppercase,
   hasLowercase,
 }) => {
+  const { t } = useTranslation("sign-up");
+
   return (
     <>
       <div className="set-password-rule-container">
-        <div className="password-rule-title">
-          Passwords must meet the following requirements:
-        </div>
+        <div className="password-rule-title">{t("passwordRequirements")}</div>
         <div>
           <div className="set-password-requirements-container">
             {!isLongerThanSevenChars && (
@@ -46,7 +47,7 @@ const PasswordRule: React.FC<PasswordRuleProps> = ({
                   : "error-text"
               }`}
             >
-              Be a minimum of 8 characters
+              {t("minimumCharacters")}
             </span>
           </div>
 
@@ -73,7 +74,7 @@ const PasswordRule: React.FC<PasswordRuleProps> = ({
                 hasLowercase ? "set-password-requirements " : "error-text"
               }`}
             >
-              Include at least one lowercase letter (a-z)
+              {t("lowercaseLetter")}
             </span>
           </div>
           <div className="set-password-requirements-container">
@@ -98,7 +99,7 @@ const PasswordRule: React.FC<PasswordRuleProps> = ({
                 hasUppercase ? "set-password-requirements " : "error-text"
               }`}
             >
-              Include at least one uppercase letter (A-Z)
+              {t("uppercaseLetter")}
             </span>
           </div>
           <div className="set-password-requirements-container">
@@ -124,7 +125,7 @@ const PasswordRule: React.FC<PasswordRuleProps> = ({
                 isAtleastOneNumber ? "set-password-requirements " : "error-text"
               }`}
             >
-              Include at least one number (0-9)
+              {t("atleastNumber")}
             </span>
           </div>
         </div>
