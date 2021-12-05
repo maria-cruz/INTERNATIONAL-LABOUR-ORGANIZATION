@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import ParamLink from "@common/components/ParamLink";
 
-import CheckCircle from "@common/components/Icons/CheckCircle";
 import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
 import Radio, { RadioChangeEvent } from "antd/lib/radio";
 
-import axios from "axios";
 import getJWT from "@common/methods/getJWT";
-import getUserId from "@common/methods/getUserId";
 import updateProgress from "@common/methods/updateProgress";
+import getTargetProgress from "@common/methods/getTargetProgress";
+import classNames from "classnames";
 
 interface ContentProps {
   currentContentData: any;
@@ -27,25 +25,47 @@ const DEFAULT_QUIZ_VALUES = {
   description: "",
   question: "",
   choices: [{ id: 0, choice: "", is_correct: false }],
+  isRetake: false,
 
   scoreBoard: {
     isVisible: false,
     correctAnswers: 0,
+    isPassed: false,
   },
 };
 
 const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
+  const [retakeAssessment, setRetakeAssessment] = useState(false);
   const [answers, setAnswers] = useState<[] | string[]>([]);
   const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
   const jwt = getJWT(undefined, true);
-  const userId = getUserId();
-
   const router = useRouter();
   const tab = router?.query?.tab;
+  const topic = router?.query?.topic;
+
+  useEffect(() => {
+    setRetakeAssessment(false);
+  }, [tab, topic]);
+
+  const currentTopicProgress = getTargetProgress(
+    currentContentData?.id,
+    currentProgressData
+  );
+
+  const isPreAssessmentDone = !!currentTopicProgress?.pre_assessment;
+  const isPostAssessmentDone = !!currentTopicProgress?.post_assessment;
 
   const isPreAssessmentTab = tab === "pre";
   const isTopicTab = tab === "topic";
   const isPostAssessmentTab = tab === "post";
+
+  const showPreAssessmentResult = isPreAssessmentDone && !retakeAssessment;
+  const showPostAssessmentResult = isPostAssessmentDone && !retakeAssessment;
+  const showPreAssessmentTest = isPreAssessmentTab;
+  const showPostAssessmentTest = isPostAssessmentTab;
+
+  const isPostAssessmentPassed =
+    currentTopicProgress?.post_assessment?.is_passed;
 
   const refreshData = () => {
     router.replace(router.asPath, undefined, {
@@ -86,6 +106,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
       scoreBoard: {
         isVisible: false,
         correctAnswers: 0,
+        isPassed: false,
       },
     });
   };
@@ -145,14 +166,15 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
       }
     )?.length;
 
-    const scoreBoard = {
-      isVisible: true,
-      correctAnswers: correctAnswers,
-    };
-
     const passingPercentage = 70;
     const scorePercentage = (correctAnswers / totalQuestions) * 100;
     const isPassed = scorePercentage >= passingPercentage;
+
+    const scoreBoard = {
+      isVisible: true,
+      correctAnswers: correctAnswers,
+      isPassed: isPassed,
+    };
 
     setQuizValues({
       ...quizValues,
@@ -204,29 +226,55 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
     setAnswers([]);
   };
 
+  const handleRetakeClick = () => {
+    setQuizValues(DEFAULT_QUIZ_VALUES);
+    setAnswers([]);
+    setRetakeAssessment(true);
+  };
+
   const videoHTML = currentContentData?.media_embed?.rawData?.html;
   return (
     <div className="content-container">
       <section className="unit-content">
-        {isPreAssessmentTab ? (
+        {showPreAssessmentTest ? (
           <>
             <div className="title">Pre assessment</div>
-            <div className="content-box-container">
-              <div className={"assessment-title"}>Pre assessment test</div>
-              <div className={"assessment-description"}>
-                Help us understand your starting knowledge by completing a few
-                pre assessment questions.
+            {showPreAssessmentResult ? (
+              <div className="assessment-result content-box-container">
+                <p className="assessment-score-text">You've scored</p>
+                <p className="assessment-score-number">{`${currentTopicProgress?.pre_assessment?.correct_answers}/${currentTopicProgress?.pre_assessment?.total_questions}`}</p>
+                <p className="assessment-result-thanks">
+                  Thank you for completing this pre-assessment.
+                </p>
+                <Button
+                  onClick={handleRetakeClick}
+                  className="assessment-result-button"
+                  type="primary"
+                >
+                  Retake assessment
+                </Button>
               </div>
-              <Button
-                onClick={handleAssessmentButtonClick}
-                className={"assessment-button"}
-                type="primary"
-              >
-                Take pre assessment
-              </Button>
-            </div>
+            ) : (
+              <div>
+                <div className="content-box-container">
+                  <div className={"assessment-title"}>Pre assessment test</div>
+                  <div className={"assessment-description"}>
+                    Help us understand your starting knowledge by completing a
+                    few pre assessment questions.
+                  </div>
+                  <Button
+                    onClick={handleAssessmentButtonClick}
+                    className={"assessment-button"}
+                    type="primary"
+                  >
+                    Take pre assessment
+                  </Button>
+                </div>
+              </div>
+            )}
           </>
         ) : null}
+
         {isTopicTab ? (
           <>
             <div className="title">{currentContentData?.title}</div>
@@ -236,23 +284,54 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
             />
           </>
         ) : null}
-        {isPostAssessmentTab ? (
+
+        {showPostAssessmentTest ? (
           <>
             <div className="title">Post assessment</div>
-            <div className="content-box-container">
-              <div className={"assessment-title"}>Post assessment test</div>
-              <div className={"assessment-description"}>
-                Help us understand your starting knowledge by completing a few
-                post assessment questions.
+            {showPostAssessmentResult ? (
+              <div className="assessment-result content-box-container">
+                <p className="assessment-score-text">You've scored</p>
+                <p
+                  className={classNames("assessment-score-number", {
+                    failed: !isPostAssessmentPassed,
+                  })}
+                >{`${currentTopicProgress?.post_assessment?.correct_answers}/${currentTopicProgress?.post_assessment?.total_questions}`}</p>
+                <p
+                  className={classNames("assessment-result-mark", {
+                    failed: !isPostAssessmentPassed,
+                  })}
+                >
+                  {isPostAssessmentPassed ? "Passed!" : "Failed"}
+                </p>
+                <p className="assessment-result-thanks">
+                  Thank you for completing this post-assessment.
+                </p>
+                <Button
+                  onClick={handleRetakeClick}
+                  className={classNames("assessment-result-button", {
+                    failed: !isPostAssessmentPassed,
+                  })}
+                  type="primary"
+                >
+                  Retake assessment
+                </Button>
               </div>
-              <Button
-                onClick={handleAssessmentButtonClick}
-                className={"assessment-button"}
-                type="primary"
-              >
-                Take post assessment
-              </Button>
-            </div>
+            ) : (
+              <div className="content-box-container">
+                <div className={"assessment-title"}>Post assessment test</div>
+                <div className={"assessment-description"}>
+                  Help us understand your starting knowledge by completing a few
+                  post assessment questions.
+                </div>
+                <Button
+                  onClick={handleAssessmentButtonClick}
+                  className={"assessment-button"}
+                  type="primary"
+                >
+                  Take post assessment
+                </Button>
+              </div>
+            )}
           </>
         ) : null}
       </section>
@@ -306,14 +385,26 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
         {quizValues?.scoreBoard?.isVisible ? (
           <div className="assessment-modal-result">
             <p className="assessment-modal-score-text">You've scored</p>
-            <p className="assessment-modal-score-number">{`${quizValues?.scoreBoard?.correctAnswers}/${quizValues?.totalQuestions}`}</p>
-            {/* <p className="assessment-modal-result-mark">Passed!</p> */}
+            <p
+              className={classNames("assessment-modal-score-number", {
+                failed:
+                  !quizValues?.scoreBoard?.isPassed && isPostAssessmentTab,
+              })}
+            >{`${quizValues?.scoreBoard?.correctAnswers}/${quizValues?.totalQuestions}`}</p>
+
+            {!quizValues?.scoreBoard?.isPassed && isPostAssessmentTab ? (
+              <p className="assessment-modal-result-mark">Failed</p>
+            ) : null}
+
             <p className="assessment-modal-result-thanks">
-              Thank you for completing this pre-assessment.
+              Thank you for completing this assessment.
             </p>
             <Button
               onClick={handleContinueSessionClick}
-              className="assessment-modal-result-button"
+              className={classNames("assessment-modal-result-button", {
+                failed:
+                  !quizValues?.scoreBoard?.isPassed && isPostAssessmentTab,
+              })}
               type="primary"
             >
               Continue session

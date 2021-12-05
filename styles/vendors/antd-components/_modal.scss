@@ -3,24 +3,34 @@
   max-width: 92.6rem;
 
   .assessment-modal-title {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     color: $tropical-rain-forest;
     font-weight: 600;
     margin-bottom: 1rem;
+    @include view-size(desktop) {
+      font-size: 2.8rem;
+    }
   }
 
   .assessment-modal-description {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: $shuttle-gray;
     line-height: 2.3rem;
     margin-bottom: 4rem;
+    @include view-size(desktop) {
+      font-size: 1.8rem;
+    }
   }
 
   .assessment-modal-question {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     color: $black;
     font-weight: 600;
     margin-bottom: 3rem;
+
+    @include view-size(desktop) {
+      font-size: 2.4rem;
+    }
   }
 
   .assessment-modal-radio-group {
@@ -34,9 +44,13 @@
 
     // Antd Radio Button Override
     .ant-radio-wrapper {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       display: flex;
       align-items: center;
+
+      @include view-size(desktop) {
+        font-size: 1.8rem;
+      }
     }
   }
 
@@ -62,7 +76,10 @@
   }
 
   .ant-modal-body {
-    padding: 5rem;
+    @include side-padding-only;
+    @include view-size(desktop) {
+      padding: 5rem;
+    }
   }
 
   /* <Antd Radio Button Override> */
@@ -119,11 +136,15 @@
       color: $tropical-rain-forest;
       font-weight: 600;
       margin-bottom: 2rem;
+
+      &.failed {
+        color: $cardinal;
+      }
     }
 
     .assessment-modal-result-mark {
       font-size: 2.8rem;
-      color: $tropical-rain-forest;
+      color: $cardinal;
       font-weight: 600;
       margin-bottom: 1rem;
     }
@@ -137,6 +158,12 @@
     .assessment-modal-result-button {
       font-size: 1.6rem;
       color: $white;
+
+      &.failed {
+        background: transparent;
+        box-shadow: none;
+        color: $cardinal;
+      }
     }
   }
 }

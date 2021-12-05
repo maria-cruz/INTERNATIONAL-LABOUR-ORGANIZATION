@@ -74,11 +74,35 @@ const CourseView = ({
           </div>
           <div className="title">{`Unit ${data?.unit}: ${data?.title}`}</div>
         </header>
+
+        <div className="session-column">
+          <header className="session-header">
+            <div className="session-menu-left-container">
+              <div className="session-menu-icon">
+                <Menu width="32" height="32" />
+              </div>
+              <div className="session-menu-text">Session contents</div>
+            </div>
+            <div className="session-menu-right-container">
+              <div className="session-menu-close">
+                <Close width="40" height="40" />
+              </div>
+            </div>
+          </header>
+
+          <ProgressTracker percentage={unitDetailsProps?.progress} />
+          <SessionCollapse
+            topics={data?.topics}
+            currentProgressData={currentProgressData}
+          />
+        </div>
+
         <Content
           currentContentData={currentContentData}
           currentUnitId={currentUnitId}
           currentProgressData={currentProgressData}
         />
+
         <section className="unit-info">
           <CourseTabs
             unitDetailsProps={unitDetailsProps}
@@ -87,6 +111,7 @@ const CourseView = ({
           />
         </section>
       </div>
+
       <div className="right-column">
         <header className="session-header">
           <div className="session-menu-left-container">
@@ -102,7 +127,7 @@ const CourseView = ({
           </div>
         </header>
 
-        <ProgressTracker percentage={26} />
+        <ProgressTracker percentage={unitDetailsProps?.progress} />
         <SessionCollapse
           topics={data?.topics}
           currentProgressData={currentProgressData}
