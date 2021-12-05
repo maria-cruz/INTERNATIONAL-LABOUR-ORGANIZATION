@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   let courseViewData;
   const { data: courseData }: CourseDataProps = await axios.get(
-    `${process.env.API_URL}/units/me/${slug}`,
+    `${process.env.API_URL}/units/me/${slug}?_locale=${ctx.locale}`,
     {
       headers: {
         Authorization: jwt,
