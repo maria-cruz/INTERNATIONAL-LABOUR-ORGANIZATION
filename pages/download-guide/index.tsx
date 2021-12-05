@@ -20,9 +20,9 @@ interface GuidesDataType {
 interface AllGuidesDataType {
   data: GuidesDataType[];
 }
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { data: allDownloadData }: AllGuidesDataType = await axios.get(
-    `${process.env.API_URL}/guides`
+    `${process.env.API_URL}/guides?_locale=${ctx?.locale ?? "en"}`
   );
 
   const sortedAllDownloadData = allDownloadData.sort((a, b) => {

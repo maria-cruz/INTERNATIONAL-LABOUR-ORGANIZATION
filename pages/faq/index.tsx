@@ -21,11 +21,12 @@ interface AllFaqDataType {
   data: FaqDataType[];
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { data: allFaqData }: AllFaqDataType = await axios.get(
-    `${process.env.API_URL}/units`
+    `${process.env.API_URL}/units?_locale=${ctx?.locale ?? "en"}`
   );
 
+  console.log(allFaqData);
   const sortedAllFaqDatas = allFaqData.sort((a, b) => {
     if (a?.unit > b?.unit) {
       return 1;

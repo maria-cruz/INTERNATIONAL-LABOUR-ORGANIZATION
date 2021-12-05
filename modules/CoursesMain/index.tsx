@@ -28,9 +28,8 @@ const TITLE_DESCRIPTION = [
 ];
 
 const CoursesMain = ({ allCourseCardsData }: any) => {
-  const { t, lang } = useTranslation("courses");
+  const { t } = useTranslation("courses");
 
-  console.log(lang);
   const router = useRouter();
 
   const filteredTitleDescriptions = TITLE_DESCRIPTION.filter(

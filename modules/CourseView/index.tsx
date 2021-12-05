@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Menu from "@common/components/Icons/Menu";
 import Close from "@common/components/Icons/Close";
@@ -9,6 +9,9 @@ import CourseTabs from "@common/components/CourseTabs";
 import ProgressTracker from "./components/ProgressTracker";
 import SessionCollapse from "./components/SessionCollapse";
 import { useRouter } from "next/router";
+
+import Collapse from "antd/lib/collapse";
+const { Panel } = Collapse;
 
 interface ProgressType {
   unit: number;
@@ -51,6 +54,7 @@ const CourseView = ({
   unitQandAProps,
   unitDownloadableFilesProps,
 }: CourseDataProps) => {
+  const [isSessionColumnOpen, setIsSessionColumnOpen] = useState(true);
   const router = useRouter();
   const slug = router?.query?.slug;
   const currentUnitId = data?.id ?? null;
@@ -64,6 +68,10 @@ const CourseView = ({
     router.push(`/courses/preview/${slug}`);
   };
 
+  const handleSessionItemClick = () => {
+    setIsSessionColumnOpen(!isSessionColumnOpen);
+  };
+
   return (
     <div className="courses-view">
       <div className="left-column">
@@ -75,27 +83,32 @@ const CourseView = ({
           <div className="title">{`Unit ${data?.unit}: ${data?.title}`}</div>
         </header>
 
-        <div className="session-column">
-          <header className="session-header">
-            <div className="session-menu-left-container">
-              <div className="session-menu-icon">
-                <Menu width="32" height="32" />
-              </div>
-              <div className="session-menu-text">Session contents</div>
+        <Collapse
+          bordered={false}
+          activeKey={isSessionColumnOpen ? "1" : ""}
+          expandIcon={() => (
+            <div onClick={handleSessionItemClick}>
+              <Menu width="32" height="32" />
             </div>
-            <div className="session-menu-right-container">
-              <div className="session-menu-close">
-                <Close width="40" height="40" />
-              </div>
+          )}
+          className={"session-column-collapse"}
+        >
+          <Panel
+            header={
+              <div onClick={handleSessionItemClick}>Session contents</div>
+            }
+            key="1"
+          >
+            <div className="session-column">
+              <ProgressTracker percentage={unitDetailsProps?.progress} />
+              <SessionCollapse
+                topics={data?.topics}
+                currentProgressData={currentProgressData}
+                onClick={handleSessionItemClick}
+              />
             </div>
-          </header>
-
-          <ProgressTracker percentage={unitDetailsProps?.progress} />
-          <SessionCollapse
-            topics={data?.topics}
-            currentProgressData={currentProgressData}
-          />
-        </div>
+          </Panel>
+        </Collapse>
 
         <Content
           currentContentData={currentContentData}
