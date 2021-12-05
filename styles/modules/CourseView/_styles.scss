@@ -111,6 +111,56 @@
       color: $white;
       background-color: $faux-green;
     }
+
+    .assessment-result {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .assessment-score-text {
+        font-size: 1.8rem;
+        color: $shuttle-gray;
+        margin-bottom: 1rem;
+      }
+      .assessment-score-number {
+        font-size: 8rem;
+        color: $tropical-rain-forest;
+        font-weight: 600;
+        margin-bottom: 5rem;
+
+        &.failed {
+          color: $cardinal;
+        }
+      }
+
+      .assessment-result-mark {
+        font-size: 2.8rem;
+        color: $tropical-rain-forest;
+        font-weight: 600;
+        margin-bottom: 1rem;
+
+        &.failed {
+          color: $cardinal;
+        }
+      }
+
+      .assessment-result-thanks {
+        font-size: 1.8rem;
+        color: $shuttle-gray;
+      }
+
+      .assessment-result-button {
+        font-size: 1.6rem;
+        color: $faux-green;
+        background: transparent;
+        box-shadow: none;
+
+        &.failed {
+          color: $cardinal;
+        }
+      }
+    }
   }
 
   /* <Info />  */
