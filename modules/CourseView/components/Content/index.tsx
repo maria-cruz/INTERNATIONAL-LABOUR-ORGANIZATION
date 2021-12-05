@@ -387,11 +387,12 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
             <p className="assessment-modal-score-text">You've scored</p>
             <p
               className={classNames("assessment-modal-score-number", {
-                failed: !quizValues?.scoreBoard?.isPassed,
+                failed:
+                  !quizValues?.scoreBoard?.isPassed && isPostAssessmentTab,
               })}
             >{`${quizValues?.scoreBoard?.correctAnswers}/${quizValues?.totalQuestions}`}</p>
 
-            {!quizValues?.scoreBoard?.isPassed ? (
+            {!quizValues?.scoreBoard?.isPassed && isPostAssessmentTab ? (
               <p className="assessment-modal-result-mark">Failed</p>
             ) : null}
 
@@ -401,7 +402,8 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
             <Button
               onClick={handleContinueSessionClick}
               className={classNames("assessment-modal-result-button", {
-                failed: !quizValues?.scoreBoard?.isPassed,
+                failed:
+                  !quizValues?.scoreBoard?.isPassed && isPostAssessmentTab,
               })}
               type="primary"
             >
