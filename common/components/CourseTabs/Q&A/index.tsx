@@ -49,7 +49,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
           content: value?.comment,
           related: [
             {
-              refId: "1",
+              refId: courseId,
               ref: "unit",
               field: "comments",
             },
@@ -75,7 +75,8 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
 
   const handleReplyFinish =
     (commentId?: number, replyIdx?: number) => (event: any) => {
-      if (!replyIdx) return console.log("No Reply Index Received");
+      if (!replyIdx && replyIdx !== 0)
+        return console.log("No Reply Index Received");
       if (!commentId) return console.log("No Comment ID Received");
       if (!replyValues?.[replyIdx]) return console.log("No Reply Received");
       if (!courseId) return console.log("No Course ID Received");
@@ -88,7 +89,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
             threadOf: commentId,
             related: [
               {
-                refId: "1",
+                refId: courseId,
                 ref: "unit",
                 field: "comments",
               },
