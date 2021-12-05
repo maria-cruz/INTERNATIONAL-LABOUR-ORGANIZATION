@@ -17,13 +17,6 @@ interface FaqUnitProps {
   faqData: FaqsProps;
 }
 
-const validation = {
-  required: "${label} is required",
-  types: {
-    email: "${label} is not a valid email!",
-  },
-};
-
 const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
   const description = {
     description:
@@ -73,12 +66,20 @@ const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
             form={questionForm}
             name="nest-messages"
             onFinish={handleFormSubmit}
-            validateMessages={validation}
           >
             <div className="upper-input-container">
               <Form.Item
                 className="email-container"
-                rules={[{ type: "email", required: true }]}
+                rules={[
+                  {
+                    required: true,
+                    message: `${t("emailValidation")}`,
+                  },
+                  {
+                    type: "email",
+                    message: `${t("notValidEmail")}`,
+                  },
+                ]}
                 name="email"
                 label={t("email")}
               >

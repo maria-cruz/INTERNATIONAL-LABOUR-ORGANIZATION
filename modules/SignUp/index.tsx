@@ -74,14 +74,6 @@ const SignUp = () => {
       });
   };
 
-  const checkCheckBox = (rule: any, value: any, callback: any) => {
-    if (!value) {
-      callback("Please agree to the terms and conditions!");
-    } else {
-      callback();
-    }
-  };
-
   const handleNewPasswordChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -120,10 +112,10 @@ const SignUp = () => {
     validator(_: {}, newPassword: string) {
       const isEmptyNewPassword = isEmpty(newPassword);
 
-      if (isEmptyNewPassword) return Promise.reject("Please enter a password");
+      if (isEmptyNewPassword) return Promise.reject(`${t("enterPassword")}`);
 
       if (!isCheckAllPasswordRule)
-        return Promise.reject("Please enter a valid password.");
+        return Promise.reject(`${t("passwordValidation")}`);
 
       return Promise.resolve();
     },
@@ -179,11 +171,11 @@ const SignUp = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input your email.",
+                      message: `${t("emailValidation")}`,
                     },
                     {
                       type: "email",
-                      message: "The input is not valid E-mail!",
+                      message: `${t("notValidEmail")}`,
                     },
                   ]}
                 >
@@ -220,19 +212,7 @@ const SignUp = () => {
                     isAtleastOneNumber={passwordRule.isAtleastOneNumber}
                   />
                 )}
-                <Form.Item
-                  name="termsAndCondition"
-                  valuePropName="checked"
-                  className="terms-and-condition-container"
-                  rules={[{ validator: checkCheckBox }]}
-                >
-                  <Checkbox className="sign-up-checkbox">
-                    {t("accept")}{" "}
-                    <span className="terms-and-condition-text">
-                      {t("termsAndCondition")}
-                    </span>
-                  </Checkbox>
-                </Form.Item>
+
                 <Form.Item
                   name="newsAndUpdate"
                   valuePropName="checked"
