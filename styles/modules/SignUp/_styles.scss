@@ -20,6 +20,11 @@
       display: none;
     }
   }
+  .banner-container:lang(ar) {
+    @include view-size(tab-land) {
+      flex-direction: row-reverse;
+    }
+  }
   .banner-container {
     display: flex;
     justify-content: center;
@@ -36,7 +41,12 @@
       padding: 13.2rem 15rem 0 10rem;
     }
   }
-
+  .banner-description-text:lang(ar) {
+    text-align: right;
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
   .banner-description-text {
     color: $tropical-rain-forest;
     position: absolute;
@@ -97,7 +107,15 @@
       width: 62.5rem;
     }
   }
-
+  .sign-up-title:lang(ar) {
+    text-align: right;
+    @include view-size(tab-port) {
+      text-align: center;
+    }
+    @include view-size(desktop) {
+      text-align: right;
+    }
+  }
   .sign-up-title {
     font-size: 2.6rem;
     font-weight: bold;
@@ -112,7 +130,9 @@
       text-align: start;
     }
   }
-
+  .login-container:lang(ar) {
+    flex-direction: row-reverse;
+  }
   .login-container {
     display: flex;
     align-items: center;
@@ -125,7 +145,9 @@
       justify-content: flex-start;
     }
   }
-
+  .ant-form-vertical .ant-form-item-label:lang(ar) {
+    text-align: right;
+  }
   .login-sub-text {
     font-size: 1.6rem;
   }
@@ -143,7 +165,11 @@
       color: $manatee;
     }
   }
-
+  .sign-up-input:lang(ar) {
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+  }
   .sign-up-input {
     height: 5rem;
   }
@@ -160,7 +186,10 @@
   .terms-and-condition-container {
     margin-bottom: 0;
   }
-
+  .ant-checkbox-wrapper:lang(ar) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
   .ant-checkbox-wrapper {
     margin-left: 0;
   }
@@ -180,11 +209,21 @@
       max-width: 100%;
     }
   }
-
+  .ant-input-affix-wrapper > input.ant-input:lang(ar) {
+    text-align: right;
+  }
   .ant-checkbox + span {
     padding-left: 1.3rem;
   }
-
+  .set-password-rule-container:lang(ar) {
+    text-align: right;
+  }
+  .set-password-requirements-container:lang(ar) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
   .password-shown-btn {
     width: fit-content;
     min-width: 2.2rem;

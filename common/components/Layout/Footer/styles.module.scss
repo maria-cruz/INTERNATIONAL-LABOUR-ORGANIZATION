@@ -1,3 +1,8 @@
+.footer:lang(ar) {
+  @include view-size(desktop) {
+    flex-direction: row-reverse;
+  }
+}
 .footer {
   @include side-padding;
 
@@ -18,15 +23,20 @@
     font-size: 1.8rem;
     height: 39.1rem;
   }
-
+  .description-container:lang(ar) {
+    width: 100%;
+    align-items: flex-end;
+    text-align: end;
+    @include view-size(1400px) {
+      align-items: flex-start;
+      flex-direction: row-reverse;
+    }
+  }
   .description-container {
     display: flex;
     column-gap: 5rem;
     align-items: flex-start;
     flex-direction: column;
-    @include view-size(desktop) {
-      flex-direction: column;
-    }
     @include view-size(1400px) {
       flex-direction: row;
     }
@@ -64,7 +74,25 @@
       line-height: 2.3;
     }
   }
-
+  .menu-group:lang(ar) {
+    align-items: flex-end;
+    @include view-size(tab-port) {
+      max-width: 40rem;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      max-width: 100%;
+      justify-content: flex-start;
+      gap: 15rem;
+    }
+    @include view-size(desktop) {
+      justify-content: space-between;
+      gap: 0;
+      max-width: 35rem;
+    }
+    @include view-size(big-desktop) {
+      max-width: 40rem;
+    }
+  }
   .menu-group {
     display: flex;
     align-items: flex-start;
@@ -86,7 +114,9 @@
       max-width: 55rem;
     }
   }
-
+  .menu:lang(ar) {
+    align-items: flex-end;
+  }
   .menu {
     display: flex;
     flex-direction: column;
@@ -110,6 +140,9 @@
   .link-container {
     display: flex;
     flex-direction: column;
+  }
+  .upper-menu:lang(ar) {
+    flex-direction: row-reverse;
   }
   .upper-menu {
     display: flex;

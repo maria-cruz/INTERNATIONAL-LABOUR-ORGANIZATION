@@ -36,7 +36,9 @@
       top: 14rem;
     }
   }
-
+  .title:lang(ar) {
+    text-align: right;
+  }
   ._subheading-label {
     margin-bottom: 5rem;
     font-size: 2.2rem;
@@ -45,7 +47,10 @@
       font-size: 2.8rem;
     }
   }
-
+  .bg-description-container:lang(ar) {
+    right: 0;
+    text-align: right;
+  }
   .bg-description-container {
     @include side-padding;
     color: $black03;
@@ -110,6 +115,9 @@
     @include view-size(tab-land) {
       width: 87vw;
     }
+  }
+  .ant-tabs-nav-wrap:lang(ar) {
+    justify-content: right;
   }
   .unit-wrapper .tab-container {
     padding: 6rem 0 10rem;

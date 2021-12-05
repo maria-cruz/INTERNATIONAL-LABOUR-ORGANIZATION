@@ -7,7 +7,11 @@
     width: 100%;
     max-width: 108.8rem;
   }
-
+  .ant-input-affix-wrapper:lang(ar) {
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+  }
   .ant-input-affix-wrapper,
   .ant-select-selector {
     height: 5rem;
@@ -26,6 +30,10 @@
       margin-bottom: 12rem;
     }
   }
+  .search-label:lang(ar),
+  .select-label:lang(ar) {
+    text-align: right;
+  }
   .search-label,
   .select-label {
     font-size: 1.4rem;
@@ -43,7 +51,10 @@
     border: 0.1rem solid $manatee;
     border-radius: 0.4rem;
     margin-bottom: 2rem;
-
+    .ant-collapse-header:lang(ar) {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
     .ant-collapse-header {
       font-size: 5vw;
       color: $black03;
@@ -61,6 +72,13 @@
       }
       @include view-size(desktop) {
         font-size: 2.4rem;
+      }
+    }
+    .ant-collapse-content-box:lang(ar) {
+      margin-left: 0;
+      margin-right: 5rem;
+      @include view-size(1000px) {
+        margin-right: 7rem;
       }
     }
 
@@ -82,7 +100,10 @@
     .ant-collapse-arrow svg {
       fill: $shuttle-gray;
     }
-
+    .ant-collapse-header .ant-collapse-arrow:lang(ar) {
+      margin-right: 0;
+      margin-left: 3rem;
+    }
     .ant-collapse-header .ant-collapse-arrow {
       margin-right: 3rem;
       @include view-size(1000px) {
