@@ -81,7 +81,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
       value.day === undefined ||
       value.year === undefined
     ) {
-      return Promise.reject("Please select date");
+      return Promise.reject(t("validationMessageDate"));
     }
 
     return Promise.resolve();
@@ -158,7 +158,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your first name.",
+                        message: t("validationMessageFirstName"),
                       },
                     ]}
                   >
@@ -171,7 +171,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your last name.",
+                        message: t("validationMessageLastName"),
                       },
                     ]}
                   >
@@ -186,7 +186,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your organization type.",
+                        message: t("validationMessageOrganizationType"),
                       },
                     ]}
                   >
@@ -219,7 +219,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     {
                       required: true,
                       type: "email",
-                      message: "Please input your email address.",
+                      message: t("validationMessageEmail"),
                     },
                   ]}
                 >
@@ -272,7 +272,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     rules={[
                       {
                         required: true,
-                        message: "Please select your gender.",
+                        message: t("validationMessageSex"),
                       },
                     ]}
                   >
@@ -298,7 +298,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     rules={[
                       {
                         required: true,
-                        message: "Please select your nationality.",
+                        message: t("validationMessageNationality"),
                       },
                     ]}
                   >

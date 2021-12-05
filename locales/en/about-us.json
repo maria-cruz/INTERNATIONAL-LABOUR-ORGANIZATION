@@ -14,5 +14,9 @@
   "firstName": "First name",
   "lastName": "Last name",
   "email": "Email",
-  "message": "Message"
+  "message": "Message",
+  "firstNameInput": "Please input your First name.",
+  "lastNameInput": "Please input your Last name.",
+  "emailValidation": "Please input your email.",
+  "notValidEmail": "The input is not valid E-mail!"
 }

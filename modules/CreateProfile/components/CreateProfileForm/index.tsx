@@ -39,7 +39,7 @@ const CreateProfileForm = ({
       value.day === undefined ||
       value.year === undefined
     ) {
-      return Promise.reject("Please select date");
+      return Promise.reject(t("validationMessageDate"));
     }
 
     return Promise.resolve();
@@ -57,7 +57,7 @@ const CreateProfileForm = ({
           rules={[
             {
               required: true,
-              message: "Please input your first name.",
+              message: t("validationMessageFirstName"),
             },
           ]}
         >
@@ -70,7 +70,7 @@ const CreateProfileForm = ({
           rules={[
             {
               required: true,
-              message: "Please input your last name.",
+              message: t("validationMessageLastName"),
             },
           ]}
         >
@@ -85,7 +85,7 @@ const CreateProfileForm = ({
           rules={[
             {
               required: true,
-              message: "Please input your organization type.",
+              message: t("validationMessageOrganizationType"),
             },
           ]}
         >
@@ -162,7 +162,7 @@ const CreateProfileForm = ({
           rules={[
             {
               required: true,
-              message: "Please select your gender.",
+              message: t("validationMessageSex"),
             },
           ]}
         >
@@ -191,7 +191,7 @@ const CreateProfileForm = ({
           rules={[
             {
               required: true,
-              message: "Please select your nationality.",
+              message: t("validationMessageNationality"),
             },
           ]}
         >

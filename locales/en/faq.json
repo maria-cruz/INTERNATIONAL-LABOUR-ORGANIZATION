@@ -6,5 +6,7 @@
   "email": "Email",
   "question": "Question",
   "allTopics": "All topics",
-  "submitQuestion": "Submit question"
+  "submitQuestion": "Submit question",
+  "emailValidation": "Please input your email.",
+  "notValidEmail": "The input is not valid E-mail!"
 }

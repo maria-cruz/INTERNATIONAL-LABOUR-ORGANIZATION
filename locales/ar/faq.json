@@ -7,5 +7,7 @@
   "question": "سؤال",
   "allTopics": "كل المواضيع",
   "submitQuestion": "إرسال السؤال",
-  "isRequired": "مطلوب"
+  "isRequired": "مطلوب",
+  "emailValidation": "الرجاء إدخال البريد الإلكتروني الخاص بك",
+  "notValidEmail": "الإدخال ليس بريدًا إلكترونيًا صالحًا!"
 }

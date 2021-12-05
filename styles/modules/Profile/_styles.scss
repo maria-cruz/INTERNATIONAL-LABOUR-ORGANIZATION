@@ -15,11 +15,18 @@
     font-weight: bold;
     color: $tropical-rain-forest;
     margin-bottom: 1.1rem;
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .description-container {
     font-size: 1.8rem;
     color: $shuttle-gray;
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .profile-preview-container {
@@ -54,8 +61,23 @@
     font-size: 2.4rem;
     font-weight: bold;
     margin-bottom: 1rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
+  .organization-type-container {
+    width: 100%;
+    display: flex;
+
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+    &:lang(en) {
+      flex-direction: row;
+    }
+  }
   .organization-type-text {
     background: $frosted-mint;
     font-size: 1.6rem;
@@ -72,6 +94,14 @@
     margin-bottom: 3rem;
     row-gap: 5rem;
     flex-wrap: wrap;
+
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
+
+    &:lang(en) {
+      flex-direction: row;
+    }
   }
 
   .email-container,
@@ -102,20 +132,36 @@
     font-size: 1.4rem;
     color: $manatee;
     margin-bottom: 1rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .verify-email-text {
     font-size: 1.4rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .sub-text {
     font-size: 1.8rem;
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .preview-button-container {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+
+    &:lang(ar) {
+      flex-direction: row-reverse;
+    }
   }
 
   .btn-submit {

@@ -9,5 +9,7 @@
   "signUp": "اشتراك",
   "emailAddress": "عنوان البريد الإلكتروني",
   "password": "كلمه السر",
-  "forgotPassword": "نسيت كلمة المرور؟"
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "emailValidation": "الرجاء إدخال البريد الإلكتروني الخاص بك",
+  "enterPassword": "الرجاء إدخال كلمة المرور"
 }

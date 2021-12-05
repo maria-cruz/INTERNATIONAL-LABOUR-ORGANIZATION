@@ -41,5 +41,13 @@
   "editProfile": "Edit profile",
   "continue": "Continue",
   "back": "Back",
-  "submit": "Submit"
+  "submit": "Submit",
+  "done": "Done",
+  "validationMessageFirstName": "Please input your first name.",
+  "validationMessageLastName": "Please input your last name.",
+  "validationMessageOrganizationType": "Please select your organization type",
+  "validationMessageNationality": "Please select your nationality",
+  "validationMessageSex": "Please select your gender",
+  "validationMessageDate": " Please select date",
+  "validationMessageEmail": "Please input your email"
 }

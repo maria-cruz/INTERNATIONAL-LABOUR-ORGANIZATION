@@ -4,7 +4,6 @@
   "signUp": "تحميل الدليل",
   "signUpTitle": "تسجيل الدخول",
   "loginSubText": "هل لديك حساب؟",
-  "termsAndCondition": "الشروط والأحكام",
   "accept": "قبول",
   "emailAddress": "عنوان البريد الإلكتروني",
   "password": "اخلق كلمة مرور",
@@ -14,5 +13,9 @@
   "minimumCharacters": "لا تقل عن 8 أحرف",
   "lowercaseLetter": "قم بتضمين حرف صغير واحد على الأقل",
   "uppercaseLetter": "قم بتضمين حرف كبير واحد على الأقل",
-  "atleastNumber": "يجب تضمين رقم واحد على الأقل (0-9)"
+  "atleastNumber": "يجب تضمين رقم واحد على الأقل (0-9)",
+  "emailValidation": "الرجاء إدخال البريد الإلكتروني الخاص بك",
+  "notValidEmail": "الإدخال ليس بريدًا إلكترونيًا صالحًا!",
+  "enterPassword": "الرجاء إدخال كلمة المرور",
+  "passwordValidation": "الرجاء إدخال كلمة السر الصحيحة."
 }

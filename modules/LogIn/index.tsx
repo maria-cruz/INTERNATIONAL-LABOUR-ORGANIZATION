@@ -150,9 +150,7 @@ const LogIn = () => {
                 label={t("emailAddress")}
                 className="email-container"
                 name="email"
-                rules={[
-                  { required: true, message: "Please input your email." },
-                ]}
+                rules={[{ required: true, message: `${t("emailValidation")}` }]}
               >
                 <Input className="log-in-input" />
               </Form.Item>
@@ -160,9 +158,7 @@ const LogIn = () => {
                 label={t("password")}
                 className="password-container"
                 name="password"
-                rules={[
-                  { required: true, message: "Please input your password." },
-                ]}
+                rules={[{ required: true, message: `${t("enterPassword")}` }]}
               >
                 <Input
                   className="log-in-input"

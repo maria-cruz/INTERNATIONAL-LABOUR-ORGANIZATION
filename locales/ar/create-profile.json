@@ -41,5 +41,13 @@
   "editProfile": "تعديل الملف الشخصي",
   "continue": "استمر",
   "back": "إلى الخلف",
-  "submit": "إرسال"
+  "submit": "إرسال",
+  "done": "انتهى",
+  "validationMessageFirstName": "الرجاء إدخال اسمك الأول",
+  "validationMessageLastName": " الرجاء إدخال اسمك الأخير",
+  "validationMessageOrganizationType": "الرجاء تحديد نوع مؤسستك",
+  "validationMessageNationality": "الرجاء تحديد جنسيتك",
+  "validationMessageSex": " الرجاء تحديد جنسك",
+  "validationMessageDate": " الرجاء تحديد التاريخ",
+  "validationMessageEmail": "الرجاء إدخال البريد الإلكتروني الخاص بك"
 }
