@@ -20,28 +20,36 @@ interface TopicType {
 }
 interface SessionCollapseProps {
   topics: TopicType[];
+  currentProgressData: any;
 }
 
-const SessionCollapse = ({ topics }: SessionCollapseProps) => {
+const SessionCollapse = ({
+  topics,
+  currentProgressData,
+}: SessionCollapseProps) => {
   const router = useRouter();
   const currentTopicId = router?.query?.topic;
-
-  function callback(key: any) {
-    // console.log(key);
-  }
 
   return (
     <div className="session-collapse">
       <Collapse
         defaultActiveKey={["1"]}
-        onChange={callback}
         expandIconPosition="right"
         expandIcon={({ isActive }) => (
           <ExpandMore rotate={isActive ? 180 : 0} />
         )}
       >
         {topics.map((topic, idx: number) => {
-          const isActive = currentTopicId === `${topic?.id}`;
+          const targetTopic = currentProgressData?.topics?.find?.(
+            (currentTopic: any) => {
+              return currentTopic?.topic_id === topic?.id?.toString?.();
+            }
+          );
+
+          const isPreAssessmentCompleted = !!targetTopic?.pre_assessment;
+          const isPostAssessmentCompleted =
+            !!targetTopic?.post_assessment?.is_passed;
+          const isVideoCompleted = targetTopic?.videos?.length > 0;
 
           return (
             <Panel
@@ -52,9 +60,20 @@ const SessionCollapse = ({ topics }: SessionCollapseProps) => {
               }
               key={`${idx + 1}`}
             >
-              <PreAssessment id={topic?.id} />
-              <Topic title={topic?.title || ""} id={topic?.id} />
-              <PostAssessment id={topic?.id} />
+              <PreAssessment
+                id={topic?.id}
+                isCompleted={isPreAssessmentCompleted}
+              />
+              <Topic
+                title={topic?.title || ""}
+                id={topic?.id}
+                isCompleted={isVideoCompleted}
+                currentProgressData={currentProgressData}
+              />
+              <PostAssessment
+                id={topic?.id}
+                isCompleted={isPostAssessmentCompleted}
+              />
             </Panel>
           );
         })}

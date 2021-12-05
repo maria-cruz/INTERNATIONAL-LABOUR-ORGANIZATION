@@ -1,14 +1,15 @@
 import CourseView from "@modules/CourseView";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
+import getUserId from "@common/methods/getUserId";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import parseMediaEmbed from "@common/methods/parseMediaEmbed";
 import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface ProgressType {
   unit: number;
-  completed_topics_count: number;
-  total_topics_count: number;
+  completed_topics: number;
+  total_topics: number;
   is_unit_completed: boolean;
 }
 
@@ -39,8 +40,10 @@ interface CourseDataProps {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const jwt = await getJWT(ctx, true);
+  const userId = await getUserId(ctx);
   const slug = ctx?.query?.slug;
 
+  let courseViewData;
   const { data: courseData }: CourseDataProps = await axios.get(
     `${process.env.API_URL}/units/me/${slug}`,
     {
@@ -49,6 +52,38 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
     }
   );
+
+  courseViewData = courseData;
+
+  // Create a progress entry (post) if progress received from courseData is missing
+  if (!courseData?.progress) {
+    const unitId = courseData?.id;
+    const { data: courseProgress }: any = await axios.post(
+      `${process.env.API_URL}/progresses`,
+      {
+        unit: unitId,
+        user: userId,
+      },
+      {
+        headers: {
+          Authorization: jwt,
+        },
+      }
+    );
+
+    const progress = {
+      id: courseProgress?.id,
+      completed_topics: courseProgress?.topics?.length ?? 0,
+      total_topics: courseProgress?.unit?.topics?.length ?? 0,
+      topics: courseProgress?.topics ?? [],
+      unit: courseProgress?.unit?.id,
+    };
+
+    courseViewData = {
+      ...courseViewData,
+      progress,
+    };
+  }
 
   const { data: courseComments }: any = await axios.get(
     `${process.env.API_URL}/comments/unit:${courseData?.id}`,
@@ -59,8 +94,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  const completedTopics = courseData?.progress?.completed_topics_count ?? 0;
-  const totalTopics = courseData?.progress?.total_topics_count ?? 1;
+  const completedTopics = courseData?.progress?.completed_topics ?? 0;
+  const totalTopics = courseData?.progress?.total_topics ?? 1;
   const percentage = Math.floor((completedTopics / totalTopics) * 100);
 
   const topics = !!courseData?.topics ? courseData.topics : [];
@@ -75,17 +110,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  const courseViewData: any = {
-    ...courseData,
+  courseViewData = {
+    ...courseViewData,
     topics: modifiedTopics,
   };
 
   const unitDetailsProps = {
     instructorAvatar: getStrapiFileUrl(courseData?.instructor?.avatar?.url),
-    instructorName: courseData?.instructor?.name,
+    instructorName: courseData?.instructor?.name ?? null,
     topicsCount: topicsCount,
     progress: percentage,
-    description: courseData?.description,
+    description: courseData?.description ?? null,
     objectives: courseData?.learning_objectives ?? [],
   };
 

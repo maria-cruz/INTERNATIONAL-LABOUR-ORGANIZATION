@@ -53,7 +53,8 @@ const CourseView = ({
 }: CourseDataProps) => {
   const router = useRouter();
   const slug = router?.query?.slug;
-
+  const currentUnitId = data?.id ?? null;
+  const currentProgressData = data?.progress;
   const currentContentData = data.topics.find(
     (topic) => router?.query?.topic == `${topic?.id}`
   );
@@ -73,7 +74,11 @@ const CourseView = ({
           </div>
           <div className="title">{`Unit ${data?.unit}: ${data?.title}`}</div>
         </header>
-        <Content data={currentContentData} />
+        <Content
+          currentContentData={currentContentData}
+          currentUnitId={currentUnitId}
+          currentProgressData={currentProgressData}
+        />
         <section className="unit-info">
           <CourseTabs
             unitDetailsProps={unitDetailsProps}
@@ -98,7 +103,10 @@ const CourseView = ({
         </header>
 
         <ProgressTracker percentage={26} />
-        <SessionCollapse topics={data?.topics} />
+        <SessionCollapse
+          topics={data?.topics}
+          currentProgressData={currentProgressData}
+        />
       </div>
     </div>
   );
