@@ -91,6 +91,12 @@ const LogIn = () => {
     setIsPasswordShown(isPasswordShown ? false : true);
   };
 
+  const handleSignUpRedirectionClick = () => {
+    Router.push(`/sign-up`, undefined, {
+      scroll: false,
+    });
+  };
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="log-in-section">
@@ -126,7 +132,12 @@ const LogIn = () => {
             <div className="log-in-title">{t("log-in")}</div>
             <div className="sign-up-container">
               <div className="login-sub-text">{t("signUpSubText")}</div>
-              <div className="login-text">{t("signUp")}</div>
+              <div
+                className="login-text"
+                onClick={handleSignUpRedirectionClick}
+              >
+                {t("signUp")}
+              </div>
             </div>
             <Form
               form={loginForm}
