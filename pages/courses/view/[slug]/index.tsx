@@ -94,6 +94,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
+  console.log(
+    courseData?.progress?.completed_topics,
+    "courseData?.progress?.completed_topics "
+  );
+
   const completedTopics = courseData?.progress?.completed_topics ?? 0;
   const totalTopics = courseData?.progress?.total_topics ?? 1;
   const percentage = Math.floor((completedTopics / totalTopics) * 100);

@@ -31,8 +31,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   );
 
   const allCourseCardsData = allCoursesData.map((courseData) => {
-    const completedTopics = courseData?.progress?.completed_topics_count ?? 0;
-    const totalTopics = courseData?.progress?.total_topics_count ?? 1;
+    const completedTopics = courseData?.progress?.completed_topics ?? 0;
+    const totalTopics = courseData?.progress?.total_topics ?? 1;
     const percentage = Math.floor((completedTopics / totalTopics) * 100);
 
     const getProgressStatus = () => {
