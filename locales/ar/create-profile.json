@@ -42,5 +42,12 @@
   "continue": "استمر",
   "back": "إلى الخلف",
   "submit": "إرسال",
-  "done": "انتهى"
+  "done": "انتهى",
+  "validationMessageFirstName": "الرجاء إدخال اسمك الأول",
+  "validationMessageLastName": " الرجاء إدخال اسمك الأخير",
+  "validationMessageOrganizationType": "الرجاء تحديد نوع مؤسستك",
+  "validationMessageNationality": "الرجاء تحديد جنسيتك",
+  "validationMessageSex": " الرجاء تحديد جنسك",
+  "validationMessageDate": " الرجاء تحديد التاريخ",
+  "validationMessageEmail": "الرجاء إدخال البريد الإلكتروني الخاص بك"
 }
