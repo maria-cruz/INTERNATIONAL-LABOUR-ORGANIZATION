@@ -6,7 +6,9 @@
   max-width: 55.3rem;
   max-height: 50rem;
   height: 100vw;
-
+  .card-details-container:lang(ar) {
+    text-align: right;
+  }
   .card-details-container {
     position: absolute;
     display: flex;
@@ -31,7 +33,9 @@
       pointer-events: none;
       overflow: hidden;
     }
-
+    .card-hover-details:lang(ar) {
+      align-items: flex-end;
+    }
     &:hover {
       height: 100%;
       transition: 0.25s;
@@ -75,7 +79,7 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    height: 12rem;
+    height: inherit;
     line-clamp: 2;
     -webkit-box-orient: vertical;
     @include view-size(tab-port) {
@@ -83,7 +87,9 @@
       margin-bottom: 2rem;
     }
   }
-
+  .download-btn:lang(ar) {
+    flex-direction: row-reverse;
+  }
   .download-btn {
     display: flex;
     justify-content: center;

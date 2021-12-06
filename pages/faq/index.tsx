@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       return null;
     }
     return {
-      unit: `Unit ${faqUnit ?? 0}`,
+      unit: faqUnit ?? 0,
       title: faqTitle,
       topics: faqTopics,
     };

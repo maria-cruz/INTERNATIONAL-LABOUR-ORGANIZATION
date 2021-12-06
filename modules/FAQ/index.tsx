@@ -44,7 +44,7 @@ const FAQ = ({ allFaqsData }: AllFaqDataType) => {
           <div className="unit-wrapper">
             <Tabs className="tab-container" defaultActiveKey="1">
               {allFaqsData.map((faqData: FaqsProps) => {
-                const faqUnit = faqData?.unit;
+                const faqUnit = `${t("unit")} ${faqData?.unit}`;
                 return (
                   <TabPane className="tab-item" tab={faqUnit} key={faqUnit}>
                     <FaqUnit faqData={faqData} />
