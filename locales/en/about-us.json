@@ -18,5 +18,6 @@
   "firstNameInput": "Please input your First name.",
   "lastNameInput": "Please input your Last name.",
   "emailValidation": "Please input your email.",
-  "notValidEmail": "The input is not valid E-mail!"
+  "notValidEmail": "The input is not valid E-mail!",
+  "location": "Al Buraj Building, Chiyah Highway, Mushrafieh, Baabda, Lebanon"
 }

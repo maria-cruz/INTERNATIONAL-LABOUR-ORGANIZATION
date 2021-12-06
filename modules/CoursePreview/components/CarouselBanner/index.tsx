@@ -51,7 +51,7 @@ const CarouselBanner = ({
       <div className="bg-filter" />
 
       <div className="bg-description-container">
-        <div className="unit-label">{`Unit ${unit}`}</div>
+        <div className="unit-label">{`${t("unit")} ${unit}`}</div>
 
         <div className="title-container">
           <div

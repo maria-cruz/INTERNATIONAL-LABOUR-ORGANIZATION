@@ -82,19 +82,4 @@
       max-width: 10.8rem;
     }
   }
-  .watch-link-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.1rem;
-    font-size: 1.8rem;
-  }
-
-  .watch-link-container .watch-link-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $jade;
-    border-bottom: 0.1rem solid $jade;
-  }
 }

@@ -33,3 +33,6 @@
 .ant-tabs-nav::before {
   border-bottom: none !important;
 }
+.ant-tabs-nav-wrap:lang(ar) {
+  justify-content: flex-end;
+}

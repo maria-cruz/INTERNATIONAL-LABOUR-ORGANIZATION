@@ -52,10 +52,6 @@ const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
       <div className="form-wrapper">
         <div className="text-container">
           <div className="_subheading-label">{t("haveAQuestion")}</div>
-          <div className="form-description">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et
-          </div>
         </div>
         {isVisibleText ? (
           <SuccessMessage {...description} />
