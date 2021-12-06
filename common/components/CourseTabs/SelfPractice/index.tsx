@@ -9,8 +9,12 @@ export interface Files {
   name?: string;
   size?: string;
 }
+interface SelfPractice {
+  id: number;
+  files: Files;
+}
 export interface SelfPracticeProps {
-  courseDownloadableFiles?: Files[];
+  courseDownloadableFiles?: SelfPractice[];
 }
 
 const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
@@ -25,10 +29,10 @@ const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
           learning Unit.
         </div>
         {courseDownloadableFiles.map((courseDownloadableFile, idx: number) => {
-          const filename = courseDownloadableFile?.name;
-          const fileUrl = courseDownloadableFile?.url ?? "";
+          const filename = courseDownloadableFile?.files?.name;
+          const fileUrl = courseDownloadableFile?.files?.url ?? "";
           const url = getStrapiFileUrl(fileUrl);
-          const fileSize = courseDownloadableFile?.size;
+          const fileSize = courseDownloadableFile?.files?.size;
           return (
             <div className="download-modules-wrapper" key={idx}>
               <div className="file-item-container">
