@@ -9,6 +9,10 @@ interface Files {
   name: string;
   size: string;
 }
+interface SelfPractice {
+  id: number;
+  files: Files;
+}
 interface CoursesDataType {
   id: number;
   unit: string;
@@ -22,9 +26,7 @@ interface CoursesDataType {
   topics: any;
   learning_objectives: any;
   instructor: any;
-  self_practice: {
-    files: Files[];
-  };
+  self_practice: SelfPractice[];
 }
 
 interface AllCoursesDataType {
@@ -57,6 +59,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
+  console.log(
+    currentCourseData?.self_practice,
+    " currentCourseData?.self_practice"
+  );
+
   const prevCourse = allCoursesData
     ?.slice?.()
     ?.reverse?.()
@@ -78,7 +85,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const topics = !!currentCourseData?.topics ? currentCourseData.topics : [];
   const topicsCount = topics.length;
-  const courseDownloadableFiles = currentCourseData?.self_practice?.files ?? [];
+  const courseDownloadableFiles = currentCourseData?.self_practice ?? [];
 
   const coursePreviewData = {
     id: currentCourseData?.id ?? 0,
