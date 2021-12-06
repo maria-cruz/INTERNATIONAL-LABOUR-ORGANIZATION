@@ -91,9 +91,7 @@ const CreateProfileForm = ({
         >
           <Select
             className="form-select-organization-type"
-            dropdownClassName={
-              language === "ar" ? "create-profile-dropdown" : ""
-            }
+            dropdownClassName={"create-profile-dropdown"}
             suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
           >
             {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (

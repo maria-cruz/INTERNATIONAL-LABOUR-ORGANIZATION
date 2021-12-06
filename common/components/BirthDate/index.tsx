@@ -65,10 +65,11 @@ const BirthDate = ({ value = {}, onChange }: BirthDateProps) => {
         onChange={handleMonthChange}
         value={month ?? value?.month ?? undefined}
         suffixIcon={<DownArrow width={"1.3rem"} height={"1.3rem"} />}
+        dropdownClassName="month-dropdown"
       >
         {MONTHS?.map((month) => (
           <Select.Option value={month.value} key={month.value}>
-            {month.label}
+            {t(month.key)}
           </Select.Option>
         ))}
       </Select>

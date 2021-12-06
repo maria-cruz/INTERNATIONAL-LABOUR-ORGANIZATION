@@ -198,7 +198,7 @@ const EditProfile = ({ editProfileData }: EditProfileProps) => {
                     >
                       {SAMPLE_DATA_ORGANIZATION_TYPE.map((item) => (
                         <Select.Option value={item.value} key={item.value}>
-                          {item.key}
+                          {t(item.key)}
                         </Select.Option>
                       ))}
                     </Select>
