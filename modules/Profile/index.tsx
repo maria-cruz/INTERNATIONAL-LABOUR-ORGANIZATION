@@ -5,6 +5,8 @@ import useRouter from "next/router";
 import moment from "moment";
 import nationalities from "@common/constants/nationalities";
 import useTranslation from "next-translate/useTranslation";
+import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
+import { GENDER, MONTHS } from "@modules/CreateProfile/helpers/constants";
 
 interface ProfileData {
   nationality: string;
@@ -36,6 +38,28 @@ const Profile = ({ profileData }: ProfileProps) => {
   const handleEditProfileClick = () => {
     router?.push("/profile/edit");
   };
+
+  const checkOrganizationType = SAMPLE_DATA_ORGANIZATION_TYPE.find(
+    (item) => item.value === profileData.organization_type
+  );
+
+  const organizationType = checkOrganizationType?.key
+    ? checkOrganizationType.key
+    : "";
+
+  const checkGender = GENDER.find((item) => item.value === profileData.gender);
+
+  const gender = checkGender?.key ? checkGender.key : "";
+
+  const checkMonth = moment(profileData.birth_date).month();
+
+  const day = moment(profileData.birth_date).date();
+  const year = moment(profileData.birth_date).year();
+
+  const compareMonth = MONTHS.find((item) => item.value === checkMonth);
+
+  const month = compareMonth?.key ? compareMonth.key : "";
+
   return (
     <Layout header={<Header title={"Header"} />}>
       <section className="profile-preview-section">
@@ -50,7 +74,7 @@ const Profile = ({ profileData }: ProfileProps) => {
             <div className="name-text">{`${profileData.given_name} ${profileData.family_name}`}</div>
             <div className="organization-type-container">
               <div className="organization-type-text">
-                {profileData.organization_type}
+                {t(organizationType)}
               </div>
             </div>
             <div className="profile-preview-column">
@@ -75,15 +99,13 @@ const Profile = ({ profileData }: ProfileProps) => {
               </div>
               <div className="birthday-container">
                 <div className="text">{t("dateOfBirth")}</div>
-                <div className="sub-text">
-                  {moment(profileData.birth_date).format("ll")}
-                </div>
+                <div className="sub-text">{`${t(month)} ${day}, ${year}`}</div>
               </div>
             </div>
             <div className="profile-preview-column space-bottom">
               <div className="gender-container">
                 <div className="text">{t("sex")}</div>
-                <div className="sub-text">{profileData.gender}</div>
+                <div className="sub-text">{t(gender)}</div>
               </div>
               <div className="nationality-container">
                 <div className="text">{t("nationality")}</div>

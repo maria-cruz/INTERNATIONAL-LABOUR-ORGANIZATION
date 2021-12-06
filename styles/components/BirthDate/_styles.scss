@@ -19,3 +19,14 @@
     flex: 2;
   }
 }
+
+.month-dropdown {
+  .ant-select-item-option-content {
+    &:lang(ar) {
+      text-align: right;
+    }
+    &:lang(en) {
+      text-align: start;
+    }
+  }
+}

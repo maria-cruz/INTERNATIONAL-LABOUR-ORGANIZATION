@@ -6,7 +6,7 @@
   "firstName": "الإسم الأول*",
   "lastName": "اسم العائلة*",
   "organizationType": "نوع المؤسسة*",
-  "organizationName": "اسم المؤسسة*",
+  "organizationName": "اسم المؤسسة",
   "email": "عنوان البريد الإلكتروني*",
   "emailNotRequired": "عنوان البريد الإلكتروني",
   "country": "البلد",
@@ -49,5 +49,17 @@
   "validationMessageNationality": "الرجاء تحديد جنسيتك",
   "validationMessageSex": " الرجاء تحديد جنسك",
   "validationMessageDate": " الرجاء تحديد التاريخ",
-  "validationMessageEmail": "الرجاء إدخال البريد الإلكتروني الخاص بك"
+  "validationMessageEmail": "الرجاء إدخال البريد الإلكتروني الخاص بك",
+  "january": "كانون الثاني",
+  "february": "شباط",
+  "march": "آذار",
+  "april": "نيسان",
+  "may": "أيار",
+  "june": "حزيران",
+  "july": "تموز",
+  "august": "آب",
+  "september": "أيلول",
+  "october": "تشرين الأول",
+  "november": "تشرين الثاني",
+  "december": "كانون الأول"
 }

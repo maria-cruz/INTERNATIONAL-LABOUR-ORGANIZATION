@@ -49,5 +49,17 @@
   "validationMessageNationality": "Please select your nationality",
   "validationMessageSex": "Please select your gender",
   "validationMessageDate": " Please select date",
-  "validationMessageEmail": "Please input your email"
+  "validationMessageEmail": "Please input your email",
+  "january": "January",
+  "february": "February",
+  "march": "March",
+  "april": "April",
+  "may": "May",
+  "june": "June",
+  "july": "July",
+  "august": "August",
+  "september": "September",
+  "october": "October",
+  "november": "November",
+  "december": "December"
 }
