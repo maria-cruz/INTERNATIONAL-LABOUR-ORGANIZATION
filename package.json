@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google-analytics/data": "2.7.0",
+    "@react-pdf/renderer": "^2.0.21",
     "antd": "4.16.13",
     "axios": "0.21.4",
     "classnames": "2.3.1",

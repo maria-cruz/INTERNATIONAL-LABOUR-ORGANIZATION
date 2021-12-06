@@ -3,8 +3,14 @@ import Image from "next/image";
 import HandWritingImage from "@public/images/hand-writing.jpg";
 import Button from "antd/lib/button";
 import Download from "@common/components/Icons/Download";
+import { useRouter } from "next/router";
 
 const CoursesCertificate = () => {
+  const router = useRouter();
+  const handleDownloadClick = () => {
+    router.push("/certificate");
+  };
+
   return (
     <div className="courses-certificate-container">
       <div className="certificate-card-image-container">
@@ -32,7 +38,11 @@ const CoursesCertificate = () => {
           </div>
           <div className="spacer" />
           <div className="card-view-button">
-            <Button type="primary" className="download-btn">
+            <Button
+              onClick={handleDownloadClick}
+              type="primary"
+              className="download-btn"
+            >
               <Download fill="#ffffff" width="1.4rem" height="1.7rem" />
               Download
             </Button>
