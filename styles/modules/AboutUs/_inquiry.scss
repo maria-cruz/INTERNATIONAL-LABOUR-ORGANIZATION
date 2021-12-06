@@ -177,7 +177,12 @@
       width: 2rem;
     }
   }
-
+  .details-wrappper ._upper svg:lang(ar) {
+    margin-left: 1rem;
+  }
+  .details-item svg:lang(ar) {
+    margin-left: 1rem;
+  }
   .name-container {
     display: flex;
     flex-direction: column;

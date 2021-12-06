@@ -140,14 +140,11 @@ const Inquiry = () => {
             <div className="details-wrappper">
               <div className="details-item _upper">
                 <Location width="20" height="20" fill="#007A50" />
-                <p className="details-label">
-                  Location Lorem ipsum dolor sit amet, consetetur sadipscing
-                  elitr,
-                </p>
+                <p className="details-label">{t("location")}</p>
               </div>
               <div className="details-item">
                 <Telephone width="20" height="20" fill="#007A50" />
-                <p className="details-label">675 308 0000</p>
+                <p className="details-label">+961 1 556 803</p>
               </div>
               <div className="details-item">
                 <Email width="20" height="20" fill="#007A50" />

@@ -38,27 +38,6 @@ const Footer = () => {
             <a className={styles["disable-link"]}>{t("contactUs")}</a>
           </div>
         </div>
-
-        <div className={styles["menu"]}>
-          <span className={styles["menu-title"]}>{t("follow")}</span>
-          <div className={styles["link-container"]}>
-            <Link href={"/sign-up"}>
-              <a>
-                <Facebook fill="#ffffff" width="18" height="18" />
-              </a>
-            </Link>
-            <Link href={"/log-in"}>
-              <a>
-                <Twitter fill="#ffffff" width="18" height="18" />
-              </a>
-            </Link>
-            <Link href={"/download-guide"}>
-              <a>
-                <LinkedIn fill="#ffffff" width="18" height="18" />
-              </a>
-            </Link>
-          </div>
-        </div>
       </div>
     </footer>
   );
