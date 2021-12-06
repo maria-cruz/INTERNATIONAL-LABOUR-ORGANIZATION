@@ -17,10 +17,11 @@ interface HandleContactsProps {
 }
 
 const Inquiry = () => {
+  const { t } = useTranslation("about-us");
+
   const successMesssageProps = {
-    subDescription: "Otherwise, we will reply by email as soon as possible.",
-    description:
-      "We have received your message and would like to thank you for writing to us. If your inquiry is urgent, please use the telephone number listed to talk to one of our staff members.",
+    subDescription: `${t("successSubDescription")}`,
+    description: `${t("successDescription")}`,
   };
   const [isVisibleText, setIsVisibleText] = useState(false);
   const [inquiryForm] = Form.useForm();
@@ -46,7 +47,6 @@ const Inquiry = () => {
       })
       .catch((err) => console.error(err));
   };
-  const { t } = useTranslation("about-us");
 
   return (
     <div className="inquiry-container">
