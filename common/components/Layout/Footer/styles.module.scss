@@ -85,7 +85,7 @@
       gap: 15rem;
     }
     @include view-size(desktop) {
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 0;
       max-width: 35rem;
     }
@@ -109,6 +109,7 @@
     }
     @include view-size(desktop) {
       max-width: 45rem;
+      justify-content: flex-end;
     }
     @include view-size(big-desktop) {
       max-width: 55rem;

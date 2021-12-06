@@ -63,9 +63,15 @@
     }
   }
   .step-container:lang(ar) {
-    flex-direction: row-reverse;
+    align-items: flex-end;
+    @include view-size(tab-port) {
+      align-items: flex-start;
+      flex-direction: row-reverse;
+    }
   }
-
+  .step-container .logo:lang(ar) {
+    height: 7rem;
+  }
   .step-container .logo {
     border: 0.4rem solid $tropical-rain-forest;
     border-radius: 50%;

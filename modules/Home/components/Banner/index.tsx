@@ -29,16 +29,6 @@ const Home = () => {
           {t("signUp")}
         </Button>
       </div>
-
-      <div className={styles["watch-link-container"]}>
-        <Image
-          src="/images/play-circle-filled.svg"
-          width={33}
-          height={33}
-          alt={"play-circle-filled.svg"}
-        />
-        <a className={styles["watch-link-text"]}>{t("watch")}</a>
-      </div>
     </section>
   );
 };

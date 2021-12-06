@@ -20,15 +20,6 @@
   .inquiry-form-wrapper {
     text-align: center;
   }
-  .form-description {
-    font-size: 1.8rem;
-    color: $shuttle-gray;
-    line-height: 1.4;
-    margin-bottom: 3rem;
-    @include view-size(tab-land) {
-      margin-bottom: 2rem;
-    }
-  }
 
   .upper-input-container {
     @include view-size(tab-port) {

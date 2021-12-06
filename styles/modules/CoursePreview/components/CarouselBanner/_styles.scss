@@ -41,7 +41,12 @@
   }
 
   /* Background Content */
+  .bg-description-container:lang(ar) {
+    display: flex;
+    align-items: flex-end;
+  }
   .bg-description-container {
+    width: 100%;
     position: absolute;
     top: 0;
     display: flex;
@@ -82,8 +87,12 @@
   .bg-description-container .title-container .back-icon svg {
     margin-right: 1.4rem;
   }
-
+  .bg-description-container .title-container .title:lang(ar) {
+    margin-right: 2rem;
+    justify-content: flex-end;
+  }
   .bg-description-container .title-container .title {
+    width: 100%;
     display: flex;
     align-items: center;
     font-size: min(5.55555vw, 6.3rem);
