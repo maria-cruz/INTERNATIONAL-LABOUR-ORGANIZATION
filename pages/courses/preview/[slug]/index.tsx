@@ -59,11 +59,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  console.log(
-    currentCourseData?.self_practice,
-    " currentCourseData?.self_practice"
-  );
-
   const prevCourse = allCoursesData
     ?.slice?.()
     ?.reverse?.()
