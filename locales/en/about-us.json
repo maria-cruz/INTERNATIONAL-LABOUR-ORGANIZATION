@@ -19,5 +19,7 @@
   "lastNameInput": "Please input your Last name.",
   "emailValidation": "Please input your email.",
   "notValidEmail": "The input is not valid E-mail!",
-  "location": "Al Buraj Building, Chiyah Highway, Mushrafieh, Baabda, Lebanon"
+  "location": "Al Buraj Building, Chiyah Highway, Mushrafieh, Baabda, Lebanon",
+  "successSubDescription": "Otherwise, we will reply by email as soon as possible.",
+  "successDescription": "We have received your message and would like to thank you for writing to us. If your inquiry is urgent, please use the telephone number listed to talk to one of our staff members."
 }

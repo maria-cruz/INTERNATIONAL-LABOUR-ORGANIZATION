@@ -16,6 +16,7 @@
     "/profile": ["create-profile"],
     "/profile/edit": ["create-profile"],
     "/download-guide": ["download-guide"],
-    "/faq": ["faq"]
+    "/faq": ["faq"],
+    "/success": ["success"]
   }
 }

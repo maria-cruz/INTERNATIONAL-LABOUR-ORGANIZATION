@@ -67,7 +67,7 @@ const SignUp = () => {
           return;
         }
 
-        Router.push("/sign-up/success");
+        Router.push("/success");
       })
       .catch((error) => {
         console.error("Error:", error);

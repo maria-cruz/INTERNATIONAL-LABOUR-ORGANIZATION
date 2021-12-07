@@ -9,5 +9,6 @@
   "submitQuestion": "Submit question",
   "emailValidation": "Please input your email.",
   "notValidEmail": "The input is not valid E-mail!",
-  "unit": "Unit"
+  "unit": "Unit",
+  "successMessageDescription": "We have received your message and would like to thank you for writing to us."
 }
