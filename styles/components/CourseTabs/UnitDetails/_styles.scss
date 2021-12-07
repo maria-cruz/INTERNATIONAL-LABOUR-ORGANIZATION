@@ -1,4 +1,10 @@
 .details-container {
+  .upper-details-wrapper:lang(ar) {
+    align-items: flex-end;
+    @include view-size(1150px) {
+      flex-direction: row-reverse;
+    }
+  }
   .upper-details-wrapper {
     display: flex;
     flex-direction: column;
@@ -17,7 +23,10 @@
       gap: 5rem;
     }
   }
-
+  .upper-details-wrapper .instructor-details-container:lang(ar),
+  .progress-wrapper:lang(ar) {
+    flex-direction: row-reverse;
+  }
   .upper-details-wrapper .instructor-details-container {
     display: flex;
     align-items: center;
@@ -41,7 +50,9 @@
 .instructor-name {
   font-weight: 600;
 }
-
+.progress-bar-container:lang(ar) {
+  flex-direction: row;
+}
 .progress-bar-container {
   display: flex;
   flex-direction: row-reverse;
@@ -71,7 +82,10 @@
   margin-right: 0;
   margin-left: 1rem;
 }
-
+.checklist svg:lang(ar) {
+  margin-right: 0;
+  margin-left: 1.5rem;
+}
 .checklist svg {
   width: 2.4rem;
   height: 2.4rem;
@@ -86,7 +100,9 @@
     font-size: 2.8rem;
   }
 }
-
+.list-item:lang(ar) {
+  flex-direction: row-reverse;
+}
 .list-item {
   margin-bottom: 2.3rem;
   display: flex;

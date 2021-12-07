@@ -50,6 +50,9 @@
       display: block;
     }
   }
+  .file-details-wrapper:lang(ar) {
+    text-align: start;
+  }
   .file-name-contianer {
     font-size: 1.6rem;
     font-weight: 600;

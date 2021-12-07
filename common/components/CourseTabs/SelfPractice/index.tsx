@@ -4,6 +4,8 @@ import File from "@common/components/Icons/File";
 import DownloadOutlined from "@common/components/Icons/DownloadOutlined";
 import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 import Tooltip from "antd/lib/tooltip";
+import useTranslation from "next-translate/useTranslation";
+
 export interface Files {
   url?: string;
   name?: string;
@@ -18,16 +20,13 @@ export interface SelfPracticeProps {
 }
 
 const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
+  const { t } = useTranslation("common");
+
   return (
     <section className="self-practice-section">
       <div className="self-practice-wrapper">
-        <div className="exercise-file-title">
-          Exercise files to practice while learning
-        </div>
-        <div className="description-container">
-          Download exercises and other supporting documents here for this
-          learning Unit.
-        </div>
+        <div className="exercise-file-title">{t("exercisesFile")}</div>
+        <div className="description-container">{t("downloadExercise")}</div>
         {courseDownloadableFiles.map((courseDownloadableFile, idx: number) => {
           const filename = courseDownloadableFile?.files?.name;
           const fileUrl = courseDownloadableFile?.files?.url ?? "";
@@ -52,7 +51,7 @@ const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
                       <DownloadOutlined width="24" height="24" fill="#00B274" />
                     }
                   >
-                    <p>Download</p>
+                    <p>{t("download")}</p>
                   </Button>
                 </a>
               </div>

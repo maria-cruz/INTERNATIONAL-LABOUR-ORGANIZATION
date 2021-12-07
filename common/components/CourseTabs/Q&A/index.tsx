@@ -5,6 +5,7 @@ import Button from "antd/lib/button";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 interface CommentAuthorType {
   family_name: string;
@@ -36,7 +37,8 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
 
   useEffect(() => {
     setComments(courseComments ?? []);
-  }, [slug]);
+  }, [courseComments, slug]);
+  const { t } = useTranslation("common");
 
   const handleQAndAFinish = (value: any) => {
     if (!value?.comment) return console.log("No Comment Received");
@@ -130,11 +132,11 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
       <div className="comment-form-wrapper">
         <Form form={qAndAForm} onFinish={handleQAndAFinish}>
           <div className="comment-container">
-            <Form.Item name="comment" label="Ask Here">
+            <Form.Item name="comment" label={`${t("askHere")}`}>
               <TextArea className="text-input-container" />
             </Form.Item>
             <Button htmlType="submit" type="primary" className="submit-btn">
-              Ask question
+              {t("askQuestion")}
             </Button>
           </div>
 
@@ -143,7 +145,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
             type="primary"
             className="submit-btn-mobile"
           >
-            Ask question
+            {t("askQuestion")}
           </Button>
         </Form>
       </div>
@@ -212,7 +214,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                 <Form.Item className="reply-container">
                   <TextArea
                     className="reply-input-container"
-                    placeholder="Comment"
+                    placeholder={`${t("comment")}`}
                     value={replyValues[idx]}
                     onChange={handleTextAreaChange(idx)}
                   />
@@ -221,7 +223,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                   onClick={handleReplyFinish(commentId, idx)}
                   className="reply-btn"
                 >
-                  Reply
+                  {t("reply")}
                 </Button>
               </div>
             </div>
