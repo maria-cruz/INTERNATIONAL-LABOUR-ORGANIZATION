@@ -11,8 +11,6 @@ import {
   Image,
 } from "@react-pdf/renderer";
 
-// Create Document Component
-
 const MyDocument = ({ userData }) => {
   const nameTitle = userData?.gender === "male" ? "Mr" : "Ms";
   const givenName = userData?.given_name ?? "";

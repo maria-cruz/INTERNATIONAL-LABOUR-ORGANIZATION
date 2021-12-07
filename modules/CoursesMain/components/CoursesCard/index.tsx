@@ -5,6 +5,7 @@ import Button from "antd/lib/button";
 import Locked from "@common/components/Icons/Locked";
 import CardSampleImage from "@public/images/card-sample-3.jpg";
 import router from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 export interface CoursesCardProps {
   unit?: string;
@@ -23,6 +24,8 @@ const CoursesCard = ({
   thumbnail = CardSampleImage,
   percentage = 0,
 }: CoursesCardProps) => {
+  const { t } = useTranslation("courses");
+
   const isLocked = percentage === 0;
   const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
   const handleViewUnit1Click = () => {
@@ -47,7 +50,7 @@ const CoursesCard = ({
         <div className="lower-container">
           <div className="card-view-button">
             <Button type="primary" onClick={handleViewUnit1Click}>
-              View Unit
+              {t("viewUnit")}
             </Button>
           </div>
           <div className="card-percentage">

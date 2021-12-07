@@ -6,5 +6,7 @@
   "completed": "Completed",
   "completedDescription": "You have completed the following units.",
   "certificate": "Certificate",
-  "certificateDescription": "Congratulations! Download your certificate of completion of the houkouki fi al 3amal course here."
+  "certificateDescription": "Congratulations! Download your certificate of completion of the houkouki fi al 3amal course here.",
+  "unit": "Unit",
+  "viewUnit": "View Unit"
 }

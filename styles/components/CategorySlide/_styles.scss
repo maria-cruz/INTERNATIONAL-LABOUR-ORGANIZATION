@@ -8,12 +8,22 @@
   .result-category {
     max-width: 115.5rem;
     width: 100%;
+
+    &:lang(ar) {
+      max-width: none;
+    }
   }
 
   .result-category .simplebar-content {
     display: flex;
     scroll-behavior: smooth;
 
+    &:lang(ar) {
+      direction: rtl;
+    }
+    &:lang(en) {
+      direction: ltr;
+    }
     .text-link-container:last-child .text-link-label {
       margin-right: 0;
     }
