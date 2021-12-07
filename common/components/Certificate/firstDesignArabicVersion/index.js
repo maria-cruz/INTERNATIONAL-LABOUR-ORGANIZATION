@@ -10,8 +10,6 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 
-// Create Document Component
-
 Font.register({
   family: "Noto Naskh Arabic",
   fonts: [
