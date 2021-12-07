@@ -29,7 +29,6 @@ const firstStyleEnglishVersion = StyleSheet.create({
     margin: 10,
     padding: 10,
     flexGrow: 1,
-    fontFamily: "Helvetiva Neue",
   },
 
   studentName: {
