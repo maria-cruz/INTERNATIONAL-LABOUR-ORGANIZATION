@@ -112,6 +112,10 @@
       opacity: 100%;
       height: fit-content;
       pointer-events: auto;
+
+      &:lang(ar) {
+        text-align: right;
+      }
     }
 
     &:hover .card-view-button {
