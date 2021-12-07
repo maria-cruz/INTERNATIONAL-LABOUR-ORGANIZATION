@@ -26,9 +26,9 @@
       font-size: 2.8rem;
     }
   }
-  // .partners-section-logos:lang(ar) {
-  //   display: none;
-  // }
+  .partners-section-logos:lang(ar) {
+    display: none;
+  }
   .partners-section-logos {
     width: 100%;
     @include view-size(tab-port) {
@@ -52,13 +52,10 @@
   .ant-carousel .slick-dots {
     z-index: 0;
   }
-  // .arabic-logos-section:lang(ar) {
-  //   display: block;
-  //   .ant-carousel .slick-slider {
-  //     display: grid;
-  //   }
-  // }
-  // .arabic-logos-section {
-  //   display: none;
-  // }
+  .partners-section-logos.arabic-logos:lang(ar) {
+    display: block;
+  }
+  .partners-section-logos.arabic-logos {
+    display: none;
+  }
 }

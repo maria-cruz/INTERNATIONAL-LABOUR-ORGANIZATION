@@ -13,9 +13,16 @@
   "questionsAndAnswers": "Questions & Answers",
   "selfPractice": "Self-Practice",
   "unitTopics": "Unit topics",
-  "progress": "Progress",
+  "progress": "Progress:",
   "startLesson": "Start Lesson",
   "learningObjectives": "Learning objectives",
   "unit": "Unit",
-  "messageSent": "Message sent!"
+  "messageSent": "Message sent!",
+  "askQuestion": "Ask question",
+  "reply": "Reply",
+  "askHere": "Ask Here",
+  "comment": "Comment",
+  "exercisesFile": "Exercise files to practice while learning",
+  "downloadExercise": "Download exercises and other supporting documents here for this learning Unit.",
+  "download": "Download"
 }

@@ -12,6 +12,7 @@ import Carousel from "antd/lib/carousel";
 import useTranslation from "next-translate/useTranslation";
 import UnicefArabic from "@public/images/sponsors/unicef-arabic.png";
 import IloArabic from "@public/images/sponsors/ILO-arabic.png";
+
 const Partners = () => {
   const settings = {
     autoplay: true,
@@ -127,7 +128,7 @@ const Partners = () => {
           </div>
         </Carousel>
       </div>
-      {/* <div className="arabic-logos-section">
+      <div className="partners-section-logos arabic-logos">
         <Carousel {...settings}>
           <div className="carousel-image-container">
             <Image
@@ -201,7 +202,7 @@ const Partners = () => {
             />
           </div>
         </Carousel>
-      </div> */}
+      </div>
     </section>
   );
 };

@@ -13,9 +13,16 @@
   "questionsAndAnswers": "أسئلة وأجوبة",
   "selfPractice": "التعلم الذاتي",
   "unitTopics": "موضوعات الوحدة",
-  "progress": "التقدم المحرز",
+  "progress": ":التقدم‎",
   "startLesson": "بدء الحصّة",
   "learningObjectives": "أهداف التعلم",
   "unit": "وحدة",
-  "messageSent": "تم الارسال"
+  "messageSent": "تم الارسال",
+  "askQuestion": "اسأل سؤالا",
+  "reply": "الرد",
+  "askHere": "اسأل هنا",
+  "comment": "تعليق",
+  "exercisesFile": "ملفات التمرين للممارسة أثناء التعلم",
+  "downloadExercise": "قم بتنزيل التمارين والوثائق الداعمة الأخرى هنا لوحدة التعلم هذه.",
+  "download": "تحميل"
 }
