@@ -45,11 +45,17 @@
       margin-bottom: 4.3rem;
     }
   }
+  .ant-form .ant-form-item .ant-form-item-label:lang(ar) {
+    text-align: right;
+  }
   .ant-form-item-label > label {
     font-family: Arial;
     color: $manatee;
   }
-
+  .ant-form-item:lang(ar) {
+    display: flex;
+    flex-direction: column;
+  }
   .conversation-container {
     background: $white;
     border-top: 0.1rem solid $shuttle-gray;

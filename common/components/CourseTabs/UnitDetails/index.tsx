@@ -48,7 +48,7 @@ const UnitDetails = ({
           <span className="digit-wrapper">{topicsCount}</span>
         </div>
         <div className="progress-wrapper">
-          {t("progress")}:
+          {t("progress")}
           <Progress
             percent={progress}
             strokeColor="#E3FFF5"
