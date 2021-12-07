@@ -4,7 +4,6 @@
   align-items: center;
   flex-direction: column;
   padding-bottom: 3rem;
-  min-height: 55rem;
   @include side-padding;
   @include view-size(tab-port) {
     height: 65rem;
@@ -41,7 +40,9 @@
   }
 
   /* Banner Description */
-
+  .banner-description:lang(ar) {
+    text-align: right;
+  }
   .banner-description {
     width: 100%;
     max-width: 105.8rem;

@@ -16,5 +16,6 @@
   "progress": "Progress",
   "startLesson": "Start Lesson",
   "learningObjectives": "Learning objectives",
-  "unit": "Unit"
+  "unit": "Unit",
+  "messageSent": "Message sent!"
 }

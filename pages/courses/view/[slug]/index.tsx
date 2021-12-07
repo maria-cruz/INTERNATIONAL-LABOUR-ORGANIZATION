@@ -130,7 +130,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   };
 
   const unitDownloadableFilesProps = {
-    courseDownloadableFiles: courseData?.self_practice?.files ?? [],
+    courseDownloadableFiles: courseData?.self_practice ?? [],
   };
 
   return {
