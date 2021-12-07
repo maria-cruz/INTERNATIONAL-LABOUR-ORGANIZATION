@@ -24,5 +24,17 @@
   "comment": "Comment",
   "exercisesFile": "Exercise files to practice while learning",
   "downloadExercise": "Download exercises and other supporting documents here for this learning Unit.",
-  "download": "Download"
+  "download": "Download",
+  "institutionStaff": "Training/academic institution – Staff",
+  "institutionStudent": "Training/academic institution – Student/Trainee",
+  "privateEnterpriseEmployer": "Private Enterprise – Employer",
+  "privateEnterpriseWorker": "Private Enterprise – Worker",
+  "tradeUnionOrganization": "Trade union organization",
+  "employerOrganization": "Employer organization",
+  "nonGovernmentalOrganization": "Non-governmental Organization",
+  "internationalNonGovernmentalOrganization": "International non-governmental Organization",
+  "governmentInstitution": "Government institution",
+  "unitedNations": "United Nations",
+  "currentlyUnemployed": "Currently unemployed",
+  "other": "Other"
 }

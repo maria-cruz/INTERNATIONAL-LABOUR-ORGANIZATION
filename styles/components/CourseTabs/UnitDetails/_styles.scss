@@ -59,6 +59,10 @@
   font-size: 1.8rem;
   justify-content: space-between;
   align-items: baseline;
+
+  &:lang(ar) {
+    flex-direction: row;
+  }
 }
 
 .ant-progress-text {

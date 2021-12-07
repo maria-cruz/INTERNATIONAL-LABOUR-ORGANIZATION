@@ -112,6 +112,10 @@
       opacity: 100%;
       height: fit-content;
       pointer-events: auto;
+
+      &:lang(ar) {
+        text-align: right;
+      }
     }
 
     &:hover .card-view-button {
@@ -119,6 +123,11 @@
       opacity: 100%;
       height: fit-content;
       pointer-events: auto;
+
+      &:lang(ar) {
+        display: flex;
+        flex-direction: row-reverse;
+      }
     }
 
     &:hover + .locked-icon-container {
@@ -159,6 +168,10 @@
 
     @include view-size(tab-land) {
     }
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   /* <AntD Progress Bar Override> */
@@ -182,6 +195,10 @@
     font-size: 1.8rem;
     justify-content: space-between;
     align-items: baseline;
+
+    &:lang(ar) {
+      flex-direction: row;
+    }
   }
 
   /* </AntD Progress Bar Override> */
