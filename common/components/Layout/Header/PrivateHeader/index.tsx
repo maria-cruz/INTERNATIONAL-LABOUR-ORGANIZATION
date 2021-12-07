@@ -20,14 +20,30 @@ interface HeaderProps {
 const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
   const router = useRouter();
   const [state, setState] = useState(false);
-  const { pathname } = router;
+
+  const isCoursesPreviewRoute = "/courses/preview/[slug]" === router.route;
+  const isCoursesViewRouter = "/courses/view/[slug]" === router.route;
+  const isCourses = "/courses" === router.route;
+
   const handleEnglishClick = () => {
-    router.push(`${pathname}`, "", { locale: "en" });
     setState(false);
+
+    if (isCoursesPreviewRoute || isCoursesViewRouter || isCourses) {
+      router.push(`/courses?category=all`, "", { locale: "en" });
+      return;
+    }
+    router.push("", "", { locale: "en" });
   };
 
   const handleArabicClick = () => {
-    router.push(`${pathname}`, "", { locale: "ar" });
+    console.log("ar");
+
+    if (isCoursesPreviewRoute || isCoursesViewRouter || isCourses) {
+      router.push(`/courses?category=all`, "", { locale: "ar" });
+      return;
+    }
+    router.push("", "", { locale: "ar" });
+
     setState(false);
   };
 
