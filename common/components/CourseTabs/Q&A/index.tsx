@@ -6,6 +6,7 @@ import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation";
+import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
 
 interface CommentAuthorType {
   family_name: string;
@@ -170,13 +171,19 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
           ? `${comment?.authorUser?.given_name} ${comment?.authorUser?.family_name}`
           : undefined;
 
+        const checkOrganizationType = SAMPLE_DATA_ORGANIZATION_TYPE.find(
+          (item) => item.value === comment?.authorUser?.organization_type
+        );
+
+        const organizationType = checkOrganizationType?.key
+          ? checkOrganizationType.key
+          : "";
+
         return (
           <div key={`comment-${idx}`}>
             <div className="comment-display-container">
               <div className="name-container">{fullName}</div>
-              <div className="description-container">
-                {comment?.authorUser?.organization_type}
-              </div>
+              <div className="description-container">{t(organizationType)}</div>
               <p className="question-display-container">{comment?.content}</p>
             </div>
             <div className="conversation-container">
@@ -197,11 +204,22 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                 const fullName = hasName
                   ? `${reply?.authorUser?.given_name} ${reply?.authorUser?.family_name}`
                   : undefined;
+
+                const checkRepyOrganizationType =
+                  SAMPLE_DATA_ORGANIZATION_TYPE.find(
+                    (item) =>
+                      item.value === reply?.authorUser?.organization_type
+                  );
+
+                const replyOrganizationType = checkRepyOrganizationType?.key
+                  ? checkRepyOrganizationType.key
+                  : "";
+
                 return (
                   <div className="item-wrapper" key={`reply-${idx}`}>
                     <div className="name-container">{fullName}</div>
                     <div className="label-container">
-                      {reply?.authorUser?.organization_type}
+                      {t(replyOrganizationType)}
                     </div>
                     <p className="question-display-container">
                       {reply?.content}

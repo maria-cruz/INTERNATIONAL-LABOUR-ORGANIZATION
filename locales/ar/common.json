@@ -24,5 +24,17 @@
   "comment": "تعليق",
   "exercisesFile": "ملفات التمرين للممارسة أثناء التعلم",
   "downloadExercise": "قم بتنزيل التمارين والوثائق الداعمة الأخرى هنا لوحدة التعلم هذه.",
-  "download": "تحميل"
+  "download": "تحميل",
+  "institutionStaff": "التدريب / المؤسسة الأكاديمية – الموظفون",
+  "institutionStudent": "التدريب / المؤسسة الأكاديمية – طالب / متدرب",
+  "privateEnterpriseEmployer": "مؤسسة خاصة - صاحب العمل",
+  "privateEnterpriseWorker": "مؤسسة خاصة – عامل",
+  "tradeUnionOrganization": "منظمة نقابية",
+  "employerOrganization": "مؤسسة تجارية",
+  "nonGovernmentalOrganization": "منظمة غير حكومية",
+  "internationalNonGovernmentalOrganization": "منظمة دولية غير الحكومية",
+  "governmentInstitution": "مؤسسة حكومية",
+  "unitedNations": "الأمم المتحدة",
+  "currentlyUnemployed": "عاطل عن العمل ",
+  "other": "آخر"
 }
