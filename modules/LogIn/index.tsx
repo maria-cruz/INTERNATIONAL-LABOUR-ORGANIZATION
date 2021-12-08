@@ -15,12 +15,15 @@ interface HandleLoginFinishProps {
   password: string;
 }
 const LogIn = () => {
+  const [isSubmitButtonLoading, setIsSubmitButtonLoading] = useState(false);
   const [loginForm] = Form.useForm();
 
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const { t } = useTranslation("log-in");
 
   const handleLoginFinish = (value: HandleLoginFinishProps) => {
+    setIsSubmitButtonLoading(true);
+
     const loginInfo = {
       identifier: value.email,
       password: value.password,
@@ -48,6 +51,7 @@ const LogIn = () => {
               errors: [`Password might be invalid`],
             },
           ]);
+          setIsSubmitButtonLoading(false);
           return;
         }
 
@@ -78,6 +82,7 @@ const LogIn = () => {
       })
       .catch((error) => {
         console.error("Error:", error);
+        setIsSubmitButtonLoading(false);
       });
   };
 
@@ -191,6 +196,7 @@ const LogIn = () => {
                     className="log-in-btn"
                     type="primary"
                     htmlType="submit"
+                    loading={isSubmitButtonLoading}
                   >
                     {t("log-in")}
                   </Button>
