@@ -1,11 +1,21 @@
 import React from "react";
-import Image from "next/image";
 import Button from "antd/lib/button";
 import styles from "./styles.module.scss";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const { t } = useTranslation("home");
+  const router = useRouter();
+  const locale = router?.locale;
+
+  const handleLoginButtonClick = () => {
+    router.push(`/log-in`, "", { locale: locale });
+  };
+
+  const handleSignUpButtonClick = () => {
+    router.push(`/sign-up`, "", { locale: locale });
+  };
 
   return (
     <section className={styles["banner-section"]}>
@@ -18,11 +28,15 @@ const Home = () => {
       </span>
 
       <div className={styles["button-container"]}>
-        <Button href="/log-in" type="primary" className={styles["log-in-btn"]}>
+        <Button
+          onClick={handleLoginButtonClick}
+          type="primary"
+          className={styles["log-in-btn"]}
+        >
           {t("logIn")}
         </Button>
         <Button
-          href="/sign-up"
+          onClick={handleSignUpButtonClick}
           type="default"
           className={styles["sign-up-btn"]}
         >
