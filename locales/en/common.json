@@ -17,6 +17,7 @@
   "startLesson": "Start Lesson",
   "learningObjectives": "Learning objectives",
   "unit": "Unit",
+  "units": "Units",
   "messageSent": "Message sent!",
   "askQuestion": "Ask question",
   "reply": "Reply",
@@ -36,5 +37,8 @@
   "governmentInstitution": "Government institution",
   "unitedNations": "United Nations",
   "currentlyUnemployed": "Currently unemployed",
-  "other": "Other"
+  "other": "Other",
+  "userAccount": "User account",
+  "language": "Language",
+  "logOut": "Log out"
 }

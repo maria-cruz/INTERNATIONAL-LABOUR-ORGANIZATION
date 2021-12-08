@@ -10,6 +10,7 @@ import Dropdown from "antd/lib/dropdown";
 import Menu from "antd/lib/menu";
 import HamburgerMenuActiveIcon from "@common/components/Icons/HamburgerMenuActive";
 import HamburgerMenu from "@common/components/HamburgerMenu";
+import useTranslation from "next-translate/useTranslation";
 
 interface HeaderProps {
   title?: string;
@@ -18,6 +19,7 @@ interface HeaderProps {
 }
 
 const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
+  const { t } = useTranslation("common");
   const router = useRouter();
   const [state, setState] = useState(false);
 
@@ -90,7 +92,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
     <Menu className="dropdown-menu">
       <Menu.Item key="user-account">
         <Button className="btn-menu" onClick={handleUserAccountClick}>
-          <div className="menu-title">User account</div>
+          <div className="menu-title">{t("userAccount")}</div>
         </Button>
       </Menu.Item>
       <Menu.Item key="language">
@@ -101,14 +103,14 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
           trigger={["hover"]}
         >
           <Button onClick={handleLanguageClick} className="btn-menu">
-            <div className="menu-title">Language</div>
+            <div className="menu-title">{t("language")}</div>
           </Button>
         </Dropdown>
       </Menu.Item>
       <Menu.Item key="log-out">
         <Button className="btn-menu">
           <div className="menu-title" onClick={handleLogOutClick}>
-            Log out
+            {t("logOut")}
           </div>
         </Button>
       </Menu.Item>
@@ -138,7 +140,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       <div className={"right-container"}>
         <div className={"menu"}>
           <NavLink href="/courses" query={"?category=all"}>
-            Units
+            {t("units")}
           </NavLink>
         </div>
         <div className="hamburger-menu-container">
