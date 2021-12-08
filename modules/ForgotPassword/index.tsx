@@ -10,25 +10,30 @@ import HomeBackgroundMobile from "@public/images/log-in-mobile.jpg";
 import useTranslation from "next-translate/useTranslation";
 import Router from "next/router";
 import axios from "axios";
-const ForgotPassword = () => {
-  const [forgotPasswordForm] = Form.useForm();
+import { useRouter } from "next/router";
 
+const ForgotPassword = () => {
+  const router = useRouter();
+  const [forgotPasswordForm] = Form.useForm();
   const [statusCode, setStatusCode] = useState();
+  const [isSubmitButtonLoading, setIsSubmitButtonLoading] = useState(false);
   const { t } = useTranslation("log-in");
 
+  const locale = router?.locale ?? "en";
+
   const handleForgotPasswordFinish = (value: any) => {
+    setIsSubmitButtonLoading(true);
     axios
       .post(`${process.env.API_URL}/auth/forgot-password`, {
         email: value.email,
-        url: ".forgot-password",
       })
-      .then((response) => {
-        console.log("Your user received an email");
+      .then(() => {
+        router.push(`/reset-password-message`, "", { locale: locale });
       })
       .catch((error) => {
         setStatusCode(error.response.status);
-
         console.log("An error occurred:", error.response);
+        setIsSubmitButtonLoading(false);
       });
   };
 
@@ -124,7 +129,12 @@ const ForgotPassword = () => {
                   </div>
                 </div>
               )}
-              <Button className="reset-btn" type="primary" htmlType="submit">
+              <Button
+                className="reset-btn"
+                type="primary"
+                htmlType="submit"
+                loading={isSubmitButtonLoading}
+              >
                 Reset my password
               </Button>
 
