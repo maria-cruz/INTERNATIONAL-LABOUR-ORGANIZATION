@@ -38,7 +38,9 @@
   .image-container {
     padding: 0 10rem 12rem;
   }
-
+  .guide-container:lang(ar) {
+    direction: rtl;
+  }
   .guide-container {
     @include side-padding;
     max-width: 192rem;
