@@ -33,9 +33,7 @@ const CoursesCertificate = () => {
       <div className="card-details-container">
         <div className="card-certificate">{t("certificate")}</div>
         <div className="card-title">{t("certificateTitle")}</div>
-        <div className="spacer" />
         <div className="card-hover-details">
-          <div className="spacer" />
           <div className="card-description">
             {t("downloadCertificateDescription")}
           </div>

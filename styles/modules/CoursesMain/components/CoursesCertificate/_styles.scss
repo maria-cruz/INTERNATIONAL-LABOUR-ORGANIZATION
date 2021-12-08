@@ -68,6 +68,12 @@
     }
   }
 
+  .card-hover-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
   .spacer {
     flex-grow: 1;
   }
