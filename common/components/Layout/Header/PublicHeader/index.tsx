@@ -80,7 +80,7 @@ const PublicHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
 
       <div className={"right-container-mobile"}>
-        <HamburgerMenu />
+        <HamburgerMenu type="public" />
       </div>
     </header>
   );

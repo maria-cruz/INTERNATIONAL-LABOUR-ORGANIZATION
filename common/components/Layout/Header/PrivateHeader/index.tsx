@@ -171,7 +171,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
 
       <div className={"right-container-mobile"}>
-        <HamburgerMenu />
+        <HamburgerMenu type="private" />
       </div>
     </header>
   );
