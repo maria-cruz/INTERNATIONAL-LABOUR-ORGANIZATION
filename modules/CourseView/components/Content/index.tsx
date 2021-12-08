@@ -37,6 +37,7 @@ const DEFAULT_QUIZ_VALUES = {
 
 const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
   const { t } = useTranslation("courses-view");
+  const [isModalButtonDisabled, setIsModalButtonDisabled] = useState(true);
   const [retakeAssessment, setRetakeAssessment] = useState(false);
   const [answers, setAnswers] = useState<[] | string[]>([]);
   const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
@@ -47,6 +48,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
 
   useEffect(() => {
     setRetakeAssessment(false);
+    setIsModalButtonDisabled(true);
   }, [tab, topic]);
 
   const currentTopicProgress = getTargetProgress(
@@ -113,6 +115,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
   };
 
   const handleNextButtonClick = () => {
+    setIsModalButtonDisabled(true);
     let assessmentData = [];
     if (isPreAssessmentTab) assessmentData = currentContentData?.pre_assessment;
     if (isPostAssessmentTab)
@@ -137,6 +140,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
   };
 
   const handleSubmitAnswerClick = () => {
+    setIsModalButtonDisabled(true);
     let assessmentData = [];
     if (isPreAssessmentTab) assessmentData = currentContentData?.pre_assessment;
     if (isPostAssessmentTab)
@@ -220,6 +224,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
     let newAnswers = [...answers];
     newAnswers[currentIndex] = e.target.value;
     setAnswers(newAnswers);
+    setIsModalButtonDisabled(false);
   };
 
   const handleContinueSessionClick = () => {
@@ -372,11 +377,19 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
               </div>
               <div className="assessment-modal-footer-right-panel">
                 {quizValues?.isSubmitAnswersVisible ? (
-                  <Button onClick={handleSubmitAnswerClick} type="primary">
+                  <Button
+                    onClick={handleSubmitAnswerClick}
+                    type="primary"
+                    disabled={isModalButtonDisabled}
+                  >
                     {t("submit")}
                   </Button>
                 ) : (
-                  <Button onClick={handleNextButtonClick} type="primary">
+                  <Button
+                    onClick={handleNextButtonClick}
+                    type="primary"
+                    disabled={isModalButtonDisabled}
+                  >
                     {t("next")}
                   </Button>
                 )}
