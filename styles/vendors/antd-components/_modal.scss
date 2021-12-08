@@ -80,6 +80,10 @@
     @include view-size(desktop) {
       padding: 5rem;
     }
+
+    &:lang(ar) {
+      direction: rtl;
+    }
   }
 
   /* <Antd Radio Button Override> */
