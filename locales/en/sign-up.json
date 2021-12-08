@@ -17,5 +17,10 @@
   "emailValidation": "Please input your email.",
   "notValidEmail": "The input is not valid E-mail!",
   "enterPassword": "Please enter a password",
-  "passwordValidation": "Please enter a valid password."
+  "passwordValidation": "Please enter a valid password.",
+  "pleaseEnterNewPassword": "Please enter a new password",
+  "resetYourPassword": "Reset your password",
+  "provideNewPassword": "Please provide a new password to continue using your account.",
+  "resetPassword": "Reset password",
+  "newPassword": "New password"
 }

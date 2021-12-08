@@ -18,6 +18,7 @@
     "/profile/edit": ["create-profile"],
     "/download-guide": ["download-guide"],
     "/faq": ["faq"],
-    "/success": ["success"]
+    "/success": ["success"],
+    "/reset-password-message": ["reset-password-message"]
   }
 }
