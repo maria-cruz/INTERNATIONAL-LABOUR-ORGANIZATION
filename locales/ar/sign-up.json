@@ -17,5 +17,10 @@
   "emailValidation": "الرجاء إدخال البريد الإلكتروني الخاص بك",
   "notValidEmail": "الإدخال ليس بريدًا إلكترونيًا صالحًا!",
   "enterPassword": "الرجاء إدخال كلمة المرور",
-  "passwordValidation": "الرجاء إدخال كلمة السر الصحيحة."
+  "passwordValidation": "الرجاء إدخال كلمة السر الصحيحة.",
+  "pleaseEnterNewPassword": "الرجاء إدخال كلمة مرور جديدة",
+  "resetYourPassword": "اعد ضبط كلمه السر",
+  "provideNewPassword": "يرجى تقديم كلمة مرور جديدة لمواصلة استخدام حسابك",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "newPassword": "كلمة مرور جديدة"
 }
