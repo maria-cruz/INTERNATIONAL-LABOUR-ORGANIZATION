@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Form, { FormInstance } from "antd/lib/form";
+import Form from "antd/lib/form";
 import Input from "antd/lib/input";
 import Checkbox from "antd/lib/checkbox";
 import Button from "antd/lib/button";
@@ -24,6 +24,7 @@ interface HandleSignUpFinishProps {
 }
 
 const SignUp = () => {
+  const [isSubmitButtonLoading, setIsSubmitButtonLoading] = useState(false);
   const [signUpForm] = Form.useForm();
 
   const passwordRuleInitialState = {
@@ -40,6 +41,8 @@ const SignUp = () => {
   const { t } = useTranslation("sign-up");
 
   const handleSignUpFinish = (value: HandleSignUpFinishProps) => {
+    setIsSubmitButtonLoading(true);
+
     const registerInfo = {
       username: value.email,
       email: value.email,
@@ -64,6 +67,7 @@ const SignUp = () => {
               errors: [`${data?.message[0]?.messages[0]?.message}`],
             },
           ]);
+          setIsSubmitButtonLoading(false);
           return;
         }
 
@@ -71,6 +75,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.error("Error:", error);
+        setIsSubmitButtonLoading(false);
       });
   };
 
@@ -239,6 +244,7 @@ const SignUp = () => {
                       className="sign-up-btn"
                       type="primary"
                       htmlType="submit"
+                      loading={isSubmitButtonLoading}
                     >
                       {t("signUp")}
                     </Button>
