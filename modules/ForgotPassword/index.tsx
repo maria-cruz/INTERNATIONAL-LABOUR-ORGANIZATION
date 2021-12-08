@@ -43,7 +43,7 @@ const ForgotPassword = () => {
       const isEmptyForgotPassword = isEmpty(forgotPassword);
 
       if (isEmptyForgotPassword)
-        return Promise.reject("Please enter your email address.");
+        return Promise.reject(`${t("emailValidation")}`);
 
       return Promise.resolve();
     },
@@ -89,17 +89,15 @@ const ForgotPassword = () => {
         <div className="banner-container">
           <div className="banner-description-container">
             <div className="banner-description-text">
-              <span className="emphasis-text">{t("rights")}</span> &{" "}
-              <span className="emphasis-text"> {t("responsibilities")}</span> at
+              <span className="emphasis-text">{t("rights")}</span> {t("and")}{" "}
+              <span className="emphasis-text"> {t("responsibilities")}</span>{" "}
+              {t("at")}
               <span className="emphasis-text"> {t("work")} </span>
             </div>
           </div>
           <div className="forgot-password-container">
-            <div className="title">Forgot password?</div>
-            <div className="description">
-              Enter the email address you used when you joined and we’ll you a
-              link to reset your password.
-            </div>
+            <div className="title">{t("forgotPassword")}</div>
+            <div className="description">{t("enterEmailAddress")}</div>
             <Form
               form={forgotPasswordForm}
               layout="vertical"
@@ -108,7 +106,7 @@ const ForgotPassword = () => {
             >
               <Form.Item
                 name="email"
-                label="Email address"
+                label={`${t("emailAddress")}`}
                 rules={[forgotPasswordValidator]}
               >
                 <Input onChange={handleEmailInputChange} />
@@ -124,7 +122,7 @@ const ForgotPassword = () => {
                       type="link"
                       onClick={handleSignUpClick}
                     >
-                      Sign up?
+                      {t("signUp?")}
                     </Button>
                   </div>
                 </div>
@@ -135,7 +133,7 @@ const ForgotPassword = () => {
                 htmlType="submit"
                 loading={isSubmitButtonLoading}
               >
-                Reset my password
+                {t("resetMyPassword")}
               </Button>
 
               <div className="return-to-login-container">
@@ -144,8 +142,8 @@ const ForgotPassword = () => {
                   type="link"
                   onClick={handleLoginClick}
                 >
-                  <span className="return-to-text">Return to</span>{" "}
-                  <span className="log-in-text"> Log in</span>
+                  <span className="return-to-text">{t("returnTo")}</span>{" "}
+                  <span className="log-in-text"> {t("log-in")}</span>
                 </Button>
               </div>
             </Form>

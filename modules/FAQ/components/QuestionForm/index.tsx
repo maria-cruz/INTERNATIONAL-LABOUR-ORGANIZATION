@@ -18,9 +18,10 @@ interface FaqUnitProps {
 }
 
 const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
+  const { t } = useTranslation("faq");
+
   const description = {
-    description:
-      "We have received your message and would like to thank you for writing to us.",
+    description: `${t("successMessageDescription")}`,
   };
   const [questionForm] = Form.useForm();
   const [isVisibleText, setIsVisibleText] = useState(false);
@@ -45,7 +46,6 @@ const QuestionForm: VFC<FaqUnitProps> = ({ faqData }) => {
       })
       .catch((err) => console.error(err));
   };
-  const { t } = useTranslation("faq");
 
   return (
     <section className="form-section-container">

@@ -10,6 +10,8 @@ import UnicefLogo from "@public/images/unicef-logo.png";
 import Logo from "@public/images/supporters-logo.svg";
 import Carousel from "antd/lib/carousel";
 import useTranslation from "next-translate/useTranslation";
+import UnicefArabic from "@public/images/sponsors/unicef-arabic.png";
+import IloArabic from "@public/images/sponsors/ILO-arabic.png";
 
 const Partners = () => {
   const settings = {
@@ -80,11 +82,87 @@ const Partners = () => {
           </div>
           <div className="carousel-image-container">
             <Image
+              className="unicef-logo"
               src={UnicefLogo}
               width={289}
               height={178}
               placeholder="blur"
               alt="@public/images/unicef-logo.png"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
+              src={AgencyLogo}
+              width={229}
+              height={189}
+              placeholder="blur"
+              alt="italian-agency-logo.png"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
+              src={AliLogo}
+              width={291}
+              height={176}
+              placeholder="blur"
+              alt="ali-logo.png"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
+              src={FenasolLogo}
+              width={190}
+              height={200}
+              placeholder="blur"
+              alt="@public/images/fenasol-logo.jpeg"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
+              src={WiscLogo}
+              width={400}
+              height={100}
+              placeholder="blur"
+              alt="@public/images/wisc-international-logo.png"
+            />
+          </div>
+        </Carousel>
+      </div>
+      <div className="partners-section-logos arabic-logos">
+        <Carousel {...settings}>
+          <div className="carousel-image-container">
+            <Image
+              src={Logo}
+              width={189}
+              height={189}
+              alt="supporters-logo.svg"
+            />
+          </div>
+          <div className="carousel-image-container">
+            <Image
+              src={MinistryOfLabourLogo}
+              width={258}
+              height={100}
+              alt="logo.png"
+            />
+          </div>
+          <div className="carousel-arabic-container">
+            <Image
+              className="ilo-arabic-logo"
+              src={IloArabic}
+              width={250}
+              height={117}
+              placeholder="blur"
+              alt="ILO-arabic.png"
+            />
+          </div>
+          <div className="carousel-arabic-container">
+            <Image
+              src={UnicefArabic}
+              width={500}
+              height={178}
+              placeholder="blur"
+              alt="unicef-arabic.png"
             />
           </div>
           <div className="carousel-image-container">

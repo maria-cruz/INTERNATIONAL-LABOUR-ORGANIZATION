@@ -11,5 +11,9 @@
   "password": "Password",
   "forgotPassword": "Forgot password?",
   "emailValidation": "Please input your email.",
-  "enterPassword": "Please enter a password"
+  "enterPassword": "Please enter a password",
+  "enterEmailAddress": "Enter the email address you used when you joined and we’ll you a link to reset your password.",
+  "signUp?": " Sign up?",
+  "resetMyPassword": "Reset my password",
+  "returnTo": "Return to"
 }

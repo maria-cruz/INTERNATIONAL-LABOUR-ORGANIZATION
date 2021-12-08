@@ -5,6 +5,8 @@ import Button from "antd/lib/button";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
+import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
 
 interface CommentAuthorType {
   family_name: string;
@@ -36,7 +38,8 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
 
   useEffect(() => {
     setComments(courseComments ?? []);
-  }, [slug]);
+  }, [courseComments, slug]);
+  const { t } = useTranslation("common");
 
   const handleQAndAFinish = (value: any) => {
     if (!value?.comment) return console.log("No Comment Received");
@@ -130,11 +133,11 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
       <div className="comment-form-wrapper">
         <Form form={qAndAForm} onFinish={handleQAndAFinish}>
           <div className="comment-container">
-            <Form.Item name="comment" label="Ask Here">
+            <Form.Item name="comment" label={`${t("askHere")}`}>
               <TextArea className="text-input-container" />
             </Form.Item>
             <Button htmlType="submit" type="primary" className="submit-btn">
-              Ask question
+              {t("askQuestion")}
             </Button>
           </div>
 
@@ -143,7 +146,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
             type="primary"
             className="submit-btn-mobile"
           >
-            Ask question
+            {t("askQuestion")}
           </Button>
         </Form>
       </div>
@@ -168,13 +171,19 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
           ? `${comment?.authorUser?.given_name} ${comment?.authorUser?.family_name}`
           : undefined;
 
+        const checkOrganizationType = SAMPLE_DATA_ORGANIZATION_TYPE.find(
+          (item) => item.value === comment?.authorUser?.organization_type
+        );
+
+        const organizationType = checkOrganizationType?.key
+          ? checkOrganizationType.key
+          : "";
+
         return (
           <div key={`comment-${idx}`}>
             <div className="comment-display-container">
               <div className="name-container">{fullName}</div>
-              <div className="description-container">
-                {comment?.authorUser?.organization_type}
-              </div>
+              <div className="description-container">{t(organizationType)}</div>
               <p className="question-display-container">{comment?.content}</p>
             </div>
             <div className="conversation-container">
@@ -195,11 +204,22 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                 const fullName = hasName
                   ? `${reply?.authorUser?.given_name} ${reply?.authorUser?.family_name}`
                   : undefined;
+
+                const checkRepyOrganizationType =
+                  SAMPLE_DATA_ORGANIZATION_TYPE.find(
+                    (item) =>
+                      item.value === reply?.authorUser?.organization_type
+                  );
+
+                const replyOrganizationType = checkRepyOrganizationType?.key
+                  ? checkRepyOrganizationType.key
+                  : "";
+
                 return (
                   <div className="item-wrapper" key={`reply-${idx}`}>
                     <div className="name-container">{fullName}</div>
                     <div className="label-container">
-                      {reply?.authorUser?.organization_type}
+                      {t(replyOrganizationType)}
                     </div>
                     <p className="question-display-container">
                       {reply?.content}
@@ -212,7 +232,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                 <Form.Item className="reply-container">
                   <TextArea
                     className="reply-input-container"
-                    placeholder="Comment"
+                    placeholder={`${t("comment")}`}
                     value={replyValues[idx]}
                     onChange={handleTextAreaChange(idx)}
                   />
@@ -221,7 +241,7 @@ const QandA = ({ courseId, courseComments }: QandAProps) => {
                   onClick={handleReplyFinish(commentId, idx)}
                   className="reply-btn"
                 >
-                  Reply
+                  {t("reply")}
                 </Button>
               </div>
             </div>
