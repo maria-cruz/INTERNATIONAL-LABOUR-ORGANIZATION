@@ -42,6 +42,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &:lang(ar) {
+      direction: rtl;
+    }
   }
 
   .ant-collapse-content {
@@ -71,6 +75,10 @@
     border-right: 0.1rem solid $silver-60;
     border-bottom: 0.1rem solid $silver-60;
     background: $whisper;
+
+    &:lang(ar) {
+      direction: rtl;
+    }
 
     &:hover {
       background: $athens-gray;

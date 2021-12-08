@@ -16,4 +16,8 @@
     font-weight: 600;
     margin-bottom: 2rem;
   }
+
+  &:lang(ar) {
+    direction: rtl;
+  }
 }
