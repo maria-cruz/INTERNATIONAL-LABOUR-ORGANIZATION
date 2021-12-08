@@ -2,7 +2,7 @@ import React from "react";
 import Collapse from "antd/lib/collapse";
 import ExpandMore from "@common/components/Icons/ExpandMore";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
-import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 import PostAssessment from "@modules/CourseView/components/SessionCollapse/PostAssessment";
 import PreAssessment from "@modules/CourseView/components/SessionCollapse/PreAssessment";
@@ -29,8 +29,7 @@ const SessionCollapse = ({
   currentProgressData,
   onClick,
 }: SessionCollapseProps) => {
-  const router = useRouter();
-  const currentTopicId = router?.query?.topic;
+  const { t } = useTranslation("courses-view");
 
   return (
     <div className="session-collapse">
@@ -61,7 +60,7 @@ const SessionCollapse = ({
             <Panel
               header={
                 <span className="session-panel-header">
-                  {`Session ${idx + 1}: ${topic?.title}`}
+                  {`${t("session")} ${idx + 1}: ${topic?.title}`}
                 </span>
               }
               key={`${idx + 1}`}

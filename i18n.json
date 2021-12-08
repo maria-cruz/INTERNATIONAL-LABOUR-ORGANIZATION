@@ -13,6 +13,7 @@
     "/how-it-works": ["how-it-works"],
     "/courses": ["courses"],
     "/courses/preview/[slug]": ["courses-preview"],
+    "/courses/view/[slug]": ["courses-view"],
     "/profile": ["create-profile"],
     "/profile/edit": ["create-profile"],
     "/download-guide": ["download-guide"],

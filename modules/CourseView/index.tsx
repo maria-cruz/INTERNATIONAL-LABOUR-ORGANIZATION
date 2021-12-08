@@ -5,6 +5,7 @@ import Close from "@common/components/Icons/Close";
 import Content from "@modules/CourseView/components/Content";
 import BackArrow from "@common/components/Icons/BackArrow";
 import CourseTabs from "@common/components/CourseTabs";
+import useTranslation from "next-translate/useTranslation";
 
 import ProgressTracker from "./components/ProgressTracker";
 import SessionCollapse from "./components/SessionCollapse";
@@ -54,6 +55,7 @@ const CourseView = ({
   unitQandAProps,
   unitDownloadableFilesProps,
 }: CourseDataProps) => {
+  const { t } = useTranslation("courses-view");
   const [isSessionColumnOpen, setIsSessionColumnOpen] = useState(true);
   const router = useRouter();
   const slug = router?.query?.slug;
@@ -78,9 +80,11 @@ const CourseView = ({
         <header className="unit-header">
           <div className="back-button" onClick={handleBackClick}>
             <div className="back-icon"> {<BackArrow />}</div>
-            <div className="back-text">Back</div>
+            <div className="back-text">{t("back")}</div>
           </div>
-          <div className="title">{`Unit ${data?.unit}: ${data?.title}`}</div>
+          <div className="title">{`${t("unit")} ${data?.unit}: ${
+            data?.title
+          }`}</div>
         </header>
 
         <Collapse
@@ -95,7 +99,7 @@ const CourseView = ({
         >
           <Panel
             header={
-              <div onClick={handleSessionItemClick}>Session contents</div>
+              <div onClick={handleSessionItemClick}>{t("sessionContents")}</div>
             }
             key="1"
           >
@@ -131,7 +135,7 @@ const CourseView = ({
             <div className="session-menu-icon">
               <Menu width="32" height="32" />
             </div>
-            <div className="session-menu-text">Session contents</div>
+            <div className="session-menu-text">{t("sessionContents")}</div>
           </div>
           <div className="session-menu-right-container">
             <div className="session-menu-close">

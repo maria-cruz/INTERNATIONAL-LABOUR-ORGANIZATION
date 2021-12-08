@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
 import ParamLink from "@common/components/ParamLink";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 
 interface PreAssessmentProps {
@@ -9,6 +10,7 @@ interface PreAssessmentProps {
   isCompleted?: boolean;
 }
 const PreAssessment = ({ id = 0, isCompleted = false }: PreAssessmentProps) => {
+  const { t } = useTranslation("courses-view");
   const router = useRouter();
   const currentTopicId = router?.query?.topic;
   const currentTabType = router?.query?.tab;
@@ -26,7 +28,7 @@ const PreAssessment = ({ id = 0, isCompleted = false }: PreAssessmentProps) => {
         <div className="icon">
           <CheckCircleOutline />
         </div>
-        <div className="text">{"Pre assessment"}</div>
+        <div className="text">{t("preAssessment")}</div>
       </div>
     </ParamLink>
   );
