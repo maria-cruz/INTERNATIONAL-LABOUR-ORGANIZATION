@@ -6,6 +6,10 @@
   display: flex;
   overflow: hidden;
 
+  &:lang(ar) {
+    direction: rtl;
+  }
+
   .left-column {
     width: 100%;
     padding-bottom: 24rem;
@@ -102,6 +106,10 @@
     flex-direction: column;
     gap: 2rem;
 
+    &:lang(ar) {
+      direction: rtl;
+    }
+
     @include side-padding-only;
     @include view-size(desktop) {
       margin-bottom: 6rem;
@@ -138,6 +146,10 @@
     color: $black;
     width: 100%;
     margin-bottom: 5rem;
+
+    &:lang(ar) {
+      direction: rtl;
+    }
 
     @include side-padding-only;
     @include view-size(desktop) {
@@ -294,6 +306,10 @@
     height: 7rem;
     @include view-size(desktop) {
       height: 14rem;
+    }
+
+    &:lang(ar) {
+      direction: rtl;
     }
   }
 
