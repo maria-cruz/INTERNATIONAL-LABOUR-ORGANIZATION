@@ -8,7 +8,11 @@ import useTranslation from "next-translate/useTranslation";
 
 const { Option } = Select;
 
-const HamburgerMenu = () => {
+interface HamburgerMenuProps {
+  type: "public" | "private";
+}
+
+const HamburgerMenu = ({ type }: HamburgerMenuProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const router = useRouter();
@@ -25,6 +29,18 @@ const HamburgerMenu = () => {
   const handleArabicClick = () => {
     router.push(`${pathname}`, "", { locale: "ar" });
   };
+
+  const handleLogOutClick = () => {
+    //destroy cookies
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, "")
+        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+
+    router.push("/");
+  };
+
   const { t } = useTranslation("common");
 
   return (
@@ -44,13 +60,27 @@ const HamburgerMenu = () => {
         placement={"top"}
         visible={isDrawerOpen}
       >
-        <NavLink href="/sign-up" exact={true}>
-          {t("signUp")}
-        </NavLink>
-        <NavLink href="/log-in"> {t("logIn")}</NavLink>
-        <NavLink href="/download-guide">{t("downloadGuide")}</NavLink>
-        <NavLink href="/faq">{t("faq")}</NavLink>
-        <NavLink href="/about-us">{t("aboutUs")}</NavLink>
+        {type === "public" ? (
+          <>
+            <NavLink href="/sign-up" exact={true}>
+              {t("signUp")}
+            </NavLink>
+            <NavLink href="/log-in"> {t("logIn")}</NavLink>
+            <NavLink href="/download-guide">{t("downloadGuide")}</NavLink>
+            <NavLink href="/faq">{t("faq")}</NavLink>
+            <NavLink href="/about-us">{t("aboutUs")}</NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink href="/courses" exact={true}>
+              {t("units")}
+            </NavLink>
+            <NavLink href="/profile">{t("userAccount")}</NavLink>
+            <div className="nav-link" onClick={handleLogOutClick}>
+              {t("logOut")}
+            </div>
+          </>
+        )}
 
         <div className="lang-select-container">
           <Select

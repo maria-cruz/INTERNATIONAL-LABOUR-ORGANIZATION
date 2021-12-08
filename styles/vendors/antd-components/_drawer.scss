@@ -2,6 +2,10 @@
 .hamburger-menu-drawer {
   z-index: 1;
 
+  &:lang(ar) {
+    direction: rtl;
+  }
+
   .ant-drawer-header {
     display: none;
   }
@@ -22,6 +26,7 @@
   }
 
   .nav-link {
+    cursor: pointer;
     font-size: 1.6rem;
     font-weight: 600;
     padding: 2rem;

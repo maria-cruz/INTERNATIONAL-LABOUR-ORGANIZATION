@@ -6,8 +6,9 @@
   display: flex;
   overflow: hidden;
 
+  flex-direction: row;
   &:lang(ar) {
-    direction: rtl;
+    flex-direction: row-reverse;
   }
 
   .left-column {
@@ -40,6 +41,10 @@
     background: $transparent;
     border-bottom: 0;
     margin-bottom: 5rem;
+
+    &:lang(ar) {
+      direction: rtl;
+    }
 
     @include view-size(desktop) {
       display: none;
@@ -138,6 +143,10 @@
 
   .back-button svg {
     fill: $white;
+
+    &:lang(ar) {
+      transform: rotate(180deg);
+    }
   }
 
   /* <Content />  */

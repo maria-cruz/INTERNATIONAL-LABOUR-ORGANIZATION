@@ -5,7 +5,9 @@
     display: flex;
     justify-content: flex-end;
   }
+
   .course-tabs-container {
+    width: 100%;
     padding-top: 5rem;
     padding-bottom: 7rem;
     @include side-padding;

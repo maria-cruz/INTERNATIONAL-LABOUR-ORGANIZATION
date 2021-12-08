@@ -10,6 +10,7 @@ import Dropdown from "antd/lib/dropdown";
 import Menu from "antd/lib/menu";
 import HamburgerMenuActiveIcon from "@common/components/Icons/HamburgerMenuActive";
 import HamburgerMenu from "@common/components/HamburgerMenu";
+import useTranslation from "next-translate/useTranslation";
 
 interface HeaderProps {
   title?: string;
@@ -18,36 +19,40 @@ interface HeaderProps {
 }
 
 const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
+  const { t } = useTranslation("common");
   const router = useRouter();
-  const [state, setState] = useState(false);
+  const locale = router?.locale;
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const [isLogOutButtonLoading, setIsLogOutButtonLoading] = useState(false);
+  const [isUserAccountButtonLoading, setIsUserAccountButtonLoading] =
+    useState(false);
 
   const isCoursesPreviewRoute = "/courses/preview/[slug]" === router.route;
   const isCoursesViewRouter = "/courses/view/[slug]" === router.route;
   const isCourses = "/courses" === router.route;
 
   const handleEnglishClick = () => {
-    setState(false);
-
+    if (locale === "en") return;
     if (isCoursesPreviewRoute || isCoursesViewRouter || isCourses) {
       router.push(`/courses?category=all`, "", { locale: "en" });
       return;
     }
     router.push("", "", { locale: "en" });
+    setIsMenuActive(false);
   };
 
   const handleArabicClick = () => {
-    console.log("ar");
-
+    if (locale === "ar") return;
     if (isCoursesPreviewRoute || isCoursesViewRouter || isCourses) {
       router.push(`/courses?category=all`, "", { locale: "ar" });
       return;
     }
     router.push("", "", { locale: "ar" });
-
-    setState(false);
+    setIsMenuActive(false);
   };
 
   const handleLogOutClick = () => {
+    setIsLogOutButtonLoading(true);
     //destroy cookies
     document.cookie.split(";").forEach((c) => {
       document.cookie = c
@@ -57,17 +62,18 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
 
     router.push("/");
 
-    setState(false);
+    setIsMenuActive(false);
   };
   const handleVisibleChange = (e: any) => {
-    setState(e);
+    setIsMenuActive(e);
   };
 
   const handleLanguageClick = () => {
-    setState(false);
+    setIsMenuActive(false);
   };
 
   const handleUserAccountClick = () => {
+    setIsUserAccountButtonLoading(true);
     router.push("/profile");
   };
 
@@ -89,8 +95,12 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
   const menu = (
     <Menu className="dropdown-menu">
       <Menu.Item key="user-account">
-        <Button className="btn-menu" onClick={handleUserAccountClick}>
-          <div className="menu-title">User account</div>
+        <Button
+          className="btn-menu"
+          onClick={handleUserAccountClick}
+          loading={isUserAccountButtonLoading}
+        >
+          <div className="menu-title">{t("userAccount")}</div>
         </Button>
       </Menu.Item>
       <Menu.Item key="language">
@@ -101,14 +111,14 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
           trigger={["hover"]}
         >
           <Button onClick={handleLanguageClick} className="btn-menu">
-            <div className="menu-title">Language</div>
+            <div className="menu-title">{t("language")}</div>
           </Button>
         </Dropdown>
       </Menu.Item>
       <Menu.Item key="log-out">
-        <Button className="btn-menu">
+        <Button className="btn-menu" loading={isLogOutButtonLoading}>
           <div className="menu-title" onClick={handleLogOutClick}>
-            Log out
+            {t("logOut")}
           </div>
         </Button>
       </Menu.Item>
@@ -138,7 +148,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       <div className={"right-container"}>
         <div className={"menu"}>
           <NavLink href="/courses" query={"?category=all"}>
-            Units
+            {t("units")}
           </NavLink>
         </div>
         <div className="hamburger-menu-container">
@@ -150,7 +160,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
             onVisibleChange={handleVisibleChange}
           >
             <Button className="btn-dropdown" type="link">
-              {state ? (
+              {isMenuActive ? (
                 <HamburgerMenuActiveIcon width="44.59" height="30.71" />
               ) : (
                 <HamburgerMenuIcon width="44.59" height="30.71" />
@@ -161,7 +171,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       </div>
 
       <div className={"right-container-mobile"}>
-        <HamburgerMenu />
+        <HamburgerMenu type="private" />
       </div>
     </header>
   );

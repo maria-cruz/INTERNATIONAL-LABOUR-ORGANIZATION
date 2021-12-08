@@ -13,10 +13,11 @@
   "questionsAndAnswers": "أسئلة وأجوبة",
   "selfPractice": "التعلم الذاتي",
   "unitTopics": "موضوعات الوحدة",
-  "progress": ":التقدم‎",
+  "progress": ":التقدم",
   "startLesson": "بدء الحصّة",
   "learningObjectives": "أهداف التعلم",
   "unit": "وحدة",
+  "units": "الوحدات",
   "messageSent": "تم الارسال",
   "askQuestion": "اسأل سؤالا",
   "reply": "الرد",
@@ -36,5 +37,8 @@
   "governmentInstitution": "مؤسسة حكومية",
   "unitedNations": "الأمم المتحدة",
   "currentlyUnemployed": "عاطل عن العمل ",
-  "other": "آخر"
+  "other": "آخر",
+  "userAccount": "حساب المستخدم",
+  "language": "اللغة",
+  "logOut": "تسجيل خروج"
 }

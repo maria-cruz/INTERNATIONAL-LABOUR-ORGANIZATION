@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import HandWritingImage from "@public/images/hand-writing.jpg";
 import Button from "antd/lib/button";
@@ -7,10 +7,15 @@ import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation";
 
 const CoursesCertificate = () => {
+  const [
+    isDownloadCertificateButtonLoading,
+    setIsDownloadCertificateButtonLoading,
+  ] = useState(false);
   const { t } = useTranslation("courses");
 
   const router = useRouter();
   const handleDownloadClick = () => {
+    setIsDownloadCertificateButtonLoading(true);
     router.push("/certificate");
   };
 
@@ -28,9 +33,7 @@ const CoursesCertificate = () => {
       <div className="card-details-container">
         <div className="card-certificate">{t("certificate")}</div>
         <div className="card-title">{t("certificateTitle")}</div>
-        <div className="spacer" />
         <div className="card-hover-details">
-          <div className="spacer" />
           <div className="card-description">
             {t("downloadCertificateDescription")}
           </div>
@@ -40,6 +43,7 @@ const CoursesCertificate = () => {
               onClick={handleDownloadClick}
               type="primary"
               className="download-btn"
+              loading={isDownloadCertificateButtonLoading}
             >
               <Download fill="#ffffff" width="1.4rem" height="1.7rem" />
               {t("download")}
