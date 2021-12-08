@@ -149,6 +149,10 @@
     @include view-size(tab-port) {
       font-size: 2.8rem;
     }
+
+    &:lang(ar) {
+      text-align: right;
+    }
   }
 
   .card-title {

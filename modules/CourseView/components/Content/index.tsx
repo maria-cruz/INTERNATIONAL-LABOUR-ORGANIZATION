@@ -8,6 +8,7 @@ import Radio, { RadioChangeEvent } from "antd/lib/radio";
 import getJWT from "@common/methods/getJWT";
 import updateProgress from "@common/methods/updateProgress";
 import getTargetProgress from "@common/methods/getTargetProgress";
+import useTranslation from "next-translate/useTranslation";
 import classNames from "classnames";
 
 interface ContentProps {
@@ -35,6 +36,7 @@ const DEFAULT_QUIZ_VALUES = {
 };
 
 const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
+  const { t } = useTranslation("courses-view");
   const [retakeAssessment, setRetakeAssessment] = useState(false);
   const [answers, setAnswers] = useState<[] | string[]>([]);
   const [quizValues, setQuizValues] = useState(DEFAULT_QUIZ_VALUES);
@@ -79,14 +81,13 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
 
     if (isPreAssessmentTab) {
       assessmentData = currentContentData?.pre_assessment;
-      title = "Pre Assessment";
+      title = t("preAssessment");
     }
     if (isPostAssessmentTab) {
       assessmentData = currentContentData?.post_assessment;
-      title = "Post Assessment";
+      title = t("postAssessment");
     }
-    const questionDesc =
-      "Answer a few questions to help us understand your current level of knowledge. Don’t worry if you don’t know the answers, just answer as best as you can.";
+    const questionDesc = t("questionDescription");
 
     const questionsLength = assessmentData?.length;
     const questionNum = questionsLength ? 1 : 0;
@@ -238,36 +239,37 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
       <section className="unit-content">
         {showPreAssessmentTest ? (
           <>
-            <div className="title">Pre assessment</div>
+            <div className="title">{t("preAssessment")}</div>
             {showPreAssessmentResult ? (
               <div className="assessment-result content-box-container">
-                <p className="assessment-score-text">You've scored</p>
+                <p className="assessment-score-text">{t("youScored")}</p>
                 <p className="assessment-score-number">{`${currentTopicProgress?.pre_assessment?.correct_answers}/${currentTopicProgress?.pre_assessment?.total_questions}`}</p>
                 <p className="assessment-result-thanks">
-                  Thank you for completing this pre-assessment.
+                  {t("thanksPreAssessment")}
                 </p>
                 <Button
                   onClick={handleRetakeClick}
                   className="assessment-result-button"
                   type="primary"
                 >
-                  Retake assessment
+                  {t("retakeAssessment")}
                 </Button>
               </div>
             ) : (
               <div>
                 <div className="content-box-container">
-                  <div className={"assessment-title"}>Pre assessment test</div>
+                  <div className={"assessment-title"}>
+                    {t("testPreAssessment")}
+                  </div>
                   <div className={"assessment-description"}>
-                    Help us understand your starting knowledge by completing a
-                    few pre assessment questions.
+                    {t("helpUsPreAssessment")}
                   </div>
                   <Button
                     onClick={handleAssessmentButtonClick}
                     className={"assessment-button"}
                     type="primary"
                   >
-                    Take pre assessment
+                    {t("takePreAssessment")}
                   </Button>
                 </div>
               </div>
@@ -287,10 +289,10 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
 
         {showPostAssessmentTest ? (
           <>
-            <div className="title">Post assessment</div>
+            <div className="title">{t("postAssessment")}</div>
             {showPostAssessmentResult ? (
               <div className="assessment-result content-box-container">
-                <p className="assessment-score-text">You've scored</p>
+                <p className="assessment-score-text">{t("youScored")}</p>
                 <p
                   className={classNames("assessment-score-number", {
                     failed: !isPostAssessmentPassed,
@@ -301,10 +303,10 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
                     failed: !isPostAssessmentPassed,
                   })}
                 >
-                  {isPostAssessmentPassed ? "Passed!" : "Failed"}
+                  {isPostAssessmentPassed ? t("passed") : t("failed")}
                 </p>
                 <p className="assessment-result-thanks">
-                  Thank you for completing this post-assessment.
+                  {t("thanksPostAssessment")}
                 </p>
                 <Button
                   onClick={handleRetakeClick}
@@ -313,22 +315,23 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
                   })}
                   type="primary"
                 >
-                  Retake assessment
+                  {t("retakeAssessment")}
                 </Button>
               </div>
             ) : (
               <div className="content-box-container">
-                <div className={"assessment-title"}>Post assessment test</div>
+                <div className={"assessment-title"}>
+                  {t("testPostAssessment")}
+                </div>
                 <div className={"assessment-description"}>
-                  Help us understand your starting knowledge by completing a few
-                  post assessment questions.
+                  {t("helpUsPostAssessment")}
                 </div>
                 <Button
                   onClick={handleAssessmentButtonClick}
                   className={"assessment-button"}
                   type="primary"
                 >
-                  Take post assessment
+                  {t("takePostAssessment")}
                 </Button>
               </div>
             )}
@@ -370,11 +373,11 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
               <div className="assessment-modal-footer-right-panel">
                 {quizValues?.isSubmitAnswersVisible ? (
                   <Button onClick={handleSubmitAnswerClick} type="primary">
-                    Submit
+                    {t("submit")}
                   </Button>
                 ) : (
                   <Button onClick={handleNextButtonClick} type="primary">
-                    Next
+                    {t("next")}
                   </Button>
                 )}
               </div>
@@ -384,7 +387,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
 
         {quizValues?.scoreBoard?.isVisible ? (
           <div className="assessment-modal-result">
-            <p className="assessment-modal-score-text">You've scored</p>
+            <p className="assessment-modal-score-text">{t("youScored")}</p>
             <p
               className={classNames("assessment-modal-score-number", {
                 failed:
@@ -393,11 +396,11 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
             >{`${quizValues?.scoreBoard?.correctAnswers}/${quizValues?.totalQuestions}`}</p>
 
             {!quizValues?.scoreBoard?.isPassed && isPostAssessmentTab ? (
-              <p className="assessment-modal-result-mark">Failed</p>
+              <p className="assessment-modal-result-mark">{t("failed")}</p>
             ) : null}
 
             <p className="assessment-modal-result-thanks">
-              Thank you for completing this assessment.
+              {t("thanksAssessment")}
             </p>
             <Button
               onClick={handleContinueSessionClick}
@@ -407,7 +410,7 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
               })}
               type="primary"
             >
-              Continue session
+              {t("continueSession")}
             </Button>
           </div>
         ) : null}
