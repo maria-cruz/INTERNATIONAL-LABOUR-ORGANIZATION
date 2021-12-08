@@ -1,5 +1,4 @@
-import Layout, { Header } from "@common/components/Layout";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Unit1Banner from "@public/images/unit1-banner.jpg";
 import Button from "antd/lib/button";
@@ -22,11 +21,13 @@ const CarouselBanner = ({
   prevSlug,
   nextSlug,
 }: CarouselBannerProps) => {
+  const [isStartButtonLoading, setIsStartButtonLoading] = useState(false);
   const { t } = useTranslation("common");
   const router = useRouter();
   const slug = router?.query?.slug;
 
   const handleStartClick = () => {
+    setIsStartButtonLoading(true);
     router.push(`/courses/view/${slug}`);
   };
   const handleBackArrowClick = () => {
@@ -75,6 +76,7 @@ const CarouselBanner = ({
           htmlType="submit"
           type="primary"
           className="start-btn"
+          loading={isStartButtonLoading}
         >
           {t("startLesson")}
         </Button>

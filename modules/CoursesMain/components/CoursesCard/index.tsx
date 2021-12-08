@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Progress from "antd/lib/progress";
 import Button from "antd/lib/button";
@@ -24,11 +24,13 @@ const CoursesCard = ({
   thumbnail = CardSampleImage,
   percentage = 0,
 }: CoursesCardProps) => {
+  const [isViewUnitButtonLoading, setIsViewUnitButtonLoading] = useState(false);
   const { t } = useTranslation("courses");
 
   const isLocked = percentage === 0;
   const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
   const handleViewUnit1Click = () => {
+    setIsViewUnitButtonLoading(true);
     router.push(`/courses/preview/${slug}`);
   };
 
@@ -49,7 +51,11 @@ const CoursesCard = ({
         <div className="spacer" />
         <div className="lower-container">
           <div className="card-view-button">
-            <Button type="primary" onClick={handleViewUnit1Click}>
+            <Button
+              type="primary"
+              onClick={handleViewUnit1Click}
+              loading={isViewUnitButtonLoading}
+            >
               {t("viewUnit")}
             </Button>
           </div>
