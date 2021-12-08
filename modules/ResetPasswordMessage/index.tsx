@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import EmailUnfill from "@common/components/Icons/EmailUnFill";
 const ResetPasswordMessage = () => {
   const router = useRouter();
+  const locale = router?.locale ?? "en";
 
   const handleLogInClick = () => {
-    router.push("/log-in");
+    router.push(`/log-in`, "", { locale: locale });
   };
 
   return (

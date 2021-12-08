@@ -194,6 +194,7 @@
   .ant-checkbox-wrapper {
     margin-left: 0;
   }
+
   .sign-up-btn-container {
     display: flex;
     justify-content: center;
@@ -201,6 +202,7 @@
       justify-content: flex-start;
     }
   }
+
   .sign-up-btn {
     width: 100%;
     @include view-size(tab-port) {
@@ -210,18 +212,26 @@
       max-width: 100%;
     }
   }
+
   .ant-input-affix-wrapper > input.ant-input:lang(ar) {
     text-align: right;
   }
   .ant-checkbox + span {
     padding-left: 1.3rem;
   }
+
+  .set-password-rule-container {
+    margin-bottom: 2.4rem;
+  }
+
   .set-password-rule-container:lang(ar) {
     text-align: right;
   }
+
   .ant-form-item-explain.ant-form-item-explain-error:lang(ar) {
     text-align: right;
   }
+
   .set-password-requirements-container:lang(ar) {
     display: flex;
     flex-direction: row-reverse;

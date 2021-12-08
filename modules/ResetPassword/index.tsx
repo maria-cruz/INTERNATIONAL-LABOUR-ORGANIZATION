@@ -6,10 +6,11 @@ import Button from "antd/lib/button";
 import useTranslation from "next-translate/useTranslation";
 import Layout, { Header } from "@common/components/Layout";
 import SignUpBg from "@public/images/sign-up-bg.jpg";
-import Router from "next/router";
 import PasswordRule from "@common/components/PasswordRule";
 import isEmpty from "lodash/isEmpty";
 import SignUpBgMobile from "@public/images/sign-up-mobile.jpg";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 import {
   isAtleastOneNumberRegex,
@@ -17,13 +18,16 @@ import {
   hasLowercaseRegex,
 } from "./regex";
 import PreviewPassword from "@common/components/Icons/PreviewPassword";
-interface HandleSignUpFinishProps {
-  email: string;
-  password: string;
+interface HandleResetPasswordFinishProps {
+  newPassword: string;
 }
 
 const ResetPassword = () => {
+  const router = useRouter();
+  const [isSubmitButtonLoading, setIsSubmitButtonLoading] = useState(false);
   const [resetPasswordForm] = Form.useForm();
+  const locale = router?.locale ?? "en";
+  const resetPasswordCode = router?.query?.code;
 
   const passwordRuleInitialState = {
     isLongerThanSevenChars: false,
@@ -38,38 +42,30 @@ const ResetPassword = () => {
 
   const { t } = useTranslation("sign-up");
 
-  const handleResetPasswordFinish = (value: HandleSignUpFinishProps) => {
-    const registerInfo = {
-      username: value.email,
-      email: value.email,
-      password: value.password,
-    };
+  const handleResetPasswordFinish = (value: HandleResetPasswordFinishProps) => {
+    if (!resetPasswordCode) return;
+    if (!value?.newPassword) return;
 
-    fetch(`${process.env.API_URL}/auth/local/register`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registerInfo),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        if (data?.statusCode === 400) {
-          resetPasswordForm.setFields([
-            {
-              name: "email",
-              errors: [`${data?.message[0]?.messages[0]?.message}`],
-            },
-          ]);
-          return;
-        }
-
-        Router.push("/sign-up/success");
+    setIsSubmitButtonLoading(true);
+    axios
+      .post(`${process.env.API_URL}/auth/reset-password`, {
+        code: resetPasswordCode,
+        password: value?.newPassword,
+        passwordConfirmation: value?.newPassword,
+      })
+      .then((data: any) => {
+        console.log("Your user's password has been changed.");
+        router.push(`/log-in`, "", { locale: locale });
       })
       .catch((error) => {
-        console.error("Error:", error);
+        resetPasswordForm.setFields([
+          {
+            name: "newPassword",
+            errors: [`Something went wrong.`],
+          },
+        ]);
+        console.log("An error occurred:", error.response);
+        setIsSubmitButtonLoading(false);
       });
   };
 
@@ -165,13 +161,6 @@ const ResetPassword = () => {
                 validateTrigger="submit"
               >
                 <Form.Item
-                  label={t("emailAddress")}
-                  className="email-container"
-                  name="email"
-                >
-                  <Input className="sign-up-input" disabled={true} />
-                </Form.Item>
-                <Form.Item
                   label="New password"
                   className="password-container"
                   name="newPassword"
@@ -187,6 +176,7 @@ const ResetPassword = () => {
                           className="password-shown-btn"
                           type="link"
                           onClick={handlePasswordShowClick}
+                          loading={isSubmitButtonLoading}
                         >
                           <PreviewPassword width="22" height="15" />
                         </Button>
@@ -203,11 +193,12 @@ const ResetPassword = () => {
                   />
                 )}
                 <Form.Item noStyle>
-                  <div className="sign-up-btn-container">
+                  <div className="reset-password-btn-container">
                     <Button
-                      className="sign-up-btn"
+                      className="reset-password-btn"
                       type="primary"
                       htmlType="submit"
+                      loading={isSubmitButtonLoading}
                     >
                       Reset password
                     </Button>
