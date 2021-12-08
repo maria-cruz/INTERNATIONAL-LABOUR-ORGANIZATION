@@ -107,10 +107,10 @@ const ResetPassword = () => {
       const isEmptyNewPassword = isEmpty(newPassword);
 
       if (isEmptyNewPassword)
-        return Promise.reject("Please enter a new password");
+        return Promise.reject(`${t("pleaseEnterNewPassword")}`);
 
       if (!isCheckAllPasswordRule)
-        return Promise.reject("Please enter a valid password.");
+        return Promise.reject(`${t("passwordValidation")}`);
 
       return Promise.resolve();
     },
@@ -146,11 +146,9 @@ const ResetPassword = () => {
               </div>
             </div>
             <div className="sign-up-container">
-              <div className="sign-up-title">Reset your password</div>
+              <div className="sign-up-title">{t("resetYourPassword")}</div>
               <div className="login-container">
-                <div className="login-sub-text">
-                  Please provide a new password to continue using your account.
-                </div>
+                <div className="login-sub-text">{t("provideNewPassword")}</div>
               </div>
               <Form
                 form={resetPasswordForm}
@@ -161,7 +159,7 @@ const ResetPassword = () => {
                 validateTrigger="submit"
               >
                 <Form.Item
-                  label="New password"
+                  label={t("newPassword")}
                   className="password-container"
                   name="newPassword"
                   rules={[newPasswordValidation]}
@@ -200,7 +198,7 @@ const ResetPassword = () => {
                       htmlType="submit"
                       loading={isSubmitButtonLoading}
                     >
-                      Reset password
+                      {t("resetPassword")}
                     </Button>
                   </div>
                 </Form.Item>

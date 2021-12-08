@@ -1,7 +1,10 @@
 .course-preview-container {
   @import "./components/CarouselBanner/styles";
   background: $whisper;
-
+  .course-tabs-container:lang(ar) {
+    display: flex;
+    justify-content: flex-end;
+  }
   .course-tabs-container {
     padding-top: 5rem;
     padding-bottom: 7rem;
