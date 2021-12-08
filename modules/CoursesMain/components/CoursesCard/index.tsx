@@ -42,7 +42,7 @@ const CoursesCard = ({
 
       <div className="card-details-container">
         <div className="upper-container">
-          <div className="card-unit">{unit}</div>
+          <div className="card-unit">{`${t("unit")} ${unit}`}</div>
           <div className="card-title">{title}</div>
           <div className="card-description">{description}</div>
         </div>
