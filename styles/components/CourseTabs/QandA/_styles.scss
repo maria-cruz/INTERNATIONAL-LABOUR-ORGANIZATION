@@ -1,10 +1,26 @@
 .QandA-section {
-  max-width: 123.3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &:lang(ar) {
+    align-items: flex-end;
+  }
+
+  .qanda-container {
+    width: 100%;
+    max-width: 123.3rem;
+  }
 
   .comment-form-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .comment-form-wrapper .ant-form {
+    width: 100%;
   }
 
   .text-input-container:lang(ar) {
@@ -26,6 +42,7 @@
     }
     @include view-size(desktop) {
       width: 85vw;
+      width: 100%;
     }
   }
   .submit-btn:lang(ar) {
@@ -51,10 +68,15 @@
   .comment-container {
     position: relative;
     margin-bottom: 2.2rem;
+    width: 100%;
     @include view-size(tab-port) {
       margin-bottom: 4.3rem;
     }
   }
+  .comment-container .ant-row {
+    display: block;
+  }
+
   .ant-form-item-control-input-content:lang(ar) {
     direction: rtl;
   }
