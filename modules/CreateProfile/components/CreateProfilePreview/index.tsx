@@ -67,9 +67,6 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
             <div className="sub-text email-space-bottom">
               {storeData.emailAddress}
             </div>
-            <div className="verify-email-text">
-              Verify your email address Resend Verification
-            </div>
           </div>
           <div className="organization-name-container">
             <div className="text">{t("organizationName")}</div>
