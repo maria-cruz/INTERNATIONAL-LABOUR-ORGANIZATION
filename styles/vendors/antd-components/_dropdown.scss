@@ -37,12 +37,21 @@
     font-size: 1.6rem;
     color: $black;
     font-weight: bold;
+
+    &:lang(ar) {
+      direction: rtl;
+      text-align: right;
+    }
   }
 }
 
 .language-menu-dropdown {
-  left: 161.2rem !important;
-  top: 18.8rem !important;
+  padding-right: 21.3rem;
+
+  &:lang(ar) {
+    padding-left: 21.3rem;
+  }
+
   .dropdown-menu {
     width: 21rem;
     padding: 0;

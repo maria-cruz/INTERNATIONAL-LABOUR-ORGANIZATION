@@ -6,8 +6,9 @@
   display: flex;
   overflow: hidden;
 
+  flex-direction: row;
   &:lang(ar) {
-    direction: rtl;
+    flex-direction: row-reverse;
   }
 
   .left-column {

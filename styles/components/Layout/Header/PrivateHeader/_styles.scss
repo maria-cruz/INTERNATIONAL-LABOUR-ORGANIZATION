@@ -11,6 +11,7 @@
   height: 8rem;
   box-shadow: 0 0.4rem 0.4rem $black-03;
   padding: 1.6rem;
+
   @include view-size(tab-port) {
     padding: 2.8rem min(5.208vw, 10rem);
   }
@@ -21,6 +22,11 @@
   @include view-size(big-desktop) {
     height: 14rem;
   }
+
+  &:lang(ar) {
+    direction: rtl;
+  }
+
   .logo-container-mobile {
     display: block;
     @include view-size(desktop) {
