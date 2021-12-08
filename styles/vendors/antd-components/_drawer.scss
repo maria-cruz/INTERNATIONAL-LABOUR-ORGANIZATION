@@ -2,6 +2,10 @@
 .hamburger-menu-drawer {
   z-index: 1;
 
+  &:lang(ar) {
+    direction: rtl;
+  }
+
   .ant-drawer-header {
     display: none;
   }
