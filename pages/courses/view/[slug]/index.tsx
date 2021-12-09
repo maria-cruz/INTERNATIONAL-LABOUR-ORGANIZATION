@@ -124,9 +124,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     objectives: courseData?.learning_objectives ?? [],
   };
 
+  const filteredCourseComments = courseComments?.filter?.((comment: any) => {
+    return !(comment?.blocked === true || comment?.blockedThread === true);
+  });
+
   const unitQandAProps = {
     courseId: courseData?.id,
-    courseComments: courseComments,
+    courseComments: filteredCourseComments,
   };
 
   const unitDownloadableFilesProps = {

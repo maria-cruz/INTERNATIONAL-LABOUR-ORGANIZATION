@@ -97,20 +97,28 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     nextSlug: nextCourse?.slug ?? "",
   };
 
+  const filteredCourseComments = courseComments?.filter?.((comment: any) => {
+    return !(comment?.blocked === true || comment?.blockedThread === true);
+  });
+
   return {
-    props: { coursePreviewData, courseComments, courseDownloadableFiles },
+    props: {
+      coursePreviewData,
+      filteredCourseComments,
+      courseDownloadableFiles,
+    },
   };
 };
 
 const CoursePreviewPage = ({
   coursePreviewData,
-  courseComments,
+  filteredCourseComments,
   courseDownloadableFiles,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <CoursePreview
       coursePreviewData={coursePreviewData}
-      courseComments={courseComments}
+      courseComments={filteredCourseComments}
       courseDownloadableFiles={courseDownloadableFiles}
     />
   );
