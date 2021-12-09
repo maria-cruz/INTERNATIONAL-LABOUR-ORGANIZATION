@@ -127,6 +127,19 @@
       padding-bottom: 12rem;
     }
   }
+
+  // Temporary Fix
+  .unit-wrapper .tab-container .ant-tabs-nav {
+    &:lang(ar) {
+      direction: rtl;
+    }
+
+    .ant-tabs-nav-list {
+      &:lang(ar) {
+        gap: 2rem;
+      }
+    }
+  }
   @import "./components/QuestionForm/styles.scss";
   @import "./components//SearchQuestion/styles";
 }
