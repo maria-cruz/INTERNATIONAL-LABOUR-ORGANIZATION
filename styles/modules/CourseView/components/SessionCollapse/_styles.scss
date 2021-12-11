@@ -97,10 +97,28 @@
 
     .icon svg {
       fill: $manatee;
+      overflow: visible;
     }
 
     &.completed .icon svg {
       fill: $tropical-rain-forest;
+    }
+
+    .locked-icon svg {
+      fill: $manatee;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .play-icon svg {
+      fill: $tropical-rain-forest;
+      overflow: visible;
+    }
+
+    .play-icon-unseen svg {
+      fill: none;
+      overflow: visible;
+      stroke: $manatee;
     }
   }
 

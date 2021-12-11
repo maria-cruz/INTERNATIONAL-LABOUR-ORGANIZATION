@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
+import PlayOutline from "@common/components/Icons/PlayOutline";
 import ParamLink from "@common/components/ParamLink";
 import classNames from "classnames";
 import { useRouter } from "next/router";
@@ -54,9 +55,15 @@ const Topic = ({
           { completed: isViewed }
         )}
       >
-        <div className="icon">
-          <CheckCircleOutline />
-        </div>
+        {isViewed ? (
+          <div className="play-icon">
+            <PlayOutline />
+          </div>
+        ) : (
+          <div className="play-icon-unseen">
+            <PlayOutline />
+          </div>
+        )}
         <div className="text">{`${title}`}</div>
       </div>
     </ParamLink>

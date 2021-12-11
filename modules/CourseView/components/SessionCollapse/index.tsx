@@ -47,6 +47,16 @@ const SessionCollapse = ({
             }
           );
 
+          const prevTopic = currentProgressData?.topics?.find?.(
+            (currentTopic: any) => {
+              return (
+                currentTopic?.topic_id === topics?.[idx - 1]?.id?.toString?.()
+              );
+            }
+          );
+
+          const isPrevPostAssessmentCompleted =
+            !!prevTopic?.post_assessment?.is_passed;
           const isPreAssessmentCompleted = !!targetTopic?.pre_assessment;
           const isPostAssessmentCompleted =
             !!targetTopic?.post_assessment?.is_passed;
@@ -69,6 +79,7 @@ const SessionCollapse = ({
                 <PreAssessment
                   id={topic?.id}
                   isCompleted={isPreAssessmentCompleted}
+                  isLocked={!isPrevPostAssessmentCompleted && idx !== 0}
                 />
               </div>
 
@@ -84,6 +95,7 @@ const SessionCollapse = ({
                 <PostAssessment
                   id={topic?.id}
                   isCompleted={isPostAssessmentCompleted}
+                  isLocked={!(isVideoCompleted && isPreAssessmentCompleted)}
                 />
               </div>
             </Panel>
