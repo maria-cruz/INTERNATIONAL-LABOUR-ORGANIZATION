@@ -4,6 +4,7 @@ import Unit1Banner from "@public/images/unit1-banner.jpg";
 import Button from "antd/lib/button";
 import BackArrow from "@common/components/Icons/BackArrow";
 import ForwardArrow from "@common/components/Icons/ForwardArrow";
+import LockedIcon from "@common/components/Icons/Locked";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import MobileBanner from "@public/images/carousel-banner-mobile.jpg";
@@ -13,6 +14,7 @@ interface CarouselBannerProps {
   title?: string;
   prevSlug?: string;
   nextSlug?: string;
+  isLocked?: boolean;
 }
 
 const CarouselBanner = ({
@@ -20,6 +22,7 @@ const CarouselBanner = ({
   title = "Untitled",
   prevSlug,
   nextSlug,
+  isLocked = true,
 }: CarouselBannerProps) => {
   const [isStartButtonLoading, setIsStartButtonLoading] = useState(false);
   const { t } = useTranslation("common");
@@ -77,8 +80,16 @@ const CarouselBanner = ({
           type="primary"
           className="start-btn"
           loading={isStartButtonLoading}
+          disabled={isLocked}
         >
-          {t("startLesson")}
+          {isLocked ? (
+            <>
+              <LockedIcon fill={"#ffffff"} />
+              <>{t("locked")}</>
+            </>
+          ) : (
+            t("startLesson")
+          )}
         </Button>
       </div>
     </div>
