@@ -115,42 +115,33 @@
   }
 
   .start-btn {
-    width: 100%;
     background-color: $faux-green;
+    font-size: min(4.44444vw, 2.4rem);
+
+    width: 100%;
+    height: 5rem;
+
     @include view-size(tab-port) {
       width: 20.6rem;
-    }
-  }
-  .start-btn,
-  .locked-btn {
-    font-size: min(4.44444vw, 2.4rem);
-    height: 5rem;
-    @include view-size(tab-port) {
       height: 7rem;
-    }
-  }
-
-  .start-btn,
-  .locked-btn {
-    @include view-size(tab-port) {
       margin-left: 4.7rem;
     }
+
+    &:disabled {
+      background: $manatee;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      svg {
+        fill: $white;
+        height: 2.4rem;
+        width: 2.4rem;
+        margin-right: 1rem;
+      }
+    }
   }
-
-  // .locked-btn {
-  //   background: $manatee;
-  //   width: 18.4rem;
-  //   color: $white;
-  //   border: none;
-  //   &:hover,
-  //   &:focus,
-  //   &:active {
-  //     border-color: none;
-  //     color: $white;
-  //   }
-
-  //   svg {
-  //     margin-right: 1rem;
-  //   }
-  // }
 }

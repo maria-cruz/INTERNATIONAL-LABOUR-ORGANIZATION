@@ -26,6 +26,7 @@ const CoursePreview = ({
     instructor,
     prevSlug,
     nextSlug,
+    isLocked,
   } = coursePreviewData;
 
   const unitDetailsProps = {
@@ -52,6 +53,7 @@ const CoursePreview = ({
           title={title}
           prevSlug={prevSlug}
           nextSlug={nextSlug}
+          isLocked={isLocked}
         />
 
         <div className={"course-tabs-container"}>

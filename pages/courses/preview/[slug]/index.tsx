@@ -74,6 +74,22 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return courseDataUnit > currentCourseDataUnit;
   });
 
+  const checkIfUnitIsLocked = () => {
+    const currentUnit = Number?.(currentCourseData?.unit);
+    if (currentUnit <= 1) return false;
+
+    const prevCompletedTopics = prevCourse?.progress?.completed_topics ?? 0;
+    const prevTotalTopics = prevCourse?.progress?.total_topics ?? 1;
+    const prevPercentage = Math.floor(
+      (prevCompletedTopics / prevTotalTopics) * 100
+    );
+
+    const isPrevCourseCompleted = prevPercentage === 100;
+    if (isPrevCourseCompleted) return false;
+
+    return true;
+  };
+
   const completedTopics = currentCourseData?.progress?.completed_topics ?? 0;
   const totalTopics = currentCourseData?.progress?.total_topics ?? 1;
   const percentage = Math.floor((completedTopics / totalTopics) * 100);
@@ -95,6 +111,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     instructor: currentCourseData?.instructor ?? "",
     prevSlug: prevCourse?.slug ?? "",
     nextSlug: nextCourse?.slug ?? "",
+    isLocked: checkIfUnitIsLocked(),
   };
 
   const filteredCourseComments = courseComments?.filter?.((comment: any) => {
