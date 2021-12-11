@@ -29,7 +29,6 @@ const CoursesCard = ({
   const [isViewUnitButtonLoading, setIsViewUnitButtonLoading] = useState(false);
   const { t } = useTranslation("courses");
 
-  // const isLocked = percentage === 0;
   const imageSrc = !!thumbnail ? thumbnail : CardSampleImage;
   const handleViewUnit1Click = () => {
     setIsViewUnitButtonLoading(true);
