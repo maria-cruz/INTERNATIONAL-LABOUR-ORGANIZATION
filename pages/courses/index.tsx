@@ -30,27 +30,44 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   );
 
-  const allCourseCardsData = allCoursesData.map((courseData) => {
-    const completedTopics = courseData?.progress?.completed_topics ?? 0;
-    const totalTopics = courseData?.progress?.total_topics ?? 1;
-    const percentage = Math.floor((completedTopics / totalTopics) * 100);
+  const allCourseCardsData = allCoursesData.reduce(
+    (prevCourseData: any, currentCourseData: any) => {
+      const completedTopics =
+        currentCourseData?.progress?.completed_topics ?? 0;
+      const totalTopics = currentCourseData?.progress?.total_topics ?? 1;
+      const percentage = Math.floor((completedTopics / totalTopics) * 100);
 
-    const getProgressStatus = () => {
-      if (percentage === 100) return "completed";
-      if (percentage > 0) return "in-progress";
-      return "";
-    };
+      const getProgressStatus = () => {
+        if (percentage === 100) return "completed";
+        if (percentage > 0) return "in-progress";
+        return "";
+      };
 
-    return {
-      unit: `${courseData?.unit ?? 0}`,
-      title: courseData?.title,
-      slug: courseData?.slug,
-      description: courseData?.description,
-      thumbnail: getStrapiFileUrl(courseData?.thumbnail),
-      percentage: percentage,
-      status: getProgressStatus(),
-    };
-  });
+      const checkIfUnitIsLocked = () => {
+        const currentUnit = Number?.(currentCourseData?.unit);
+        if (currentUnit <= 1) return false;
+
+        const isPrevCourseCompleted = prevCourseData?.status === "completed";
+        if (isPrevCourseCompleted) return false;
+
+        return true;
+      };
+
+      const courseData = {
+        unit: `${currentCourseData?.unit ?? 0}`,
+        title: currentCourseData?.title,
+        slug: currentCourseData?.slug,
+        description: currentCourseData?.description,
+        thumbnail: getStrapiFileUrl(currentCourseData?.thumbnail),
+        percentage: percentage,
+        status: getProgressStatus(),
+        isLocked: checkIfUnitIsLocked(),
+      };
+
+      return [...prevCourseData, courseData];
+    },
+    []
+  );
 
   return {
     props: { allCourseCardsData },
