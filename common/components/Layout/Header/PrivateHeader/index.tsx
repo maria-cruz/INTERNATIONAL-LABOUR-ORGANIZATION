@@ -148,7 +148,7 @@ const PrivateHeader = ({ gap = "0rem", className = "" }: HeaderProps) => {
       <div className={"right-container"}>
         <div className={"menu"}>
           <NavLink href="/courses" query={"?category=all"}>
-            {t("units")}
+            {t("menu")}
           </NavLink>
         </div>
         <div className="hamburger-menu-container">
