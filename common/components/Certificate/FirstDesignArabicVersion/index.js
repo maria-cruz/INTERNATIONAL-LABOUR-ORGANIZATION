@@ -73,6 +73,7 @@ const firstStyleArabicVersion = StyleSheet.create({
     textTransform: "uppercase",
     position: "absolute",
     top: "370px",
+    left: "345px",
     fontWeight: "bold",
   },
 });

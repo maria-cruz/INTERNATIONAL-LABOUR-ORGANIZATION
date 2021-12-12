@@ -44,8 +44,9 @@ const firstStyleEnglishVersion = StyleSheet.create({
     fontSize: "10.5px",
     textTransform: "uppercase",
     position: "absolute",
-    top: "380px",
+    top: "385px",
     fontWeight: "bold",
+    left: "400px",
   },
 
   backgroundImage: {
