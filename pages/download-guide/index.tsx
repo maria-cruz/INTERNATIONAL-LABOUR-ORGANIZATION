@@ -35,11 +35,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   });
 
   let allGuidesData = sortedAllDownloadData.map((guideData) => {
-    const guideUnit = guideData?.unit?.unit;
-    const guideTitle = guideData?.unit?.title;
-    const guideDescription = guideData?.unit?.description;
-    const guideThumbnail = guideData?.unit?.thumbnail?.url;
-    const guideFile = guideData?.file?.url;
+    const guideUnit = guideData?.unit?.unit ?? null;
+    const guideTitle = guideData?.unit?.title ?? "";
+    const guideDescription = guideData?.unit?.description ?? "";
+    const guideThumbnail = guideData?.unit?.thumbnail?.url ?? "";
+    const guideFile = guideData?.file?.url ?? "";
     const isUnitMissing = !guideUnit;
     if (isUnitMissing) {
       return null;

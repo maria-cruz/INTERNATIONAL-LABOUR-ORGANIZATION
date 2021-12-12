@@ -103,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     title: currentCourseData?.title ?? "",
     slug: currentCourseData?.slug ?? "",
     description: currentCourseData?.description ?? "",
-    thumbnail: currentCourseData?.thumbnail, // Thumbnail URL
+    thumbnail: currentCourseData?.thumbnail ?? "", // Thumbnail URL
     topicsCount: topicsCount ?? 0,
     progress: percentage ?? 0,
     objectives: currentCourseData?.learning_objectives ?? [],

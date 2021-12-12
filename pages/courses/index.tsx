@@ -54,10 +54,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
       const courseData = {
         unit: `${currentCourseData?.unit ?? 0}`,
-        title: currentCourseData?.title,
-        slug: currentCourseData?.slug,
-        description: currentCourseData?.description,
-        thumbnail: currentCourseData?.thumbnail, // Thumbnail URL
+        title: currentCourseData?.title ?? "",
+        slug: currentCourseData?.slug ?? "",
+        description: currentCourseData?.description ?? "",
+        thumbnail: currentCourseData?.thumbnail ?? "", // Thumbnail URL
         percentage: percentage,
         status: getProgressStatus(),
         isLocked: checkIfUnitIsLocked(),

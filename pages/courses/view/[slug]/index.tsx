@@ -115,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   };
 
   const unitDetailsProps = {
-    instructorAvatar: courseData?.instructor?.avatar?.url,
+    instructorAvatar: courseData?.instructor?.avatar?.url ?? "",
     instructorName: courseData?.instructor?.name ?? null,
     topicsCount: topicsCount,
     progress: percentage,
