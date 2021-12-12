@@ -4,7 +4,6 @@ import getJWT from "@common/methods/getJWT";
 import getUserId from "@common/methods/getUserId";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import parseMediaEmbed from "@common/methods/parseMediaEmbed";
-import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface ProgressType {
   unit: number;
@@ -116,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   };
 
   const unitDetailsProps = {
-    instructorAvatar: getStrapiFileUrl(courseData?.instructor?.avatar?.url),
+    instructorAvatar: courseData?.instructor?.avatar?.url,
     instructorName: courseData?.instructor?.name ?? null,
     topicsCount: topicsCount,
     progress: percentage,

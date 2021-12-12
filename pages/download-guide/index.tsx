@@ -1,7 +1,6 @@
 import DownloadGuide from "@modules/DownloadGuide";
 import axios from "axios";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 interface UnitType {
   unit: string;
   title: string;
@@ -39,8 +38,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const guideUnit = guideData?.unit?.unit;
     const guideTitle = guideData?.unit?.title;
     const guideDescription = guideData?.unit?.description;
-    const guideThumbnail = getStrapiFileUrl(guideData?.unit?.thumbnail?.url);
-    const guideFile = getStrapiFileUrl(guideData?.file?.url);
+    const guideThumbnail = guideData?.unit?.thumbnail?.url;
+    const guideFile = guideData?.file?.url;
     const isUnitMissing = !guideUnit;
     if (isUnitMissing) {
       return null;

@@ -2,7 +2,6 @@ import CoursesMain from "@modules/CoursesMain";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 interface CoursesDataType {
   unit: string;
   title: string;
@@ -58,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         title: currentCourseData?.title,
         slug: currentCourseData?.slug,
         description: currentCourseData?.description,
-        thumbnail: getStrapiFileUrl(currentCourseData?.thumbnail),
+        thumbnail: currentCourseData?.thumbnail, // Thumbnail URL
         percentage: percentage,
         status: getProgressStatus(),
         isLocked: checkIfUnitIsLocked(),

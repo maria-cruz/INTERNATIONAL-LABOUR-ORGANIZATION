@@ -2,7 +2,6 @@ import React from "react";
 import Button from "antd/lib/button";
 import File from "@common/components/Icons/File";
 import DownloadOutlined from "@common/components/Icons/DownloadOutlined";
-import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 import Tooltip from "antd/lib/tooltip";
 import useTranslation from "next-translate/useTranslation";
 
@@ -30,7 +29,7 @@ const SelfPractice = ({ courseDownloadableFiles = [] }: SelfPracticeProps) => {
         {courseDownloadableFiles.map((courseDownloadableFile, idx: number) => {
           const filename = courseDownloadableFile?.files?.name;
           const fileUrl = courseDownloadableFile?.files?.url ?? "";
-          const url = getStrapiFileUrl(fileUrl);
+          const url = fileUrl;
           const fileSize = courseDownloadableFile?.files?.size;
           return (
             <div className="download-modules-wrapper" key={idx}>

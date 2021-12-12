@@ -2,7 +2,6 @@ import CoursePreview from "@modules/CoursePreview";
 import axios from "axios";
 import getJWT from "@common/methods/getJWT";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import getStrapiFileUrl from "@common/utils/getStrapiFileUrl";
 
 interface Files {
   url: string;
@@ -104,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     title: currentCourseData?.title ?? "",
     slug: currentCourseData?.slug ?? "",
     description: currentCourseData?.description ?? "",
-    thumbnail: getStrapiFileUrl(currentCourseData?.thumbnail),
+    thumbnail: currentCourseData?.thumbnail, // Thumbnail URL
     topicsCount: topicsCount ?? 0,
     progress: percentage ?? 0,
     objectives: currentCourseData?.learning_objectives ?? [],
