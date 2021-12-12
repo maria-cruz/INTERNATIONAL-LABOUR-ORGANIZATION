@@ -21,7 +21,7 @@ interface TopicType {
 interface SessionCollapseProps {
   topics: TopicType[];
   currentProgressData: any;
-  onClick?: () => void;
+  onClick?: (isSelectedTopicLocked?: boolean) => void;
 }
 
 const SessionCollapse = ({
@@ -62,9 +62,17 @@ const SessionCollapse = ({
             !!targetTopic?.post_assessment?.is_passed;
           const isVideoCompleted = targetTopic?.videos?.length > 0;
 
-          const handlePanelItemClick = () => {
-            if (!!onClick) onClick();
-          };
+          const isPreAssessmentLocked =
+            !isPrevPostAssessmentCompleted && idx !== 0;
+          const isPostAssessmentLocked = !(
+            isVideoCompleted && isPreAssessmentCompleted
+          );
+          const isTopicLocked = !isPreAssessmentCompleted;
+
+          const handlePanelItemClick =
+            (isSelectedTopicLocked?: boolean) => (): any => {
+              if (!!onClick) onClick(isSelectedTopicLocked);
+            };
 
           return (
             <Panel
@@ -75,27 +83,28 @@ const SessionCollapse = ({
               }
               key={`${idx + 1}`}
             >
-              <div onClick={handlePanelItemClick}>
+              <div onClick={handlePanelItemClick(isPreAssessmentLocked)}>
                 <PreAssessment
                   id={topic?.id}
                   isCompleted={isPreAssessmentCompleted}
-                  isLocked={!isPrevPostAssessmentCompleted && idx !== 0}
+                  isLocked={isPreAssessmentLocked}
                 />
               </div>
 
-              <div onClick={handlePanelItemClick}>
+              <div onClick={handlePanelItemClick(isTopicLocked)}>
                 <Topic
                   title={topic?.title || ""}
                   id={topic?.id}
                   isCompleted={isVideoCompleted}
+                  isLocked={isTopicLocked}
                   currentProgressData={currentProgressData}
                 />
               </div>
-              <div onClick={handlePanelItemClick}>
+              <div onClick={handlePanelItemClick(isPostAssessmentLocked)}>
                 <PostAssessment
                   id={topic?.id}
                   isCompleted={isPostAssessmentCompleted}
-                  isLocked={!(isVideoCompleted && isPreAssessmentCompleted)}
+                  isLocked={isPostAssessmentLocked}
                 />
               </div>
             </Panel>

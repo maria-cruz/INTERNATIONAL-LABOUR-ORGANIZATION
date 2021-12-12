@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
+import LockedIcon from "@common/components/Icons/Locked";
 import PlayOutline from "@common/components/Icons/PlayOutline";
 import ParamLink from "@common/components/ParamLink";
 import classNames from "classnames";
@@ -12,6 +12,7 @@ interface TopicProps {
   id: number;
   title: string;
   isCompleted?: boolean;
+  isLocked?: boolean;
   currentProgressData: any;
 }
 
@@ -19,6 +20,7 @@ const Topic = ({
   title,
   id,
   isCompleted = false,
+  isLocked = true,
   currentProgressData,
 }: TopicProps) => {
   const jwt = getJWT(undefined, true);
@@ -31,6 +33,8 @@ const Topic = ({
   const isActive = currentTopicId === `${id}` && currentTabType === "topic";
 
   const handleLinkClick = () => {
+    if (isLocked) return;
+
     setIsViewed(true);
     const newProgressData = {
       topic_id: id,
@@ -55,15 +59,24 @@ const Topic = ({
           { completed: isViewed }
         )}
       >
-        {isViewed ? (
-          <div className="play-icon">
-            <PlayOutline />
+        {isLocked ? (
+          <div className="locked-icon">
+            <LockedIcon />
           </div>
         ) : (
-          <div className="play-icon-unseen">
-            <PlayOutline />
-          </div>
+          <>
+            {isViewed ? (
+              <div className="play-icon">
+                <PlayOutline />
+              </div>
+            ) : (
+              <div className="play-icon-unseen">
+                <PlayOutline />
+              </div>
+            )}
+          </>
         )}
+
         <div className="text">{`${title}`}</div>
       </div>
     </ParamLink>

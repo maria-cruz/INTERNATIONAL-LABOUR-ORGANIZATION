@@ -57,6 +57,8 @@ const CourseView = ({
 }: CourseDataProps) => {
   const { t } = useTranslation("courses-view");
   const [isSessionColumnOpen, setIsSessionColumnOpen] = useState(true);
+  const [isContentLocked, setIsContentLocked] = useState(true);
+
   const router = useRouter();
   const slug = router?.query?.slug;
   const currentUnitId = data?.id ?? null;
@@ -70,8 +72,13 @@ const CourseView = ({
     router.push(`/courses/preview/${slug}`);
   };
 
-  const handleSessionItemClick = () => {
+  const handleSessionHeaderClick = () => {
     setIsSessionColumnOpen(!isSessionColumnOpen);
+  };
+
+  const handleSessionItemClick = (isSelectedTopicLocked?: boolean) => {
+    setIsSessionColumnOpen(!isSessionColumnOpen);
+    setIsContentLocked(!!isSelectedTopicLocked);
   };
 
   return (
@@ -91,7 +98,7 @@ const CourseView = ({
           bordered={false}
           activeKey={isSessionColumnOpen ? "1" : ""}
           expandIcon={() => (
-            <div onClick={handleSessionItemClick}>
+            <div onClick={handleSessionHeaderClick}>
               <Menu width="32" height="32" />
             </div>
           )}
@@ -99,7 +106,9 @@ const CourseView = ({
         >
           <Panel
             header={
-              <div onClick={handleSessionItemClick}>{t("sessionContents")}</div>
+              <div onClick={handleSessionHeaderClick}>
+                {t("sessionContents")}
+              </div>
             }
             key="1"
           >
@@ -118,6 +127,7 @@ const CourseView = ({
           currentContentData={currentContentData}
           currentUnitId={currentUnitId}
           currentProgressData={currentProgressData}
+          isLocked={isContentLocked}
         />
 
         <section className="unit-info">
@@ -148,6 +158,7 @@ const CourseView = ({
         <SessionCollapse
           topics={data?.topics}
           currentProgressData={currentProgressData}
+          onClick={handleSessionItemClick}
         />
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
 import Radio, { RadioChangeEvent } from "antd/lib/radio";
+import LockedIcon from "@common/components/Icons/Locked";
 
 import getJWT from "@common/methods/getJWT";
 import updateProgress from "@common/methods/updateProgress";
@@ -15,6 +16,7 @@ interface ContentProps {
   currentContentData: any;
   currentUnitId: number | null;
   currentProgressData: any;
+  isLocked?: boolean;
 }
 
 const DEFAULT_QUIZ_VALUES = {
@@ -35,7 +37,11 @@ const DEFAULT_QUIZ_VALUES = {
   },
 };
 
-const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
+const Content = ({
+  currentContentData,
+  currentProgressData,
+  isLocked = true,
+}: ContentProps) => {
   const { t } = useTranslation("courses-view");
   const [isModalButtonDisabled, setIsModalButtonDisabled] = useState(true);
   const [retakeAssessment, setRetakeAssessment] = useState(false);
@@ -239,6 +245,41 @@ const Content = ({ currentContentData, currentProgressData }: ContentProps) => {
   };
 
   const videoHTML = currentContentData?.media_embed?.rawData?.html;
+
+  if (isLocked) {
+    return (
+      <div className="content-container">
+        <section className="unit-content">
+          {isPostAssessmentTab ? (
+            <div className="title">{t("postAssessment")}</div>
+          ) : isPreAssessmentTab ? (
+            <div className="title">{t("preAssessment")}</div>
+          ) : isTopicTab ? (
+            <div className="title">{currentContentData?.title}</div>
+          ) : null}
+
+          <div>
+            <div className="content-box-container">
+              <div className="locked-icon">
+                <LockedIcon />
+              </div>
+              <div className={"assessment-title"}>{t("locked")}</div>
+              <div className={"assessment-description"}>
+                {isPostAssessmentTab ? (
+                  <>{t("watchAllToUnlockPost")}</>
+                ) : isPreAssessmentTab ? (
+                  <>{t("watchAllToUnlockPre")}</>
+                ) : isTopicTab ? (
+                  <>{t("watchAllToUnlockTopic")}</>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="content-container">
       <section className="unit-content">
