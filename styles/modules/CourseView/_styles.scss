@@ -179,8 +179,6 @@
       border: 0.1rem solid $manatee;
       border-radius: 0.8rem;
       height: 69.193rem;
-      // width: 95.025%;
-      // max-width: 122.964rem;
 
       iframe {
         width: 100%;
@@ -192,13 +190,19 @@
       border: 0.1rem solid $manatee;
       border-radius: 0.8rem;
       height: 69.193rem;
-      // width: 95.025%;
-      // max-width: 122.964rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 2rem;
+    }
+
+    .locked-icon {
+      svg {
+        fill: $manatee;
+        width: 6.7rem;
+      }
+      margin-bottom: 2.8rem;
     }
 
     .assessment-title {

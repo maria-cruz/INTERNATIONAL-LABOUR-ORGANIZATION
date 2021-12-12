@@ -22,5 +22,10 @@
   "testPreAssessment": "اختبار التقييم المسبق",
   "testPostAssessment": "إختبار التقييم النهائي",
   "takePreAssessment": "إجراء التقييم المسبق",
-  "takePostAssessment": "إجراء التقييم النهائي"
+  "takePostAssessment": "إجراء التقييم النهائي",
+  "locked": "مقفل",
+  "watchAllToUnlockPre": "أكمل الجلسة السابقة لإلغاء قفل اختبار ما قبل التقييم.",
+  "watchAllToUnlockTopic": "أكمل التقييم المنشور لفتح الفيديو.",
+  "watchAllToUnlockPost": "شاهد جميع الموضوعات أولاً ، لفتح اختبار التقييم اللاحق.",
+  "topic": "عنوان"
 }

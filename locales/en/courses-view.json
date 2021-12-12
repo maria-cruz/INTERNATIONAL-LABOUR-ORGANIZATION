@@ -22,5 +22,10 @@
   "testPreAssessment": "Pre assessment test",
   "testPostAssessment": "Post assessment test",
   "takePreAssessment": "Take pre assessment",
-  "takePostAssessment": "Take post assessment"
+  "takePostAssessment": "Take post assessment",
+  "locked": "Locked",
+  "watchAllToUnlockPre": "Complete the previous session, to unlock the Pre assessment test.",
+  "watchAllToUnlockTopic": "Complete the post assessment, to unlock the Video.",
+  "watchAllToUnlockPost": "Watch all the topics first, to unlock the Post assessment test.",
+  "topic": "Topic"
 }
