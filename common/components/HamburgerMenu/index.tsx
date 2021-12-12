@@ -73,7 +73,7 @@ const HamburgerMenu = ({ type }: HamburgerMenuProps) => {
         ) : (
           <>
             <NavLink href="/courses" exact={true}>
-              {t("units")}
+              {t("menu")}
             </NavLink>
             <NavLink href="/profile">{t("userAccount")}</NavLink>
             <div className="nav-link" onClick={handleLogOutClick}>
