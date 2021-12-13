@@ -1,4 +1,7 @@
 .self-practice-section {
+  .self-practice-wrapper:lang(ar) {
+    direction: rtl;
+  }
   .exercise-file-title {
     color: $tropical-rain-forest;
     font-weight: 600;
