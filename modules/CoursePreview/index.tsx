@@ -52,7 +52,7 @@ const CoursePreview = ({
           title={title}
           prevSlug={prevSlug}
           nextSlug={nextSlug}
-          isLocked={isLocked}
+          isLocked={false} //isLocked
         />
 
         <div className={"course-tabs-container"}>
