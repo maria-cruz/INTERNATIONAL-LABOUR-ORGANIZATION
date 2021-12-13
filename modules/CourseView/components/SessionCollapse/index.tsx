@@ -87,7 +87,7 @@ const SessionCollapse = ({
                 <PreAssessment
                   id={topic?.id}
                   isCompleted={isPreAssessmentCompleted}
-                  isLocked={isPreAssessmentLocked}
+                  isLocked={false} // isPreAssessmentLocked
                 />
               </div>
 
@@ -96,7 +96,7 @@ const SessionCollapse = ({
                   title={topic?.title || ""}
                   id={topic?.id}
                   isCompleted={isVideoCompleted}
-                  isLocked={isTopicLocked}
+                  isLocked={false} // isTopicLocked
                   currentProgressData={currentProgressData}
                 />
               </div>
@@ -104,7 +104,7 @@ const SessionCollapse = ({
                 <PostAssessment
                   id={topic?.id}
                   isCompleted={isPostAssessmentCompleted}
-                  isLocked={isPostAssessmentLocked}
+                  isLocked={false} //isPostAssessmentLocked
                 />
               </div>
             </Panel>

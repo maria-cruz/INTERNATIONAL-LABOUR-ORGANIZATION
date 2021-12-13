@@ -246,39 +246,39 @@ const Content = ({
 
   const videoHTML = currentContentData?.media_embed?.rawData?.html;
 
-  if (isLocked) {
-    return (
-      <div className="content-container">
-        <section className="unit-content">
-          {isPostAssessmentTab ? (
-            <div className="title">{t("postAssessment")}</div>
-          ) : isPreAssessmentTab ? (
-            <div className="title">{t("preAssessment")}</div>
-          ) : isTopicTab ? (
-            <div className="title">{currentContentData?.title}</div>
-          ) : null}
+  // if (isLocked) {
+  //   return (
+  //     <div className="content-container">
+  //       <section className="unit-content">
+  //         {isPostAssessmentTab ? (
+  //           <div className="title">{t("postAssessment")}</div>
+  //         ) : isPreAssessmentTab ? (
+  //           <div className="title">{t("preAssessment")}</div>
+  //         ) : isTopicTab ? (
+  //           <div className="title">{currentContentData?.title}</div>
+  //         ) : null}
 
-          <div>
-            <div className="content-box-container">
-              <div className="locked-icon">
-                <LockedIcon />
-              </div>
-              <div className={"assessment-title"}>{t("locked")}</div>
-              <div className={"assessment-description"}>
-                {isPostAssessmentTab ? (
-                  <>{t("watchAllToUnlockPost")}</>
-                ) : isPreAssessmentTab ? (
-                  <>{t("watchAllToUnlockPre")}</>
-                ) : isTopicTab ? (
-                  <>{t("watchAllToUnlockTopic")}</>
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
+  //         <div>
+  //           <div className="content-box-container">
+  //             <div className="locked-icon">
+  //               <LockedIcon />
+  //             </div>
+  //             <div className={"assessment-title"}>{t("locked")}</div>
+  //             <div className={"assessment-description"}>
+  //               {isPostAssessmentTab ? (
+  //                 <>{t("watchAllToUnlockPost")}</>
+  //               ) : isPreAssessmentTab ? (
+  //                 <>{t("watchAllToUnlockPre")}</>
+  //               ) : isTopicTab ? (
+  //                 <>{t("watchAllToUnlockTopic")}</>
+  //               ) : null}
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </section>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="content-container">
