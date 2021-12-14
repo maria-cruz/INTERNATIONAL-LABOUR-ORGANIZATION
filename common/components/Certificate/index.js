@@ -12,7 +12,7 @@ import {
 } from "@react-pdf/renderer";
 
 const MyDocument = ({ userData }) => {
-  const nameTitle = userData?.gender === "male" ? "Mr" : "Ms";
+  const nameTitle = userData?.gender === "Male" ? "Mr" : "Ms";
   const givenName = userData?.given_name ?? "";
   const familyName = userData?.family_name ?? "";
 
