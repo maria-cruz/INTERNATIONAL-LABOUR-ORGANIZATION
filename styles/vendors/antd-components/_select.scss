@@ -17,6 +17,10 @@
     font-weight: 600 !important;
     padding: 1rem 1rem !important;
   }
+
+  &:lang(ar) {
+    text-align: right;
+  }
 }
 
 .ant-select-selector,

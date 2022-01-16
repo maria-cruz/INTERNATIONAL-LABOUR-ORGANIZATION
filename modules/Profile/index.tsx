@@ -3,7 +3,7 @@ import Layout, { Header } from "@common/components/Layout";
 import Button from "antd/lib/button";
 import useRouter from "next/router";
 import moment from "moment";
-import nationalities from "@common/constants/nationalities";
+import getNationalities from "@common/constants/nationalities";
 import useTranslation from "next-translate/useTranslation";
 import { SAMPLE_DATA_ORGANIZATION_TYPE } from "@common/constants/organizationType";
 import { GENDER, MONTHS } from "@modules/CreateProfile/helpers/constants";
@@ -24,6 +24,7 @@ interface ProfileProps {
 }
 const Profile = ({ profileData }: ProfileProps) => {
   const { t } = useTranslation("create-profile");
+  const nationalities = getNationalities();
 
   const { router } = useRouter;
 

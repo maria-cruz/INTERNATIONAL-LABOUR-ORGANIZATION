@@ -1,11 +1,12 @@
 import React from "react";
 
 import Select, { SelectProps } from "antd/lib/select";
-import nationalities from "@common/constants/nationalities";
+import getNationalities from "@common/constants/nationalities";
 import DownArrow from "../Icons/DownArrow";
 const { Option } = Select;
 
 const NationalitiesSelect = (props: SelectProps<any>) => {
+  const nationalities = getNationalities();
   return (
     <Select
       {...props}
