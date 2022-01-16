@@ -1,7 +1,7 @@
 import React from "react";
 import Button, { ButtonProps } from "antd/lib/button";
 import usePersistentState from "@common/methods/usePersistentState";
-import nationalities from "@common/constants/nationalities";
+import getNationalities from "@common/constants/nationalities";
 import { GENDER, MONTHS } from "@modules/CreateProfile/helpers/constants";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
@@ -26,6 +26,7 @@ const CreateProfilePreview = ({ onSubmitClick }: CreateProfilePreviewProps) => {
 
   const month = checkMonth.map((item) => item.key);
 
+  const nationalities = getNationalities();
   const checkNationality = nationalities.filter(
     (item) => item.countryCode === storeData.nationality
   );
