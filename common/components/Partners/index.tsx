@@ -55,14 +55,14 @@ const Partners = () => {
       <span className="partners-section-title">{t("title")}</span>
       <div className="partners-section-logos">
         <Carousel {...settings}>
-          <div className="carousel-image-container">
+          {/* <div className="carousel-image-container">
             <Image
               src={Logo}
               width={189}
               height={189}
               alt="supporters-logo.svg"
             />
-          </div>
+          </div> */}
           <div className="carousel-image-container">
             <Image
               src={MinistryOfLabourLogo}
@@ -130,14 +130,14 @@ const Partners = () => {
       </div>
       <div className="partners-section-logos arabic-logos">
         <Carousel {...settings}>
-          <div className="carousel-image-container">
+          {/* <div className="carousel-image-container">
             <Image
               src={Logo}
               width={189}
               height={189}
               alt="supporters-logo.svg"
             />
-          </div>
+          </div> */}
           <div className="carousel-image-container">
             <Image
               src={MinistryOfLabourLogo}
