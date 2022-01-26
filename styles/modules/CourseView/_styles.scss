@@ -1,6 +1,9 @@
+@import "./components/UnitUnlock/styles";
+
 .courses-view {
   @import "./components/ProgressTracker/styles";
   @import "./components/SessionCollapse/styles";
+
   width: 100vw;
   min-height: 100vh;
   display: flex;
