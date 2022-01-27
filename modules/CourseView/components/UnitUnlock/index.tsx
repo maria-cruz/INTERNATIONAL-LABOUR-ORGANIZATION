@@ -1,27 +1,36 @@
 import Button from "antd/lib/button";
-import SuccessMessageIcon from "@common/components/Icons/SuccesMessage";
-import LockedIcon from "@common/components/Icons/Locked";
-import React from "react";
+import UnlockedIcon from "@common/components/Icons/Unlocked";
+import React, { useState } from "react";
 import router from "next/router";
 import useTranslation from "next-translate/useTranslation";
+import classNames from "classnames";
 
-const UnitUnlock = () => {
+interface UnitUnlockProps {
+  visible?: boolean;
+}
+
+const UnitUnlock = ({ visible = false }: UnitUnlockProps) => {
   const { t } = useTranslation("unit-unlock");
 
+  const [isVisible, setIsVisible] = useState(visible);
+
   const handleSkipClick = () => {
-    // Close The Unlock Screen
+    setIsVisible(false);
   };
 
   const handleContinueClick = () => {
     // Reroute the user to the next unit
     // router.push("/log-in");
   };
-
   return (
-    <section className="unit-unlock-container">
+    <section
+      className={classNames("unit-unlock-container", {
+        _undisplay: !isVisible,
+      })}
+    >
       <div className="unit-unlock-wrapper">
-        <div className="locked-icon">
-          <LockedIcon />
+        <div className="unlocked-icon">
+          <UnlockedIcon />
         </div>
         <div className="heading-container">{`Unit 3 ${t(
           "unit-unlock-message"
@@ -30,7 +39,7 @@ const UnitUnlock = () => {
           <p>{`Social Security And Work Emergencies.`}</p>
         </div>
         <div className="description-container ">{t("description")}</div>
-        <Button onClick={handleSkipClick} className="unit-skip-btn">
+        <Button onClick={handleSkipClick} type="link" className="unit-skip-btn">
           {t("skip-unit")}
         </Button>
         <Button
