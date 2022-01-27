@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
           <div className={styles["menu"]}>
             <span className={styles["menu-title"]}>{t("aboutUs")}</span>
-            <a className={styles["disable-link"]}>{t("contactUs")}</a>
+            <Link href={"/about-us#contact-us"}>{t("contactUs")}</Link>
           </div>
         </div>
       </div>

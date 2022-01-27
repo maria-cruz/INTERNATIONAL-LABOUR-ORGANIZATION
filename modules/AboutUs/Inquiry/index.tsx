@@ -49,7 +49,7 @@ const Inquiry = () => {
   };
 
   return (
-    <div className="inquiry-container">
+    <section id="contact-us" className="inquiry-container">
       <div className="inquiry-wrapper">
         <div className="inquiry-form">
           {isVisibleText ? (
@@ -156,7 +156,7 @@ const Inquiry = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
