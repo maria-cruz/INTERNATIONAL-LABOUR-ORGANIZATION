@@ -69,6 +69,8 @@ const CourseView = ({
     (topic) => router?.query?.topic == `${topic?.id}`
   );
 
+  const isCompleted = unitDetailsProps?.progress === 100 ? true : false;
+
   const handleBackClick = () => {
     if (!slug) return;
     router.push(`/courses/preview/${slug}`);
@@ -165,8 +167,7 @@ const CourseView = ({
           />
         </div>
       </div>
-
-      <UnitUnlock />
+      <UnitUnlock visible={isCompleted} />
     </>
   );
 };
