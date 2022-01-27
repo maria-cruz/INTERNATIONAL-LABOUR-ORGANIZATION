@@ -22,6 +22,7 @@ const UnitUnlock = ({ visible = false }: UnitUnlockProps) => {
     // Reroute the user to the next unit
     // router.push("/log-in");
   };
+
   return (
     <section
       className={classNames("unit-unlock-container", {
