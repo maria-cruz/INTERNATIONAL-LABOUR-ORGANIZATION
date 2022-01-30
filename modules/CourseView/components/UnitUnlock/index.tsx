@@ -1,5 +1,4 @@
 import Button from "antd/lib/button";
-// import UnlockedIcon from "@common/components/Icons/Unlocked";
 import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
 import React, { useState } from "react";
 import router from "next/router";
