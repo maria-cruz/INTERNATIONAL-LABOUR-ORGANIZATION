@@ -1,6 +1,9 @@
+@import "./components/UnitUnlock/styles";
+
 .courses-view {
   @import "./components/ProgressTracker/styles";
   @import "./components/SessionCollapse/styles";
+
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -297,6 +300,14 @@
       padding-left: 8rem;
       padding-right: 5rem;
     }
+  }
+
+  .unit-info .self-practice-info {
+    max-width: 175.6rem;
+    font-size: 1.8rem;
+    line-height: 2;
+    color: $shuttle-gray;
+    margin-bottom: 0rem;
   }
 
   /*======================= RIGHT PANEL =======================*/

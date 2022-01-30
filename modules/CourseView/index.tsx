@@ -14,6 +14,8 @@ import { useRouter } from "next/router";
 import Collapse from "antd/lib/collapse";
 const { Panel } = Collapse;
 
+import UnitUnlock from "./components/UnitUnlock";
+
 interface ProgressType {
   unit: number;
   completed_topics_count: number;
@@ -67,6 +69,8 @@ const CourseView = ({
     (topic) => router?.query?.topic == `${topic?.id}`
   );
 
+  const isCompleted = unitDetailsProps?.progress === 100 ? true : false;
+
   const handleBackClick = () => {
     if (!slug) return;
     router.push(`/courses/preview/${slug}`);
@@ -82,86 +86,90 @@ const CourseView = ({
   };
 
   return (
-    <div className="courses-view">
-      <div className="left-column">
-        <header className="unit-header">
-          <div className="back-button" onClick={handleBackClick}>
-            <div className="back-icon"> {<BackArrow />}</div>
-            <div className="back-text">{t("back")}</div>
-          </div>
-          <div className="title">{`${t("unit")} ${data?.unit}: ${
-            data?.title
-          }`}</div>
-        </header>
-
-        <Collapse
-          bordered={false}
-          activeKey={isSessionColumnOpen ? "1" : ""}
-          expandIcon={() => (
-            <div onClick={handleSessionHeaderClick}>
-              <Menu width="32" height="32" />
+    <>
+      <UnitUnlock visible={isCompleted} />
+      <div className="courses-view">
+        <div className="left-column">
+          <header className="unit-header">
+            <div className="back-button" onClick={handleBackClick}>
+              <div className="back-icon"> {<BackArrow />}</div>
+              <div className="back-text">{t("back")}</div>
             </div>
-          )}
-          className={"session-column-collapse"}
-        >
-          <Panel
-            header={
+            <div className="title">{`${t("unit")} ${data?.unit}: ${
+              data?.title
+            }`}</div>
+          </header>
+
+          <Collapse
+            bordered={false}
+            activeKey={isSessionColumnOpen ? "1" : ""}
+            expandIcon={() => (
               <div onClick={handleSessionHeaderClick}>
-                {t("sessionContents")}
+                <Menu width="32" height="32" />
               </div>
-            }
-            key="1"
+            )}
+            className={"session-column-collapse"}
           >
-            <div className="session-column">
-              <ProgressTracker percentage={unitDetailsProps?.progress} />
-              <SessionCollapse
-                topics={data?.topics}
-                currentProgressData={currentProgressData}
-                onClick={handleSessionItemClick}
-              />
-            </div>
-          </Panel>
-        </Collapse>
+            <Panel
+              header={
+                <div onClick={handleSessionHeaderClick}>
+                  {t("sessionContents")}
+                </div>
+              }
+              key="1"
+            >
+              <div className="session-column">
+                <ProgressTracker percentage={unitDetailsProps?.progress} />
+                <SessionCollapse
+                  topics={data?.topics}
+                  currentProgressData={currentProgressData}
+                  onClick={handleSessionItemClick}
+                />
+              </div>
+            </Panel>
+          </Collapse>
 
-        <Content
-          currentContentData={currentContentData}
-          currentUnitId={currentUnitId}
-          currentProgressData={currentProgressData}
-          isLocked={isContentLocked}
-        />
-
-        <section className="unit-info">
-          <CourseTabs
-            unitDetailsProps={unitDetailsProps}
-            unitQandAProps={unitQandAProps}
-            unitDownloadableFilesProps={unitDownloadableFilesProps}
+          <Content
+            currentContentData={currentContentData}
+            currentUnitId={currentUnitId}
+            currentProgressData={currentProgressData}
+            isLocked={isContentLocked}
           />
-        </section>
-      </div>
 
-      <div className="right-column">
-        <header className="session-header">
-          <div className="session-menu-left-container">
-            <div className="session-menu-icon">
-              <Menu width="32" height="32" />
-            </div>
-            <div className="session-menu-text">{t("sessionContents")}</div>
-          </div>
-          <div className="session-menu-right-container">
-            <div className="session-menu-close">
-              <Close width="40" height="40" />
-            </div>
-          </div>
-        </header>
+          <section className="unit-info">
+            <div className="self-practice-info">{t("selfPracticInfo")}</div>
+            <CourseTabs
+              unitDetailsProps={unitDetailsProps}
+              unitQandAProps={unitQandAProps}
+              unitDownloadableFilesProps={unitDownloadableFilesProps}
+            />
+          </section>
+        </div>
 
-        <ProgressTracker percentage={unitDetailsProps?.progress} />
-        <SessionCollapse
-          topics={data?.topics}
-          currentProgressData={currentProgressData}
-          onClick={handleSessionItemClick}
-        />
+        <div className="right-column">
+          <header className="session-header">
+            <div className="session-menu-left-container">
+              <div className="session-menu-icon">
+                <Menu width="32" height="32" />
+              </div>
+              <div className="session-menu-text">{t("sessionContents")}</div>
+            </div>
+            <div className="session-menu-right-container">
+              <div className="session-menu-close">
+                <Close width="40" height="40" />
+              </div>
+            </div>
+          </header>
+
+          <ProgressTracker percentage={unitDetailsProps?.progress} />
+          <SessionCollapse
+            topics={data?.topics}
+            currentProgressData={currentProgressData}
+            onClick={handleSessionItemClick}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
