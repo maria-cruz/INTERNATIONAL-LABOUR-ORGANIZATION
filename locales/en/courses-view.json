@@ -27,5 +27,6 @@
   "watchAllToUnlockPre": "Complete the previous session, to unlock the Pre assessment test.",
   "watchAllToUnlockTopic": "Complete the post assessment, to unlock the Video.",
   "watchAllToUnlockPost": "Watch all the topics first, to unlock the Post assessment test.",
-  "topic": "Topic"
+  "topic": "Topic",
+  "selfPracticInfo": "You can download the session content and self-practice materials in the Self-Practice section below."
 }

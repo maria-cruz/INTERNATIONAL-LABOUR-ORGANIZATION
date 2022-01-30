@@ -137,6 +137,7 @@ const CourseView = ({
           />
 
           <section className="unit-info">
+            <div className="self-practice-info">{t("selfPracticInfo")}</div>
             <CourseTabs
               unitDetailsProps={unitDetailsProps}
               unitQandAProps={unitQandAProps}
