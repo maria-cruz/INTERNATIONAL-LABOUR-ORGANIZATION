@@ -87,6 +87,7 @@ const CourseView = ({
 
   return (
     <>
+      <UnitUnlock visible={isCompleted} />
       <div className="courses-view">
         <div className="left-column">
           <header className="unit-header">
@@ -167,7 +168,6 @@ const CourseView = ({
           />
         </div>
       </div>
-      <UnitUnlock visible={isCompleted} />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import Button from "antd/lib/button";
-import UnlockedIcon from "@common/components/Icons/Unlocked";
+// import UnlockedIcon from "@common/components/Icons/Unlocked";
+import CheckCircleOutline from "@common/components/Icons/CheckCircleOutline";
 import React, { useState } from "react";
 import router from "next/router";
 import useTranslation from "next-translate/useTranslation";
@@ -13,14 +14,15 @@ const UnitUnlock = ({ visible = false }: UnitUnlockProps) => {
   const { t } = useTranslation("unit-unlock");
 
   const [isVisible, setIsVisible] = useState(visible);
+  const [isContinueButtonLoading, setIsContinueButtonLoading] = useState(false);
 
   const handleSkipClick = () => {
     setIsVisible(false);
   };
 
   const handleContinueClick = () => {
-    // Reroute the user to the next unit
-    // router.push("/log-in");
+    setIsContinueButtonLoading(true);
+    router.push("/courses?category=all");
   };
 
   return (
@@ -31,24 +33,23 @@ const UnitUnlock = ({ visible = false }: UnitUnlockProps) => {
     >
       <div className="unit-unlock-wrapper">
         <div className="unlocked-icon">
-          <UnlockedIcon />
+          <CheckCircleOutline width="120" height="120" />
         </div>
-        <div className="heading-container">{`Unit 3 ${t(
-          "unit-unlock-message"
-        )}`}</div>
+        <div className="heading-container">{t("heading")}</div>
         <div className="subheading-container ">
-          <p>{`Social Security And Work Emergencies.`}</p>
+          <p>{t("subheading")}</p>
         </div>
         <div className="description-container ">{t("description")}</div>
         <Button onClick={handleSkipClick} type="link" className="unit-skip-btn">
-          {t("skip-unit")}
+          {t("skip")}
         </Button>
         <Button
           onClick={handleContinueClick}
           type="primary"
-          className="unit-unlock-btn "
+          className="unit-unlock-btn"
+          loading={isContinueButtonLoading}
         >
-          {`${t("continue-unit")} 3`}
+          {t("continue")}
         </Button>
       </div>
     </section>
