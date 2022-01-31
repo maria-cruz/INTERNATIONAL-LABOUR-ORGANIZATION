@@ -121,6 +121,8 @@
   }
   .unit-wrapper .tab-container {
     padding: 6rem 0 10rem;
+    display: flex;
+    flex-direction: column;
 
     @include view-size(tab-land) {
       padding-top: 9rem;
@@ -143,6 +145,24 @@
   .ant-tabs-tab:lang(ar) {
     margin: 0;
   }
+
+  .ant-tabs-tab {
+    margin: 0;
+    padding: 0.8rem 0 !important;
+  }
+  .ant-tabs-ink-bar {
+    display: none;
+  }
+
+  .ant-tabs-tab-active {
+    border-bottom: 0.5rem solid $faux-green;
+    width: fit-content;
+  }
+
+  .ant-tabs-nav {
+    margin-left: 2.4rem;
+  }
+
   @import "./components/QuestionForm/styles.scss";
   @import "./components//SearchQuestion/styles";
 }

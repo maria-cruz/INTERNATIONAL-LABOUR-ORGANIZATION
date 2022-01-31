@@ -42,11 +42,16 @@ const FAQ = ({ allFaqsData }: AllFaqDataType) => {
         </div>
         <div className="unit-container">
           <div className="unit-wrapper">
-            <Tabs className="tab-container" defaultActiveKey="1">
+            <Tabs
+              className="tab-container"
+              tabPosition="left"
+              defaultActiveKey="1"
+            >
               {allFaqsData.map((faqData: FaqsProps) => {
                 const faqUnit = `${t("unit")} ${faqData?.unit}`;
+                const faqTitle = faqData?.title;
                 return (
-                  <TabPane className="tab-item" tab={faqUnit} key={faqUnit}>
+                  <TabPane className="tab-item" tab={faqTitle} key={faqUnit}>
                     <FaqUnit faqData={faqData} />
                     <QuestionForm faqData={faqData} />
                   </TabPane>
