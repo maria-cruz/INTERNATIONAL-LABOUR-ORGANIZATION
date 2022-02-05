@@ -149,6 +149,8 @@
   .ant-tabs-tab {
     margin: 0;
     padding: 0.8rem 0 !important;
+    white-space: pre-wrap;
+    text-align: start !important;
   }
   .ant-tabs-ink-bar {
     display: none;
